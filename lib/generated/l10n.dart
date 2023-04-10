@@ -179,6 +179,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Locate Stations Nearby`
+  String get onBoarding1Title {
+    return Intl.message(
+      'Locate Stations Nearby',
+      name: 'onBoarding1Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ride and Explore`
+  String get onBoarding2Title {
+    return Intl.message(
+      'Ride and Explore',
+      name: 'onBoarding2Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personalized recommendations based on your interactions`
+  String get onBoarding3Title {
+    return Intl.message(
+      'Personalized recommendations based on your interactions',
+      name: 'onBoarding3Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quickly find a bike rental station near you to start your ride.`
+  String get onBoardingPage1Description {
+    return Intl.message(
+      'Quickly find a bike rental station near you to start your ride.',
+      name: 'onBoardingPage1Description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Explore the city on our reliable and comfortable bikes, and have fun along the way.`
+  String get onBoardingPage2Description {
+    return Intl.message(
+      'Explore the city on our reliable and comfortable bikes, and have fun along the way.',
+      name: 'onBoardingPage2Description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Our app learns from your interactions to provide personalized recommendations and suggestions that suit your specific needs and preferences`
+  String get onBoardingPage3Description {
+    return Intl.message(
+      'Our app learns from your interactions to provide personalized recommendations and suggestions that suit your specific needs and preferences',
+      name: 'onBoardingPage3Description',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

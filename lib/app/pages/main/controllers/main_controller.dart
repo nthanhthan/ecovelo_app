@@ -6,6 +6,11 @@ import '../../../core.dart';
 
 class MainController extends GetxController {
   static MainController get to => Get.find();
+  @override
+  void onInit() {
+   appInitializer();
+    super.onInit();
+  }
 
   @override
   void onClose() async {
@@ -48,10 +53,8 @@ class MainController extends GetxController {
         overlays: SystemUiOverlay.values);
 
     //Delay for show Splash screen
-    await Future.delayed(const Duration(milliseconds: 500), () => null);
-
-    Get.offAllNamed<void>(
-      Routes.main,
-    );
+    await Future.delayed(const Duration(seconds: 2), () {
+      Get.offNamed<void>(Routes.onBoarding);
+    });
   }
 }

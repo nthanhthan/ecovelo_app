@@ -38,7 +38,7 @@ class FilledBtnStyle {
     Color? background,
     Size? fixedSize,
     MaterialTapTargetSize? tapTargetSize,
-    double borderRadius = 30,
+    double borderRadius = 15,
   }) {
     return ElevatedButton.styleFrom(
       padding: _getBtnPadding(customPadding: customPadding, sizeType: sizeType),
@@ -46,7 +46,7 @@ class FilledBtnStyle {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderRadius),
       ),
-      primary: background ?? AppColors.main.shade300,
+      primary: background ?? AppColors.main.shade200,
       splashFactory: NoSplash.splashFactory,
       fixedSize: fixedSize,
       tapTargetSize: tapTargetSize,
@@ -158,7 +158,7 @@ class OutlineButtonStyle {
       minimumSize: Size(isFullWidth ? Get.width : 48, 10),
       primary: background,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(15),
       ),
       side: outlineColor != null
           ? BorderSide(
