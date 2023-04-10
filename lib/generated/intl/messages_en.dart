@@ -31,6 +31,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
+        "onBoarding1Title":
+            MessageLookupByLibrary.simpleMessage("Locate Stations Nearby"),
+        "onBoarding2Title":
+            MessageLookupByLibrary.simpleMessage("Ride and Explore"),
+        "onBoarding3Title": MessageLookupByLibrary.simpleMessage(
+            "Personalized recommendations based on your interactions"),
+        "onBoardingPage1Description": MessageLookupByLibrary.simpleMessage(
+            "Quickly find a bike rental station near you to start your ride."),
+        "onBoardingPage2Description": MessageLookupByLibrary.simpleMessage(
+            "Explore the city on our reliable and comfortable bikes, and have fun along the way."),
+        "onBoardingPage3Description": MessageLookupByLibrary.simpleMessage(
+            "Our app learns from your interactions to provide personalized recommendations and suggestions that suit your specific needs and preferences"),
         "processing": MessageLookupByLibrary.simpleMessage("Processing..."),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome!"),

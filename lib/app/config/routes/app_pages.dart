@@ -16,6 +16,12 @@ class AppPages {
       binding: HomeBinding(),
       transition: Transition.rightToLeft,
     ),
+     GetPage<dynamic>(
+      name: Routes.onBoarding,
+      page: () => const OnBoardingView(),
+      binding: OnBoardingBinding(),
+      transition: Transition.rightToLeft,
+    ),
    
   ];
 }

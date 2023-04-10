@@ -37,7 +37,7 @@ class _MyApp extends State<MyApp> {
     //init build config
     BuildConfig().setupEnviroment();
     //Devlopment mode config
-    LogUtil.init(isDebug: BuildConfig().isDebug, tag: "greenride");
+    LogUtil.init(isDebug: BuildConfig().isDebug, tag: "Ecovelo");
     DioClient.setDebugMode(BuildConfig().isDebug);
 
     //Storage load
@@ -53,7 +53,7 @@ class _MyApp extends State<MyApp> {
    // RateAppHelper().initMyApp(context);
     return DismissKeyboard(
       child: GetMaterialApp(
-        title: "GreenRide",
+        title: "Ecovelo",
         debugShowCheckedModeBanner: false,
         localizationsDelegates: const [
           S.delegate,

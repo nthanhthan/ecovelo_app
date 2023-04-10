@@ -1,10 +1,8 @@
-
-
 import 'package:ecoveloapp/app/core.dart';
 
-class MainBinding extends Bindings {
+class OnBoardingBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(MainController());
+    Get.put(OnBoardingController());
   }
 }
