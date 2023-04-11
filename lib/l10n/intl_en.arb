@@ -17,5 +17,18 @@
     "onBoarding3Title": "Personalized recommendations based on your interactions",
     "onBoardingPage1Description": "Quickly find a bike rental station near you to start your ride.",
     "onBoardingPage2Description": "Explore the city on our reliable and comfortable bikes, and have fun along the way.",
-    "onBoardingPage3Description": "Our app learns from your interactions to provide personalized recommendations and suggestions that suit your specific needs and preferences" 
+    "onBoardingPage3Description": "Our app learns from your interactions to provide personalized recommendations and suggestions that suit your specific needs and preferences" ,
+    "invalidEmailAddress": "Please enter your email address in format: yourname@example.com",
+    "password": "Password",
+    "signIn": "Sign In",
+    "forgotPassword": "Forgot password?",
+    "email": "Email",
+    "signUp": "Sign Up",
+    "noAccount": "Don't have an account?",
+    "invalidPasswordLength": "At least eight characters",
+    "invalidPasswordOneLetter": "At least one letter",
+    "invalidPasswordOneSpecialLetter": "At least one special letter",
+    "invalidPasswordOneNumber" : "At least one number",
+    "invalidPasswordOneCapitalLetter": "At least one capital letter"
+
 }

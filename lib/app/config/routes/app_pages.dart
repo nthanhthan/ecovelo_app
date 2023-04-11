@@ -16,12 +16,17 @@ class AppPages {
       binding: HomeBinding(),
       transition: Transition.rightToLeft,
     ),
-     GetPage<dynamic>(
+    GetPage<dynamic>(
       name: Routes.onBoarding,
       page: () => const OnBoardingView(),
       binding: OnBoardingBinding(),
       transition: Transition.rightToLeft,
     ),
-   
+    GetPage<dynamic>(
+      name: Routes.signin,
+      page: () => const SignInView(),
+      binding: AuthBinding(),
+      transition: Transition.rightToLeft,
+    ),
   ];
 }

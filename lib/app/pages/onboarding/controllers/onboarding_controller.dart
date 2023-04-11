@@ -38,9 +38,10 @@ class OnBoardingController extends GetxController {
     if (currentPage.value < endPage) {
       _forceNextPage();
       _autoNextTabScheule();
+    } else {
+      Get.offNamed<void>(Routes.signin);
     }
   }
-
 
   void _forceNextPage() {
     if (currentPage < endPage) {
@@ -60,7 +61,7 @@ class OnBoardingController extends GetxController {
 
   void _autoNextTabScheule() async {
     cancelNextTabScheule();
-    autoNextTabSchedule = Timer(const Duration(seconds: 3), () {
+    autoNextTabSchedule = Timer(const Duration(seconds: 2), () {
       if (currentPage < endPage) {
         _forceNextPage();
         _autoNextTabScheule();
