@@ -239,6 +239,126 @@ class S {
       args: [],
     );
   }
+
+  /// `Please enter your email address in format: yourname@example.com`
+  String get invalidEmailAddress {
+    return Intl.message(
+      'Please enter your email address in format: yourname@example.com',
+      name: 'invalidEmailAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign In`
+  String get signIn {
+    return Intl.message(
+      'Sign In',
+      name: 'signIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot password?`
+  String get forgotPassword {
+    return Intl.message(
+      'Forgot password?',
+      name: 'forgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Up`
+  String get signUp {
+    return Intl.message(
+      'Sign Up',
+      name: 'signUp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account?`
+  String get noAccount {
+    return Intl.message(
+      'Don\'t have an account?',
+      name: 'noAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `At least eight characters`
+  String get invalidPasswordLength {
+    return Intl.message(
+      'At least eight characters',
+      name: 'invalidPasswordLength',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `At least one letter`
+  String get invalidPasswordOneLetter {
+    return Intl.message(
+      'At least one letter',
+      name: 'invalidPasswordOneLetter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `At least one special letter`
+  String get invalidPasswordOneSpecialLetter {
+    return Intl.message(
+      'At least one special letter',
+      name: 'invalidPasswordOneSpecialLetter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `At least one number`
+  String get invalidPasswordOneNumber {
+    return Intl.message(
+      'At least one number',
+      name: 'invalidPasswordOneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `At least one capital letter`
+  String get invalidPasswordOneCapitalLetter {
+    return Intl.message(
+      'At least one capital letter',
+      name: 'invalidPasswordOneCapitalLetter',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

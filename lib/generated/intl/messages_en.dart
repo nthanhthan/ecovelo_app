@@ -27,9 +27,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "forgotPassword":
+            MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "invalidEmailAddress": MessageLookupByLibrary.simpleMessage(
+            "Please enter your email address in format: yourname@example.com"),
+        "invalidPasswordLength":
+            MessageLookupByLibrary.simpleMessage("At least eight characters"),
+        "invalidPasswordOneCapitalLetter":
+            MessageLookupByLibrary.simpleMessage("At least one capital letter"),
+        "invalidPasswordOneLetter":
+            MessageLookupByLibrary.simpleMessage("At least one letter"),
+        "invalidPasswordOneNumber":
+            MessageLookupByLibrary.simpleMessage("At least one number"),
+        "invalidPasswordOneSpecialLetter":
+            MessageLookupByLibrary.simpleMessage("At least one special letter"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
+        "noAccount":
+            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "onBoarding1Title":
             MessageLookupByLibrary.simpleMessage("Locate Stations Nearby"),
@@ -43,7 +60,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Explore the city on our reliable and comfortable bikes, and have fun along the way."),
         "onBoardingPage3Description": MessageLookupByLibrary.simpleMessage(
             "Our app learns from your interactions to provide personalized recommendations and suggestions that suit your specific needs and preferences"),
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
         "processing": MessageLookupByLibrary.simpleMessage("Processing..."),
+        "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
+        "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome!"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes")

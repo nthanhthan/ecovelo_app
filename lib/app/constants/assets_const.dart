@@ -2,10 +2,8 @@ class AssetsConst {
   static const String preImgPath = "assets/images/";
   static const String preIconPath = "assets/icons/";
   //images
-  static const String icEmptyPage = "${preImgPath}list-empty.png";
-  static const String ecoveloSplash = "${preImgPath}ecovelo.png";
+  static const String ecovelo = "${preImgPath}bike.png";
   //icons
-  static const String ecovelo = "${preIconPath}ecovelo.svg";
   static const String logoSplash = "${preIconPath}logo_splash.svg";
   static const String textSplash = "${preIconPath}textSplash.svg";
   static const String line1Splash = "${preIconPath}line_splash.svg";
@@ -15,4 +13,5 @@ class AssetsConst {
   static const String onboarding2 = "${preIconPath}onboarding2.svg";
   static const String flagVietNam = "${preIconPath}flag_vietnam.svg";
   static const String flagUS = "${preIconPath}flag_us.svg";
+  static const String imageSignIn = "${preIconPath}image_signin.svg";
 }
