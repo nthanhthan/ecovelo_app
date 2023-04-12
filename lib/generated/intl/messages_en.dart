@@ -20,16 +20,30 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(name) => "Hi ${name},";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "about": MessageLookupByLibrary.simpleMessage("About"),
+        "addMoney": MessageLookupByLibrary.simpleMessage("Add money"),
         "appName": MessageLookupByLibrary.simpleMessage("ECOVELO"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "cameraAccessDenied": MessageLookupByLibrary.simpleMessage(
+            "Camera access denied. Let open the app setting to enable it!"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "changePass": MessageLookupByLibrary.simpleMessage("Chnage Password"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "deactiveAcc": MessageLookupByLibrary.simpleMessage("Deactive Account"),
+        "discout": MessageLookupByLibrary.simpleMessage("get 10% off."),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
+        "ecoVoucher": MessageLookupByLibrary.simpleMessage("Eco Voucher"),
+        "ecoitem": MessageLookupByLibrary.simpleMessage("Eco velo"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "english": MessageLookupByLibrary.simpleMessage("English"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "helpCenter": MessageLookupByLibrary.simpleMessage("Help Center"),
+        "hi": m0,
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "invalidEmailAddress": MessageLookupByLibrary.simpleMessage(
             "Please enter your email address in format: yourname@example.com"),
@@ -43,10 +57,19 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("At least one number"),
         "invalidPasswordOneSpecialLetter":
             MessageLookupByLibrary.simpleMessage("At least one special letter"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "logout": MessageLookupByLibrary.simpleMessage("Log out"),
+        "mainWallet": MessageLookupByLibrary.simpleMessage("Main Wallet"),
+        "myJourney": MessageLookupByLibrary.simpleMessage("My journey"),
+        "myWallet": MessageLookupByLibrary.simpleMessage("My Wallet"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "niceDay": MessageLookupByLibrary.simpleMessage("Have a nice day!"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "noAccount":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "noCameraPermissionDesctiption": MessageLookupByLibrary.simpleMessage(
+            "This app needs camera access to scan QR codes"),
+        "notifi": MessageLookupByLibrary.simpleMessage("Notification"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "onBoarding1Title":
             MessageLookupByLibrary.simpleMessage("Locate Stations Nearby"),
@@ -62,9 +85,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "Our app learns from your interactions to provide personalized recommendations and suggestions that suit your specific needs and preferences"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "processing": MessageLookupByLibrary.simpleMessage("Processing..."),
+        "promoWallet": MessageLookupByLibrary.simpleMessage("Promo Wallet"),
+        "scanToRide": MessageLookupByLibrary.simpleMessage("Scan to Ride"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "textBanner": MessageLookupByLibrary.simpleMessage(
+            "Let\'s enjoy a stress-free ride during peak hours and "),
+        "unableToAccessCamera":
+            MessageLookupByLibrary.simpleMessage("Unable to access camera!"),
+        "vietnamese": MessageLookupByLibrary.simpleMessage("VietNamese"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome!"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };

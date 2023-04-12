@@ -115,7 +115,7 @@ class AppTextStyles {
 
   static TextStyle tiny() {
     return const TextStyle(
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.w400,
       fontSize: 12,
       color: AppColors.defaultTextColor,
       fontFamily: AppProperties.fontFamilyName,

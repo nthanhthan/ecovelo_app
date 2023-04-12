@@ -13,11 +13,16 @@ class SignInView extends GetView<SignInController> {
       child: _buildBody(context),
     );
   }
- void _formOnChange() {
+
+  void _formOnChange() {
     controller.checkFormValidation();
   }
+
   void _signInOnClicked() {}
-  void _forgotPasswordOnClicked() {}
+  void _forgotPasswordOnClicked() {
+    Get.offNamed(Routes.home);
+  }
+
   void _signupOnClicked() {}
 
   Widget _buildBody(BuildContext context) {

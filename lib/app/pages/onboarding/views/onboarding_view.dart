@@ -6,6 +6,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class OnBoardingView extends GetView<OnBoardingController> {
   const OnBoardingView({Key? key}) : super(key: key);
   void _skipOnClicked() {
+    Get.offNamed(Routes.signin);
   }
 
   @override
@@ -15,19 +16,26 @@ class OnBoardingView extends GetView<OnBoardingController> {
     );
   }
 
+  void _changeLanguageClick() {
+    Get.toNamed(Routes.language);
+  }
+
   Widget buildBody(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.defaultBackground,
         body: Column(
           children: [
             SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.only(right: 30, top: 10),
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: SvgPicture.asset(
-                    AssetsConst.flagUS,
-                    height: 25,
+              child: InkWell(
+                onTap: _changeLanguageClick,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 30, top: 10),
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: SvgPicture.asset(
+                      AssetsConst.flagUS,
+                      height: 20,
+                    ),
                   ),
                 ),
               ),
