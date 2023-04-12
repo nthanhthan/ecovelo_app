@@ -95,6 +95,11 @@ dependencies:
 
   #flutter_switch
   flutter_switch: ^0.3.2
+  #Lotie
+  lottie: ^1.4.0
+  #scaner QR
+  qr_code_scanner: ^1.0.0
+  permission_handler: ^10.0.0
 
  
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -116,6 +121,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/jsons/
   fonts:
        - family: Poppins
          fonts:

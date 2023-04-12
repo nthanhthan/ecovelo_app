@@ -28,5 +28,17 @@ class AppPages {
       binding: AuthBinding(),
       transition: Transition.rightToLeft,
     ),
+    GetPage<dynamic>(
+      name: Routes.language,
+      page: () => const LanguageView(),
+      binding: SettingBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.scanQR,
+      page: () => const ScanView(),
+      binding: ScanBinding(),
+      transition: Transition.rightToLeft,
+    ),
   ];
 }

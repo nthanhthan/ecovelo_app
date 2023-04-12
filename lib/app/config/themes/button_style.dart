@@ -38,7 +38,7 @@ class FilledBtnStyle {
     Color? background,
     Size? fixedSize,
     MaterialTapTargetSize? tapTargetSize,
-    double borderRadius = 15,
+    double borderRadius = 30,
   }) {
     return ElevatedButton.styleFrom(
       padding: _getBtnPadding(customPadding: customPadding, sizeType: sizeType),
