@@ -35,7 +35,7 @@ class LanguageView extends GetView<SettingController> {
         leading: Container(
           margin: const EdgeInsets.all(5.0),
           decoration: BoxDecoration(
-              shape: BoxShape.circle, color: AppColors.grey.shade400),
+              shape: BoxShape.circle, color: AppColors.main.shade200),
           child: InkWell(
             onTap: () {
               Navigator.pop(context);

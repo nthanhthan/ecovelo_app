@@ -12,7 +12,8 @@ class HomeView extends GetView<HomeController> {
       child: _buildBody(context),
     );
   }
-  void _scanClick(){
+
+  void _scanClick() {
     Get.toNamed(Routes.scanQR);
   }
 
@@ -26,6 +27,7 @@ class HomeView extends GetView<HomeController> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
+        elevation: 0,
         shape: null,
         notchMargin: 10,
         child: Container(
