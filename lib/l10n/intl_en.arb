@@ -53,6 +53,14 @@
     "addMoney": "Add money",
     "myWallet": "My Wallet",
     "myJourney": "My journey",
-    "ecoVoucher": "Eco Voucher"
+    "ecoVoucher": "Eco Voucher",
+    "readyRide": "Ready to Ride",
+    "ticketType": "Ticket Type",
+    "discoutText": "Discount",
+    "oneTimeTicket": "One-time Ticket",
+    "selectVoucher": "Select Voucher",
+    "introduction": "Introduction",
+    "needHelp": "Need Help ?",
+    "proceed": "Proceed to start!"
 
 }

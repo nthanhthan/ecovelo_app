@@ -40,5 +40,11 @@ class AppPages {
       binding: ScanBinding(),
       transition: Transition.rightToLeft,
     ),
+    GetPage<dynamic>(
+      name: Routes.rentBicycle,
+      page: () => const RentBicycleView(),
+      binding: RentBicycleBinding(),
+      transition: Transition.rightToLeft,
+    ),
   ];
 }

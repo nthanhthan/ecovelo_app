@@ -7,4 +7,5 @@ abstract class Routes {
   static const signin = '/signin_view';
   static const language = '/language_view';
   static const scanQR = '/scan_view';
+  static const rentBicycle = '/rent_bicycle_view';
 }

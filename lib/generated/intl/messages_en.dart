@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "deactiveAcc": MessageLookupByLibrary.simpleMessage("Deactive Account"),
         "discout": MessageLookupByLibrary.simpleMessage("get 10% off."),
+        "discoutText": MessageLookupByLibrary.simpleMessage("Discount"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
         "ecoVoucher": MessageLookupByLibrary.simpleMessage("Eco Voucher"),
         "ecoitem": MessageLookupByLibrary.simpleMessage("Eco velo"),
@@ -45,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "helpCenter": MessageLookupByLibrary.simpleMessage("Help Center"),
         "hi": m0,
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "introduction": MessageLookupByLibrary.simpleMessage("Introduction"),
         "invalidEmailAddress": MessageLookupByLibrary.simpleMessage(
             "Please enter your email address in format: yourname@example.com"),
         "invalidPasswordLength":
@@ -62,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mainWallet": MessageLookupByLibrary.simpleMessage("Main Wallet"),
         "myJourney": MessageLookupByLibrary.simpleMessage("My journey"),
         "myWallet": MessageLookupByLibrary.simpleMessage("My Wallet"),
+        "needHelp": MessageLookupByLibrary.simpleMessage("Need Help ?"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "niceDay": MessageLookupByLibrary.simpleMessage("Have a nice day!"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
@@ -83,15 +86,21 @@ class MessageLookup extends MessageLookupByLibrary {
             "Explore the city on our reliable and comfortable bikes, and have fun along the way."),
         "onBoardingPage3Description": MessageLookupByLibrary.simpleMessage(
             "Our app learns from your interactions to provide personalized recommendations and suggestions that suit your specific needs and preferences"),
+        "oneTimeTicket":
+            MessageLookupByLibrary.simpleMessage("One-time Ticket"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "proceed": MessageLookupByLibrary.simpleMessage("Proceed to start!"),
         "processing": MessageLookupByLibrary.simpleMessage("Processing..."),
         "promoWallet": MessageLookupByLibrary.simpleMessage("Promo Wallet"),
+        "readyRide": MessageLookupByLibrary.simpleMessage("Ready to Ride"),
         "scanToRide": MessageLookupByLibrary.simpleMessage("Scan to Ride"),
+        "selectVoucher": MessageLookupByLibrary.simpleMessage("Select Voucher"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "textBanner": MessageLookupByLibrary.simpleMessage(
             "Let\'s enjoy a stress-free ride during peak hours and "),
+        "ticketType": MessageLookupByLibrary.simpleMessage("Ticket Type"),
         "unableToAccessCamera":
             MessageLookupByLibrary.simpleMessage("Unable to access camera!"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("VietNamese"),
