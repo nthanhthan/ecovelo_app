@@ -44,4 +44,5 @@ class AssetsConst {
   static const String myWallet = "${preIconPath}my_wallet.svg";
   static const String journey = "${preIconPath}journey.svg";
   static const String voucher = "${preIconPath}voucher1.svg";
+  static const String logoScanner = "${preIconPath}logo_scanner.svg";
 }

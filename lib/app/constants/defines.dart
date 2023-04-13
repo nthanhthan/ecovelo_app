@@ -56,7 +56,7 @@ class AppColors {
   static const darkScrollbarColor = Color(0xffC7B2EF);
   static const iconColor = Color(0xFF0F6EFA);
   static const hideContent = Color(0xFF4A5054);
-  static const colorAppBar = Color(0xFF11141A);
+  static const colorAppBar = Color(0xff3C5041);
   static const lightBlue = Color(0xFF78C3CD);
   static const lightPink = Color(0xFFE58FA7);
   static const lightPurple = Color(0xFF7E7DD1);
