@@ -6,6 +6,7 @@ class AssetsConst {
   static const String ecovelo = "${preImgPath}bike.png";
   static const String avatar = "${preImgPath}avatar.jpg";
   static const String walletBanner = "${preImgPath}Wallet.png";
+  static const String rentBicycle = "${preImgPath}bg_rent_bicycle.png";
   //json
   static const String qrScan = "${preJsonPath}qr_scan.json";
   static const String home = "${preJsonPath}animation.json";
@@ -45,4 +46,17 @@ class AssetsConst {
   static const String journey = "${preIconPath}journey.svg";
   static const String voucher = "${preIconPath}voucher1.svg";
   static const String logoScanner = "${preIconPath}logo_scanner.svg";
+  static const String bgRentBicycle = "${preIconPath}bg_rent_bicycle.svg";
+  static const String checkRent = "${preIconPath}check_rent.svg";
+  static const String divider = "${preIconPath}divider.svg";
+  static const String iconTicket = "${preIconPath}ic_ticket.svg";
+  static const String iconDiscount = "${preIconPath}ic_discount.svg";
+  static const String iconNext = "${preIconPath}ic_next.svg";
+  static const String iconIntroduction = "${preIconPath}ic_introduction.svg";
+  static const String iconHELP = "${preIconPath}icon_need.svg";
+  static const String mainWallet = "${preIconPath}main_wallet.svg";
+  static const String promoWallet = "${preIconPath}promo_wallet.svg";
+  static const String iconSlider = "${preIconPath}icon_slider.svg";
+  static const String maskRight = "${preIconPath}mask_right.svg";
+  static const String maskLeft = "${preIconPath}mask_left.svg";
 }

@@ -6,3 +6,4 @@ export 'map/map.dart';
 export 'notification/notification.dart';
 export 'setting/setting.dart';
 export 'scan_qr/scan.dart';
+export 'rent_bicycle/rent_bicycle.dart';

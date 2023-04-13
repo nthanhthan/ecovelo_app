@@ -599,6 +599,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Ready to Ride`
+  String get readyRide {
+    return Intl.message(
+      'Ready to Ride',
+      name: 'readyRide',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ticket Type`
+  String get ticketType {
+    return Intl.message(
+      'Ticket Type',
+      name: 'ticketType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discount`
+  String get discoutText {
+    return Intl.message(
+      'Discount',
+      name: 'discoutText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `One-time Ticket`
+  String get oneTimeTicket {
+    return Intl.message(
+      'One-time Ticket',
+      name: 'oneTimeTicket',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Voucher`
+  String get selectVoucher {
+    return Intl.message(
+      'Select Voucher',
+      name: 'selectVoucher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Introduction`
+  String get introduction {
+    return Intl.message(
+      'Introduction',
+      name: 'introduction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Need Help ?`
+  String get needHelp {
+    return Intl.message(
+      'Need Help ?',
+      name: 'needHelp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Proceed to start!`
+  String get proceed {
+    return Intl.message(
+      'Proceed to start!',
+      name: 'proceed',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

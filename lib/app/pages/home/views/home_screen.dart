@@ -15,6 +15,14 @@ class HomeScreen extends GetView<HomeController> {
     );
   }
 
+  void _ecoVeloClicked() {
+    Get.toNamed(Routes.rentBicycle);
+  }
+
+  void _addMoneyClicked() {}
+  void _myWalletClick() {}
+  void _myJourneyClicked() {}
+
   Widget _buildBody(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.defaultBackground,
@@ -208,21 +216,25 @@ class HomeScreen extends GetView<HomeController> {
               context,
               S.of(context).ecoitem,
               AssetsConst.icEcovelo,
+              _ecoVeloClicked,
             ),
             _itemMain(
               context,
               S.of(context).addMoney,
               AssetsConst.addMoney,
+              _addMoneyClicked,
             ),
             _itemMain(
               context,
               S.of(context).myWallet,
               AssetsConst.myWallet,
+              _myWalletClick,
             ),
             _itemMain(
               context,
               S.of(context).myJourney,
               AssetsConst.journey,
+              _myJourneyClicked,
             ),
           ],
         ),
@@ -230,22 +242,32 @@ class HomeScreen extends GetView<HomeController> {
     );
   }
 
-  Widget _itemMain(BuildContext context, String name, String icon) {
-    return Column(
-      children: [
-        SvgPicture.asset(
-          icon,
-          height: 60,
-        ),
-        const SizedBox(height: 10),
-        Text(
-          name,
-          style: AppTextStyles.tiny().copyWith(
-            color: AppColors.main.shade200,
-            fontWeight: FontWeight.w500,
+  Widget _itemMain(
+    BuildContext context,
+    String name,
+    String icon,
+    void Function()? handle,
+  ) {
+    return GestureDetector(
+      onTap: () {
+        handle?.call();
+      },
+      child: Column(
+        children: [
+          SvgPicture.asset(
+            icon,
+            height: 60,
           ),
-        )
-      ],
+          const SizedBox(height: 10),
+          Text(
+            name,
+            style: AppTextStyles.tiny().copyWith(
+              color: AppColors.main.shade200,
+              fontWeight: FontWeight.w500,
+            ),
+          )
+        ],
+      ),
     );
   }
 
