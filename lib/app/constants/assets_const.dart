@@ -7,6 +7,7 @@ class AssetsConst {
   static const String avatar = "${preImgPath}avatar.jpg";
   static const String walletBanner = "${preImgPath}Wallet.png";
   static const String rentBicycle = "${preImgPath}bg_rent_bicycle.png";
+  static const String bicycle = "${preImgPath}bike_cut.png";
   //json
   static const String qrScan = "${preJsonPath}qr_scan.json";
   static const String home = "${preJsonPath}animation.json";
@@ -59,4 +60,6 @@ class AssetsConst {
   static const String iconSlider = "${preIconPath}icon_slider.svg";
   static const String maskRight = "${preIconPath}mask_right.svg";
   static const String maskLeft = "${preIconPath}mask_left.svg";
+  static const String bikeSvg = "${preIconPath}bike_svg.svg";
+  static const String iconAdd = "${preIconPath}icon_add.svg";
 }

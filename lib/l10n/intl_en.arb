@@ -61,6 +61,9 @@
     "selectVoucher": "Select Voucher",
     "introduction": "Introduction",
     "needHelp": "Need Help ?",
-    "proceed": "Proceed to start!"
+    "proceed": "Proceed to start!",
+    "getMoreTime": "Get  more time",
+    "finishRide": "Finish ride"
+
 
 }

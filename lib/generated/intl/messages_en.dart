@@ -41,8 +41,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "ecoitem": MessageLookupByLibrary.simpleMessage("Eco velo"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
+        "finishRide": MessageLookupByLibrary.simpleMessage("Finish ride"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "getMoreTime": MessageLookupByLibrary.simpleMessage("Get  more time"),
         "helpCenter": MessageLookupByLibrary.simpleMessage("Help Center"),
         "hi": m0,
         "home": MessageLookupByLibrary.simpleMessage("Home"),

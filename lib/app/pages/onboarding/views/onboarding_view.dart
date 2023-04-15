@@ -115,7 +115,7 @@ class OnBoardingView extends GetView<OnBoardingController> {
   ) {
     return Column(
       children: [
-        SvgPicture.asset(path),
+        Expanded(child: SvgPicture.asset(path)),
         Padding(
           padding: const EdgeInsets.fromLTRB(10, 30, 10, 5),
           child: Text(
@@ -126,18 +126,16 @@ class OnBoardingView extends GetView<OnBoardingController> {
             ),
           ),
         ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
-            child: Text(
-              description,
-              style: AppTextStyles.body2().copyWith(
-                color: AppColors.main.shade300,
-                fontWeight: FontWeight.w400,
-              ),
-              overflow: TextOverflow.visible,
-              maxLines: 2,
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
+          child: Text(
+            description,
+            style: AppTextStyles.body2().copyWith(
+              color: AppColors.main.shade300,
+              fontWeight: FontWeight.w400,
             ),
+            overflow: TextOverflow.visible,
+            maxLines: 2,
           ),
         ),
       ],

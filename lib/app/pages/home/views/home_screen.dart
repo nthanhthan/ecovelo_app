@@ -15,8 +15,9 @@ class HomeScreen extends GetView<HomeController> {
     );
   }
 
-  void _ecoVeloClicked() {
-    Get.toNamed(Routes.rentBicycle);
+  Future<void> _ecoVeloClicked(BuildContext context) async {
+    await Get.toNamed(Routes.rentBicycle);
+    _showBottomSheet(context);
   }
 
   void _addMoneyClicked() {}
@@ -101,40 +102,59 @@ class HomeScreen extends GetView<HomeController> {
             padding: const EdgeInsets.only(
               top: 15,
               left: 20,
+              right: 20,
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: 40.0,
-                  height: 40.0,
-                  decoration: BoxDecoration(
-                    image: const DecorationImage(
-                      image: AssetImage(AssetsConst.avatar),
-                      fit: BoxFit.cover,
+                Row(
+                  children: [
+                    Container(
+                      width: 40.0,
+                      height: 40.0,
+                      decoration: BoxDecoration(
+                        image: const DecorationImage(
+                          image: AssetImage(AssetsConst.avatar),
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(40.0)),
+                        border: Border.all(
+                          color: AppColors.main.shade200,
+                          width: 1.0,
+                        ),
+                      ),
                     ),
-                    borderRadius: const BorderRadius.all(Radius.circular(40.0)),
-                    border: Border.all(
-                      color: AppColors.main.shade200,
-                      width: 1.0,
+                    const SizedBox(width: 20),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          S.of(context).hi("Than"),
+                          style: AppTextStyles.subHeading1()
+                              .copyWith(color: AppColors.main.shade300),
+                        ),
+                        Text(
+                          S.of(context).niceDay,
+                          style: AppTextStyles.tiny()
+                              .copyWith(color: AppColors.main.shade300),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                Obx(
+                  () => Visibility(
+                    visible: controller.checkCloseBottomModel(),
+                    child: GestureDetector(
+                      onTap: () {
+                        controller.checkCloseBottomModel() == true
+                            ? _showBottomSheet(context)
+                            : null;
+                      },
+                      child: _durationRide(context),
                     ),
                   ),
-                ),
-                const SizedBox(width: 20),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      S.of(context).hi("Than"),
-                      style: AppTextStyles.subHeading1()
-                          .copyWith(color: AppColors.main.shade300),
-                    ),
-                    Text(
-                      S.of(context).niceDay,
-                      style: AppTextStyles.tiny()
-                          .copyWith(color: AppColors.main.shade300),
-                    )
-                  ],
                 ),
               ],
             ),
@@ -212,12 +232,10 @@ class HomeScreen extends GetView<HomeController> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _itemMain(
-              context,
-              S.of(context).ecoitem,
-              AssetsConst.icEcovelo,
-              _ecoVeloClicked,
-            ),
+            _itemMain(context, S.of(context).ecoitem, AssetsConst.icEcovelo,
+                () {
+              _ecoVeloClicked(context);
+            }),
             _itemMain(
               context,
               S.of(context).addMoney,
@@ -307,6 +325,188 @@ class HomeScreen extends GetView<HomeController> {
                 itemCount: vouchers.length),
           )
         ],
+      ),
+    );
+  }
+
+  void _showBottomSheet(BuildContext context) async {
+    await showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30.0),
+          topRight: Radius.circular(30.0),
+        ),
+      ),
+      builder: (BuildContext context) {
+        return Container(
+          height: 350,
+          decoration: const BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30.0),
+              topRight: Radius.circular(30.0),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  height: 5,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    color: AppColors.grey.shade200,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 30,
+                    bottom: 25,
+                    right: 10,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 10,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "ECO43-001",
+                                  style: AppTextStyles.subHeading1()
+                                      .copyWith(color: AppColors.main.shade200),
+                                ),
+                                const SizedBox(width: 10),
+                                SvgPicture.asset(
+                                  AssetsConst.checkRent,
+                                  height: 20,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            _durationRide(context),
+                          ],
+                        ),
+                      ),
+                      Image.asset(
+                        AssetsConst.bicycle,
+                        height: 90,
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _bottomItemShowModel(
+                        context,
+                        AssetsConst.iconAdd,
+                        S.of(context).getMoreTime,
+                      ),
+                      _bottomItemShowModel(
+                        context,
+                        AssetsConst.iconHELP,
+                        S.of(context).needHelp,
+                      ),
+                    ],
+                  ),
+                ),
+                _bottomWidet(context),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+    controller.updateCloseBottomModel();
+  }
+
+  Widget _durationRide(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        vertical: 6,
+        horizontal: 15,
+      ),
+      decoration: BoxDecoration(
+        color: AppColors.success.shade400,
+        borderRadius: BorderRadius.circular(30),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            Icons.lock_clock,
+            color: AppColors.main.shade400,
+          ),
+          const SizedBox(width: 8),
+          Text(
+            "29:56",
+            style: AppTextStyles.tiny().copyWith(
+              color: AppColors.main.shade400,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _bottomItemShowModel(BuildContext context, String icon, String text) {
+    return OutlinedButton(
+      onPressed: null,
+      style: OutlineButtonStyle.enable(
+          sizeType: SizeButtonType.custom,
+          customPadding: const EdgeInsets.fromLTRB(15, 15, 0, 15)),
+      child: SizedBox(
+        width: 150,
+        child: Row(
+          children: [
+            SvgPicture.asset(icon),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                text,
+                style: AppTextStyles.body2().copyWith(
+                  color: AppColors.main.shade200,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _bottomWidet(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 120,
+        vertical: 12,
+      ),
+      decoration: BoxDecoration(
+        color: AppColors.main.shade200,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Text(
+        S.of(context).finishRide,
+        style: AppTextStyles.body1().copyWith(
+          color: AppColors.main.shade400,
+          fontWeight: FontWeight.w500,
+        ),
       ),
     );
   }
