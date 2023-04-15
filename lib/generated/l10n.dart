@@ -679,6 +679,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Get  more time`
+  String get getMoreTime {
+    return Intl.message(
+      'Get  more time',
+      name: 'getMoreTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Finish ride`
+  String get finishRide {
+    return Intl.message(
+      'Finish ride',
+      name: 'finishRide',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

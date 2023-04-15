@@ -16,6 +16,11 @@ class HomeController extends GetxController
   ];
 
   Widget currentScreen = const HomeScreen();
+
+  final RxnBool _isCloseBottomModel = RxnBool();
+  set isCloseBottomModel(bool? value) => _isCloseBottomModel.value = value;
+  bool? get isCloseBottomModel => _isCloseBottomModel.value;
+
   @override
   void onInit() {
     WidgetsBinding.instance.addObserver(this);
@@ -39,5 +44,17 @@ class HomeController extends GetxController
 
   Widget getWidget() {
     return screen[currentTab];
+  }
+
+  void updateCloseBottomModel() {
+    isCloseBottomModel ??= true;
+  }
+
+  bool checkCloseBottomModel() {
+    if (isCloseBottomModel != null) {
+      return isCloseBottomModel!;
+    } else {
+      return false;
+    }
   }
 }

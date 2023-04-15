@@ -31,141 +31,146 @@ class RentBicycleView extends GetView<RentBicycleController> {
 
   Widget _buildBody(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white38,
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(AssetsConst.rentBicycle),
-            fit: BoxFit.cover,
+      backgroundColor: AppColors.main.shade300,
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(AssetsConst.rentBicycle),
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
-        ),
-        child: Column(
-          children: [
-            Expanded(
-              child: Stack(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(20, 210, 20, 50),
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 40),
-                          child: Text(
-                            "ECO43-001",
-                            style: AppTextStyles.subHeading1()
-                                .copyWith(color: AppColors.main.shade200),
-                          ),
+          Positioned(
+            top: 200,
+            left: 30,
+            right: 30,
+            bottom: 200,
+            child: Container(
+              // margin: const EdgeInsets.only(bottom: 0),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(25),
+                child: SingleChildScrollView(
+                  //clipBehavior: Clip.hardEdge,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 40),
+                        child: Text(
+                          "ECO43-001",
+                          style: AppTextStyles.subHeading1()
+                              .copyWith(color: AppColors.main.shade200),
                         ),
-                        const SizedBox(height: 5),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              AssetsConst.checkRent,
-                              height: 20,
+                      ),
+                      const SizedBox(height: 5),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            AssetsConst.checkRent,
+                            height: 20,
+                          ),
+                          const SizedBox(width: 5),
+                          Text(
+                            S.of(context).readyRide,
+                            style: AppTextStyles.tiny().copyWith(
+                              color: AppColors.main.shade200,
+                              fontWeight: FontWeight.w400,
                             ),
-                            const SizedBox(width: 5),
-                            Text(
-                              S.of(context).readyRide,
-                              style: AppTextStyles.tiny().copyWith(
-                                color: AppColors.main.shade200,
-                                fontWeight: FontWeight.w400,
-                              ),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: SvgPicture.asset(AssetsConst.divider),
+                      ),
+                      _optionWigdet(
+                        context,
+                        AssetsConst.iconTicket,
+                        S.of(context).oneTimeTicket,
+                        S.of(context).ticketType,
+                        _oneTimeTicketClick,
+                        true,
+                      ),
+                      _optionWigdet(
+                        context,
+                        AssetsConst.iconDiscount,
+                        S.of(context).selectVoucher,
+                        S.of(context).discoutText,
+                        _selectVoucherClick,
+                        false,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(30, 10, 30, 70),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            _itemTextBottom(
+                              context,
+                              AssetsConst.iconIntroduction,
+                              S.of(context).introduction,
+                              _introductionClick,
+                            ),
+                            _itemTextBottom(
+                              context,
+                              AssetsConst.iconHELP,
+                              S.of(context).needHelp,
+                              _needHelpClick,
                             ),
                           ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: SvgPicture.asset(AssetsConst.divider),
-                        ),
-                        _optionWigdet(
-                          context,
-                          AssetsConst.iconTicket,
-                          S.of(context).oneTimeTicket,
-                          S.of(context).ticketType,
-                          _oneTimeTicketClick,
-                          true,
-                        ),
-                        _optionWigdet(
-                          context,
-                          AssetsConst.iconDiscount,
-                          S.of(context).selectVoucher,
-                          S.of(context).discoutText,
-                          _selectVoucherClick,
-                          false,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(30, 10, 30, 70),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              _itemTextBottom(
-                                context,
-                                AssetsConst.iconIntroduction,
-                                S.of(context).introduction,
-                                _introductionClick,
-                              ),
-                              _itemTextBottom(
-                                context,
-                                AssetsConst.iconHELP,
-                                S.of(context).needHelp,
-                                _needHelpClick,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(60, 60, 60, 0),
-                    child: Image.asset(
-                      AssetsConst.ecovelo,
-                      height: 260,
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    left: 25,
-                    child: Row(
-                      children: [
-                        _walletWidget(
-                          context,
-                          AssetsConst.mainWallet,
-                          S.of(context).mainWallet,
-                          "20000",
-                          true,
-                          _mainWalletClick,
-                        ),
-                        _walletWidget(
-                          context,
-                          AssetsConst.promoWallet,
-                          S.of(context).promoWallet,
-                          "50000",
-                          false,
-                          _promoWalletClick,
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+                ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                bottom: 50,
-                top: 20,
-              ),
-              child: _sliderWidget(context),
-            )
-          ],
-        ),
+          ),
+          Positioned(
+            bottom: 150,
+            left: 30,
+            child: Row(
+              children: [
+                _walletWidget(
+                  context,
+                  AssetsConst.mainWallet,
+                  S.of(context).mainWallet,
+                  "20000",
+                  true,
+                  _mainWalletClick,
+                ),
+                _walletWidget(
+                  context,
+                  AssetsConst.promoWallet,
+                  S.of(context).promoWallet,
+                  "50000",
+                  false,
+                  _promoWalletClick,
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            top: 140,
+            left: 50,
+            right: 50,
+            child: Image.asset(
+              AssetsConst.bicycle,
+              height: 90,
+            ),
+          ),
+          Positioned(
+            bottom: 50,
+            child: _sliderWidget(context),
+          ),
+        ],
       ),
     );
   }
@@ -265,7 +270,7 @@ class RentBicycleView extends GetView<RentBicycleController> {
       },
       child: Obx(
         () => Container(
-          margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+          margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 8),
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
           decoration: BoxDecoration(
             color: controller.isMainWallet == isMainWallet
@@ -321,55 +326,58 @@ class RentBicycleView extends GetView<RentBicycleController> {
   }
 
   Widget _sliderWidget(BuildContext context) {
-    return ActionSlider.custom(
-      sliderBehavior: SliderBehavior.stretch,
-      width: 342.0,
-      height: 56.0,
-      toggleWidth: 65.0,
-      toggleMargin: EdgeInsets.zero,
-      backgroundColor: AppColors.main.shade200,
-      foregroundChild: DecoratedBox(
-        decoration: BoxDecoration(
-          color: AppColors.main.shade200,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Obx(
-          () => Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: controller.isStart
-                ? const Icon(
-                    Icons.check,
-                    color: AppColors.white,
-                    size: 30,
-                  )
-                : SvgPicture.asset(AssetsConst.iconSlider),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
+      child: ActionSlider.custom(
+        sliderBehavior: SliderBehavior.stretch,
+        width: 320.0,
+        height: 56.0,
+        toggleWidth: 65.0,
+        toggleMargin: EdgeInsets.zero,
+        backgroundColor: AppColors.main.shade200,
+        foregroundChild: DecoratedBox(
+          decoration: BoxDecoration(
+            color: AppColors.main.shade200,
+            borderRadius: BorderRadius.circular(8),
           ),
-        ),
-      ),
-      foregroundBuilder: (context, state, child) => child!,
-      outerBackgroundBuilder: (context, state, child) => Card(
-        margin: EdgeInsets.zero,
-        color: Color.lerp(
-          AppColors.main.shade400,
-          AppColors.main.shade200,
-          state.position,
-        ),
-        child: Center(
-          child: Text(
-            S.of(context).proceed,
-            style: AppTextStyles.body1().copyWith(
-              color: AppColors.main.shade200,
-              fontWeight: FontWeight.w500,
+          child: Obx(
+            () => Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: controller.isStart
+                  ? const Icon(
+                      Icons.check,
+                      color: AppColors.white,
+                      size: 30,
+                    )
+                  : SvgPicture.asset(AssetsConst.iconSlider),
             ),
           ),
         ),
+        foregroundBuilder: (context, state, child) => child!,
+        outerBackgroundBuilder: (context, state, child) => Card(
+          margin: EdgeInsets.zero,
+          color: Color.lerp(
+            AppColors.main.shade400,
+            AppColors.main.shade200,
+            state.position,
+          ),
+          child: Center(
+            child: Text(
+              S.of(context).proceed,
+              style: AppTextStyles.body1().copyWith(
+                color: AppColors.main.shade200,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ),
+        backgroundBorderRadius: BorderRadius.circular(16.0),
+        action: (controller) async {
+          controller.loading();
+          controller.success();
+          _startClick();
+        },
       ),
-      backgroundBorderRadius: BorderRadius.circular(16.0),
-      action: (controller) async {
-        controller.loading();
-        controller.success();
-        _startClick();
-      },
     );
   }
 }
