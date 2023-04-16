@@ -6,7 +6,7 @@ class AssetsConst {
   static const String ecovelo = "${preImgPath}bike.png";
   static const String avatar = "${preImgPath}avatar.jpg";
   static const String walletBanner = "${preImgPath}Wallet.png";
-  static const String rentBicycle = "${preImgPath}bg_rent_bicycle.png";
+  static const String rentBicycle = "${preImgPath}bg_rent.png";
   static const String bicycle = "${preImgPath}bike_cut.png";
   //json
   static const String qrScan = "${preJsonPath}qr_scan.json";
@@ -62,4 +62,10 @@ class AssetsConst {
   static const String maskLeft = "${preIconPath}mask_left.svg";
   static const String bikeSvg = "${preIconPath}bike_svg.svg";
   static const String iconAdd = "${preIconPath}icon_add.svg";
+  static const String iconDistance = "${preIconPath}ic_distance.svg";
+  static const String iconDistanceGreen = "${preIconPath}ic_distance_green.svg";
+  static const String iconClock = "${preIconPath}ic_clock.svg";
+  static const String iconCarbon = "${preIconPath}ic_carbon.svg";
+  static const String iconEnrgy = "${preIconPath}ic_energy.svg";
+  static const String fromTo = "${preIconPath}from_to.svg";
 }

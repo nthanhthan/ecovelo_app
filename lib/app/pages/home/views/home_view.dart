@@ -19,6 +19,7 @@ class HomeView extends GetView<HomeController> {
 
   Widget _buildBody(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: AppColors.defaultBackground,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.main.shade400,
@@ -26,47 +27,49 @@ class HomeView extends GetView<HomeController> {
         child: Lottie.asset(AssetsConst.qrScan),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        elevation: 0,
-        shape: null,
-        notchMargin: 10,
-        child: Container(
-          margin: const EdgeInsets.symmetric(
-            horizontal: 10,
-            vertical: 5,
-          ),
-          decoration: BoxDecoration(
-              color: AppColors.main.shade200,
-              borderRadius: BorderRadius.circular(24)),
-          height: 60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              _itemNavigatorBar(
-                context,
-                0,
-                AssetsConst.homeEn,
-                AssetsConst.homeDis,
-              ),
-              _itemNavigatorBar(
-                context,
-                1,
-                AssetsConst.mapEn,
-                AssetsConst.mapDis,
-              ),
-              _itemNavigatorBar(
-                context,
-                2,
-                AssetsConst.notifiEn,
-                AssetsConst.notifiDis,
-              ),
-              _itemNavigatorBar(
-                context,
-                3,
-                AssetsConst.settingEn,
-                AssetsConst.settingDis,
-              )
-            ],
+      bottomNavigationBar: SafeArea(
+        child: BottomAppBar(
+          elevation: 0,
+          shape: const CircularNotchedRectangle(),
+          notchMargin: 10,
+          child: Container(
+            margin: const EdgeInsets.symmetric(
+              horizontal: 10,
+              vertical: 5,
+            ),
+            decoration: BoxDecoration(
+                color: AppColors.main.shade200,
+                borderRadius: BorderRadius.circular(24)),
+            height: 60,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                _itemNavigatorBar(
+                  context,
+                  0,
+                  AssetsConst.homeEn,
+                  AssetsConst.homeDis,
+                ),
+                _itemNavigatorBar(
+                  context,
+                  1,
+                  AssetsConst.mapEn,
+                  AssetsConst.mapDis,
+                ),
+                _itemNavigatorBar(
+                  context,
+                  2,
+                  AssetsConst.notifiEn,
+                  AssetsConst.notifiDis,
+                ),
+                _itemNavigatorBar(
+                  context,
+                  3,
+                  AssetsConst.settingEn,
+                  AssetsConst.settingDis,
+                )
+              ],
+            ),
           ),
         ),
       ),

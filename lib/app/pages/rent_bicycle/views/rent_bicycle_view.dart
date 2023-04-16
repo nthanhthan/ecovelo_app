@@ -25,13 +25,12 @@ class RentBicycleView extends GetView<RentBicycleController> {
 
   Future<void> _startClick() async {
     controller.startRent();
-    await Future.delayed(const Duration(seconds: 1));
     Get.back();
   }
 
   Widget _buildBody(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.main.shade300,
+      backgroundColor: AppColors.defaultBackground,
       body: Stack(
         children: [
           Container(
@@ -47,90 +46,114 @@ class RentBicycleView extends GetView<RentBicycleController> {
             left: 30,
             right: 30,
             bottom: 200,
-            child: Container(
-              // margin: const EdgeInsets.only(bottom: 0),
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              decoration: BoxDecoration(
-                color: AppColors.white,
-                borderRadius: BorderRadius.circular(25),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(25),
-                child: SingleChildScrollView(
-                  //clipBehavior: Clip.hardEdge,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 40),
-                        child: Text(
-                          "ECO43-001",
-                          style: AppTextStyles.subHeading1()
-                              .copyWith(color: AppColors.main.shade200),
-                        ),
-                      ),
-                      const SizedBox(height: 5),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+            child: Stack(
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                    color: AppColors.white,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(25),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          SvgPicture.asset(
-                            AssetsConst.checkRent,
-                            height: 20,
+                          Padding(
+                            padding: const EdgeInsets.only(top: 40),
+                            child: Text(
+                              "ECO43-001",
+                              style: AppTextStyles.subHeading1()
+                                  .copyWith(color: AppColors.main.shade200),
+                            ),
                           ),
-                          const SizedBox(width: 5),
-                          Text(
-                            S.of(context).readyRide,
-                            style: AppTextStyles.tiny().copyWith(
-                              color: AppColors.main.shade200,
-                              fontWeight: FontWeight.w400,
+                          const SizedBox(height: 5),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                AssetsConst.checkRent,
+                                height: 20,
+                              ),
+                              const SizedBox(width: 5),
+                              Text(
+                                S.of(context).readyRide,
+                                style: AppTextStyles.tiny().copyWith(
+                                  color: AppColors.main.shade200,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: SvgPicture.asset(AssetsConst.divider),
+                          ),
+                          _optionWigdet(
+                            context,
+                            AssetsConst.iconTicket,
+                            S.of(context).oneTimeTicket,
+                            S.of(context).ticketType,
+                            _oneTimeTicketClick,
+                            true,
+                          ),
+                          _optionWigdet(
+                            context,
+                            AssetsConst.iconDiscount,
+                            S.of(context).selectVoucher,
+                            S.of(context).discoutText,
+                            _selectVoucherClick,
+                            false,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(30, 10, 30, 70),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                _itemTextBottom(
+                                  context,
+                                  AssetsConst.iconIntroduction,
+                                  S.of(context).introduction,
+                                  _introductionClick,
+                                ),
+                                _itemTextBottom(
+                                  context,
+                                  AssetsConst.iconHELP,
+                                  S.of(context).needHelp,
+                                  _needHelpClick,
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: SvgPicture.asset(AssetsConst.divider),
-                      ),
-                      _optionWigdet(
-                        context,
-                        AssetsConst.iconTicket,
-                        S.of(context).oneTimeTicket,
-                        S.of(context).ticketType,
-                        _oneTimeTicketClick,
-                        true,
-                      ),
-                      _optionWigdet(
-                        context,
-                        AssetsConst.iconDiscount,
-                        S.of(context).selectVoucher,
-                        S.of(context).discoutText,
-                        _selectVoucherClick,
-                        false,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(30, 10, 30, 70),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            _itemTextBottom(
-                              context,
-                              AssetsConst.iconIntroduction,
-                              S.of(context).introduction,
-                              _introductionClick,
-                            ),
-                            _itemTextBottom(
-                              context,
-                              AssetsConst.iconHELP,
-                              S.of(context).needHelp,
-                              _needHelpClick,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
+                Positioned(
+                  top: 90,
+                  left: 0,
+                  child: SizedBox(
+                    width: 20,
+                    child: SvgPicture.asset(
+                      AssetsConst.maskLeft,
+                      color: AppColors.success.shade400.withOpacity(0.2),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 90,
+                  right: 0,
+                  child: SizedBox(
+                    width: 20,
+                    child: SvgPicture.asset(
+                      AssetsConst.maskRight,
+                      color: AppColors.success.shade400.withOpacity(0.2),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           Positioned(
@@ -167,7 +190,7 @@ class RentBicycleView extends GetView<RentBicycleController> {
             ),
           ),
           Positioned(
-            bottom: 50,
+            bottom: 0,
             child: _sliderWidget(context),
           ),
         ],
@@ -191,7 +214,7 @@ class RentBicycleView extends GetView<RentBicycleController> {
           child: Text(
             title,
             style: AppTextStyles.body2().copyWith(
-              color: AppColors.grey.shade400,
+              color: AppColors.grey.shade500,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -215,7 +238,7 @@ class RentBicycleView extends GetView<RentBicycleController> {
                     style: AppTextStyles.body1().copyWith(
                       color: isTicket
                           ? AppColors.main.shade400
-                          : AppColors.grey.shade400,
+                          : AppColors.grey.shade500,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -290,7 +313,7 @@ class RentBicycleView extends GetView<RentBicycleController> {
                     style: AppTextStyles.small().copyWith(
                       color: controller.isMainWallet == isMainWallet
                           ? AppColors.main.shade400
-                          : AppColors.grey.shade400,
+                          : AppColors.grey.shade500,
                     ),
                   ),
                   Text(
@@ -298,7 +321,7 @@ class RentBicycleView extends GetView<RentBicycleController> {
                     style: AppTextStyles.tiny().copyWith(
                       color: controller.isMainWallet == isMainWallet
                           ? AppColors.main.shade400
-                          : AppColors.grey.shade400,
+                          : AppColors.grey.shade500,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -327,7 +350,10 @@ class RentBicycleView extends GetView<RentBicycleController> {
 
   Widget _sliderWidget(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 40,
+        vertical: 40,
+      ),
       child: ActionSlider.custom(
         sliderBehavior: SliderBehavior.stretch,
         width: 320.0,

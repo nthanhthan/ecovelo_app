@@ -28,11 +28,12 @@ class AppColors {
     300: Color(0xffFC8838),
   });
   static const MaterialColor grey = MaterialColor(0xff1F1F1F, {
-    100: Color(0xffD9D9D9),
-    200: Color(0xffBFBFBF),
-    300: Color(0xff8C8C8C),
-    400: Color(0xff1F1F1F),
-    500: Color(0xffF3F3F3),
+    100: Color(0xFFE6E6E6),
+    200: Color(0xffD9D9D9),
+    300: Color(0xffBFBFBF),
+    400: Color(0xff8C8C8C),
+    500: Color(0xff1F1F1F),
+    600: Color(0xffF5F5F5),
   });
   static const MaterialColor warning = MaterialColor(0xffB2223A, {
     100: Color(0xffFBECEE),
@@ -62,6 +63,7 @@ class AppColors {
   static const lightPurple = Color(0xFF7E7DD1);
   static const popupColor = Color(0xff313544);
   static const colorChoosePlan = Color(0xff2C303E);
+  static const colorText = Color(0xff1D1D1D);
 }
 
 class AppProperties {

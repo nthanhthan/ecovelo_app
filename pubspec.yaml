@@ -102,6 +102,8 @@ dependencies:
   permission_handler: ^10.0.0
   #action slider
   action_slider: ^0.5.0
+  #percent_indecator
+  percent_indicator: ^4.0.0
 
  
   # The "flutter_lints" package below contains a set of recommended lints to

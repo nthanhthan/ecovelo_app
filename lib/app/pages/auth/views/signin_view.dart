@@ -101,7 +101,7 @@ class SignInView extends GetView<SignInController> {
                 ),
               ),
               filled: true,
-              fillColor: AppColors.grey.shade500,
+              fillColor: AppColors.grey.shade600,
               errorMaxLines: 3,
             ),
             validator: (text) {
@@ -134,7 +134,7 @@ class SignInView extends GetView<SignInController> {
                 ),
               ),
               filled: true,
-              fillColor: AppColors.grey.shade500,
+              fillColor: AppColors.grey.shade600,
               errorMaxLines: 3,
             ),
             validator: controller.passwordValidation,
@@ -203,7 +203,7 @@ class SignInView extends GetView<SignInController> {
                       TextSpan(
                         text: S.of(context).noAccount,
                         style: AppTextStyles.body2().copyWith(
-                          color: AppColors.grey.shade200,
+                          color: AppColors.grey.shade300,
                           fontWeight: FontWeight.w500,
                         ),
                       ),

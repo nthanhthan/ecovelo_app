@@ -167,7 +167,7 @@ class SettingView extends GetView<SettingController> {
                       style: AppTextStyles.tiny().copyWith(
                         color: logout
                             ? AppColors.warning.shade400
-                            : AppColors.grey.shade400,
+                            : AppColors.grey.shade500,
                         fontWeight: FontWeight.w700,
                       ),
                     ),

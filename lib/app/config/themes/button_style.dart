@@ -158,7 +158,7 @@ class OutlineButtonStyle {
       minimumSize: Size(isFullWidth ? Get.width : 48, 10),
       primary: background,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(16),
       ),
       side: outlineColor != null
           ? BorderSide(

@@ -22,7 +22,9 @@ class HomeScreen extends GetView<HomeController> {
 
   void _addMoneyClicked() {}
   void _myWalletClick() {}
-  void _myJourneyClicked() {}
+  void _myJourneyClicked() {
+    Get.toNamed(Routes.journey);
+  }
 
   Widget _buildBody(BuildContext context) {
     return Scaffold(
@@ -332,6 +334,7 @@ class HomeScreen extends GetView<HomeController> {
   void _showBottomSheet(BuildContext context) async {
     await showModalBottomSheet(
       context: context,
+      backgroundColor: AppColors.white,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30.0),
@@ -339,17 +342,9 @@ class HomeScreen extends GetView<HomeController> {
         ),
       ),
       builder: (BuildContext context) {
-        return Container(
-          height: 350,
-          decoration: const BoxDecoration(
-            color: AppColors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30.0),
-              topRight: Radius.circular(30.0),
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+        return Padding(
+          padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+          child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -424,7 +419,7 @@ class HomeScreen extends GetView<HomeController> {
                     ],
                   ),
                 ),
-                _bottomWidet(context),
+                _bottomWidget(context),
               ],
             ),
           ),
@@ -447,7 +442,7 @@ class HomeScreen extends GetView<HomeController> {
       child: Row(
         children: [
           Icon(
-            Icons.lock_clock,
+            Icons.schedule,
             color: AppColors.main.shade400,
           ),
           const SizedBox(width: 8),
@@ -490,9 +485,12 @@ class HomeScreen extends GetView<HomeController> {
     );
   }
 
-  Widget _bottomWidet(BuildContext context) {
+  Widget _bottomWidget(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 20),
+      margin: const EdgeInsets.only(
+        top: 20,
+        bottom: 20,
+      ),
       padding: const EdgeInsets.symmetric(
         horizontal: 120,
         vertical: 12,

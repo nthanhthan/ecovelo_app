@@ -46,5 +46,17 @@ class AppPages {
       binding: RentBicycleBinding(),
       transition: Transition.rightToLeft,
     ),
+    GetPage<dynamic>(
+      name: Routes.journey,
+      page: () => const JourneyView(),
+      binding: JourneyBinding(),
+      transition: Transition.rightToLeft,
+    ),
+      GetPage<dynamic>(
+      name: Routes.journeyDetail,
+      page: () => const JourneyDetailView(),
+      binding: JourneyBinding(),
+      transition: Transition.rightToLeft,
+    ),
   ];
 }
