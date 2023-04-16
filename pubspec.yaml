@@ -95,6 +95,15 @@ dependencies:
 
   #flutter_switch
   flutter_switch: ^0.3.2
+  #Lotie
+  lottie: ^1.4.0
+  #scaner QR
+  qr_code_scanner: ^1.0.0
+  permission_handler: ^10.0.0
+  #action slider
+  action_slider: ^0.5.0
+  #percent_indecator
+  percent_indicator: ^4.0.0
 
   #intl
   intl: ^0.17.0
@@ -121,6 +130,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/jsons/
   fonts:
        - family: Poppins
          fonts:

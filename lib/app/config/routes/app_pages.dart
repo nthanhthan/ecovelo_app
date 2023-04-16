@@ -29,6 +29,36 @@ class AppPages {
       transition: Transition.rightToLeft,
     ),
     GetPage<dynamic>(
+      name: Routes.language,
+      page: () => const LanguageView(),
+      binding: SettingBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.scanQR,
+      page: () => const ScanView(),
+      binding: ScanBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.rentBicycle,
+      page: () => const RentBicycleView(),
+      binding: RentBicycleBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.journey,
+      page: () => const JourneyView(),
+      binding: JourneyBinding(),
+      transition: Transition.rightToLeft,
+    ),
+      GetPage<dynamic>(
+      name: Routes.journeyDetail,
+      page: () => const JourneyDetailView(),
+      binding: JourneyBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
       name: Routes.addMoney,
       page: () => const AddMoneyView(),
       binding: AddMoneyBinding(),

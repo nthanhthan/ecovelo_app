@@ -359,6 +359,506 @@ class S {
       args: [],
     );
   }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chnage Password`
+  String get changePass {
+    return Intl.message(
+      'Chnage Password',
+      name: 'changePass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notification`
+  String get notifi {
+    return Intl.message(
+      'Notification',
+      name: 'notifi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deactive Account`
+  String get deactiveAcc {
+    return Intl.message(
+      'Deactive Account',
+      name: 'deactiveAcc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help Center`
+  String get helpCenter {
+    return Intl.message(
+      'Help Center',
+      name: 'helpCenter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About`
+  String get about {
+    return Intl.message(
+      'About',
+      name: 'about',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log out`
+  String get logout {
+    return Intl.message(
+      'Log out',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get english {
+    return Intl.message(
+      'English',
+      name: 'english',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `VietNamese`
+  String get vietnamese {
+    return Intl.message(
+      'VietNamese',
+      name: 'vietnamese',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Have a nice day!`
+  String get niceDay {
+    return Intl.message(
+      'Have a nice day!',
+      name: 'niceDay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hi {name},`
+  String hi(Object name) {
+    return Intl.message(
+      'Hi $name,',
+      name: 'hi',
+      desc: '',
+      args: [name],
+    );
+  }
+
+  /// `Scan to Ride`
+  String get scanToRide {
+    return Intl.message(
+      'Scan to Ride',
+      name: 'scanToRide',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unable to access camera!`
+  String get unableToAccessCamera {
+    return Intl.message(
+      'Unable to access camera!',
+      name: 'unableToAccessCamera',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Camera access denied. Let open the app setting to enable it!`
+  String get cameraAccessDenied {
+    return Intl.message(
+      'Camera access denied. Let open the app setting to enable it!',
+      name: 'cameraAccessDenied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This app needs camera access to scan QR codes`
+  String get noCameraPermissionDesctiption {
+    return Intl.message(
+      'This app needs camera access to scan QR codes',
+      name: 'noCameraPermissionDesctiption',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Let's enjoy a stress-free ride during peak hours and `
+  String get textBanner {
+    return Intl.message(
+      'Let\'s enjoy a stress-free ride during peak hours and ',
+      name: 'textBanner',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `get 10% off.`
+  String get discout {
+    return Intl.message(
+      'get 10% off.',
+      name: 'discout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Main Wallet`
+  String get mainWallet {
+    return Intl.message(
+      'Main Wallet',
+      name: 'mainWallet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Promo Wallet`
+  String get promoWallet {
+    return Intl.message(
+      'Promo Wallet',
+      name: 'promoWallet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Eco velo`
+  String get ecoitem {
+    return Intl.message(
+      'Eco velo',
+      name: 'ecoitem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add money`
+  String get addMoney {
+    return Intl.message(
+      'Add money',
+      name: 'addMoney',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Wallet`
+  String get myWallet {
+    return Intl.message(
+      'My Wallet',
+      name: 'myWallet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My journey`
+  String get myJourney {
+    return Intl.message(
+      'My journey',
+      name: 'myJourney',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Eco Voucher`
+  String get ecoVoucher {
+    return Intl.message(
+      'Eco Voucher',
+      name: 'ecoVoucher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ready to Ride`
+  String get readyRide {
+    return Intl.message(
+      'Ready to Ride',
+      name: 'readyRide',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ticket Type`
+  String get ticketType {
+    return Intl.message(
+      'Ticket Type',
+      name: 'ticketType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discount`
+  String get discoutText {
+    return Intl.message(
+      'Discount',
+      name: 'discoutText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `One-time Ticket`
+  String get oneTimeTicket {
+    return Intl.message(
+      'One-time Ticket',
+      name: 'oneTimeTicket',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Voucher`
+  String get selectVoucher {
+    return Intl.message(
+      'Select Voucher',
+      name: 'selectVoucher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Introduction`
+  String get introduction {
+    return Intl.message(
+      'Introduction',
+      name: 'introduction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Need Help ?`
+  String get needHelp {
+    return Intl.message(
+      'Need Help ?',
+      name: 'needHelp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Proceed to start!`
+  String get proceed {
+    return Intl.message(
+      'Proceed to start!',
+      name: 'proceed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get  more time`
+  String get getMoreTime {
+    return Intl.message(
+      'Get  more time',
+      name: 'getMoreTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Finish ride`
+  String get finishRide {
+    return Intl.message(
+      'Finish ride',
+      name: 'finishRide',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue`
+  String get continueBtn {
+    return Intl.message(
+      'Continue',
+      name: 'continueBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Distances `
+  String get distances {
+    return Intl.message(
+      'Distances ',
+      name: 'distances',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{nums}+`
+  String numDistances(Object nums) {
+    return Intl.message(
+      '$nums+',
+      name: 'numDistances',
+      desc: '',
+      args: [nums],
+    );
+  }
+
+  /// `This week points`
+  String get titleWeekPoint {
+    return Intl.message(
+      'This week points',
+      name: 'titleWeekPoint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep participating in weekly chanllenges and earn rewards.`
+  String get desWeekPoint {
+    return Intl.message(
+      'Keep participating in weekly chanllenges and earn rewards.',
+      name: 'desWeekPoint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total distances`
+  String get totalDistances {
+    return Intl.message(
+      'Total distances',
+      name: 'totalDistances',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total time`
+  String get totalTime {
+    return Intl.message(
+      'Total time',
+      name: 'totalTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Carbon Reduced`
+  String get carbon {
+    return Intl.message(
+      'Carbon Reduced',
+      name: 'carbon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Energy`
+  String get energy {
+    return Intl.message(
+      'Energy',
+      name: 'energy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recent Activities`
+  String get recentActivities {
+    return Intl.message(
+      'Recent Activities',
+      name: 'recentActivities',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View details`
+  String get detail {
+    return Intl.message(
+      'View details',
+      name: 'detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Journey Details`
+  String get journeyDetail {
+    return Intl.message(
+      'Journey Details',
+      name: 'journeyDetail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share journey`
+  String get shareJourney {
+    return Intl.message(
+      'Share journey',
+      name: 'shareJourney',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time`
+  String get titleTime {
+    return Intl.message(
+      'Time',
+      name: 'titleTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Journey Code`
+  String get titleJourneyCode {
+    return Intl.message(
+      'Journey Code',
+      name: 'titleJourneyCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Type`
+  String get titlePayment {
+    return Intl.message(
+      'Payment Type',
+      name: 'titlePayment',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -20,17 +20,44 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(name) => "Hi ${name},";
+
+  static String m1(nums) => "${nums}+";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "about": MessageLookupByLibrary.simpleMessage("About"),
+        "addMoney": MessageLookupByLibrary.simpleMessage("Add money"),
         "appName": MessageLookupByLibrary.simpleMessage("ECOVELO"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "cameraAccessDenied": MessageLookupByLibrary.simpleMessage(
+            "Camera access denied. Let open the app setting to enable it!"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "carbon": MessageLookupByLibrary.simpleMessage("Carbon Reduced"),
+        "changePass": MessageLookupByLibrary.simpleMessage("Chnage Password"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "continueBtn": MessageLookupByLibrary.simpleMessage("Continue"),
+        "deactiveAcc": MessageLookupByLibrary.simpleMessage("Deactive Account"),
+        "desWeekPoint": MessageLookupByLibrary.simpleMessage(
+            "Keep participating in weekly chanllenges and earn rewards."),
+        "detail": MessageLookupByLibrary.simpleMessage("View details"),
+        "discout": MessageLookupByLibrary.simpleMessage("get 10% off."),
+        "discoutText": MessageLookupByLibrary.simpleMessage("Discount"),
+        "distances": MessageLookupByLibrary.simpleMessage("Distances "),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
+        "ecoVoucher": MessageLookupByLibrary.simpleMessage("Eco Voucher"),
+        "ecoitem": MessageLookupByLibrary.simpleMessage("Eco velo"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "energy": MessageLookupByLibrary.simpleMessage("Energy"),
+        "english": MessageLookupByLibrary.simpleMessage("English"),
+        "finishRide": MessageLookupByLibrary.simpleMessage("Finish ride"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "getMoreTime": MessageLookupByLibrary.simpleMessage("Get  more time"),
+        "helpCenter": MessageLookupByLibrary.simpleMessage("Help Center"),
+        "hi": m0,
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "introduction": MessageLookupByLibrary.simpleMessage("Introduction"),
         "invalidEmailAddress": MessageLookupByLibrary.simpleMessage(
             "Please enter your email address in format: yourname@example.com"),
         "invalidPasswordLength":
@@ -43,10 +70,23 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("At least one number"),
         "invalidPasswordOneSpecialLetter":
             MessageLookupByLibrary.simpleMessage("At least one special letter"),
+        "journeyDetail":
+            MessageLookupByLibrary.simpleMessage("Journey Details"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "logout": MessageLookupByLibrary.simpleMessage("Log out"),
+        "mainWallet": MessageLookupByLibrary.simpleMessage("Main Wallet"),
+        "myJourney": MessageLookupByLibrary.simpleMessage("My journey"),
+        "myWallet": MessageLookupByLibrary.simpleMessage("My Wallet"),
+        "needHelp": MessageLookupByLibrary.simpleMessage("Need Help ?"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "niceDay": MessageLookupByLibrary.simpleMessage("Have a nice day!"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "noAccount":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "noCameraPermissionDesctiption": MessageLookupByLibrary.simpleMessage(
+            "This app needs camera access to scan QR codes"),
+        "notifi": MessageLookupByLibrary.simpleMessage("Notification"),
+        "numDistances": m1,
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "onBoarding1Title":
             MessageLookupByLibrary.simpleMessage("Locate Stations Nearby"),
@@ -60,11 +100,36 @@ class MessageLookup extends MessageLookupByLibrary {
             "Explore the city on our reliable and comfortable bikes, and have fun along the way."),
         "onBoardingPage3Description": MessageLookupByLibrary.simpleMessage(
             "Our app learns from your interactions to provide personalized recommendations and suggestions that suit your specific needs and preferences"),
+        "oneTimeTicket":
+            MessageLookupByLibrary.simpleMessage("One-time Ticket"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "proceed": MessageLookupByLibrary.simpleMessage("Proceed to start!"),
         "processing": MessageLookupByLibrary.simpleMessage("Processing..."),
+        "promoWallet": MessageLookupByLibrary.simpleMessage("Promo Wallet"),
+        "readyRide": MessageLookupByLibrary.simpleMessage("Ready to Ride"),
+        "recentActivities":
+            MessageLookupByLibrary.simpleMessage("Recent Activities"),
+        "scanToRide": MessageLookupByLibrary.simpleMessage("Scan to Ride"),
+        "selectVoucher": MessageLookupByLibrary.simpleMessage("Select Voucher"),
+        "shareJourney": MessageLookupByLibrary.simpleMessage("Share journey"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "textBanner": MessageLookupByLibrary.simpleMessage(
+            "Let\'s enjoy a stress-free ride during peak hours and "),
+        "ticketType": MessageLookupByLibrary.simpleMessage("Ticket Type"),
+        "titleJourneyCode":
+            MessageLookupByLibrary.simpleMessage("Journey Code"),
+        "titlePayment": MessageLookupByLibrary.simpleMessage("Payment Type"),
+        "titleTime": MessageLookupByLibrary.simpleMessage("Time"),
+        "titleWeekPoint":
+            MessageLookupByLibrary.simpleMessage("This week points"),
+        "totalDistances":
+            MessageLookupByLibrary.simpleMessage("Total distances"),
+        "totalTime": MessageLookupByLibrary.simpleMessage("Total time"),
+        "unableToAccessCamera":
+            MessageLookupByLibrary.simpleMessage("Unable to access camera!"),
+        "vietnamese": MessageLookupByLibrary.simpleMessage("VietNamese"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome!"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };

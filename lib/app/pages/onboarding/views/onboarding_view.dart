@@ -6,6 +6,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class OnBoardingView extends GetView<OnBoardingController> {
   const OnBoardingView({Key? key}) : super(key: key);
   void _skipOnClicked() {
+    Get.offNamed(Routes.signin);
   }
 
   @override
@@ -15,19 +16,26 @@ class OnBoardingView extends GetView<OnBoardingController> {
     );
   }
 
+  void _changeLanguageClick() {
+    Get.toNamed(Routes.language);
+  }
+
   Widget buildBody(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.defaultBackground,
         body: Column(
           children: [
             SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.only(right: 30, top: 10),
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: SvgPicture.asset(
-                    AssetsConst.flagUS,
-                    height: 25,
+              child: InkWell(
+                onTap: _changeLanguageClick,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 30, top: 10),
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: SvgPicture.asset(
+                      AssetsConst.flagUS,
+                      height: 20,
+                    ),
                   ),
                 ),
               ),
@@ -107,7 +115,7 @@ class OnBoardingView extends GetView<OnBoardingController> {
   ) {
     return Column(
       children: [
-        SvgPicture.asset(path),
+        Expanded(child: SvgPicture.asset(path)),
         Padding(
           padding: const EdgeInsets.fromLTRB(10, 30, 10, 5),
           child: Text(
@@ -118,18 +126,16 @@ class OnBoardingView extends GetView<OnBoardingController> {
             ),
           ),
         ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
-            child: Text(
-              description,
-              style: AppTextStyles.body2().copyWith(
-                color: AppColors.main.shade300,
-                fontWeight: FontWeight.w400,
-              ),
-              overflow: TextOverflow.visible,
-              maxLines: 2,
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
+          child: Text(
+            description,
+            style: AppTextStyles.body2().copyWith(
+              color: AppColors.main.shade300,
+              fontWeight: FontWeight.w400,
             ),
+            overflow: TextOverflow.visible,
+            maxLines: 2,
           ),
         ),
       ],

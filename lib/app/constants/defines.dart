@@ -29,12 +29,13 @@ class AppColors {
   });
   static const MaterialColor grey = MaterialColor(0xff1F1F1F, {
     00: Color(0xffF5F5F5),
-    100: Color(0xffD9D9D9),
-    200: Color(0xffBFBFBF),
-    300: Color(0xff8C8C8C),
-    400: Color(0xff1F1F1F),
-    500: Color(0xffF3F3F3),
-    600: Color(0xff1D1D1D)
+    100: Color(0xFFE6E6E6),
+    200: Color(0xffD9D9D9),
+    300: Color(0xffBFBFBF),
+    400: Color(0xff8C8C8C),
+    500: Color(0xff1F1F1F),
+    600: Color(0xffF5F5F5),
+    700: Color(0xff1D1D1D)
   });
   static const MaterialColor warning = MaterialColor(0xffB2223A, {
     100: Color(0xffFBECEE),
@@ -58,12 +59,13 @@ class AppColors {
   static const darkScrollbarColor = Color(0xffC7B2EF);
   static const iconColor = Color(0xFF0F6EFA);
   static const hideContent = Color(0xFF4A5054);
-  static const colorAppBar = Color(0xFF11141A);
+  static const colorAppBar = Color(0xff3C5041);
   static const lightBlue = Color(0xFF78C3CD);
   static const lightPink = Color(0xFFE58FA7);
   static const lightPurple = Color(0xFF7E7DD1);
   static const popupColor = Color(0xff313544);
   static const colorChoosePlan = Color(0xff2C303E);
+  static const colorText = Color(0xff1D1D1D);
 }
 
 class AppProperties {

@@ -25,7 +25,7 @@ class AddMoneyView extends GetView<AddMoneyController> {
           style: AppTextStyles.subLead().copyWith(
             fontWeight: FontWeight.bold,
             fontSize: 18,
-            color: AppColors.grey[600]
+            color: AppColors.grey[700]
           ),
         ),
         backgroundColor: Colors.white,
@@ -173,7 +173,7 @@ class AddMoneyView extends GetView<AddMoneyController> {
         padding: const EdgeInsets.only(bottom: 35, left: 24, right: 24),
         child: InkWell(
           onTap: () {
-            
+
           },
           child: Container(
             width: double.infinity,
