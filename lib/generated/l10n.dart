@@ -859,6 +859,286 @@ class S {
       args: [],
     );
   }
+
+  /// `Report Problem`
+  String get reportProblem {
+    return Intl.message(
+      'Report Problem',
+      name: 'reportProblem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit`
+  String get submitBtn {
+    return Intl.message(
+      'Submit',
+      name: 'submitBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bike Number`
+  String get bikeNumber {
+    return Intl.message(
+      'Bike Number',
+      name: 'bikeNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Problem`
+  String get selectProblem {
+    return Intl.message(
+      'Select Problem',
+      name: 'selectProblem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Can't unlock`
+  String get unlock {
+    return Intl.message(
+      'Can\'t unlock',
+      name: 'unlock',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `QR error`
+  String get qrError {
+    return Intl.message(
+      'QR error',
+      name: 'qrError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lock broken`
+  String get lockBroken {
+    return Intl.message(
+      'Lock broken',
+      name: 'lockBroken',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bike vandalized`
+  String get bikeVandalized {
+    return Intl.message(
+      'Bike vandalized',
+      name: 'bikeVandalized',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Can't buy more point`
+  String get notBuyMorePoint {
+    return Intl.message(
+      'Can\'t buy more point',
+      name: 'notBuyMorePoint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Can't finish ride`
+  String get notFinishRide {
+    return Intl.message(
+      'Can\'t finish ride',
+      name: 'notFinishRide',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Flat tire`
+  String get flatTire {
+    return Intl.message(
+      'Flat tire',
+      name: 'flatTire',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Other`
+  String get other {
+    return Intl.message(
+      'Other',
+      name: 'other',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload Image or Video`
+  String get uploadImage {
+    return Intl.message(
+      'Upload Image or Video',
+      name: 'uploadImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get titleDes {
+    return Intl.message(
+      'Description',
+      name: 'titleDes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter desciption...`
+  String get hintDes {
+    return Intl.message(
+      'Enter desciption...',
+      name: 'hintDes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Desciption must be shorter than or equal to 255 characters`
+  String get notesMustShorterThan {
+    return Intl.message(
+      'Desciption must be shorter than or equal to 255 characters',
+      name: 'notesMustShorterThan',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Money Amount`
+  String get enterMoney {
+    return Intl.message(
+      'Enter Money Amount',
+      name: 'enterMoney',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Source`
+  String get selectSource {
+    return Intl.message(
+      'Select Source',
+      name: 'selectSource',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unable to access storage!`
+  String get unableToAccessStorage {
+    return Intl.message(
+      'Unable to access storage!',
+      name: 'unableToAccessStorage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Storage access denied. Let open the app setting to enable it!`
+  String get storageAccessDenied {
+    return Intl.message(
+      'Storage access denied. Let open the app setting to enable it!',
+      name: 'storageAccessDenied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pick file using?`
+  String get pickeFileUsing {
+    return Intl.message(
+      'Pick file using?',
+      name: 'pickeFileUsing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose from Gallery`
+  String get chooseFromGallery {
+    return Intl.message(
+      'Choose from Gallery',
+      name: 'chooseFromGallery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose file from Directory`
+  String get chooseFromFileDirectory {
+    return Intl.message(
+      'Choose file from Directory',
+      name: 'chooseFromFileDirectory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Take Photo`
+  String get takePhoto {
+    return Intl.message(
+      'Take Photo',
+      name: 'takePhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `File already exists!`
+  String get fileAlreadyExists {
+    return Intl.message(
+      'File already exists!',
+      name: 'fileAlreadyExists',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload Another`
+  String get uploadAnother {
+    return Intl.message(
+      'Upload Another',
+      name: 'uploadAnother',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `File upload must be smaller than 10 Mb`
+  String get fileTooLarge {
+    return Intl.message(
+      'File upload must be smaller than 10 Mb',
+      name: 'fileTooLarge',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload File`
+  String get uploadFile {
+    return Intl.message(
+      'Upload File',
+      name: 'uploadFile',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

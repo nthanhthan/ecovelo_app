@@ -52,11 +52,16 @@ class AppPages {
       binding: JourneyBinding(),
       transition: Transition.rightToLeft,
     ),
-      GetPage<dynamic>(
+    GetPage<dynamic>(
       name: Routes.journeyDetail,
       page: () => const JourneyDetailView(),
       binding: JourneyBinding(),
       transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.reportProblem,
+      page: () => const ReportProblemView(),
+      binding: ReportProblemBinding(),
     ),
     GetPage<dynamic>(
       name: Routes.addMoney,

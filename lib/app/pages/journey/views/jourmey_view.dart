@@ -17,7 +17,6 @@ class JourneyView extends GetView<JourneyConroller> {
 
   Widget _buildBody(BuildContext context) {
     return Scaffold(
-      extendBody: true,
       backgroundColor: AppColors.defaultBackground,
       appBar: AppBar(
         backgroundColor: AppColors.defaultBackground,
@@ -43,7 +42,7 @@ class JourneyView extends GetView<JourneyConroller> {
       bottomNavigationBar: SafeArea(
         child: Container(
           height: 50,
-          margin: const EdgeInsets.fromLTRB(30, 0, 30, 20),
+          margin: const EdgeInsets.fromLTRB(30, 0, 30, 10),
           padding: const EdgeInsets.symmetric(
             horizontal: 120,
             vertical: 12,

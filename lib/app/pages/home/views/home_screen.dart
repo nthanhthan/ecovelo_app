@@ -20,8 +20,14 @@ class HomeScreen extends GetView<HomeController> {
     _showBottomSheet(context);
   }
 
-  void _addMoneyClicked() {}
-  void _myWalletClick() {}
+  void _addMoneyClicked() {
+    Get.toNamed(Routes.addMoney);
+  }
+
+  void _myWalletClick() {
+    Get.toNamed(Routes.reportProblem);
+  }
+
   void _myJourneyClicked() {
     Get.toNamed(Routes.journey);
   }
