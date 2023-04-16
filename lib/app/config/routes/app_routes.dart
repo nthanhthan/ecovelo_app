@@ -5,4 +5,5 @@ abstract class Routes {
   static const home = '/home_view';
   static const onBoarding = '/onBoarding_view';
   static const signin = '/signin_view';
+  static const addMoney = '/add_money_view';
 }

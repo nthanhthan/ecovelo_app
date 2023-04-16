@@ -28,5 +28,11 @@ class AppPages {
       binding: AuthBinding(),
       transition: Transition.rightToLeft,
     ),
+    GetPage<dynamic>(
+      name: Routes.addMoney,
+      page: () => const AddMoneyView(),
+      binding: AddMoneyBinding(),
+      transition: Transition.rightToLeft,
+    ),
   ];
 }
