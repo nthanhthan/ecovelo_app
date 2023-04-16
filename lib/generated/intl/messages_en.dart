@@ -38,6 +38,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "carbon": MessageLookupByLibrary.simpleMessage("Carbon Reduced"),
         "changePass": MessageLookupByLibrary.simpleMessage("Chnage Password"),
+        "chooseFromFileDirectory":
+            MessageLookupByLibrary.simpleMessage("Choose file from Directory"),
+        "chooseFromGallery":
+            MessageLookupByLibrary.simpleMessage("Choose from Gallery"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "continueBtn": MessageLookupByLibrary.simpleMessage("Continue"),
         "deactiveAcc": MessageLookupByLibrary.simpleMessage("Deactive Account"),
@@ -53,6 +57,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "energy": MessageLookupByLibrary.simpleMessage("Energy"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
+        "enterMoney":
+            MessageLookupByLibrary.simpleMessage("Enter Money Amount"),
+        "fileAlreadyExists":
+            MessageLookupByLibrary.simpleMessage("File already exists!"),
+        "fileTooLarge": MessageLookupByLibrary.simpleMessage(
+            "File upload must be smaller than 10 Mb"),
         "finishRide": MessageLookupByLibrary.simpleMessage("Finish ride"),
         "flatTire": MessageLookupByLibrary.simpleMessage("Flat tire"),
         "forgotPassword":
@@ -116,6 +126,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("One-time Ticket"),
         "other": MessageLookupByLibrary.simpleMessage("Other"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "pickeFileUsing":
+            MessageLookupByLibrary.simpleMessage("Pick file using?"),
         "proceed": MessageLookupByLibrary.simpleMessage("Proceed to start!"),
         "processing": MessageLookupByLibrary.simpleMessage("Processing..."),
         "promoWallet": MessageLookupByLibrary.simpleMessage("Promo Wallet"),
@@ -126,12 +138,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "reportProblem": MessageLookupByLibrary.simpleMessage("Report Problem"),
         "scanToRide": MessageLookupByLibrary.simpleMessage("Scan to Ride"),
         "selectProblem": MessageLookupByLibrary.simpleMessage("Select Problem"),
+        "selectSource": MessageLookupByLibrary.simpleMessage("Select Source"),
         "selectVoucher": MessageLookupByLibrary.simpleMessage("Select Voucher"),
         "shareJourney": MessageLookupByLibrary.simpleMessage("Share journey"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "storageAccessDenied": MessageLookupByLibrary.simpleMessage(
+            "Storage access denied. Let open the app setting to enable it!"),
         "submitBtn": MessageLookupByLibrary.simpleMessage("Submit"),
+        "takePhoto": MessageLookupByLibrary.simpleMessage("Take Photo"),
         "textBanner": MessageLookupByLibrary.simpleMessage(
             "Let\'s enjoy a stress-free ride during peak hours and "),
         "ticketType": MessageLookupByLibrary.simpleMessage("Ticket Type"),
@@ -147,7 +163,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "totalTime": MessageLookupByLibrary.simpleMessage("Total time"),
         "unableToAccessCamera":
             MessageLookupByLibrary.simpleMessage("Unable to access camera!"),
+        "unableToAccessStorage":
+            MessageLookupByLibrary.simpleMessage("Unable to access storage!"),
         "unlock": MessageLookupByLibrary.simpleMessage("Can\'t unlock"),
+        "uploadAnother": MessageLookupByLibrary.simpleMessage("Upload Another"),
+        "uploadFile": MessageLookupByLibrary.simpleMessage("Upload File"),
         "uploadImage":
             MessageLookupByLibrary.simpleMessage("Upload Image or Video"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("VietNamese"),

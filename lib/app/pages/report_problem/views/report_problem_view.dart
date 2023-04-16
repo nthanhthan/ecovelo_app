@@ -1,6 +1,5 @@
 import 'package:ecoveloapp/app/core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ReportProblemView extends GetView<ReportProblemController> {
   const ReportProblemView({Key? key}) : super(key: key);
@@ -14,7 +13,6 @@ class ReportProblemView extends GetView<ReportProblemController> {
 
   Widget _buildBody(BuildContext context) {
     return Scaffold(
-      extendBody: true,
       backgroundColor: AppColors.defaultBackground,
       appBar: AppBar(
         backgroundColor: AppColors.defaultBackground,
@@ -40,25 +38,29 @@ class ReportProblemView extends GetView<ReportProblemController> {
       bottomNavigationBar: SafeArea(
         child: InkWell(
           onTap: () {},
-          child: Container(
-            height: 50,
-            margin: const EdgeInsets.symmetric(
-              horizontal: 30,
-              vertical: 10,
-            ),
-            padding: const EdgeInsets.symmetric(
-              vertical: 10,
-            ),
-            decoration: BoxDecoration(
-              color: AppColors.main.shade200,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            alignment: Alignment.center,
-            child: Text(
-              S.of(context).submitBtn,
-              style: AppTextStyles.body1().copyWith(
-                color: AppColors.main.shade400,
-                fontWeight: FontWeight.w500,
+          child: Obx(
+            () => Container(
+              height: 50,
+              margin: const EdgeInsets.symmetric(
+                horizontal: 30,
+                vertical: 5,
+              ),
+              padding: const EdgeInsets.symmetric(
+                vertical: 10,
+              ),
+              decoration: BoxDecoration(
+                color: controller.enableSaveButton
+                    ? AppColors.main.shade200
+                    : AppColors.grey.shade200,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                S.of(context).submitBtn,
+                style: AppTextStyles.body1().copyWith(
+                  color: AppColors.main.shade400,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ),
@@ -178,7 +180,7 @@ class ReportProblemView extends GetView<ReportProblemController> {
                   validator: (String? value) {
                     if (value != null &&
                         value.isNotEmpty &&
-                        value.length > 10) {
+                        value.length > 255) {
                       return S.of(context).notesMustShorterThan;
                     } else {
                       return null;
@@ -193,7 +195,20 @@ class ReportProblemView extends GetView<ReportProblemController> {
                   S.of(context).uploadImage,
                 ),
               ),
-              SvgPicture.asset(AssetsConst.addPhoto),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Obx(() {
+                  List<String> fileList = controller.filesPathSelected;
+                  return UploadFileInput(
+                    title: S.of(context).uploadFile,
+                    filesSelected: fileList,
+                    onAddedNewFile: controller.pickFile,
+                    onRemovedFile: controller.removeFile,
+                    isSinglePick: true,
+                    fileFormats: const ['jpg', 'png'],
+                  );
+                }),
+              ),
             ],
           ),
         ),

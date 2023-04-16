@@ -49,7 +49,6 @@ class AssetsConst {
   static const String logoScanner = "${preIconPath}logo_scanner.svg";
   static const String bgRentBicycle = "${preIconPath}bg_rent_bicycle.svg";
   static const String checkRent = "${preIconPath}check_rent.svg";
-  static const String divider = "${preIconPath}divider.svg";
   static const String iconTicket = "${preIconPath}ic_ticket.svg";
   static const String iconDiscount = "${preIconPath}ic_discount.svg";
   static const String iconNext = "${preIconPath}ic_next.svg";
@@ -69,4 +68,17 @@ class AssetsConst {
   static const String iconEnrgy = "${preIconPath}ic_energy.svg";
   static const String fromTo = "${preIconPath}from_to.svg";
   static const String addPhoto = "${preIconPath}add_photo.svg";
+  static const String leftArrow = "${preIconPath}left_arrow.svg";
+  static const String activeCircle = "${preIconPath}active_circle.svg";
+  static const String addRectangle = "${preIconPath}add_rectangle.svg";
+  static const String disableCircle = "${preIconPath}disable_circle.svg";
+  static const String greaterSymbol = "${preIconPath}greater_symbol.svg";
+  static const String momo = "${preIconPath}momo.svg";
+  static const String techcombank = "${preIconPath}techcombank.svg";
+  static const String vietinbank = "${preIconPath}vietinbank.svg";
+  static const String transferBackground = "${preIconPath}transfer_background.svg";
+  static const String transferBodyBackground = "${preIconPath}transfer_body_background.svg";
+  static const String divider = "${preIconPath}divider.svg";
+  static const String greenSquare = "${preIconPath}green_square.svg";
+   static const String closeButton = "${preImgPath}close_button.svg";
 }

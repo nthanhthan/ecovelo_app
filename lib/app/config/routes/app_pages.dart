@@ -62,6 +62,11 @@ class AppPages {
       name: Routes.reportProblem,
       page: () => const ReportProblemView(),
       binding: ReportProblemBinding(),
+    ),
+    GetPage<dynamic>(
+      name: Routes.addMoney,
+      page: () => const AddMoneyView(),
+      binding: AddMoneyBinding(),
       transition: Transition.rightToLeft,
     ),
   ];

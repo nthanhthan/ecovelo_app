@@ -9,3 +9,5 @@ export 'scan_qr/scan.dart';
 export 'rent_bicycle/rent_bicycle.dart';
 export 'journey/journey.dart';
 export 'report_problem/report_problem.dart';
+export 'journey/journey.dart';
+export 'add_money/add_money.dart';
