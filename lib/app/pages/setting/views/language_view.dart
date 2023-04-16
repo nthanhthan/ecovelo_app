@@ -32,19 +32,14 @@ class LanguageView extends GetView<SettingController> {
           style: AppTextStyles.heading1().copyWith(color: AppColors.white),
         ),
         centerTitle: true,
-        leading: Container(
-          margin: const EdgeInsets.all(5.0),
-          decoration: BoxDecoration(
-              shape: BoxShape.circle, color: AppColors.main.shade200),
-          child: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(
-              Icons.arrow_back_ios_new,
-              size: 20,
-              color: AppColors.grey.shade100,
-            ),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back_ios_new,
+            size: 20,
+            color: AppColors.grey.shade100,
           ),
         ),
       ),
@@ -139,7 +134,8 @@ class LanguageView extends GetView<SettingController> {
                         style: isSelecting && controller.confirmed == true
                             ? AppTextStyles.body2()
                                 .copyWith(color: AppColors.white)
-                            : AppTextStyles.body2(),
+                            : AppTextStyles.body2()
+                                .copyWith(color: AppColors.grey.shade500),
                       ),
                     ],
                   ),

@@ -8,6 +8,8 @@ class HomeController extends GetxController
   int get currentTab => _currentTab.value;
   final PageStorageBucket bucket = PageStorageBucket();
 
+  
+
   List<Widget> screen = [
     const HomeScreen(),
     const MapView(),
@@ -27,7 +29,6 @@ class HomeController extends GetxController
 
     super.onInit();
   }
-
   @override
   void onClose() {
     WidgetsBinding.instance.removeObserver(this);

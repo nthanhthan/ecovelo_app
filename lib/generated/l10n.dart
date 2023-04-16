@@ -699,6 +699,166 @@ class S {
       args: [],
     );
   }
+
+  /// `Continue`
+  String get continueBtn {
+    return Intl.message(
+      'Continue',
+      name: 'continueBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Distances `
+  String get distances {
+    return Intl.message(
+      'Distances ',
+      name: 'distances',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{nums}+`
+  String numDistances(Object nums) {
+    return Intl.message(
+      '$nums+',
+      name: 'numDistances',
+      desc: '',
+      args: [nums],
+    );
+  }
+
+  /// `This week points`
+  String get titleWeekPoint {
+    return Intl.message(
+      'This week points',
+      name: 'titleWeekPoint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep participating in weekly chanllenges and earn rewards.`
+  String get desWeekPoint {
+    return Intl.message(
+      'Keep participating in weekly chanllenges and earn rewards.',
+      name: 'desWeekPoint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total distances`
+  String get totalDistances {
+    return Intl.message(
+      'Total distances',
+      name: 'totalDistances',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total time`
+  String get totalTime {
+    return Intl.message(
+      'Total time',
+      name: 'totalTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Carbon Reduced`
+  String get carbon {
+    return Intl.message(
+      'Carbon Reduced',
+      name: 'carbon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Energy`
+  String get energy {
+    return Intl.message(
+      'Energy',
+      name: 'energy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recent Activities`
+  String get recentActivities {
+    return Intl.message(
+      'Recent Activities',
+      name: 'recentActivities',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View details`
+  String get detail {
+    return Intl.message(
+      'View details',
+      name: 'detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Journey Details`
+  String get journeyDetail {
+    return Intl.message(
+      'Journey Details',
+      name: 'journeyDetail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share journey`
+  String get shareJourney {
+    return Intl.message(
+      'Share journey',
+      name: 'shareJourney',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time`
+  String get titleTime {
+    return Intl.message(
+      'Time',
+      name: 'titleTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Journey Code`
+  String get titleJourneyCode {
+    return Intl.message(
+      'Journey Code',
+      name: 'titleJourneyCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Type`
+  String get titlePayment {
+    return Intl.message(
+      'Payment Type',
+      name: 'titlePayment',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

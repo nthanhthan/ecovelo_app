@@ -63,7 +63,21 @@
     "needHelp": "Need Help ?",
     "proceed": "Proceed to start!",
     "getMoreTime": "Get  more time",
-    "finishRide": "Finish ride"
-
-
+    "finishRide": "Finish ride",
+    "continueBtn": "Continue",
+    "distances" : "Distances ",
+    "numDistances": "{nums}+",
+    "titleWeekPoint": "This week points",
+    "desWeekPoint": "Keep participating in weekly chanllenges and earn rewards.",
+    "totalDistances": "Total distances",
+    "totalTime": "Total time",
+    "carbon" : "Carbon Reduced",
+    "energy": "Energy",
+    "recentActivities": "Recent Activities",
+    "detail": "View details",
+    "journeyDetail": "Journey Details",
+    "shareJourney": "Share journey",
+    "titleTime": "Time",
+    "titleJourneyCode": "Journey Code",
+    "titlePayment": "Payment Type"
 }
