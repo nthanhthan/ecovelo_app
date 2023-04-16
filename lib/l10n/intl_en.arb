@@ -79,5 +79,21 @@
     "shareJourney": "Share journey",
     "titleTime": "Time",
     "titleJourneyCode": "Journey Code",
-    "titlePayment": "Payment Type"
+    "titlePayment": "Payment Type",
+    "reportProblem": "Report Problem",
+    "submitBtn": "Submit",
+    "bikeNumber": "Bike Number",
+    "selectProblem": "Select Problem",
+    "unlock": "Can't unlock",
+    "qrError": "QR error",
+    "lockBroken": "Lock broken",
+    "bikeVandalized": "Bike vandalized",
+    "notBuyMorePoint": "Can't buy more point",
+    "notFinishRide": "Can't finish ride",
+    "flatTire": "Flat tire",
+    "other": "Other",
+    "uploadImage":"Upload Image or Video",
+    "titleDes": "Description",
+    "hintDes": "Enter desciption...",
+    "notesMustShorterThan": "Desciption must be shorter than or equal to 255 characters"
 }

@@ -30,6 +30,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "addMoney": MessageLookupByLibrary.simpleMessage("Add money"),
         "appName": MessageLookupByLibrary.simpleMessage("ECOVELO"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "bikeNumber": MessageLookupByLibrary.simpleMessage("Bike Number"),
+        "bikeVandalized":
+            MessageLookupByLibrary.simpleMessage("Bike vandalized"),
         "cameraAccessDenied": MessageLookupByLibrary.simpleMessage(
             "Camera access denied. Let open the app setting to enable it!"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -51,11 +54,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "energy": MessageLookupByLibrary.simpleMessage("Energy"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
         "finishRide": MessageLookupByLibrary.simpleMessage("Finish ride"),
+        "flatTire": MessageLookupByLibrary.simpleMessage("Flat tire"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "getMoreTime": MessageLookupByLibrary.simpleMessage("Get  more time"),
         "helpCenter": MessageLookupByLibrary.simpleMessage("Help Center"),
         "hi": m0,
+        "hintDes": MessageLookupByLibrary.simpleMessage("Enter desciption..."),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "introduction": MessageLookupByLibrary.simpleMessage("Introduction"),
         "invalidEmailAddress": MessageLookupByLibrary.simpleMessage(
@@ -73,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "journeyDetail":
             MessageLookupByLibrary.simpleMessage("Journey Details"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "lockBroken": MessageLookupByLibrary.simpleMessage("Lock broken"),
         "logout": MessageLookupByLibrary.simpleMessage("Log out"),
         "mainWallet": MessageLookupByLibrary.simpleMessage("Main Wallet"),
         "myJourney": MessageLookupByLibrary.simpleMessage("My journey"),
@@ -85,6 +91,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "noCameraPermissionDesctiption": MessageLookupByLibrary.simpleMessage(
             "This app needs camera access to scan QR codes"),
+        "notBuyMorePoint":
+            MessageLookupByLibrary.simpleMessage("Can\'t buy more point"),
+        "notFinishRide":
+            MessageLookupByLibrary.simpleMessage("Can\'t finish ride"),
+        "notesMustShorterThan": MessageLookupByLibrary.simpleMessage(
+            "Desciption must be shorter than or equal to 255 characters"),
         "notifi": MessageLookupByLibrary.simpleMessage("Notification"),
         "numDistances": m1,
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
@@ -102,22 +114,28 @@ class MessageLookup extends MessageLookupByLibrary {
             "Our app learns from your interactions to provide personalized recommendations and suggestions that suit your specific needs and preferences"),
         "oneTimeTicket":
             MessageLookupByLibrary.simpleMessage("One-time Ticket"),
+        "other": MessageLookupByLibrary.simpleMessage("Other"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "proceed": MessageLookupByLibrary.simpleMessage("Proceed to start!"),
         "processing": MessageLookupByLibrary.simpleMessage("Processing..."),
         "promoWallet": MessageLookupByLibrary.simpleMessage("Promo Wallet"),
+        "qrError": MessageLookupByLibrary.simpleMessage("QR error"),
         "readyRide": MessageLookupByLibrary.simpleMessage("Ready to Ride"),
         "recentActivities":
             MessageLookupByLibrary.simpleMessage("Recent Activities"),
+        "reportProblem": MessageLookupByLibrary.simpleMessage("Report Problem"),
         "scanToRide": MessageLookupByLibrary.simpleMessage("Scan to Ride"),
+        "selectProblem": MessageLookupByLibrary.simpleMessage("Select Problem"),
         "selectVoucher": MessageLookupByLibrary.simpleMessage("Select Voucher"),
         "shareJourney": MessageLookupByLibrary.simpleMessage("Share journey"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "submitBtn": MessageLookupByLibrary.simpleMessage("Submit"),
         "textBanner": MessageLookupByLibrary.simpleMessage(
             "Let\'s enjoy a stress-free ride during peak hours and "),
         "ticketType": MessageLookupByLibrary.simpleMessage("Ticket Type"),
+        "titleDes": MessageLookupByLibrary.simpleMessage("Description"),
         "titleJourneyCode":
             MessageLookupByLibrary.simpleMessage("Journey Code"),
         "titlePayment": MessageLookupByLibrary.simpleMessage("Payment Type"),
@@ -129,6 +147,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "totalTime": MessageLookupByLibrary.simpleMessage("Total time"),
         "unableToAccessCamera":
             MessageLookupByLibrary.simpleMessage("Unable to access camera!"),
+        "unlock": MessageLookupByLibrary.simpleMessage("Can\'t unlock"),
+        "uploadImage":
+            MessageLookupByLibrary.simpleMessage("Upload Image or Video"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("VietNamese"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome!"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes")

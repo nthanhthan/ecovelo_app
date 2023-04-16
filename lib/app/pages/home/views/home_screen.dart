@@ -21,7 +21,10 @@ class HomeScreen extends GetView<HomeController> {
   }
 
   void _addMoneyClicked() {}
-  void _myWalletClick() {}
+  void _myWalletClick() {
+    Get.toNamed(Routes.reportProblem);
+  }
+
   void _myJourneyClicked() {
     Get.toNamed(Routes.journey);
   }

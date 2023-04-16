@@ -68,4 +68,5 @@ class AssetsConst {
   static const String iconCarbon = "${preIconPath}ic_carbon.svg";
   static const String iconEnrgy = "${preIconPath}ic_energy.svg";
   static const String fromTo = "${preIconPath}from_to.svg";
+  static const String addPhoto = "${preIconPath}add_photo.svg";
 }

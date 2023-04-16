@@ -859,6 +859,166 @@ class S {
       args: [],
     );
   }
+
+  /// `Report Problem`
+  String get reportProblem {
+    return Intl.message(
+      'Report Problem',
+      name: 'reportProblem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit`
+  String get submitBtn {
+    return Intl.message(
+      'Submit',
+      name: 'submitBtn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bike Number`
+  String get bikeNumber {
+    return Intl.message(
+      'Bike Number',
+      name: 'bikeNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Problem`
+  String get selectProblem {
+    return Intl.message(
+      'Select Problem',
+      name: 'selectProblem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Can't unlock`
+  String get unlock {
+    return Intl.message(
+      'Can\'t unlock',
+      name: 'unlock',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `QR error`
+  String get qrError {
+    return Intl.message(
+      'QR error',
+      name: 'qrError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lock broken`
+  String get lockBroken {
+    return Intl.message(
+      'Lock broken',
+      name: 'lockBroken',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bike vandalized`
+  String get bikeVandalized {
+    return Intl.message(
+      'Bike vandalized',
+      name: 'bikeVandalized',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Can't buy more point`
+  String get notBuyMorePoint {
+    return Intl.message(
+      'Can\'t buy more point',
+      name: 'notBuyMorePoint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Can't finish ride`
+  String get notFinishRide {
+    return Intl.message(
+      'Can\'t finish ride',
+      name: 'notFinishRide',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Flat tire`
+  String get flatTire {
+    return Intl.message(
+      'Flat tire',
+      name: 'flatTire',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Other`
+  String get other {
+    return Intl.message(
+      'Other',
+      name: 'other',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload Image or Video`
+  String get uploadImage {
+    return Intl.message(
+      'Upload Image or Video',
+      name: 'uploadImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get titleDes {
+    return Intl.message(
+      'Description',
+      name: 'titleDes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter desciption...`
+  String get hintDes {
+    return Intl.message(
+      'Enter desciption...',
+      name: 'hintDes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Desciption must be shorter than or equal to 255 characters`
+  String get notesMustShorterThan {
+    return Intl.message(
+      'Desciption must be shorter than or equal to 255 characters',
+      name: 'notesMustShorterThan',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
