@@ -80,5 +80,5 @@ class AssetsConst {
   static const String transferBodyBackground = "${preIconPath}transfer_body_background.svg";
   static const String divider = "${preIconPath}divider.svg";
   static const String greenSquare = "${preIconPath}green_square.svg";
-   static const String closeButton = "${preImgPath}close_button.svg";
+   static const String closeButton = "${preIconPath}close_button.svg";
 }
