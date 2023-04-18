@@ -68,6 +68,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "getMoreTime": MessageLookupByLibrary.simpleMessage("Get  more time"),
+        "haveAccount":
+            MessageLookupByLibrary.simpleMessage("Have been an account."),
         "helpCenter": MessageLookupByLibrary.simpleMessage("Help Center"),
         "hi": m0,
         "hintDes": MessageLookupByLibrary.simpleMessage("Enter desciption..."),
@@ -93,6 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mainWallet": MessageLookupByLibrary.simpleMessage("Main Wallet"),
         "myJourney": MessageLookupByLibrary.simpleMessage("My journey"),
         "myWallet": MessageLookupByLibrary.simpleMessage("My Wallet"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "needHelp": MessageLookupByLibrary.simpleMessage("Need Help ?"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "niceDay": MessageLookupByLibrary.simpleMessage("Have a nice day!"),
@@ -125,7 +128,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "oneTimeTicket":
             MessageLookupByLibrary.simpleMessage("One-time Ticket"),
         "other": MessageLookupByLibrary.simpleMessage("Other"),
+        "passWordAgain":
+            MessageLookupByLibrary.simpleMessage("Enter the password again"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "pickeFileUsing":
             MessageLookupByLibrary.simpleMessage("Pick file using?"),
         "proceed": MessageLookupByLibrary.simpleMessage("Proceed to start!"),

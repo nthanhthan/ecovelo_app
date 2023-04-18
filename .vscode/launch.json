@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "dev",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--dart-define",
+                "APP_NAME=[dev]AI Chat",
+                "--dart-define",
+                "APP_SUFFIX=.dev",
+                "--dart-define",
+                "APP_IS_DEBUG=y",
+                "--dart-define",
+                "APP_IS_ENABLE_SWITCH_ENV=y",
+                "--dart-define",
+                "APP_ENVIRONEMT_TYPE=development",
+                "--dart-define",
+                "APP_ENVIRONEMT_TYPE=development"
+            ]
+        },
+    ]
+}

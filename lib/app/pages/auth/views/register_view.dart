@@ -1,11 +1,12 @@
 import 'package:ecoveloapp/app/core.dart';
+import 'package:ecoveloapp/app/pages/auth/controllers/signup_controller.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
-class SignInView extends GetView<SignInController> {
-  const SignInView({Key? key}) : super(key: key);
+class RegisterView extends GetView<SignUpController> {
+  const RegisterView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +19,11 @@ class SignInView extends GetView<SignInController> {
     controller.checkFormValidation();
   }
 
-  void _signInOnClicked() {}
-  void _forgotPasswordOnClicked() {
-    Get.offNamed(Routes.home);
+  void _signInOnClicked() {
+    Get.back();
   }
 
-  void _signupOnClicked() {
-    Get.toNamed(Routes.register);
-  }
+  void _signupOnClicked() {}
 
   Widget _buildBody(BuildContext context) {
     return Scaffold(
@@ -60,7 +58,7 @@ class SignInView extends GetView<SignInController> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 90, 20, 0),
+        padding: const EdgeInsets.fromLTRB(20, 50, 20, 0),
         child: _buildLoginView(context),
       ),
     );
@@ -74,16 +72,89 @@ class SignInView extends GetView<SignInController> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TextFormField(
-            key: const ValueKey('emailSignInField'),
+            key: const ValueKey('phoneNumberField'),
             maxLines: 1,
             textInputAction: TextInputAction.next,
-            controller: controller.accountFieldController,
+            controller: controller.phoneNumberFieldController,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             inputFormatters: [
               FilteringTextInputFormatter.deny(RegExp(emojisUnicodes)),
               LowerCaseTextFormatter(),
             ],
-            focusNode: controller.accountNode,
+            keyboardType: TextInputType.phone,
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.phone_android_outlined,
+                color: AppColors.grey.shade200,
+              ),
+              hintText: S.of(context).phoneNumber,
+              hintStyle: AppTextStyles.body1().copyWith(
+                color: AppColors.grey.shade300,
+                fontWeight: FontWeight.w400,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+                borderSide: BorderSide(
+                  width: 1,
+                  color: AppColors.grey.shade300,
+                ),
+              ),
+              filled: true,
+              fillColor: AppColors.grey.shade600,
+              errorMaxLines: 3,
+            ),
+            validator: (text) {
+              return controller.accountValidation(text?.trim());
+            },
+          ),
+          const SizedBox(height: 15),
+          TextFormField(
+            key: const ValueKey('nameField'),
+            maxLines: 1,
+            textInputAction: TextInputAction.next,
+            controller: controller.nameFieldController,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            inputFormatters: [
+              FilteringTextInputFormatter.deny(RegExp(emojisUnicodes)),
+              LowerCaseTextFormatter(),
+            ],
+            keyboardType: TextInputType.text,
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.personal_injury_outlined,
+                color: AppColors.grey.shade200,
+              ),
+              hintText: S.of(context).name,
+              hintStyle: AppTextStyles.body1().copyWith(
+                color: AppColors.grey.shade300,
+                fontWeight: FontWeight.w400,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+                borderSide: BorderSide(
+                  width: 1,
+                  color: AppColors.grey.shade300,
+                ),
+              ),
+              filled: true,
+              fillColor: AppColors.grey.shade600,
+              errorMaxLines: 3,
+            ),
+            validator: (text) {
+              return controller.accountValidation(text?.trim());
+            },
+          ),
+          const SizedBox(height: 15),
+          TextFormField(
+            key: const ValueKey('emailSigUppField'),
+            maxLines: 1,
+            textInputAction: TextInputAction.next,
+            controller: controller.emailController,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            inputFormatters: [
+              FilteringTextInputFormatter.deny(RegExp(emojisUnicodes)),
+              LowerCaseTextFormatter(),
+            ],
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
               prefixIcon: Icon(
@@ -110,9 +181,9 @@ class SignInView extends GetView<SignInController> {
               return controller.accountValidation(text?.trim());
             },
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 15),
           TextFormField(
-            key: const ValueKey('passwordSignInField'),
+            key: const ValueKey('passwordSignUpField'),
             maxLines: 1,
             obscureText: true,
             controller: controller.passwordFieldController,
@@ -140,14 +211,45 @@ class SignInView extends GetView<SignInController> {
               errorMaxLines: 3,
             ),
             validator: controller.passwordValidation,
-            onFieldSubmitted: (_) {
-              if (controller.loginFormGlobalKey.currentState?.validate() ??
-                  false) {
-                _signInOnClicked();
-              }
+          ),
+          const SizedBox(height: 15),
+          TextFormField(
+            key: const ValueKey('passWordAgainField'),
+            maxLines: 1,
+            textInputAction: TextInputAction.next,
+            controller: controller.passWordAgainController,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            inputFormatters: [
+              FilteringTextInputFormatter.deny(RegExp(emojisUnicodes)),
+              LowerCaseTextFormatter(),
+            ],
+            keyboardType: TextInputType.visiblePassword,
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.lock_clock,
+                color: AppColors.grey.shade200,
+              ),
+              hintText: S.of(context).passWordAgain,
+              hintStyle: AppTextStyles.body1().copyWith(
+                color: AppColors.grey.shade300,
+                fontWeight: FontWeight.w400,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+                borderSide: BorderSide(
+                  width: 1,
+                  color: AppColors.grey.shade300,
+                ),
+              ),
+              filled: true,
+              fillColor: AppColors.grey.shade600,
+              errorMaxLines: 3,
+            ),
+            validator: (text) {
+              return controller.accountValidation(text?.trim());
             },
           ),
-          const SizedBox(height: 48),
+          const SizedBox(height: 30),
           SizedBox(
             width: double.infinity,
             child: Obx(
@@ -166,11 +268,11 @@ class SignInView extends GetView<SignInController> {
                   );
                 }
                 return ElevatedButton(
-                  key: const ValueKey('signInButton'),
+                  key: const ValueKey('signUpButton'),
                   style: btnStyle,
-                  onPressed: _signInOnClicked,
+                  onPressed: _signupOnClicked,
                   child: Text(
-                    S.of(context).signIn,
+                    S.of(context).signUp,
                     style: AppTextStyles.body1().copyWith(
                       color: AppColors.main.shade400,
                       fontWeight: FontWeight.w500,
@@ -181,18 +283,6 @@ class SignInView extends GetView<SignInController> {
             ),
           ),
           const SizedBox(height: 30),
-          Center(
-            child: Text.rich(
-              TextSpan(
-                  text: S.of(context).forgotPassword,
-                  style: AppTextStyles.body1().copyWith(
-                    color: AppColors.main.shade200,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = _forgotPasswordOnClicked),
-            ),
-          ),
           Expanded(
             child: Align(
               alignment: Alignment.bottomCenter,
@@ -203,7 +293,7 @@ class SignInView extends GetView<SignInController> {
                   text: TextSpan(
                     children: <TextSpan>[
                       TextSpan(
-                        text: S.of(context).noAccount,
+                        text: S.of(context).haveAccount,
                         style: AppTextStyles.body2().copyWith(
                           color: AppColors.grey.shade300,
                           fontWeight: FontWeight.w500,
@@ -211,11 +301,11 @@ class SignInView extends GetView<SignInController> {
                       ),
                       const TextSpan(text: "  "),
                       TextSpan(
-                        text: S.of(context).signUp,
+                        text: S.of(context).signIn,
                         style: AppTextStyles.body1()
                             .copyWith(color: AppColors.main.shade200),
                         recognizer: TapGestureRecognizer()
-                          ..onTap = _signupOnClicked,
+                          ..onTap = _signInOnClicked,
                       ),
                     ],
                   ),

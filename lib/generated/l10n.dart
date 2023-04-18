@@ -1139,6 +1139,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Have been an account.`
+  String get haveAccount {
+    return Intl.message(
+      'Have been an account.',
+      name: 'haveAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number`
+  String get phoneNumber {
+    return Intl.message(
+      'Phone Number',
+      name: 'phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the password again`
+  String get passWordAgain {
+    return Intl.message(
+      'Enter the password again',
+      name: 'passWordAgain',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

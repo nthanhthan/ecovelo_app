@@ -107,5 +107,10 @@
     "fileAlreadyExists": "File already exists!",
     "uploadAnother": "Upload Another",
     "fileTooLarge": "File upload must be smaller than 10 Mb",
-    "uploadFile": "Upload File"
+    "uploadFile": "Upload File",
+    "haveAccount": "Have been an account.",
+    "phoneNumber": "Phone Number",
+    "name": "Name",
+    "passWordAgain": "Enter the password again"
+
 }
