@@ -23,7 +23,6 @@ class HomeScreen extends GetView<HomeController> {
   void _addMoneyClicked() {
     Get.toNamed(Routes.addMoney);
   }
-
   void _myWalletClick() {
     Get.toNamed(Routes.reportProblem);
   }
@@ -254,7 +253,7 @@ class HomeScreen extends GetView<HomeController> {
               context,
               S.of(context).myWallet,
               AssetsConst.myWallet,
-              _myWalletClick,
+                 _myWalletClick,
             ),
             _itemMain(
               context,
