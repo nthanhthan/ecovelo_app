@@ -62,11 +62,16 @@ class MapController extends GetxController {
 
     if (permission == LocationPermission.whileInUse ||
         permission == LocationPermission.always) {
-      position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
-      getAddressFromCoordinates();
+      getMyPositionCurrent();
       // Xử lý dữ liệu vị trí
     }
+  }
+
+  Future<bool> getMyPositionCurrent() async {
+    position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    getAddressFromCoordinates();
+    return true;
   }
 
   void setMarker() {
@@ -83,17 +88,20 @@ class MapController extends GetxController {
   }
 
   Future<void> onMarkerTapped(StationModel station) async {
-    _currentStation = station;
-    var progress = ProcessingDialog.show();
-    getAddressFromCoordinatesStation(LatLng(station.lat ?? 0, station.lng ?? 0))
-        .then((value) {
+    getMyPositionCurrent().then((value) {
+      _currentStation = station;
+      var progress = ProcessingDialog.show();
+      getAddressFromCoordinatesStation(
+              LatLng(station.lat ?? 0, station.lng ?? 0))
+          .then((value) {
+        progress.hide();
+      });
       progress.hide();
+      const MapView().showBottomSheet(
+        Get.context!,
+        station,
+      );
     });
-    progress.hide();
-    const MapView().showBottomSheet(
-      Get.context!,
-      station,
-    );
   }
 
   bool checkNumbicycle(int num) {
@@ -139,7 +147,7 @@ class MapController extends GetxController {
       String address = '';
 
       address =
-          "${placemark.subThoroughfare} ${placemark.thoroughfare},  ${placemark.locality}, ${placemark.subLocality}, ${placemark.administrativeArea}, ${placemark.country}";
+          "${placemark.subThoroughfare} ${placemark.thoroughfare}, ${placemark.subLocality}, ${placemark.administrativeArea}, ${placemark.country}";
       myAddress = address;
     }
   }
@@ -154,13 +162,13 @@ class MapController extends GetxController {
     String address = '';
 
     address =
-        "${placemark.subThoroughfare} ${placemark.thoroughfare},  ${placemark.locality}, ${placemark.subLocality}, ${placemark.administrativeArea}, ${placemark.country}";
+        "${placemark.subThoroughfare} ${placemark.thoroughfare}, ${placemark.subLocality}, ${placemark.administrativeArea}, ${placemark.country}";
     stationAddress = address;
     return true;
   }
 
   Future<void> goClick() async {
-     _launchMapsUrl(_currentStation?.lat ?? 0, _currentStation?.lng ?? 0);
+    _launchMapsUrl(_currentStation?.lat ?? 0, _currentStation?.lng ?? 0);
   }
 
   bool checkMyPositon() {
@@ -172,8 +180,8 @@ class MapController extends GetxController {
     // ignore: deprecated_member_use
     if (await canLaunch(url)) {
       // ignore: deprecated_member_use
-     
-      await launchUrl(Uri.parse(url),  mode: LaunchMode.externalApplication);
+
+      await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
     } else {
       throw 'Could not launch $url';
     }
