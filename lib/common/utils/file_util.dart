@@ -124,4 +124,15 @@ class FileUtil {
     var fileSize = await file.length();
     return fileSize;
   }
+    static Future<bool> isFileValidedSize(File file, {int maxSizeOfFile = 10}) async {
+    var fileSize = await file.length();
+    LogUtil.d("File size: " + fileSize.toString() + " max: " + (maxSizeOfFile * 1024 * 1024).toString());
+    if (fileSize >= (maxSizeOfFile * 1024 * 1024)) {
+      return false;
+    }
+    return true;
+  }
+    static String getFileName(String path) {
+    return path.split("/").last;
+  }
 }

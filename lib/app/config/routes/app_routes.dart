@@ -10,6 +10,7 @@ abstract class Routes {
   static const rentBicycle = '/rent_bicycle_view';
   static const journey = '/journey_view';
   static const journeyDetail = '/journey_detail_view';
+  static const reportProblem = '/report_problem_view';
   static const addMoney = '/add_money_view';
   static const transferSuccess = '/transfer_success';
 }

@@ -69,6 +69,7 @@ class AssetsConst {
   static const String iconCarbon = "${preIconPath}ic_carbon.svg";
   static const String iconEnrgy = "${preIconPath}ic_energy.svg";
   static const String fromTo = "${preIconPath}from_to.svg";
+  static const String addPhoto = "${preIconPath}add_photo.svg";
   static const String leftArrow = "${preIconPath}left_arrow.svg";
   static const String activeCircle = "${preIconPath}active_circle.svg";
   static const String addRectangle = "${preIconPath}add_rectangle.svg";
@@ -77,5 +78,9 @@ class AssetsConst {
   static const String momo = "${preIconPath}momo.svg";
   static const String techcombank = "${preIconPath}techcombank.svg";
   static const String vietinbank = "${preIconPath}vietinbank.svg";
+  static const String transferBackground = "${preIconPath}transfer_background.svg";
+  static const String transferBodyBackground = "${preIconPath}transfer_body_background.svg";
   static const String divider = "${preIconPath}divider.svg";
+  static const String greenSquare = "${preIconPath}green_square.svg";
+  static const String closeButton = "${preIconPath}close_button.svg";
 }
