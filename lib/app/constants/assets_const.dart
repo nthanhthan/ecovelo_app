@@ -8,13 +8,11 @@ class AssetsConst {
   static const String walletBanner = "${preImgPath}Wallet.png";
   static const String rentBicycle = "${preImgPath}bg_rent.png";
   static const String bicycle = "${preImgPath}bike_cut.png";
+  static const String transferBg = "${preImgPath}transfer_bg.svg";
+  static const String greenSquare = "${preImgPath}green_square.png";
   //json
   static const String qrScan = "${preJsonPath}qr_scan.json";
   static const String home = "${preJsonPath}animation.json";
-  static const String transferBackground = "${preImgPath}transfer_background.svg";
-  static const String transferBodyBackground = "${preImgPath}transfer_body_background.svg";
-  static const String divider = "${preImgPath}divider.svg";
-  static const String greenSquare = "${preImgPath}green_square.svg";
   //icons
   static const String logoSplash = "${preIconPath}logo_splash.svg";
   static const String textSplash = "${preIconPath}textSplash.svg";
@@ -79,4 +77,5 @@ class AssetsConst {
   static const String momo = "${preIconPath}momo.svg";
   static const String techcombank = "${preIconPath}techcombank.svg";
   static const String vietinbank = "${preIconPath}vietinbank.svg";
+  static const String divider = "${preIconPath}divider.svg";
 }

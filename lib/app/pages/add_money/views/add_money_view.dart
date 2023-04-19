@@ -9,9 +9,14 @@ import 'package:flutter_tags_x/flutter_tags_x.dart';
 class AddMoneyView extends GetView<AddMoneyController> {
   const AddMoneyView({Key? key}) : super(key: key);
 
+  _continueOnLick(){
+    Get.toNamed(Routes.transferSuccess);
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: IconButton(
           onPressed: (){
@@ -130,7 +135,7 @@ class AddMoneyView extends GetView<AddMoneyController> {
                   "Select Source",
                   style: AppTextStyles.body2().copyWith(
                     fontWeight: FontWeight.w600,
-                    color: AppColors.grey[400]
+                    color: AppColors.grey[500]
                   ),
                 ),
               ),
@@ -172,9 +177,7 @@ class AddMoneyView extends GetView<AddMoneyController> {
       bottomSheet: Padding(
         padding: const EdgeInsets.only(bottom: 35, left: 24, right: 24),
         child: InkWell(
-          onTap: () {
-
-          },
+          onTap: _continueOnLick,
           child: Container(
             width: double.infinity,
             height: 55,
@@ -229,7 +232,7 @@ class BuildPaymentItem extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    BuildTextTitle(text: title, color: AppColors.grey[400]),
+                    BuildTextTitle(text: title, color: AppColors.grey[500]),
                   ],
                 ),
               ],
@@ -281,8 +284,8 @@ class BuildBankItem extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        BuildTextTitle(text: title, color: controller.selectedBank.value == title ? AppColors.main[400] : AppColors.grey[400]),
-                        BuildTextBody(text: body, color: controller.selectedBank.value == title ? AppColors.main[400] : AppColors.grey[400])
+                        BuildTextTitle(text: title, color: controller.selectedBank.value == title ? AppColors.main[400] : AppColors.grey[500]),
+                        BuildTextBody(text: body, color: controller.selectedBank.value == title ? AppColors.main[400] : AppColors.grey[500])
                       ],
                     ),
                   ],
