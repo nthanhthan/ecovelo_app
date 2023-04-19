@@ -121,7 +121,7 @@ class HomeScreen extends GetView<HomeController> {
                       height: 40.0,
                       decoration: BoxDecoration(
                         image: const DecorationImage(
-                          image: AssetImage(AssetsConst.avatar),
+                          image: AssetImage(AssetsConst.avatarr),
                           fit: BoxFit.cover,
                         ),
                         borderRadius:
@@ -253,8 +253,7 @@ class HomeScreen extends GetView<HomeController> {
               context,
               S.of(context).myWallet,
               AssetsConst.myWallet,
-              
-              ,
+                 _myWalletClick,
             ),
             _itemMain(
               context,
