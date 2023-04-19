@@ -12,4 +12,5 @@ abstract class Routes {
   static const journeyDetail = '/journey_detail_view';
   static const reportProblem = '/report_problem_view';
   static const addMoney = '/add_money_view';
+  static const transferSuccess = '/transfer_success';
 }

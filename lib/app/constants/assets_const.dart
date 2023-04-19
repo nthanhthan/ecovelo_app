@@ -8,6 +8,8 @@ class AssetsConst {
   static const String walletBanner = "${preImgPath}Wallet.png";
   static const String rentBicycle = "${preImgPath}bg_rent.png";
   static const String bicycle = "${preImgPath}bike_cut.png";
+  static const String transferBg = "${preImgPath}transfer_bg.svg";
+  static const String greenSquare = "${preImgPath}green_square.png";
   //json
   static const String qrScan = "${preJsonPath}qr_scan.json";
   static const String home = "${preJsonPath}animation.json";
@@ -80,5 +82,5 @@ class AssetsConst {
   static const String transferBodyBackground = "${preIconPath}transfer_body_background.svg";
   static const String divider = "${preIconPath}divider.svg";
   static const String greenSquare = "${preIconPath}green_square.svg";
-   static const String closeButton = "${preIconPath}close_button.svg";
+  static const String closeButton = "${preIconPath}close_button.svg";
 }
