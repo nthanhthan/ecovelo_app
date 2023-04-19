@@ -107,5 +107,10 @@
     "fileAlreadyExists": "File already exists!",
     "uploadAnother": "Upload Another",
     "fileTooLarge": "File upload must be smaller than 10 Mb",
-    "uploadFile": "Upload File"
+    "uploadFile": "Upload File",
+    "goStation": "Go!",
+    "ready": "Ready",
+    "noBike": "No available bikes",
+    "yourAddress": "Your Address",
+    "stationNumber": "ECO - Station {number} "
 }

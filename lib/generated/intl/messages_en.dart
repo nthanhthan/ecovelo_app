@@ -24,6 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(nums) => "${nums}+";
 
+  static String m2(number) => "ECO - Station ${number} ";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about": MessageLookupByLibrary.simpleMessage("About"),
@@ -68,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "getMoreTime": MessageLookupByLibrary.simpleMessage("Get  more time"),
+        "goStation": MessageLookupByLibrary.simpleMessage("Go!"),
         "helpCenter": MessageLookupByLibrary.simpleMessage("Help Center"),
         "hi": m0,
         "hintDes": MessageLookupByLibrary.simpleMessage("Enter desciption..."),
@@ -99,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "noAccount":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "noBike": MessageLookupByLibrary.simpleMessage("No available bikes"),
         "noCameraPermissionDesctiption": MessageLookupByLibrary.simpleMessage(
             "This app needs camera access to scan QR codes"),
         "notBuyMorePoint":
@@ -132,6 +136,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "processing": MessageLookupByLibrary.simpleMessage("Processing..."),
         "promoWallet": MessageLookupByLibrary.simpleMessage("Promo Wallet"),
         "qrError": MessageLookupByLibrary.simpleMessage("QR error"),
+        "ready": MessageLookupByLibrary.simpleMessage("Ready"),
         "readyRide": MessageLookupByLibrary.simpleMessage("Ready to Ride"),
         "recentActivities":
             MessageLookupByLibrary.simpleMessage("Recent Activities"),
@@ -144,6 +149,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "stationNumber": m2,
         "storageAccessDenied": MessageLookupByLibrary.simpleMessage(
             "Storage access denied. Let open the app setting to enable it!"),
         "submitBtn": MessageLookupByLibrary.simpleMessage("Submit"),
@@ -172,6 +178,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Upload Image or Video"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("VietNamese"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome!"),
-        "yes": MessageLookupByLibrary.simpleMessage("Yes")
+        "yes": MessageLookupByLibrary.simpleMessage("Yes"),
+        "yourAddress": MessageLookupByLibrary.simpleMessage("Your Address")
       };
 }
