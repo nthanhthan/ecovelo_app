@@ -117,6 +117,8 @@ dependencies:
   flutter_tags_x: ^1.1.0
   #dot border
   dotted_border: 2.0.0+2
+  #rating_bar
+  flutter_rating_bar: ^4.0.1
   #google_map
   google_maps_flutter: ^2.1.7
   geolocator: ^9.0.0
