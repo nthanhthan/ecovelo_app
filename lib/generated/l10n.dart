@@ -1179,6 +1179,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Go!`
+  String get goStation {
+    return Intl.message(
+      'Go!',
+      name: 'goStation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ready`
+  String get ready {
+    return Intl.message(
+      'Ready',
+      name: 'ready',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No available bikes`
+  String get noBike {
+    return Intl.message(
+      'No available bikes',
+      name: 'noBike',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Address`
+  String get yourAddress {
+    return Intl.message(
+      'Your Address',
+      name: 'yourAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ECO - Station {number} `
+  String stationNumber(Object number) {
+    return Intl.message(
+      'ECO - Station $number ',
+      name: 'stationNumber',
+      desc: '',
+      args: [number],
+    );
+  }
+
+  /// `Password don't match`
+  String get noMatchPass {
+    return Intl.message(
+      'Password don\'t match',
+      name: 'noMatchPass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your pass`
+  String get enterPass {
+    return Intl.message(
+      'Please enter your pass',
+      name: 'enterPass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password match`
+  String get correct {
+    return Intl.message(
+      'Password match',
+      name: 'correct',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

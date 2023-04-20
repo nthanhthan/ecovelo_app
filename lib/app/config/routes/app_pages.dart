@@ -75,5 +75,10 @@ class AppPages {
       binding: AuthBinding(),
       transition: Transition.rightToLeft,
     ),
+    GetPage<dynamic>(
+      name: Routes.transferSuccess,
+      page: () => const TransferSuccessView(),
+      transition: Transition.rightToLeft,
+    ),
   ];
 }

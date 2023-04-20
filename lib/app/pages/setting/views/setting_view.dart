@@ -21,7 +21,9 @@ class SettingView extends GetView<SettingController> {
   void _deActiveClick() {}
   void _helpCenterClick() {}
   void _aboutClick() {}
-  void _logoutClick() {}
+  void _logoutClick() {
+    Get.offAllNamed(Routes.signin);
+  }
 
   Widget _buildBody(BuildContext context) {
     return Scaffold(
@@ -43,7 +45,7 @@ class SettingView extends GetView<SettingController> {
                         height: 40.0,
                         decoration: BoxDecoration(
                           image: const DecorationImage(
-                            image: AssetImage(AssetsConst.avatar),
+                            image: AssetImage(AssetsConst.avatarr),
                             fit: BoxFit.cover,
                           ),
                           borderRadius:

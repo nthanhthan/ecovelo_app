@@ -112,5 +112,13 @@
     "phoneNumber": "Phone Number",
     "name": "Name",
     "passWordAgain": "Enter the password again"
-
+,
+    "goStation": "Go!",
+    "ready": "Ready",
+    "noBike": "No available bikes",
+    "yourAddress": "Your Address",
+    "stationNumber": "ECO - Station {number} ",
+    "noMatchPass": "Password don't match",
+    "enterPass": "Please enter your pass",
+    "correct": "Password match"
 }

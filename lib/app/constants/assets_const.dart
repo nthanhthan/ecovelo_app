@@ -4,10 +4,15 @@ class AssetsConst {
   static const String preJsonPath = "assets/jsons/";
   //images
   static const String ecovelo = "${preImgPath}bike.png";
-  static const String avatar = "${preImgPath}avatar.jpg";
+  static const String avatarr = "${preImgPath}avatar.jpg";
   static const String walletBanner = "${preImgPath}Wallet.png";
   static const String rentBicycle = "${preImgPath}bg_rent.png";
   static const String bicycle = "${preImgPath}bike_cut.png";
+  static const String transferBg = "${preImgPath}transfer_bg.svg";
+  static const String greenSquare = "${preImgPath}green_square.png";
+  static const String station = "${preImgPath}station.png";
+  static const String stationRed = "${preImgPath}staion_pin.png";
+  static const String bikeStation = "${preImgPath}station_bike.png";
   //json
   static const String qrScan = "${preJsonPath}qr_scan.json";
   static const String home = "${preJsonPath}animation.json";
@@ -76,9 +81,11 @@ class AssetsConst {
   static const String momo = "${preIconPath}momo.svg";
   static const String techcombank = "${preIconPath}techcombank.svg";
   static const String vietinbank = "${preIconPath}vietinbank.svg";
-  static const String transferBackground = "${preIconPath}transfer_background.svg";
-  static const String transferBodyBackground = "${preIconPath}transfer_body_background.svg";
+  static const String transferBackground =
+      "${preIconPath}transfer_background.svg";
+  static const String transferBodyBackground =
+      "${preIconPath}transfer_body_background.svg";
   static const String divider = "${preIconPath}divider.svg";
-  static const String greenSquare = "${preIconPath}green_square.svg";
-   static const String closeButton = "${preIconPath}close_button.svg";
+  static const String closeButton = "${preIconPath}close_button.svg";
+  static const String fromToMap = "${preIconPath}from_to_map.svg";
 }
