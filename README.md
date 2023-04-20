@@ -11,7 +11,7 @@ How to Use
 Step 1:
 Download or clone this repo by using the link below:
 
-https://gitlab.com/megatron3031606/ai-chat.git
+https://github.com/nthanhthan/ecovelo_app.git
 
 
 Step 2:
