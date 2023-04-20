@@ -1139,6 +1139,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Go!`
+  String get goStation {
+    return Intl.message(
+      'Go!',
+      name: 'goStation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ready`
+  String get ready {
+    return Intl.message(
+      'Ready',
+      name: 'ready',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No available bikes`
+  String get noBike {
+    return Intl.message(
+      'No available bikes',
+      name: 'noBike',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Address`
+  String get yourAddress {
+    return Intl.message(
+      'Your Address',
+      name: 'yourAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ECO - Station {number} `
+  String stationNumber(Object number) {
+    return Intl.message(
+      'ECO - Station $number ',
+      name: 'stationNumber',
+      desc: '',
+      args: [number],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

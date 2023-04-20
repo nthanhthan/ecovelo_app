@@ -1,6 +1,7 @@
 import 'package:ecoveloapp/app/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class JourneyDetailView extends GetView<JourneyDetailConroller> {
   const JourneyDetailView({Key? key}) : super(key: key);
@@ -65,7 +66,12 @@ class JourneyDetailView extends GetView<JourneyDetailConroller> {
           ),
         ),
       ),
-      body: Container(),
+      body: const GoogleMap(
+        initialCameraPosition: CameraPosition(
+          target: LatLng(16.0706181, 108.2240623),
+          zoom: 12,
+        ),
+      ),
     );
   }
 

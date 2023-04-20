@@ -43,7 +43,7 @@ class SettingView extends GetView<SettingController> {
                         height: 40.0,
                         decoration: BoxDecoration(
                           image: const DecorationImage(
-                            image: AssetImage(AssetsConst.avatar),
+                            image: AssetImage(AssetsConst.avatarr),
                             fit: BoxFit.cover,
                           ),
                           borderRadius:
