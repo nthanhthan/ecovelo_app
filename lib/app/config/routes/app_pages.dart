@@ -69,6 +69,12 @@ class AppPages {
       binding: AddMoneyBinding(),
       transition: Transition.rightToLeft,
     ),
+     GetPage<dynamic>(
+      name: Routes.register,
+      page: () => const RegisterView(),
+      binding: AuthBinding(),
+      transition: Transition.rightToLeft,
+    ),
     GetPage<dynamic>(
       name: Routes.transferSuccess,
       page: () => const TransferSuccessView(),

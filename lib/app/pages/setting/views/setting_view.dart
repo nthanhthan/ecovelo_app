@@ -21,7 +21,9 @@ class SettingView extends GetView<SettingController> {
   void _deActiveClick() {}
   void _helpCenterClick() {}
   void _aboutClick() {}
-  void _logoutClick() {}
+  void _logoutClick() {
+    Get.offAllNamed(Routes.signin);
+  }
 
   Widget _buildBody(BuildContext context) {
     return Scaffold(

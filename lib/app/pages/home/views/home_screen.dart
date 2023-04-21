@@ -23,12 +23,17 @@ class HomeScreen extends GetView<HomeController> {
   void _addMoneyClicked() {
     Get.toNamed(Routes.addMoney);
   }
+
   void _myWalletClick() {
     Get.toNamed(Routes.reportProblem);
   }
 
   void _myJourneyClicked() {
     Get.toNamed(Routes.journey);
+  }
+
+  void _finishRideClick() {
+    Get.offNamed(Routes.feedback);
   }
 
   Widget _buildBody(BuildContext context) {
@@ -253,7 +258,7 @@ class HomeScreen extends GetView<HomeController> {
               context,
               S.of(context).myWallet,
               AssetsConst.myWallet,
-                 _myWalletClick,
+              _myWalletClick,
             ),
             _itemMain(
               context,
@@ -491,24 +496,27 @@ class HomeScreen extends GetView<HomeController> {
   }
 
   Widget _bottomWidget(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(
-        top: 20,
-        bottom: 20,
-      ),
-      padding: const EdgeInsets.symmetric(
-        horizontal: 120,
-        vertical: 12,
-      ),
-      decoration: BoxDecoration(
-        color: AppColors.main.shade200,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Text(
-        S.of(context).finishRide,
-        style: AppTextStyles.body1().copyWith(
-          color: AppColors.main.shade400,
-          fontWeight: FontWeight.w500,
+    return InkWell(
+      onTap: _finishRideClick,
+      child: Container(
+        margin: const EdgeInsets.only(
+          top: 20,
+          bottom: 20,
+        ),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 120,
+          vertical: 12,
+        ),
+        decoration: BoxDecoration(
+          color: AppColors.main.shade200,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Text(
+          S.of(context).finishRide,
+          style: AppTextStyles.body1().copyWith(
+            color: AppColors.main.shade400,
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ),
     );

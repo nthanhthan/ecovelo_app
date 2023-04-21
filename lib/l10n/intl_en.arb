@@ -108,9 +108,17 @@
     "uploadAnother": "Upload Another",
     "fileTooLarge": "File upload must be smaller than 10 Mb",
     "uploadFile": "Upload File",
+    "haveAccount": "Have been an account.",
+    "phoneNumber": "Phone Number",
+    "name": "Name",
+    "passWordAgain": "Enter the password again"
+,
     "goStation": "Go!",
     "ready": "Ready",
     "noBike": "No available bikes",
     "yourAddress": "Your Address",
-    "stationNumber": "ECO - Station {number} "
+    "stationNumber": "ECO - Station {number} ",
+    "noMatchPass": "Password don't match",
+    "enterPass": "Please enter your pass",
+    "correct": "Password match"
 }

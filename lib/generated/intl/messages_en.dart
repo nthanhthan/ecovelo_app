@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Choose from Gallery"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "continueBtn": MessageLookupByLibrary.simpleMessage("Continue"),
+        "correct": MessageLookupByLibrary.simpleMessage("Password match"),
         "deactiveAcc": MessageLookupByLibrary.simpleMessage("Deactive Account"),
         "desWeekPoint": MessageLookupByLibrary.simpleMessage(
             "Keep participating in weekly chanllenges and earn rewards."),
@@ -61,6 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "english": MessageLookupByLibrary.simpleMessage("English"),
         "enterMoney":
             MessageLookupByLibrary.simpleMessage("Enter Money Amount"),
+        "enterPass":
+            MessageLookupByLibrary.simpleMessage("Please enter your pass"),
         "fileAlreadyExists":
             MessageLookupByLibrary.simpleMessage("File already exists!"),
         "fileTooLarge": MessageLookupByLibrary.simpleMessage(
@@ -71,6 +74,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "getMoreTime": MessageLookupByLibrary.simpleMessage("Get  more time"),
         "goStation": MessageLookupByLibrary.simpleMessage("Go!"),
+        "haveAccount":
+            MessageLookupByLibrary.simpleMessage("Have been an account."),
         "helpCenter": MessageLookupByLibrary.simpleMessage("Help Center"),
         "hi": m0,
         "hintDes": MessageLookupByLibrary.simpleMessage("Enter desciption..."),
@@ -96,6 +101,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mainWallet": MessageLookupByLibrary.simpleMessage("Main Wallet"),
         "myJourney": MessageLookupByLibrary.simpleMessage("My journey"),
         "myWallet": MessageLookupByLibrary.simpleMessage("My Wallet"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "needHelp": MessageLookupByLibrary.simpleMessage("Need Help ?"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "niceDay": MessageLookupByLibrary.simpleMessage("Have a nice day!"),
@@ -105,6 +111,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "noBike": MessageLookupByLibrary.simpleMessage("No available bikes"),
         "noCameraPermissionDesctiption": MessageLookupByLibrary.simpleMessage(
             "This app needs camera access to scan QR codes"),
+        "noMatchPass":
+            MessageLookupByLibrary.simpleMessage("Password don\'t match"),
         "notBuyMorePoint":
             MessageLookupByLibrary.simpleMessage("Can\'t buy more point"),
         "notFinishRide":
@@ -129,7 +137,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "oneTimeTicket":
             MessageLookupByLibrary.simpleMessage("One-time Ticket"),
         "other": MessageLookupByLibrary.simpleMessage("Other"),
+        "passWordAgain":
+            MessageLookupByLibrary.simpleMessage("Enter the password again"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "pickeFileUsing":
             MessageLookupByLibrary.simpleMessage("Pick file using?"),
         "proceed": MessageLookupByLibrary.simpleMessage("Proceed to start!"),

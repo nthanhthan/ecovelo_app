@@ -14,6 +14,7 @@ class AssetsConst {
   static const String station = "${preImgPath}station.png";
   static const String stationRed = "${preImgPath}staion_pin.png";
   static const String bikeStation = "${preImgPath}station_bike.png";
+  static const String verifed = "${preImgPath}verified.gif";
 
   //json
   static const String qrScan = "${preJsonPath}qr_scan.json";
@@ -91,4 +92,5 @@ class AssetsConst {
   static const String activeStar = "${preIconPath}active_star.svg";
   static const String deactiveStar = "${preIconPath}deactive_star.svg";
   static const String fromToMap = "${preIconPath}from_to_map.svg";
+
 }

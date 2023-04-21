@@ -1140,6 +1140,46 @@ class S {
     );
   }
 
+  /// `Have been an account.`
+  String get haveAccount {
+    return Intl.message(
+      'Have been an account.',
+      name: 'haveAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number`
+  String get phoneNumber {
+    return Intl.message(
+      'Phone Number',
+      name: 'phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the password again`
+  String get passWordAgain {
+    return Intl.message(
+      'Enter the password again',
+      name: 'passWordAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Go!`
   String get goStation {
     return Intl.message(
@@ -1187,6 +1227,36 @@ class S {
       name: 'stationNumber',
       desc: '',
       args: [number],
+    );
+  }
+
+  /// `Password don't match`
+  String get noMatchPass {
+    return Intl.message(
+      'Password don\'t match',
+      name: 'noMatchPass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your pass`
+  String get enterPass {
+    return Intl.message(
+      'Please enter your pass',
+      name: 'enterPass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password match`
+  String get correct {
+    return Intl.message(
+      'Password match',
+      name: 'correct',
+      desc: '',
+      args: [],
     );
   }
 }

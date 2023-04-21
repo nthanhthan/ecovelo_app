@@ -29,12 +29,8 @@ class SignInController extends GetxController {
       return S.current.invalidPasswordLength;
     } else if (!StringExtensions(value).isLeastOneLetter()) {
       return S.current.invalidPasswordOneLetter;
-    } else if (!StringExtensions(value).isLeastOneCapitalLetter()) {
-      return S.current.invalidPasswordOneCapitalLetter;
     } else if (!StringExtensions(value).isLeastOneNumber()) {
       return S.current.invalidPasswordOneNumber;
-    } else if (!StringExtensions(value).isLeastOneSpecial()) {
-      return S.current.invalidPasswordOneSpecialLetter;
     } else {
       return null;
     }
