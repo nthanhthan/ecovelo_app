@@ -13,5 +13,6 @@ abstract class Routes {
   static const reportProblem = '/report_problem_view';
   static const addMoney = '/add_money_view';
   static const register = '/register_view';
-  static const transferSuccess = '/transfer_success';
+  static const transferSuccess = '/transfer_success_view';
+  static const feedback = '/feedback_view';
 }

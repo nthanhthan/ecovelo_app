@@ -80,5 +80,11 @@ class AppPages {
       page: () => const TransferSuccessView(),
       transition: Transition.rightToLeft,
     ),
+    GetPage<dynamic>(
+      name: Routes.feedback,
+      page: () => const FeedBackView(),
+      binding: FeedbackBinding(),
+      transition: Transition.rightToLeft,
+    ),
   ];
 }
