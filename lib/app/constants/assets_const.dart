@@ -92,5 +92,7 @@ class AssetsConst {
   static const String activeStar = "${preIconPath}active_star.svg";
   static const String deactiveStar = "${preIconPath}deactive_star.svg";
   static const String fromToMap = "${preIconPath}from_to_map.svg";
+  static const String iconSearch = "${preIconPath}icon_search.svg";
+  static const String iconLocation = "${preIconPath}location.svg";
 
 }

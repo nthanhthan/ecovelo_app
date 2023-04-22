@@ -95,6 +95,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("At least one special letter"),
         "journeyDetail":
             MessageLookupByLibrary.simpleMessage("Journey Details"),
+        "lableSearch":
+            MessageLookupByLibrary.simpleMessage("Search for EcoVelo stations"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "lockBroken": MessageLookupByLibrary.simpleMessage("Lock broken"),
         "logout": MessageLookupByLibrary.simpleMessage("Log out"),
@@ -113,6 +115,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "This app needs camera access to scan QR codes"),
         "noMatchPass":
             MessageLookupByLibrary.simpleMessage("Password don\'t match"),
+        "noResultFound":
+            MessageLookupByLibrary.simpleMessage("No results found"),
         "notBuyMorePoint":
             MessageLookupByLibrary.simpleMessage("Can\'t buy more point"),
         "notFinishRide":

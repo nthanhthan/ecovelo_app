@@ -15,4 +15,5 @@ abstract class Routes {
   static const register = '/register_view';
   static const transferSuccess = '/transfer_success_view';
   static const feedback = '/feedback_view';
+  static const stationBike = '/station_view';
 }

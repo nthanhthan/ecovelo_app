@@ -111,8 +111,7 @@
     "haveAccount": "Have been an account.",
     "phoneNumber": "Phone Number",
     "name": "Name",
-    "passWordAgain": "Enter the password again"
-,
+    "passWordAgain": "Enter the password again",
     "goStation": "Go!",
     "ready": "Ready",
     "noBike": "No available bikes",
@@ -120,5 +119,7 @@
     "stationNumber": "ECO - Station {number} ",
     "noMatchPass": "Password don't match",
     "enterPass": "Please enter your pass",
-    "correct": "Password match"
+    "correct": "Password match",
+    "noResultFound": "No results found",
+    "lableSearch": "Search for EcoVelo stations"
 }

@@ -86,5 +86,11 @@ class AppPages {
       binding: FeedbackBinding(),
       transition: Transition.rightToLeft,
     ),
+      GetPage<dynamic>(
+      name: Routes.stationBike,
+      page: () => const MapView(),
+      binding: HomeBinding(),
+      transition: Transition.rightToLeft,
+    ),
   ];
 }

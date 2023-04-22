@@ -24,8 +24,10 @@ class RentBicycleView extends GetView<RentBicycleController> {
   }
 
   Future<void> _startClick() async {
-    controller.startRent();
-    Get.back();
+    Get.offNamed(
+      Routes.home,
+      arguments: controller.bikeID,
+    );
   }
 
   Widget _buildBody(BuildContext context) {
@@ -63,7 +65,7 @@ class RentBicycleView extends GetView<RentBicycleController> {
                           Padding(
                             padding: const EdgeInsets.only(top: 40),
                             child: Text(
-                              "ECO43-001",
+                              controller.bikeID,
                               style: AppTextStyles.subHeading1()
                                   .copyWith(color: AppColors.main.shade200),
                             ),
@@ -192,6 +194,20 @@ class RentBicycleView extends GetView<RentBicycleController> {
           Positioned(
             bottom: 0,
             child: _sliderWidget(context),
+          ),
+          Positioned(
+            top: 50,
+            left: 20,
+            child: InkWell(
+              onTap: () {
+                Get.offNamed(Routes.scanQR);
+              },
+              child: const Icon(
+                Icons.arrow_back,
+                size: 30,
+                color: Color(0xff28303f),
+              ),
+            ),
           ),
         ],
       ),
