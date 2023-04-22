@@ -14,7 +14,7 @@ class HomeView extends GetView<HomeController> {
   }
 
   void _scanClick() {
-    Get.toNamed(Routes.scanQR);
+    Get.offNamed(Routes.scanQR);
   }
 
   Widget _buildBody(BuildContext context) {

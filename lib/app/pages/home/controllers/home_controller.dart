@@ -8,8 +8,6 @@ class HomeController extends GetxController
   int get currentTab => _currentTab.value;
   final PageStorageBucket bucket = PageStorageBucket();
 
-  
-
   List<Widget> screen = [
     const HomeScreen(),
     const MapView(),
@@ -23,12 +21,26 @@ class HomeController extends GetxController
   set isCloseBottomModel(bool? value) => _isCloseBottomModel.value = value;
   bool? get isCloseBottomModel => _isCloseBottomModel.value;
 
+  String bikeID = "";
+
   @override
   void onInit() {
     WidgetsBinding.instance.addObserver(this);
 
+    if (Get.arguments != null && Get.arguments is String) {
+      bikeID = Get.arguments as String;
+    }
     super.onInit();
   }
+
+  @override
+  void onReady() {
+    if (bikeID.isNotEmpty) {
+      const HomeScreen().showBottomSheetRentBicycle(Get.context!);
+    }
+    super.onReady();
+  }
+
   @override
   void onClose() {
     WidgetsBinding.instance.removeObserver(this);

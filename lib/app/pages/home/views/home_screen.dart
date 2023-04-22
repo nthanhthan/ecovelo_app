@@ -16,8 +16,7 @@ class HomeScreen extends GetView<HomeController> {
   }
 
   Future<void> _ecoVeloClicked(BuildContext context) async {
-    await Get.toNamed(Routes.rentBicycle);
-    _showBottomSheet(context);
+    Get.toNamed(Routes.stationBike);
   }
 
   void _addMoneyClicked() {
@@ -161,7 +160,7 @@ class HomeScreen extends GetView<HomeController> {
                     child: GestureDetector(
                       onTap: () {
                         controller.checkCloseBottomModel() == true
-                            ? _showBottomSheet(context)
+                            ? showBottomSheetRentBicycle(context)
                             : null;
                       },
                       child: _durationRide(context),
@@ -341,7 +340,7 @@ class HomeScreen extends GetView<HomeController> {
     );
   }
 
-  void _showBottomSheet(BuildContext context) async {
+  void showBottomSheetRentBicycle(BuildContext context) async {
     await showModalBottomSheet(
       context: context,
       backgroundColor: AppColors.white,
@@ -377,31 +376,39 @@ class HomeScreen extends GetView<HomeController> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 10,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "ECO43-001",
-                                  style: AppTextStyles.subHeading1()
-                                      .copyWith(color: AppColors.main.shade200),
-                                ),
-                                const SizedBox(width: 10),
-                                SvgPicture.asset(
-                                  AssetsConst.checkRent,
-                                  height: 20,
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 10),
-                            _durationRide(context),
-                          ],
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            left: 10,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      controller.bikeID,
+                                      style: AppTextStyles.subHeading1()
+                                          .copyWith(
+                                              color: AppColors.main.shade200),
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 2,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  SvgPicture.asset(
+                                    AssetsConst.checkRent,
+                                    height: 20,
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              _durationRide(context),
+                            ],
+                          ),
                         ),
                       ),
                       Image.asset(
@@ -441,6 +448,7 @@ class HomeScreen extends GetView<HomeController> {
 
   Widget _durationRide(BuildContext context) {
     return Container(
+      width: 100,
       padding: const EdgeInsets.symmetric(
         vertical: 6,
         horizontal: 15,

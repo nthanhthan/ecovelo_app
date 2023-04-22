@@ -11,11 +11,16 @@ class MapController extends GetxController {
   Set<Marker> myMarkers = {};
   StationModel? _currentStation;
 
+  TextEditingController stationTextController = TextEditingController();
+  FocusNode searchNode = FocusNode();
+
   final RxBool _isLoading = false.obs;
   set isLoading(bool value) => _isLoading.value = value;
   bool get isLoading => _isLoading.value;
 
   Position? position;
+
+  final String _keyStation = '';
 
   Future<bool> customMarker() async {
     marker = await BitmapDescriptor.fromAssetImage(
@@ -186,4 +191,31 @@ class MapController extends GetxController {
       throw 'Could not launch $url';
     }
   }
+
+  Future<List<StationModel>> loadListStation(String key) async {
+    if (key.isNotEmpty && ((key.trim().isEmpty) || _keyStation == key.trim())) {
+      return DefaultValues.listStation;
+    }
+
+    // facilities.clear();
+    // _keyStation = key.trim();
+    // bool isConnected = await NetworkUtil.isConnected();
+
+    // if (isConnected) {
+    //   var resp = await _riskScanHttp.searchFacility(_keyFacility);
+    //   if (resp.isSuccess() && resp.data != null) {
+    //     facilities = resp.data ?? [];
+    //   } else {
+    //     facilities = [];
+    //   }
+    // } else {
+    //   facilities = await _searchFacilityInCache(key);
+    // }
+    // //if (facilities.isEmpty) {
+    //SnackBars.error(message: S.current.noResultFound).show(duration: 2000);
+    //}
+    return DefaultValues.listStation;
+  }
+
+  void chooseStation(StationModel station) {}
 }

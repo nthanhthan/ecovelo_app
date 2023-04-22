@@ -48,6 +48,7 @@ class ScanView extends GetView<ScanController> {
   Widget _buildBody(BuildContext context) {
     _checkCameraPermission(context);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.defaultBackground,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50),
@@ -59,7 +60,7 @@ class ScanView extends GetView<ScanController> {
                 shape: BoxShape.circle, color: AppColors.main.shade200),
             child: InkWell(
               onTap: () {
-                Navigator.pop(context);
+                Get.offNamed(Routes.home);
               },
               child: Icon(
                 Icons.arrow_back_ios_new,
@@ -136,12 +137,13 @@ class ScanView extends GetView<ScanController> {
   }
 
   Widget _buildQrView(BuildContext context) {
+    GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
     var scanArea = (MediaQuery.of(context).size.width < 500 ||
             MediaQuery.of(context).size.height < 800)
         ? 400.0
         : 600.0;
     return QRView(
-      key: controller.qrKey,
+      key: qrKey,
       onQRViewCreated: controller.setQrCodeScan,
       overlay: QrScannerOverlayShape(
           borderColor: AppColors.main.shade200,

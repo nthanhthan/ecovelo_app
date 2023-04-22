@@ -1259,6 +1259,26 @@ class S {
       args: [],
     );
   }
+
+  /// `No results found`
+  String get noResultFound {
+    return Intl.message(
+      'No results found',
+      name: 'noResultFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search for EcoVelo stations`
+  String get lableSearch {
+    return Intl.message(
+      'Search for EcoVelo stations',
+      name: 'lableSearch',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

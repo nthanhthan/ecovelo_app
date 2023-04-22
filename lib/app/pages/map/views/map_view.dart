@@ -18,26 +18,63 @@ class MapView extends GetView<MapController> {
     controller.goClick();
   }
 
+  void _onChooseSuggestFacility(StationModel station) {
+    controller.chooseStation(station);
+  }
+
+  void _onChangeSearch(String text) {
+    if (text.isEmpty || text.trim().isEmpty) {}
+  }
+
   Widget _buildBody(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.defaultBackground,
-      body: Obx(() => controller.isLoading
-          ? GoogleMap(
-              initialCameraPosition: CameraPosition(
-                target: LatLng(
-                  controller.myMarkers.first.position.latitude,
-                  controller.myMarkers.first.position.longitude,
-                ),
-                zoom: 13,
-              ),
-              markers: controller.myMarkers,
-            )
-          : const GoogleMap(
-              initialCameraPosition: CameraPosition(
-                target: LatLng(16.0706181, 108.2240623),
-                zoom: 15,
-              ),
-            )),
+      body: Stack(
+        children: [
+          Obx(
+            () => controller.isLoading
+                ? GoogleMap(
+                    initialCameraPosition: CameraPosition(
+                      target: LatLng(
+                        controller.myMarkers.first.position.latitude,
+                        controller.myMarkers.first.position.longitude,
+                      ),
+                      zoom: 13,
+                    ),
+                    markers: controller.myMarkers,
+                  )
+                : const GoogleMap(
+                    initialCameraPosition: CameraPosition(
+                      target: LatLng(16.0706181, 108.2240623),
+                      zoom: 15,
+                    ),
+                  ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 60,
+              left: 12,
+              right: 12,
+            ),
+            child: SearchInput<StationModel>(
+              searchController: controller.stationTextController,
+              searchFocus: controller.searchNode,
+              labelText: S.of(context).lableSearch,
+              suggestionsCallback: (pattern) async {
+                return await controller.loadListStation(pattern);
+              },
+              onSuggestionSelected: _onChooseSuggestFacility,
+              onChanged: _onChangeSearch,
+              itemBuilder: (context, station) {
+                return ListTile(
+                  key: ValueKey(station.stationId),
+                  title: StationInfoWidget(station: station),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 

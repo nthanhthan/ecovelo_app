@@ -13,7 +13,14 @@ class RentBicycleController extends GetxController {
     isMainWallet = !isMainWallet;
   }
 
-  void startRent() {
-    isStart = true;
+
+
+  String bikeID = "";
+  @override
+  void onInit() {
+    if (Get.arguments != null && Get.arguments is String) {
+      bikeID = Get.arguments as String;
+    }
+    super.onInit();
   }
 }

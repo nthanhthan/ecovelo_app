@@ -1,5 +1,4 @@
 import 'package:ecoveloapp/app/core.dart';
-import 'package:ecoveloapp/app/pages/auth/controllers/signup_controller.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
