@@ -273,25 +273,27 @@ class BuildBankItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     SvgPicture.asset(asset),
                     const SizedBox(width: 12),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        BuildTextTitle(
-                          text: title,
-                          color: controller.selectedBank.value == title
-                              ? AppColors.main.shade400
-                              : AppColors.grey.shade500,
-                        ),
-                        BuildTextBody(
-                            text: body,
+                    SizedBox(
+                      width: Get.width * 0.62,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          BuildTextTitle(
+                            text: title,
                             color: controller.selectedBank.value == title
                                 ? AppColors.main.shade400
-                                : AppColors.grey.shade500)
-                      ],
+                                : AppColors.grey.shade500,
+                          ),
+                          BuildTextBody(
+                              text: body,
+                              color: controller.selectedBank.value == title
+                                  ? AppColors.main.shade400
+                                  : AppColors.grey.shade500)
+                        ],
+                      ),
                     ),
                   ],
                 ),
