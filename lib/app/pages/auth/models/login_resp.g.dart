@@ -54,8 +54,8 @@ class LoginRespAdapter extends TypeAdapter<LoginResp> {
 // **************************************************************************
 
 LoginResp _$LoginRespFromJson(Map<String, dynamic> json) => LoginResp(
-      token: json['access_token'] as String?,
-      refreshToken: json['refresh_token'] as String?,
+      token: json['token'] as String?,
+      refreshToken: json['refreshToken'] as String?,
       expired: json['expired'] as int?,
       userResponse: json['userResponse'] == null
           ? null
@@ -63,8 +63,8 @@ LoginResp _$LoginRespFromJson(Map<String, dynamic> json) => LoginResp(
     );
 
 Map<String, dynamic> _$LoginRespToJson(LoginResp instance) => <String, dynamic>{
-      'access_token': instance.token,
-      'refresh_token': instance.refreshToken,
+      'token': instance.token,
+      'refreshToken': instance.refreshToken,
       'expired': instance.expired,
       'userResponse': instance.userResponse,
     };

@@ -13,15 +13,19 @@ class UserModel {
     this.verify,
   });
   @HiveField(0)
-  String? phoneNumber;
+  int? userId;
   @HiveField(1)
-  String? email;
+  String? phoneNumber;
   @HiveField(2)
-  String? nameUser;
+  String? email;
   @HiveField(3)
-  bool? verify;
+  String? nameUser;
   @HiveField(4)
+  bool? verify;
+  @HiveField(5)
   double? money;
+  @HiveField(6)
+  double? proPoint;
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
 

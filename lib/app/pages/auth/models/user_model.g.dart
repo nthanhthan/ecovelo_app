@@ -17,28 +17,34 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return UserModel(
-      phoneNumber: fields[0] as String?,
-      email: fields[1] as String?,
-      nameUser: fields[2] as String?,
-      money: fields[4] as double?,
-      verify: fields[3] as bool?,
-    );
+      phoneNumber: fields[1] as String?,
+      email: fields[2] as String?,
+      nameUser: fields[3] as String?,
+      money: fields[5] as double?,
+      verify: fields[4] as bool?,
+    )
+      ..userId = fields[0] as int?
+      ..proPoint = fields[6] as double?;
   }
 
   @override
   void write(BinaryWriter writer, UserModel obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(7)
       ..writeByte(0)
-      ..write(obj.phoneNumber)
+      ..write(obj.userId)
       ..writeByte(1)
-      ..write(obj.email)
+      ..write(obj.phoneNumber)
       ..writeByte(2)
-      ..write(obj.nameUser)
+      ..write(obj.email)
       ..writeByte(3)
-      ..write(obj.verify)
+      ..write(obj.nameUser)
       ..writeByte(4)
-      ..write(obj.money);
+      ..write(obj.verify)
+      ..writeByte(5)
+      ..write(obj.money)
+      ..writeByte(6)
+      ..write(obj.proPoint);
   }
 
   @override
@@ -62,12 +68,16 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       nameUser: json['nameUser'] as String?,
       money: (json['money'] as num?)?.toDouble(),
       verify: json['verify'] as bool?,
-    );
+    )
+      ..userId = json['userId'] as int?
+      ..proPoint = (json['proPoint'] as num?)?.toDouble();
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
+      'userId': instance.userId,
       'phoneNumber': instance.phoneNumber,
       'email': instance.email,
       'nameUser': instance.nameUser,
       'verify': instance.verify,
       'money': instance.money,
+      'proPoint': instance.proPoint,
     };

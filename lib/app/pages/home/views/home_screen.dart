@@ -201,7 +201,7 @@ class HomeScreen extends GetView<HomeController> {
                 _itemWallet(
                   context,
                   S.of(context).promoWallet,
-                   controller.loginResp?.userResponse?.money.toString() ?? "0",
+                   controller.loginResp?.userResponse?.proPoint.toString() ?? "0",
                 ),
               ],
             ),
