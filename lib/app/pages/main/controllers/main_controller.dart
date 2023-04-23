@@ -54,6 +54,7 @@ class MainController extends GetxController {
 
     //Delay for show Splash screen
     await Future.delayed(const Duration(seconds: 2), () {
+
       Get.offNamed<void>(Routes.onBoarding);
     });
   }

@@ -4,6 +4,8 @@ class AppKeys {
   static const languageKey = "language-key";
   static const themModeKey = "theme-key";
   static const voiceMode = "voice-mode";
+  static const firstLaunch = "first-launch";
+  static const loginKey = "login-key";
 }
 
 class AppColors {

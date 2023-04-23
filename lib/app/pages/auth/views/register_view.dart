@@ -76,6 +76,7 @@ class RegisterView extends GetView<SignUpController> {
               maxLines: 1,
               textInputAction: TextInputAction.next,
               controller: controller.phoneNumberFieldController,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               keyboardType: TextInputType.phone,
               cursorColor: AppColors.main,
               focusNode: controller.phoneNode,
@@ -100,6 +101,9 @@ class RegisterView extends GetView<SignUpController> {
                 fillColor: AppColors.grey.shade600,
                 errorMaxLines: 3,
               ),
+              validator: (text) {
+                return controller.phoneValidation(text?.trim());
+              },
             ),
             const SizedBox(height: 15),
             TextFormField(

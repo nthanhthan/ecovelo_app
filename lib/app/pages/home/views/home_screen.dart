@@ -141,7 +141,9 @@ class HomeScreen extends GetView<HomeController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          S.of(context).hi("Than"),
+                          S.of(context).hi(
+                              controller.loginResp?.userResponse?.nameUser ??
+                                  ""),
                           style: AppTextStyles.subHeading1()
                               .copyWith(color: AppColors.main.shade300),
                         ),
@@ -194,12 +196,12 @@ class HomeScreen extends GetView<HomeController> {
                 _itemWallet(
                   context,
                   S.of(context).mainWallet,
-                  "250000",
+                  controller.loginResp?.userResponse?.money.toString() ?? "0",
                 ),
                 _itemWallet(
                   context,
                   S.of(context).promoWallet,
-                  "20000",
+                   controller.loginResp?.userResponse?.money.toString() ?? "0",
                 ),
               ],
             ),
@@ -209,7 +211,11 @@ class HomeScreen extends GetView<HomeController> {
     );
   }
 
-  Widget _itemWallet(BuildContext context, String nameWallet, String money) {
+  Widget _itemWallet(
+    BuildContext context,
+    String nameWallet,
+    String money,
+  ) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,

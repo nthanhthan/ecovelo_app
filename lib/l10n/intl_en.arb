@@ -121,5 +121,8 @@
     "enterPass": "Please enter your pass",
     "correct": "Password match",
     "noResultFound": "No results found",
-    "lableSearch": "Search for EcoVelo stations"
+    "lableSearch": "Search for EcoVelo stations",
+    "enterPhone": "Please enter mobile number",
+    "validatePhone": "Please enter valid mobile number", 
+    "erEmailOrPasswordInvalid": "Your phone number or password is incorrect."
 }

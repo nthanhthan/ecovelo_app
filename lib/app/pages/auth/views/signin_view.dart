@@ -18,7 +18,10 @@ class SignInView extends GetView<SignInController> {
     controller.checkFormValidation();
   }
 
-  void _signInOnClicked() {}
+  void _signInOnClicked() {
+    controller.signIn();
+  }
+
   void _forgotPasswordOnClicked() {
     Get.offNamed(Routes.home);
   }
@@ -75,7 +78,7 @@ class SignInView extends GetView<SignInController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFormField(
-              key: const ValueKey('emailSignInField'),
+              key: const ValueKey('phoneSignInField'),
               maxLines: 1,
               textInputAction: TextInputAction.next,
               controller: controller.accountFieldController,
@@ -86,13 +89,13 @@ class SignInView extends GetView<SignInController> {
                 LowerCaseTextFormatter(),
               ],
               focusNode: controller.accountNode,
-              keyboardType: TextInputType.emailAddress,
+              keyboardType: TextInputType.phone,
               decoration: InputDecoration(
                 prefixIcon: Icon(
-                  Icons.email_outlined,
+                  Icons.phone_iphone_rounded,
                   color: AppColors.grey.shade200,
                 ),
-                hintText: S.of(context).email,
+                hintText: S.of(context).phoneNumber,
                 hintStyle: AppTextStyles.body1().copyWith(
                   color: AppColors.grey.shade300,
                   fontWeight: FontWeight.w400,

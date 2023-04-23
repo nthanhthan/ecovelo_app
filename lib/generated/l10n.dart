@@ -1279,6 +1279,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Please enter mobile number`
+  String get enterPhone {
+    return Intl.message(
+      'Please enter mobile number',
+      name: 'enterPhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter valid mobile number`
+  String get validatePhone {
+    return Intl.message(
+      'Please enter valid mobile number',
+      name: 'validatePhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your phone number or password is incorrect.`
+  String get erEmailOrPasswordInvalid {
+    return Intl.message(
+      'Your phone number or password is incorrect.',
+      name: 'erEmailOrPasswordInvalid',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

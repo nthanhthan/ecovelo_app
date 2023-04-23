@@ -31,6 +31,16 @@ class SignUpController extends GetxController {
       return S.current.invalidEmailAddress;
     }
   }
+    String? phoneValidation(String? value) {
+      String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+    RegExp regExp = RegExp(pattern);
+    if (value!.isEmpty) {
+      return S.current.enterPhone;
+    } else if (!regExp.hasMatch(value)) {
+      return S.current.validatePhone;
+    }
+    return null;
+  }
 
   String? passWordAgain(String? value) {
     if (value != null && value == password) {

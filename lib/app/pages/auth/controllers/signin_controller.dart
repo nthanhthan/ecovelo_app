@@ -7,6 +7,9 @@ class SignInController extends GetxController {
   TextEditingController passwordFieldController = TextEditingController();
   FocusNode accountNode = FocusNode();
   final _enableSignInBtn = false.obs;
+  late LoginManager _loginManager;
+
+  late final AuthHttpService _authHttpService;
 
   bool get enableSignInBtn => _enableSignInBtn.value;
 
@@ -15,13 +18,23 @@ class SignInController extends GetxController {
   String get account => accountFieldController.text.trim();
 
   String get password => passwordFieldController.text.trim();
-  
+
   String? accountValidation(String? value) {
-    if (value != null && StringExtensions(value).isEmail()) {
-      return null;
-    } else {
-      return S.current.invalidEmailAddress;
+    String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+    RegExp regExp = RegExp(pattern);
+    if (value!.isEmpty) {
+      return S.current.enterPhone;
+    } else if (!regExp.hasMatch(value)) {
+      return S.current.validatePhone;
     }
+    return null;
+  }
+
+  @override
+  void onInit() {
+    _authHttpService = Get.find<AuthHttpService>();
+    _loginManager = Get.find<LoginManager>();
+    super.onInit();
   }
 
   String? passwordValidation(String? value) {
@@ -49,6 +62,22 @@ class SignInController extends GetxController {
       enableSignInBtn = false;
     } else if (!enableSignInBtn && isFormValided) {
       enableSignInBtn = true;
+    }
+  }
+
+  Future<void> signIn() async {
+    ProcessingDialog processingDialog = ProcessingDialog.show();
+    final res =
+        await _authHttpService.login(userName: account, password: password);
+    if (res.isSuccess() && res.data != null) {
+
+    await _loginManager.initSession();
+      _loginManager.saveUser(res.data);
+      processingDialog.hide();
+      Get.offNamed(Routes.home);
+    } else {
+      processingDialog.hide();
+      SnackBars.error(message: S.current.erEmailOrPasswordInvalid).show();
     }
   }
 }
