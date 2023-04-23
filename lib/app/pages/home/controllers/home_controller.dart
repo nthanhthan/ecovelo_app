@@ -7,6 +7,9 @@ class HomeController extends GetxController
   set currentTab(int value) => _currentTab.value = value;
   int get currentTab => _currentTab.value;
   final PageStorageBucket bucket = PageStorageBucket();
+  late LoginManager _loginManager;
+
+  LoginResp? loginResp;
 
   List<Widget> screen = [
     const HomeScreen(),
@@ -26,7 +29,8 @@ class HomeController extends GetxController
   @override
   void onInit() {
     WidgetsBinding.instance.addObserver(this);
-
+    _loginManager = Get.find<LoginManager>();
+    loginResp = _loginManager.getUser();
     if (Get.arguments != null && Get.arguments is String) {
       bikeID = Get.arguments as String;
     }

@@ -2,6 +2,5 @@
 class AppApi {
   static const String apiVer = "";
   //static resources
-  static const String chatGPTAnswer = "$apiVer/chat-gpt/conversation";
-  static const String configPackage = "$apiVer/chat-gpt/products";
+  static const String login="$apiVer/auth/login";
 }

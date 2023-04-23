@@ -64,6 +64,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter Money Amount"),
         "enterPass":
             MessageLookupByLibrary.simpleMessage("Please enter your pass"),
+        "enterPhone":
+            MessageLookupByLibrary.simpleMessage("Please enter mobile number"),
+        "erEmailOrPasswordInvalid": MessageLookupByLibrary.simpleMessage(
+            "Your phone number or password is incorrect."),
         "fileAlreadyExists":
             MessageLookupByLibrary.simpleMessage("File already exists!"),
         "fileTooLarge": MessageLookupByLibrary.simpleMessage(
@@ -191,6 +195,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "uploadFile": MessageLookupByLibrary.simpleMessage("Upload File"),
         "uploadImage":
             MessageLookupByLibrary.simpleMessage("Upload Image or Video"),
+        "validatePhone": MessageLookupByLibrary.simpleMessage(
+            "Please enter valid mobile number"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("VietNamese"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome!"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes"),
