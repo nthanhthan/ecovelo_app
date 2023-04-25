@@ -10,6 +10,7 @@ class MapController extends GetxController {
   BitmapDescriptor? markerRed;
   Set<Marker> myMarkers = {};
   StationModel? _currentStation;
+  late StationHttpService _stationHttpService;
 
   TextEditingController stationTextController = TextEditingController();
   FocusNode searchNode = FocusNode();
@@ -42,10 +43,15 @@ class MapController extends GetxController {
   set stationAddress(String value) => _stationAddress.value = value;
   String? get getStationAddress => _stationAddress.value;
 
+  late List<StationModel> listStation;
+
   // ignore: prefer_collection_literals
 
   @override
-  void onInit() {
+  Future<void> onInit() async {
+    _stationHttpService = Get.find<StationHttpService>();
+    final result = await _stationHttpService.getListStation();
+    listStation = result.data ?? [];
     customMarker().then((value) {
       _getCurrentLocation().then((value) {
         setMarker();
@@ -80,7 +86,7 @@ class MapController extends GetxController {
   }
 
   void setMarker() {
-    for (StationModel value in DefaultValues.listStation) {
+    for (StationModel value in listStation) {
       final markerStation = Marker(
           markerId: MarkerId(value.stationId.toString()),
           position: LatLng(value.lat ?? 0, value.lng ?? 0),
@@ -194,7 +200,7 @@ class MapController extends GetxController {
 
   Future<List<StationModel>> loadListStation(String key) async {
     if (key.isNotEmpty && ((key.trim().isEmpty) || _keyStation == key.trim())) {
-      return DefaultValues.listStation;
+      return listStation;
     }
 
     // facilities.clear();
@@ -214,7 +220,7 @@ class MapController extends GetxController {
     // //if (facilities.isEmpty) {
     //SnackBars.error(message: S.current.noResultFound).show(duration: 2000);
     //}
-    return DefaultValues.listStation;
+    return listStation;
   }
 
   void chooseStation(StationModel station) {}

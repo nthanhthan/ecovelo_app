@@ -8,6 +8,7 @@ class MainController extends GetxController {
   static MainController get to => Get.find();
 
   late LoginManager _loginManager;
+  late final SessionManager _sessionM;
 
   LoginResp? loginResp;
   @override
@@ -26,6 +27,8 @@ class MainController extends GetxController {
   Future<void> appInitializer() async {
     await Prefs.load();
     DioClient.clearInterceptors(DioClient.currentDio());
+
+    _sessionM = Get.find<SessionManager>();
 
     // DioClient.setInterceptorRetry(DioClient.currentDio());
     if (BuildConfig().isDebug) {
@@ -49,6 +52,7 @@ class MainController extends GetxController {
     //Init Hive
     await HiveManager.init();
     await _loginManager.initSession();
+
     //Set Language
     String lang = Prefs.getString(AppKeys.languageKey, defaultValue: "en_US");
     await MyApp.of(Get.context!)?.changeLanguage(lang);
@@ -67,10 +71,8 @@ class MainController extends GetxController {
 
   Future<void> checkFistLaunch() async {
     if (loginResp != null) {
-      DateTime expried =
-          DateTime.fromMillisecondsSinceEpoch(loginResp?.expired ?? 0);
-      bool isBefore = expried.isAfter(DateTime.now());
-      if (isBefore) {
+      bool isAuthenticated = await _isAuthenticated();
+      if (isAuthenticated) {
         Get.offNamed(Routes.home);
       } else {
         Get.offNamed(Routes.signin);
@@ -83,6 +85,15 @@ class MainController extends GetxController {
         await Prefs.saveBool(AppKeys.firstLaunch, true);
         Get.offNamed<void>(Routes.onBoarding);
       }
+    }
+  }
+
+  Future<bool> _isAuthenticated() async {
+    if (_sessionM.hasSession()) {
+      await _sessionM.initSession(_sessionM.session!);
+      return true;
+    } else {
+      return false;
     }
   }
 }

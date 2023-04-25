@@ -17,9 +17,9 @@ class LoginRespAdapter extends TypeAdapter<LoginResp> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return LoginResp(
-      token: fields[0] as String?,
-      refreshToken: fields[1] as String?,
-      expired: fields[2] as int?,
+      accessToken: fields[0] as String,
+      refreshToken: fields[1] as String,
+      expired: fields[2] as int,
       userResponse: fields[3] as UserModel?,
     );
   }
@@ -29,7 +29,7 @@ class LoginRespAdapter extends TypeAdapter<LoginResp> {
     writer
       ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.token)
+      ..write(obj.accessToken)
       ..writeByte(1)
       ..write(obj.refreshToken)
       ..writeByte(2)
@@ -54,16 +54,16 @@ class LoginRespAdapter extends TypeAdapter<LoginResp> {
 // **************************************************************************
 
 LoginResp _$LoginRespFromJson(Map<String, dynamic> json) => LoginResp(
-      token: json['token'] as String?,
-      refreshToken: json['refreshToken'] as String?,
-      expired: json['expired'] as int?,
+      accessToken: json['accessToken'] as String,
+      refreshToken: json['refreshToken'] as String,
+      expired: json['expired'] as int,
       userResponse: json['userResponse'] == null
           ? null
           : UserModel.fromJson(json['userResponse'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$LoginRespToJson(LoginResp instance) => <String, dynamic>{
-      'token': instance.token,
+      'accessToken': instance.accessToken,
       'refreshToken': instance.refreshToken,
       'expired': instance.expired,
       'userResponse': instance.userResponse,

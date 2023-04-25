@@ -24,8 +24,11 @@ class SignInView extends GetView<SignInController> {
 
   void _forgotPasswordOnClicked() {}
 
-  void _signupOnClicked() {
-    Get.toNamed(Routes.register);
+  Future<void> _signupOnClicked() async {
+    var result = await Get.toNamed(Routes.register);
+    if (result != null && result == true) {
+      SnackBars.complete(message: S.current.signupsucess).show();
+    }
   }
 
   Widget _buildBody(BuildContext context) {

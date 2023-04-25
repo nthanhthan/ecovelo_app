@@ -111,7 +111,7 @@ class SignUpController extends GetxController {
       emailController.clear();
       passwordFieldController.clear();
       passWordAgainController.clear();
-      Get.back();
+      Get.back(result: true);
     } else {
       processingDialog.hide();
       SnackBars.error(message: S.current.erEmailOrPasswordInvalid).show();
