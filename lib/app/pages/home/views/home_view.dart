@@ -35,7 +35,7 @@ class HomeView extends GetView<HomeController> {
           child: Container(
             margin: const EdgeInsets.symmetric(
               horizontal: 10,
-              vertical: 5,
+             vertical: 5,
             ),
             decoration: BoxDecoration(
                 color: AppColors.main.shade200,

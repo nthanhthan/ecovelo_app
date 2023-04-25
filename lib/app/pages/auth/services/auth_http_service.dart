@@ -100,21 +100,14 @@ class AuthHttpService extends BaseApiClient {
   //   );
   // }
 
-  // Future<BaseResp<RegisterResp>> signUp({required String inviteToken, required String password}) async {
-  //   return request<RegisterResp>(
-  //     Method.post,
-  //     AppApi.signup,
-  //     data: {
-  //       "token": inviteToken,
-  //       "password": password,
-  //     },
-  //     onDeserialize: (dynamic jsonValue) {
-  //       if (jsonValue is Map) {
-  //         return RegisterResp.fromJson(jsonValue as Map<String, dynamic>);
-  //       } else {
-  //         return null;
-  //       }
-  //     },
-  //   );
-  // }
+  Future<BaseResp<dynamic>> signUp(SignUpReq signUpReq) async {
+    return request<dynamic>(
+      Method.post,
+      AppApi.signUp,
+      data: signUpReq.toJson(),
+      onDeserialize: (dynamic jsonValue) {
+        return jsonValue;
+      },
+    );
+  }
 }

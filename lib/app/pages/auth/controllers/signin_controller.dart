@@ -6,7 +6,7 @@ class SignInController extends GetxController {
   TextEditingController accountFieldController = TextEditingController();
   TextEditingController passwordFieldController = TextEditingController();
   FocusNode accountNode = FocusNode();
-  final _enableSignInBtn = false.obs;
+  final RxBool _enableSignInBtn = false.obs;
   late LoginManager _loginManager;
 
   late final AuthHttpService _authHttpService;
@@ -34,6 +34,9 @@ class SignInController extends GetxController {
   void onInit() {
     _authHttpService = Get.find<AuthHttpService>();
     _loginManager = Get.find<LoginManager>();
+    accountNode.addListener(() {
+      accountFieldController.text = accountFieldController.text.trim();
+    });
     super.onInit();
   }
 
@@ -58,10 +61,10 @@ class SignInController extends GetxController {
   }
 
   void checkFormValidation() {
-    if (enableSignInBtn && !isFormValided) {
-      enableSignInBtn = false;
-    } else if (!enableSignInBtn && isFormValided) {
+    if (isFormValided) {
       enableSignInBtn = true;
+    } else {
+      enableSignInBtn = false;
     }
   }
 
@@ -70,13 +73,12 @@ class SignInController extends GetxController {
     final res =
         await _authHttpService.login(userName: account, password: password);
     if (res.isSuccess() && res.data != null) {
-
-    await _loginManager.initSession();
       _loginManager.saveUser(res.data);
       processingDialog.hide();
       Get.offNamed(Routes.home);
     } else {
       processingDialog.hide();
+      accountNode.requestFocus();
       SnackBars.error(message: S.current.erEmailOrPasswordInvalid).show();
     }
   }
