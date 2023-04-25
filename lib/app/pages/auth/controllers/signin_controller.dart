@@ -9,6 +9,8 @@ class SignInController extends GetxController {
   final RxBool _enableSignInBtn = false.obs;
   late LoginManager _loginManager;
 
+  late final SessionManager _sessionManager;
+
   late final AuthHttpService _authHttpService;
 
   bool get enableSignInBtn => _enableSignInBtn.value;
@@ -34,6 +36,7 @@ class SignInController extends GetxController {
   void onInit() {
     _authHttpService = Get.find<AuthHttpService>();
     _loginManager = Get.find<LoginManager>();
+    _sessionManager = Get.find<SessionManager>();
     accountNode.addListener(() {
       accountFieldController.text = accountFieldController.text.trim();
     });
@@ -74,6 +77,7 @@ class SignInController extends GetxController {
         await _authHttpService.login(userName: account, password: password);
     if (res.isSuccess() && res.data != null) {
       _loginManager.saveUser(res.data);
+      await _sessionManager.initSession(res.data);
       processingDialog.hide();
       Get.offNamed(Routes.home);
     } else {

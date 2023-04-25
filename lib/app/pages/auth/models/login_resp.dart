@@ -6,17 +6,17 @@ part 'login_resp.g.dart';
 @HiveType(typeId: ModelTypeDefine.login)
 class LoginResp {
   LoginResp({
-    this.token,
-    this.refreshToken,
-    this.expired,
+    required this.accessToken,
+    required this.refreshToken,
+    required this.expired,
     this.userResponse,
   });
   @HiveField(0)
-  String? token;
+  String accessToken;
   @HiveField(1)
-  String? refreshToken;
+  String refreshToken;
   @HiveField(2)
-  int? expired;
+  int expired;
   @HiveField(3)
   UserModel? userResponse;
   factory LoginResp.fromJson(Map<String, dynamic> json) =>

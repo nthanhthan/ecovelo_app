@@ -167,6 +167,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "shareJourney": MessageLookupByLibrary.simpleMessage("Share journey"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "signupsucess": MessageLookupByLibrary.simpleMessage(
+            "Successful registration, login to continue."),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "stationNumber": m2,
         "storageAccessDenied": MessageLookupByLibrary.simpleMessage(

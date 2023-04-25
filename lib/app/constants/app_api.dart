@@ -2,6 +2,9 @@
 class AppApi {
   static const String apiVer = "";
   //static resources
+  //auth
   static const String login="$apiVer/auth/login";
   static const String signUp="$apiVer/auth/register";
+  //station
+  static const String getListStation="$apiVer/station/getStation";
 }
