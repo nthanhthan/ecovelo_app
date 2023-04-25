@@ -1,4 +1,5 @@
 import 'package:ecoveloapp/app/core.dart';
+
 class LoginManager {
   LoginCacheService loginCacheService;
 
@@ -24,5 +25,9 @@ class LoginManager {
         return newValueReadOnly;
       },
     );
+  }
+
+  Future<void> deleteUser() async {
+    await loginCacheService.repo.deleteKeys([AppKeys.loginKey]);
   }
 }

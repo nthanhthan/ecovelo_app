@@ -22,7 +22,7 @@ class SettingView extends GetView<SettingController> {
   void _helpCenterClick() {}
   void _aboutClick() {}
   void _logoutClick() {
-    Get.offAllNamed(Routes.signin);
+    controller.logoutUser();
   }
 
   Widget _buildBody(BuildContext context) {

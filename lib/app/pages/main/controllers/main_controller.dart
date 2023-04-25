@@ -6,9 +6,14 @@ import '../../../core.dart';
 
 class MainController extends GetxController {
   static MainController get to => Get.find();
+
+  late LoginManager _loginManager;
+
+  LoginResp? loginResp;
   @override
   void onInit() {
-   appInitializer();
+    _loginManager = Get.find<LoginManager>();
+    appInitializer();
     super.onInit();
   }
 
@@ -43,6 +48,7 @@ class MainController extends GetxController {
     );
     //Init Hive
     await HiveManager.init();
+    await _loginManager.initSession();
     //Set Language
     String lang = Prefs.getString(AppKeys.languageKey, defaultValue: "en_US");
     await MyApp.of(Get.context!)?.changeLanguage(lang);
@@ -51,11 +57,32 @@ class MainController extends GetxController {
 
     await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
+    loginResp = _loginManager.getUser();
 
     //Delay for show Splash screen
     await Future.delayed(const Duration(seconds: 2), () {
-
-      Get.offNamed<void>(Routes.onBoarding);
+      checkFistLaunch();
     });
+  }
+
+  Future<void> checkFistLaunch() async {
+    if (loginResp != null) {
+      DateTime expried =
+          DateTime.fromMillisecondsSinceEpoch(loginResp?.expired ?? 0);
+      bool isBefore = expried.isAfter(DateTime.now());
+      if (isBefore) {
+        Get.offNamed(Routes.home);
+      } else {
+        Get.offNamed(Routes.signin);
+      }
+    } else {
+      bool isNotFirstLaunch = Prefs.getBool(AppKeys.firstLaunch);
+      if (isNotFirstLaunch) {
+        Get.offNamed(Routes.signin);
+      } else {
+        await Prefs.saveBool(AppKeys.firstLaunch, true);
+        Get.offNamed<void>(Routes.onBoarding);
+      }
+    }
   }
 }

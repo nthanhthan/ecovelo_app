@@ -21,8 +21,11 @@ class SettingController extends GetxController {
   // ignore: invalid_use_of_protected_membera, invalid_use_of_protected_member
   List<LanguageModel> get languageSupported => _languageSupported.value;
 
+  late LoginManager _loginManager;
+
   @override
   void onInit() {
+    _loginManager = Get.find<LoginManager>();
     initLanguageSupported();
     String langCode = Prefs.getString(AppKeys.languageKey);
     _languageSelected = (languageSupported.firstWhereOrNull(
@@ -61,5 +64,14 @@ class SettingController extends GetxController {
   Future<void> selectLanguage(LanguageModel language) async {
     confirmed = !confirmed;
     await Prefs.saveString(AppKeys.languageKey, language.languageCode);
+  }
+
+  void logoutUser() {
+    ProcessingDialog processingDialog = ProcessingDialog.show();
+    _loginManager.deleteUser().then((value) {
+      processingDialog.hide();
+      Get.offAllNamed(Routes.signin);
+    });
+    processingDialog.hide();
   }
 }

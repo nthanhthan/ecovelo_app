@@ -3,4 +3,5 @@ class AppApi {
   static const String apiVer = "";
   //static resources
   static const String login="$apiVer/auth/login";
+  static const String signUp="$apiVer/auth/register";
 }

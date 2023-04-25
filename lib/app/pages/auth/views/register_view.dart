@@ -22,7 +22,7 @@ class RegisterView extends GetView<SignUpController> {
   }
 
   void _signupOnClicked() {
-    Get.offAllNamed(Routes.signin);
+    controller.signUpClick();
   }
 
   Widget _buildBody(BuildContext context) {
@@ -67,6 +67,7 @@ class RegisterView extends GetView<SignUpController> {
   Widget _buildLoginView(BuildContext context) {
     return Form(
       onChanged: _formOnChange,
+      key: controller.signUpFormGlobalKey,
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
@@ -112,6 +113,7 @@ class RegisterView extends GetView<SignUpController> {
               controller: controller.nameFieldController,
               keyboardType: TextInputType.text,
               cursorColor: AppColors.main,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.personal_injury_outlined,
@@ -169,35 +171,39 @@ class RegisterView extends GetView<SignUpController> {
             ),
             const SizedBox(height: 15),
             TextFormField(
-              maxLines: 1,
-              obscureText: true,
-              controller: controller.passwordFieldController,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              cursorColor: AppColors.main,
-              textInputAction: TextInputAction.next,
-              decoration: InputDecoration(
-                prefixIcon: Icon(
-                  Icons.lock_open_outlined,
-                  color: AppColors.grey.shade200,
-                ),
-                hintText: S.of(context).password,
-                hintStyle: AppTextStyles.body1().copyWith(
-                  color: AppColors.grey.shade300,
-                  fontWeight: FontWeight.w400,
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                  borderSide: BorderSide(
-                    width: 1,
-                    color: AppColors.grey.shade300,
+                maxLines: 1,
+                obscureText: true,
+                controller: controller.passwordFieldController,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                cursorColor: AppColors.main,
+                textInputAction: TextInputAction.next,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.lock_open_outlined,
+                    color: AppColors.grey.shade200,
                   ),
+                  hintText: S.of(context).password,
+                  hintStyle: AppTextStyles.body1().copyWith(
+                    color: AppColors.grey.shade300,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                    borderSide: BorderSide(
+                      width: 1,
+                      color: AppColors.grey.shade300,
+                    ),
+                  ),
+                  filled: true,
+                  fillColor: AppColors.grey.shade600,
+                  errorMaxLines: 3,
                 ),
-                filled: true,
-                fillColor: AppColors.grey.shade600,
-                errorMaxLines: 3,
-              ),
-              validator: controller.passwordValidation,
-            ),
+                validator: (text) {
+                  return controller.passwordValidation(
+                    text?.trim(),
+                  );
+                
+                }),
             const SizedBox(height: 15),
             TextFormField(
               maxLines: 1,
@@ -233,35 +239,33 @@ class RegisterView extends GetView<SignUpController> {
             ),
             const SizedBox(height: 30),
             Obx(
-              () {
-                return ElevatedButton(
-                  style: controller.enableSignUpBtn
-                      ? FilledBtnStyle.enable(
-                          sizeType: SizeButtonType.custom,
-                          customPadding:
-                              const EdgeInsets.symmetric(vertical: 15),
-                          isFullWidth: true,
-                          borderRadius: 16,
-                        )
-                      : FilledBtnStyle.disable(
-                          sizeType: SizeButtonType.custom,
-                          customPadding:
-                              const EdgeInsets.symmetric(vertical: 15),
-                          isFullWidth: true,
-                          borderRadius: 16,
-                        ),
-                  onPressed: controller.enableSignUpBtn == true
-                      ? _signupOnClicked
-                      : null,
-                  child: Text(
-                    S.of(context).signUp,
-                    style: AppTextStyles.body1().copyWith(
-                      color: AppColors.main.shade400,
-                      fontWeight: FontWeight.w500,
-                    ),
+              () => ElevatedButton(
+                style: controller.enableSignUpBtn
+                    ? FilledBtnStyle.enable(
+                        sizeType: SizeButtonType.custom,
+                        customPadding: const EdgeInsets.symmetric(vertical: 15),
+                        isFullWidth: true,
+                        borderRadius: 16,
+                      )
+                    : FilledBtnStyle.disable(
+                        sizeType: SizeButtonType.custom,
+                        borderRadius: 16,
+                        isFullWidth: true,
+                        customPadding: const EdgeInsets.symmetric(vertical: 15),
+                      ),
+                onPressed: () {
+                  controller.enableSignUpBtn == true
+                      ? _signupOnClicked()
+                      : null;
+                },
+                child: Text(
+                  S.of(context).signUp,
+                  style: AppTextStyles.body1().copyWith(
+                    color: AppColors.main.shade400,
+                    fontWeight: FontWeight.w500,
                   ),
-                );
-              },
+                ),
+              ),
             ),
             const SizedBox(height: 30),
             Align(

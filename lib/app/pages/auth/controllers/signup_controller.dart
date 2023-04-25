@@ -2,6 +2,7 @@ import 'package:ecoveloapp/app/core.dart';
 import 'package:flutter/material.dart';
 
 class SignUpController extends GetxController {
+  final signUpFormGlobalKey = GlobalKey<FormState>();
   TextEditingController phoneNumberFieldController = TextEditingController();
   TextEditingController nameFieldController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -10,6 +11,7 @@ class SignUpController extends GetxController {
   FocusNode phoneNode = FocusNode();
 
   final RxBool _enableSignUpBtn = false.obs;
+
   set enableSignUpBtn(bool value) => _enableSignUpBtn.value = value;
 
   bool get enableSignUpBtn => _enableSignUpBtn.value;
@@ -17,12 +19,22 @@ class SignUpController extends GetxController {
   String get phoneNumber => phoneNumberFieldController.text.trim();
 
   String get password => passwordFieldController.text.trim();
+  String get passwordAgain => passWordAgainController.text.trim();
 
   String get name => nameFieldController.text.trim();
 
   String get email => emailController.text.trim();
 
-  bool _passMatch = false;
+  late final AuthHttpService _authHttpService;
+
+  @override
+  void onInit() {
+    _authHttpService = Get.find<AuthHttpService>();
+    phoneNode.addListener(() {
+      phoneNumberFieldController.text = phoneNumberFieldController.text.trim();
+    });
+    super.onInit();
+  }
 
   String? accountValidation(String? value) {
     if (value != null && StringExtensions(value).isEmail()) {
@@ -31,8 +43,9 @@ class SignUpController extends GetxController {
       return S.current.invalidEmailAddress;
     }
   }
-    String? phoneValidation(String? value) {
-      String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+
+  String? phoneValidation(String? value) {
+    String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
     RegExp regExp = RegExp(pattern);
     if (value!.isEmpty) {
       return S.current.enterPhone;
@@ -44,10 +57,8 @@ class SignUpController extends GetxController {
 
   String? passWordAgain(String? value) {
     if (value != null && value == password) {
-      _passMatch = true;
       return null;
     } else {
-      _passMatch = false;
       return S.current.noMatchPass;
     }
   }
@@ -69,22 +80,41 @@ class SignUpController extends GetxController {
         password.isEmpty ||
         name.isEmpty ||
         email.isEmpty ||
-        _passMatch == false) {
+        passwordAgain.isEmpty) {
       return false;
     } else {
-      return true;
+      return signUpFormGlobalKey.currentState?.validate() ?? false;
     }
   }
 
   void checkFormValidation() {
-    if (phoneNumber.isEmpty ||
-        password.isEmpty ||
-        name.isEmpty ||
-        email.isEmpty ||
-        _passMatch == false) {
-      enableSignUpBtn = false;
-    } else {
+    if (isFormValided) {
       enableSignUpBtn = true;
+    } else {
+      enableSignUpBtn = false;
+    }
+  }
+
+  Future<void> signUpClick() async {
+    SignUpReq signUpReq = SignUpReq(
+      phoneNumber: phoneNumber,
+      email: email,
+      nameUser: name,
+      password: password,
+    );
+    ProcessingDialog processingDialog = ProcessingDialog.show();
+    final res = await _authHttpService.signUp(signUpReq);
+    if (res.isSuccess() && res.data != null) {
+      processingDialog.hide();
+      phoneNumberFieldController.clear();
+      nameFieldController.clear();
+      emailController.clear();
+      passwordFieldController.clear();
+      passWordAgainController.clear();
+      Get.back();
+    } else {
+      processingDialog.hide();
+      SnackBars.error(message: S.current.erEmailOrPasswordInvalid).show();
     }
   }
 }
