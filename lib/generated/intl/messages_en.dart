@@ -68,6 +68,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter mobile number"),
         "erEmailOrPasswordInvalid": MessageLookupByLibrary.simpleMessage(
             "Your phone number or password is incorrect."),
+        "errorQR": MessageLookupByLibrary.simpleMessage(
+            "QR Code is incorrect, please try again"),
         "fileAlreadyExists":
             MessageLookupByLibrary.simpleMessage("File already exists!"),
         "fileTooLarge": MessageLookupByLibrary.simpleMessage(

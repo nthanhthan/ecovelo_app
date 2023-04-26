@@ -1319,6 +1319,16 @@ class S {
       args: [],
     );
   }
+
+  /// `QR Code is incorrect, please try again`
+  String get errorQR {
+    return Intl.message(
+      'QR Code is incorrect, please try again',
+      name: 'errorQR',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

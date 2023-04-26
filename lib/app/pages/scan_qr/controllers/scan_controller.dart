@@ -12,35 +12,51 @@ class ScanController extends GetxController {
   String _qrCodeScanned = "";
   bool isShowingAskPermission = false;
 
-  final _isCameraBack = false.obs;
-  bool get isCameraBack => _isCameraBack.value;
-  set isCameraBack(bool value) => _isCameraBack.value = value;
-
   final _isEnableFlash = false.obs;
   bool get isEnableFlash => _isEnableFlash.value;
   set isEnableFlash(bool value) => _isEnableFlash.value = value;
 
+  late ScanHttpService _scanHttpService;
+
+  @override
+  void onInit() {
+    _scanHttpService = Get.find<ScanHttpService>();
+    super.onInit();
+  }
+
   void setQrCodeScan(QRViewController cont) {
     qrController = cont;
     qrController?.scannedDataStream.listen((scanData) async {
-      if (scanData.code != null && _qrCodeScanned != scanData.code) {
-        _qrCodeScanned = scanData.code ?? "";
+      if (scanData.code != null && scanData.code != _qrCodeScanned) {
         await qrController?.pauseCamera();
-        //code
-        Get.offNamed(
-          Routes.rentBicycle,
-          arguments: _qrCodeScanned,
-        );
+        final result = await _scanHttpService.checkQR(scanData.code!);
+        if (result.isSuccess() && result.data != null) {
+          if (result.data == true) {
+            Get.offNamed(
+              Routes.rentBicycle,
+              arguments: scanData.code,
+            );
+          } else {
+            SnackBars.error(message: S.current.errorQR).show();
+            resetScan();
+          }
+        } else {
+          SnackBars.error(message: S.current.errorQR).show();
+          resetScan();
+        }
+        _qrCodeScanned = "";
       }
     });
 
     Future.delayed(const Duration(milliseconds: 300), () {
-      qrController?.getCameraInfo().then((value) {
-        isCameraBack = (value == CameraFacing.back);
-      });
       qrController?.getFlashStatus().then((value) {
         isEnableFlash = (value ?? false);
       });
     });
+  }
+
+  Future<void> resetScan() async {
+    await Future.delayed(const Duration(seconds: 2));
+    qrController?.resumeCamera();
   }
 }
