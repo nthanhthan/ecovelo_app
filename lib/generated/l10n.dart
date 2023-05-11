@@ -1329,6 +1329,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Vehicle is in use, please change to another vehicle`
+  String get bicycleRented {
+    return Intl.message(
+      'Vehicle is in use, please change to another vehicle',
+      name: 'bicycleRented',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

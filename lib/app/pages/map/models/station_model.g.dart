@@ -7,7 +7,7 @@ part of 'station_model.dart';
 // **************************************************************************
 
 StationModel _$StationModelFromJson(Map<String, dynamic> json) => StationModel(
-      stationId: json['stationId'] as int?,
+      id: json['id'] as int?,
       address: json['address'] as String?,
       lat: (json['lat'] as num?)?.toDouble(),
       lng: (json['lng'] as num?)?.toDouble(),
@@ -16,7 +16,7 @@ StationModel _$StationModelFromJson(Map<String, dynamic> json) => StationModel(
 
 Map<String, dynamic> _$StationModelToJson(StationModel instance) =>
     <String, dynamic>{
-      'stationId': instance.stationId,
+      'id': instance.id,
       'address': instance.address,
       'lat': instance.lat,
       'lng': instance.lng,

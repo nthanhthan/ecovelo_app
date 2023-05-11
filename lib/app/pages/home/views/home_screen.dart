@@ -31,8 +31,13 @@ class HomeScreen extends GetView<HomeController> {
     Get.toNamed(Routes.journey);
   }
 
-  void _finishRideClick() {
-    Get.offNamed(Routes.feedback);
+  Future<void> _finishRideClick() async {
+   bool check= await  controller.stopRentBicycle();
+   if(check){
+     Get.offAllNamed(Routes.feedback);
+   }else{
+
+   }
   }
 
   Widget _buildBody(BuildContext context) {
@@ -466,16 +471,20 @@ class HomeScreen extends GetView<HomeController> {
       ),
       child: Row(
         children: [
-          Icon(
-            Icons.schedule,
-            color: AppColors.main.shade400,
+          Expanded(
+            child: Icon(
+              Icons.schedule,
+              color: AppColors.main.shade400,
+            ),
           ),
           const SizedBox(width: 8),
-          Text(
-            "29:56",
-            style: AppTextStyles.tiny().copyWith(
-              color: AppColors.main.shade400,
-              fontWeight: FontWeight.w500,
+          Obx(
+            () => Text(
+              controller.caculateTimer(),
+              style: AppTextStyles.tiny().copyWith(
+                color: AppColors.main.shade400,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
         ],

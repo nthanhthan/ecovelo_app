@@ -32,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "addMoney": MessageLookupByLibrary.simpleMessage("Add money"),
         "appName": MessageLookupByLibrary.simpleMessage("ECOVELO"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "bicycleRented": MessageLookupByLibrary.simpleMessage(
+            "Vehicle is in use, please change to another vehicle"),
         "bikeNumber": MessageLookupByLibrary.simpleMessage("Bike Number"),
         "bikeVandalized":
             MessageLookupByLibrary.simpleMessage("Bike vandalized"),

@@ -9,18 +9,35 @@ class RentBicycleController extends GetxController {
   set isStart(bool value) => _isStart.value = value;
   bool get isStart => _isStart.value;
 
+  late final RentHttpService _rentHttpService;
+
   void changeWallet() {
     isMainWallet = !isMainWallet;
   }
 
-
-
   String bikeID = "";
   @override
   void onInit() {
+    _rentHttpService = Get.find<RentHttpService>();
     if (Get.arguments != null && Get.arguments is String) {
       bikeID = Get.arguments as String;
     }
     super.onInit();
+  }
+
+  Future<bool> startRentBicycle() async {
+    ProcessingDialog processingDialog = ProcessingDialog.show();
+    final result = await _rentHttpService.rentBicycle(bikeID);
+    if (result.isSuccess() && result.data != null) {
+      processingDialog.hide();
+      if (result.data == -1) {
+        return false;
+      }
+      Prefs.saveInt(AppKeys.rentID, result.data!);
+      return true;
+    }
+
+    processingDialog.hide();
+    return false;
   }
 }

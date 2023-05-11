@@ -7,6 +7,7 @@ class MainBinding extends Bindings {
     SessionStore ssStore = Get.put<SessionStore>(SessionStore());
     AuthHttpService authHttp = Get.put<AuthHttpService>(AuthHttpService());
     var sessionM = SessionManager(store: ssStore, authService: authHttp);
+    Get.put<RentHttpService>(RentHttpService());
     Get.put<SessionManager>(sessionM);
     Get.put(LoginManager(loginCacheService: loginCatchService));
     Get.put<AuthHttpService>(AuthHttpService());

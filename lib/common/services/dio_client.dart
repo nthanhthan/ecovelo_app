@@ -131,12 +131,8 @@ class DioClient {
     dio.interceptors.clear();
   }
 
-  static void setInterceptorRefreshToken({
-    required Dio dio,
-    required Future<RefreshTokenRes<String>> Function() refreshToken,
-    void Function()? cancelRefeshHandle,
-    void Function()? failRefeshHandle,
-  }) {
+  static void setInterceptorsRefreshToken(Dio dio, Future<String> Function() refreshToken) {
+    dio.interceptors.clear();
     dio.interceptors.add(
       InterceptorsWrapper(
         onError: (DioError error, handler) async {
@@ -144,50 +140,40 @@ class DioClient {
           if (error.response?.statusCode == 401) {
             // // update token and repeat
             // // Lock to block the incoming request until the token updated
-            //dio.lock();
+            dio.lock();
             dio.interceptors.requestLock.lock();
             dio.interceptors.responseLock.lock();
             dio.interceptors.errorLock.lock();
             RequestOptions requestOptions = error.response!.requestOptions;
-            RefreshTokenRes<String> refreshTokenRes = await refreshToken();
-            switch (refreshTokenRes.status) {
-              case RefreshTokenStatus.success:
-                var options = Options(
-                  method: requestOptions.method,
-                  headers: requestOptions.headers,
-                  sendTimeout: requestOptions.sendTimeout,
-                  receiveTimeout: requestOptions.receiveTimeout,
+            try {
+              String newToken = await refreshToken();
+
+              var options = Options(
+                method: requestOptions.method,
+                headers: requestOptions.headers,
+                sendTimeout: requestOptions.sendTimeout,
+                receiveTimeout: requestOptions.receiveTimeout,
+              );
+              if (!ObjectUtil.isEmptyString(newToken)) {
+                options.headers!["Authorization"] = "Bearer $newToken";
+              }
+              dio.unlock();
+              dio.interceptors.requestLock.unlock();
+              dio.interceptors.responseLock.unlock();
+              dio.interceptors.errorLock.unlock();
+              try {
+                final res = await dio.request<dynamic>(
+                  requestOptions.path,
+                  data: requestOptions.data,
+                  queryParameters: requestOptions.queryParameters,
+                  options: options,
                 );
-                if (refreshTokenRes.data != null &&
-                    refreshTokenRes.data!.isNotEmpty) {
-                  refreshTokenRes.authorizationHeader
-                      ?.forEach((key, dynamic value) {
-                    options.headers![key] = value;
-                  });
-                }
-                _unLockInterceptors(dio);
-                try {
-                  final res = await dio.request<dynamic>(
-                    requestOptions.path,
-                    data: requestOptions.data,
-                    queryParameters: requestOptions.queryParameters,
-                    options: options,
-                  );
-                  handler.resolve(res);
-                } on DioError catch (error) {
-                  handler.next(error); // or handler.reject(error);
-                }
-                break;
-              case RefreshTokenStatus.failed:
-                _unLockInterceptors(dio);
-                handler.reject(error);
-                failRefeshHandle?.call();
-                break;
-              case RefreshTokenStatus.cancel:
-                _unLockInterceptors(dio);
-                handler.reject(error);
-                cancelRefeshHandle?.call();
-                break;
+                handler.resolve(res);
+              } on DioError catch (error) {
+                handler.next(error); // or handler.reject(error);
+              }
+            } catch (e, st) {
+              LogUtil.e("Error: " + e.toString() + ":" + st.toString());
             }
           } else {
             handler.reject(error);
@@ -197,12 +183,6 @@ class DioClient {
     );
   }
 
-  static void _unLockInterceptors(Dio dio) {
-    //dio.unlock();
-    dio.interceptors.requestLock.unlock();
-    dio.interceptors.responseLock.unlock();
-    dio.interceptors.errorLock.unlock();
-  }
 
   static void setInterceptorRetry(
     Dio dio, {

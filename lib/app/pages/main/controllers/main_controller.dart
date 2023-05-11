@@ -89,7 +89,8 @@ class MainController extends GetxController {
   }
 
   Future<bool> _isAuthenticated() async {
-    if (_sessionM.hasSession()) {
+    bool checkSession = await _sessionM.hasSession();
+    if (checkSession) {
       await _sessionM.initSession(_sessionM.session!);
       return true;
     } else {

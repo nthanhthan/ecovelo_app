@@ -40,7 +40,7 @@ class JourneyDetailView extends GetView<JourneyDetailConroller> {
       bottomNavigationBar: SafeArea(
         child: InkWell(
           onTap: () {
-            _showBottomSheet(context);
+            _showBottomSheet(context);  
           },
           child: Container(
             height: 50,

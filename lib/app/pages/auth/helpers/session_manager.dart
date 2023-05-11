@@ -16,10 +16,10 @@ class SessionManager {
         "Authorization": "Bearer ${session.accessToken}",
       },
     );
-    // DioClient.setInterceptorsRefreshToken(DioClient.currentDio(), () async {
-    //   var result = await renewSession();
-    //   return result?.accessToken ?? "";
-    // });
+    DioClient.setInterceptorsRefreshToken(DioClient.currentDio(), () async {
+      var result = await renewSession();
+      return result?.accessToken ?? "";
+    });
     //update session info from User Info
     return true;
   }
@@ -35,62 +35,61 @@ class SessionManager {
     session = store.getSession();
   }
 
-  bool hasSession() {
+  Future<bool> hasSession() async {
     if (session == null) loadSession();
+    if (session != null) {
+      if (hasSessionExpired()) {
+        return true;
+      } else {
+        await renewSession();
+      }
+    }
     return session != null;
   }
 
   bool hasSessionExpired() {
-    //5-minute clock skew. offset for pre renew token
-    // var skewSeconds = 60 * 5;
     int currentMillis = DateTime.now().millisecondsSinceEpoch;
     int valueToCompare = session?.expired ?? 0;
-    return hasSession() && currentMillis > valueToCompare;
+    return   currentMillis <= valueToCompare;
   }
 
-  // Future<LoginResp?> renewSession() async {
-  //   if (hasSession()) {
-  //     BaseRespR<LoginResp> resp = await authService.refreshToken(session?.refreshToken ?? "");
-  //     if (resp.isSuccess() && resp.data != null) {
-  //       session?.accessToken = resp.data!.token ?? "";
-  //       session?.expireAt = resp.data!.expireAt ?? 0;
-  //       session?.refreshToken = resp.data!.refreshToken ?? "";
-  //       await saveSession(session);
-  //       //setup header for service
-  //       DioClient.updateHeader(
-  //         DioClient.currentDio(),
-  //         {
-  //           "Authorization": "Bearer ${session?.accessToken}",
-  //         },
-  //       );
-  //       return session;
-  //     } else {
-  //       //handle user account invalid for refresh token
-  //       if (resp.statusCode == 404 || resp.statusCode == 400) {
-  //         await cleanSession();
-  //         DioClient.currentDio().clear();
-  //         Get.offAllNamed<void>(Routes.login);
-  //       }
-  //     }
-  //   }
-  //   return null;
-  // }
-
-  Future<bool> cleanSession() async {
-    await HiveManager.clearAllData();
-    if (hasSession()) {
-      session = null;
-      await store.clear();
+  Future<LoginResp?> renewSession() async {
+    final resp = await authService.refreshToken(session?.refreshToken ?? "");
+    if (resp.isSuccess() && resp.data != null) {
+      session?.accessToken = resp.data!.accessToken;
+      session?.expired = resp.data!.expired;
+      session?.refreshToken = resp.data!.refreshToken;
+      await saveSession(session);
+      //setup header for service
       DioClient.updateHeader(
         DioClient.currentDio(),
         {
-          "Authorization": "",
+          "Authorization": "Bearer ${session?.accessToken}",
         },
       );
-      DioClient.clearInterceptors(DioClient.currentDio());
-      return true;
+      return session;
     } else {
-      return true;
+      //handle user account invalid for refresh token
+      await cleanSession();
+      // ignore: deprecated_member_use
+      DioClient.currentDio().clear();
+      Get.offAllNamed<void>(Routes.signin);
     }
+    return null;
+  }
+
+  Future<bool> cleanSession() async {
+    await HiveManager.clearAllData();
+
+    session = null;
+    await store.clear();
+    DioClient.updateHeader(
+      DioClient.currentDio(),
+      {
+        "Authorization": "",
+      },
+    );
+    DioClient.clearInterceptors(DioClient.currentDio());
+    return true;
   }
 }

@@ -3,13 +3,13 @@ part 'station_model.g.dart';
 
 @JsonSerializable()
 class StationModel {
-  int? stationId;
+  int? id;
   String? address;
   double? lat;
   double? lng;
   int? numBicycle;
   StationModel({
-    this.stationId,
+    this.id,
     this.address,
     this.lat,
     this.lng,

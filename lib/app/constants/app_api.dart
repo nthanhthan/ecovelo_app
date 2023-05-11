@@ -5,8 +5,13 @@ class AppApi {
   //auth
   static const String login = "$apiVer/auth/login";
   static const String signUp = "$apiVer/auth/register";
+  static const String refreshToken = "$apiVer/auth/refresh-token";
+  static const String logout = "$apiVer/auth/logout";
   //station
   static const String getListStation = "$apiVer/station/getStation";
   //QR
   static const String checkQR = "$apiVer/bicycle/checkQR";
+  //rent
+  static const String rentBicycle = "$apiVer/bicycle/rent-bicycle";
+  static const String stopRentBicycle = "$apiVer/bicycle/stop-rent";
 }

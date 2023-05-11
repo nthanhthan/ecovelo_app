@@ -24,10 +24,15 @@ class RentBicycleView extends GetView<RentBicycleController> {
   }
 
   Future<void> _startClick() async {
-    Get.offNamed(
-      Routes.home,
-      arguments: controller.bikeID,
-    );
+    bool isRented = await controller.startRentBicycle();
+    if (isRented) {
+      Get.offNamed(
+        Routes.home,
+        arguments: controller.bikeID,
+      );
+    } else {
+      ToastMessage.error(message: S.of(Get.context!).bicycleRented);
+    }
   }
 
   Widget _buildBody(BuildContext context) {
