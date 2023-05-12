@@ -10,17 +10,34 @@ class LoginManager {
     return true;
   }
 
-  LoginResp? getUser() {
+  LoginResp? getLogin() {
     var data = loginCacheService.repo.getAllValues();
     if (data.isEmpty) return null;
     return data.values.first;
   }
 
-  Future<void> saveUser(LoginResp? login) async {
+  UserModel? getUser() {
+    var data = loginCacheService.userRepo.getAllValues();
+    if (data.isEmpty) return null;
+    return data.values.first;
+  }
+
+  Future<void> saveLogin(LoginResp? login) async {
     if (login == null) return;
     await loginCacheService.repo.putAndUpdateExisting(
       AppKeys.loginKey,
       login,
+      (key, mutateMe, newValueReadOnly) {
+        return newValueReadOnly;
+      },
+    );
+  }
+
+  Future<void> saveUser(UserModel? user) async {
+    if (user == null) return;
+    await loginCacheService.userRepo.putAndUpdateExisting(
+      AppKeys.userKey,
+      user,
       (key, mutateMe, newValueReadOnly) {
         return newValueReadOnly;
       },

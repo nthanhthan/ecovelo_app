@@ -20,11 +20,10 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       phoneNumber: fields[1] as String?,
       email: fields[2] as String?,
       nameUser: fields[3] as String?,
-      money: fields[5] as double?,
+      mainPoint: fields[5] as double?,
+      proPoint: fields[6] as double?,
       verify: fields[4] as bool?,
-    )
-      ..userId = fields[0] as int?
-      ..proPoint = fields[6] as double?;
+    )..userId = fields[0] as int?;
   }
 
   @override
@@ -42,7 +41,7 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       ..writeByte(4)
       ..write(obj.verify)
       ..writeByte(5)
-      ..write(obj.money)
+      ..write(obj.mainPoint)
       ..writeByte(6)
       ..write(obj.proPoint);
   }
@@ -66,11 +65,10 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       phoneNumber: json['phoneNumber'] as String?,
       email: json['email'] as String?,
       nameUser: json['nameUser'] as String?,
-      money: (json['money'] as num?)?.toDouble(),
+      mainPoint: (json['mainPoint'] as num?)?.toDouble(),
+      proPoint: (json['proPoint'] as num?)?.toDouble(),
       verify: json['verify'] as bool?,
-    )
-      ..userId = json['userId'] as int?
-      ..proPoint = (json['proPoint'] as num?)?.toDouble();
+    )..userId = json['userId'] as int?;
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'userId': instance.userId,
@@ -78,6 +76,6 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'email': instance.email,
       'nameUser': instance.nameUser,
       'verify': instance.verify,
-      'money': instance.money,
+      'mainPoint': instance.mainPoint,
       'proPoint': instance.proPoint,
     };

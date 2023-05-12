@@ -47,6 +47,19 @@ class AuthHttpService extends BaseApiClient {
     );
 
   }
+    Future<BaseResp<dynamic>> getUser() async {
+    return request<UserModel>(
+      Method.get,
+      AppApi.getUser,
+      onDeserialize: (dynamic jsonValue) {
+        if (jsonValue is Map) {
+          return UserModel.fromJson(jsonValue as Map<String, dynamic>);
+        } else {
+          return null;
+        }
+      },
+    );
+  }
 
   // Future<BaseResp<dynamic>> resetPassword(String email) async {
   //   return request<dynamic>(

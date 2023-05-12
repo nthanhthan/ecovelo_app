@@ -9,8 +9,8 @@ part of 'station_model.dart';
 StationModel _$StationModelFromJson(Map<String, dynamic> json) => StationModel(
       id: json['id'] as int?,
       address: json['address'] as String?,
-      lat: (json['lat'] as num?)?.toDouble(),
-      lng: (json['lng'] as num?)?.toDouble(),
+      lat: double.parse(json['lat']),
+      lng: double.parse(json['lng']),
       numBicycle: json['numBicycle'] as int?,
     );
 

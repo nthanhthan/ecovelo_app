@@ -9,7 +9,8 @@ class UserModel {
     this.phoneNumber,
     this.email,
     this.nameUser,
-    this.money,
+    this.mainPoint,
+    this.proPoint,
     this.verify,
   });
   @HiveField(0)
@@ -23,7 +24,7 @@ class UserModel {
   @HiveField(4)
   bool? verify;
   @HiveField(5)
-  double? money;
+  double? mainPoint;
   @HiveField(6)
   double? proPoint;
   factory UserModel.fromJson(Map<String, dynamic> json) =>

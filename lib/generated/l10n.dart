@@ -1339,6 +1339,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Minimum score is 5000, please recharge`
+  String get score {
+    return Intl.message(
+      'Minimum score is 5000, please recharge',
+      name: 'score',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

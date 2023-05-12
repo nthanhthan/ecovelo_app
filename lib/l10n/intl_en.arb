@@ -127,5 +127,6 @@
     "erEmailOrPasswordInvalid": "Your phone number or password is incorrect.",
     "signupsucess": "Successful registration, login to continue.",
     "errorQR": "QR Code is incorrect, please try again",
-    "bicycleRented" : "Vehicle is in use, please change to another vehicle"
+    "bicycleRented" : "Vehicle is in use, please change to another vehicle",
+    "score": "Minimum score is 5000, please recharge"
 }

@@ -10,7 +10,7 @@ class HomeController extends GetxController
   final PageStorageBucket bucket = PageStorageBucket();
   late LoginManager _loginManager;
 
-  LoginResp? loginResp;
+  UserModel? loginResp;
 
   List<Widget> screen = [
     const HomeScreen(),
@@ -111,8 +111,8 @@ class HomeController extends GetxController
     return screen[currentTab];
   }
 
-  void updateCloseBottomModel() {
-    isCloseBottomModel ??= true;
+  void updateCloseBottomModel(bool value) {
+    isCloseBottomModel = value;
   }
 
   bool checkCloseBottomModel() {

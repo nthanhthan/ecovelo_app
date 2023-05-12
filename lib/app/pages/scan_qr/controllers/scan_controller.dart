@@ -18,9 +18,15 @@ class ScanController extends GetxController {
 
   late ScanHttpService _scanHttpService;
 
+  UserModel? userModel;
+
+  late LoginManager _loginManager;
+
   @override
   void onInit() {
     _scanHttpService = Get.find<ScanHttpService>();
+    _loginManager = Get.find<LoginManager>();
+    userModel = _loginManager.getUser();
     super.onInit();
   }
 
@@ -29,21 +35,26 @@ class ScanController extends GetxController {
     qrController?.scannedDataStream.listen((scanData) async {
       if (scanData.code != null && scanData.code != _qrCodeScanned) {
         await qrController?.pauseCamera();
-        final result = await _scanHttpService.checkQR(scanData.code!);
-        if (result.isSuccess() && result.data != null) {
-          if (result.data == true) {
-            Get.offNamed(
-              Routes.rentBicycle,
-              arguments: scanData.code,
-            );
+        double currentPoint =
+            (userModel?.mainPoint ?? 0) + (userModel?.proPoint ?? 0);
+        if (currentPoint >= 5000) {
+          final result = await _scanHttpService.checkQR(scanData.code!);
+          if (result.isSuccess() && result.data != null) {
+            if (result.data == true) {
+              Get.offNamed(
+                Routes.rentBicycle,
+                arguments: scanData.code,
+              );
+            } else {
+              resetScan(S.current.errorQR);
+            }
           } else {
-            SnackBars.error(message: S.current.errorQR).show();
-            resetScan();
+            resetScan(S.current.errorQR);
           }
         } else {
-          SnackBars.error(message: S.current.errorQR).show();
-          resetScan();
+          resetScan(S.current.score);
         }
+
         _qrCodeScanned = "";
       }
     });
@@ -55,7 +66,8 @@ class ScanController extends GetxController {
     });
   }
 
-  Future<void> resetScan() async {
+  Future<void> resetScan(String error) async {
+    SnackBars.error(message: error).show();
     await Future.delayed(const Duration(seconds: 2));
     qrController?.resumeCamera();
   }

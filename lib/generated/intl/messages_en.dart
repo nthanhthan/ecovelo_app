@@ -165,6 +165,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Recent Activities"),
         "reportProblem": MessageLookupByLibrary.simpleMessage("Report Problem"),
         "scanToRide": MessageLookupByLibrary.simpleMessage("Scan to Ride"),
+        "score": MessageLookupByLibrary.simpleMessage(
+            "Minimum score is 5000, please recharge"),
         "selectProblem": MessageLookupByLibrary.simpleMessage("Select Problem"),
         "selectSource": MessageLookupByLibrary.simpleMessage("Select Source"),
         "selectVoucher": MessageLookupByLibrary.simpleMessage("Select Voucher"),

@@ -32,12 +32,10 @@ class HomeScreen extends GetView<HomeController> {
   }
 
   Future<void> _finishRideClick() async {
-   bool check= await  controller.stopRentBicycle();
-   if(check){
-     Get.offAllNamed(Routes.feedback);
-   }else{
-
-   }
+    bool check = await controller.stopRentBicycle();
+    if (check) {
+      Get.offAllNamed(Routes.feedback);
+    } else {}
   }
 
   Widget _buildBody(BuildContext context) {
@@ -147,7 +145,7 @@ class HomeScreen extends GetView<HomeController> {
                       children: [
                         Text(
                           S.of(context).hi(
-                              controller.loginResp?.userResponse?.nameUser ??
+                              controller.loginResp?.nameUser ??
                                   ""),
                           style: AppTextStyles.subHeading1()
                               .copyWith(color: AppColors.main.shade300),
@@ -163,7 +161,8 @@ class HomeScreen extends GetView<HomeController> {
                 ),
                 Obx(
                   () => Visibility(
-                    visible: controller.checkCloseBottomModel(),
+                    visible: controller.isCloseBottomModel ??
+                        controller.checkCloseBottomModel(),
                     child: GestureDetector(
                       onTap: () {
                         controller.checkCloseBottomModel() == true
@@ -201,12 +200,12 @@ class HomeScreen extends GetView<HomeController> {
                 _itemWallet(
                   context,
                   S.of(context).mainWallet,
-                  controller.loginResp?.userResponse?.money.toString() ?? "0",
+                  controller.loginResp?.mainPoint.toString() ?? "0",
                 ),
                 _itemWallet(
                   context,
                   S.of(context).promoWallet,
-                  controller.loginResp?.userResponse?.proPoint.toString() ??
+                  controller.loginResp?.proPoint.toString() ??
                       "0",
                 ),
               ],
@@ -353,6 +352,7 @@ class HomeScreen extends GetView<HomeController> {
   }
 
   void showBottomSheetRentBicycle(BuildContext context) async {
+    controller.updateCloseBottomModel(false);
     await showModalBottomSheet(
       context: context,
       backgroundColor: AppColors.white,
@@ -388,44 +388,46 @@ class HomeScreen extends GetView<HomeController> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 10,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      controller.bikeID,
-                                      style: AppTextStyles.subHeading1()
-                                          .copyWith(
-                                              color: AppColors.main.shade200),
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 2,
-                                    ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  SvgPicture.asset(
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 10,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  controller.bikeID,
+                                  style: AppTextStyles.subHeading1()
+                                      .copyWith(color: AppColors.main.shade200),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                ),
+                                const SizedBox(width: 10),
+                                Align(
+                                  alignment: Alignment.topLeft,
+                                  child: SvgPicture.asset(
                                     AssetsConst.checkRent,
                                     height: 20,
                                   ),
-                                ],
-                              ),
-                              const SizedBox(height: 10),
-                              _durationRide(context),
-                            ],
-                          ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            _durationRide(context),
+                          ],
                         ),
                       ),
-                      Image.asset(
-                        AssetsConst.bicycle,
-                        height: 90,
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Image.asset(
+                            AssetsConst.bicycle,
+                            height: 90,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -455,39 +457,43 @@ class HomeScreen extends GetView<HomeController> {
         );
       },
     );
-    controller.updateCloseBottomModel();
+    controller.updateCloseBottomModel(true);
   }
 
   Widget _durationRide(BuildContext context) {
     return Container(
-      width: 100,
+      width: 90,
       padding: const EdgeInsets.symmetric(
-        vertical: 6,
-        horizontal: 15,
+        vertical: 9,
+        horizontal: 10,
       ),
       decoration: BoxDecoration(
         color: AppColors.success.shade400,
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(16),
       ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Icon(
-              Icons.schedule,
-              color: AppColors.main.shade400,
-            ),
-          ),
-          const SizedBox(width: 8),
-          Obx(
-            () => Text(
-              controller.caculateTimer(),
-              style: AppTextStyles.tiny().copyWith(
-                color: AppColors.main.shade400,
-                fontWeight: FontWeight.w500,
+      child: Center(
+        child: Row(
+          children: [
+            Expanded(
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Icon(
+                  Icons.schedule,
+                  color: AppColors.main.shade400,
+                ),
               ),
             ),
-          ),
-        ],
+            Obx(
+              () => Text(
+                controller.caculateTimer(),
+                style: AppTextStyles.tiny().copyWith(
+                  color: AppColors.main.shade400,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
