@@ -31,11 +31,11 @@ class HomeScreen extends GetView<HomeController> {
     Get.toNamed(Routes.journey);
   }
 
-  Future<void> _finishRideClick() async {
-    bool check = await controller.stopRentBicycle();
-    if (check) {
-      Get.offAllNamed(Routes.feedback);
-    } else {}
+  void _finishRideClick() async {
+ controller.stopRentBicycle();
+    // if (check) {
+    //   Get.offAllNamed(Routes.feedback);
+    // } else {}
   }
 
   Widget _buildBody(BuildContext context) {

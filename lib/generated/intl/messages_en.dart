@@ -107,8 +107,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Search for EcoVelo stations"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "lockBroken": MessageLookupByLibrary.simpleMessage("Lock broken"),
+        "lockFirst": MessageLookupByLibrary.simpleMessage(
+            "You must do the your bike lock first"),
         "logout": MessageLookupByLibrary.simpleMessage("Log out"),
         "mainWallet": MessageLookupByLibrary.simpleMessage("Main Wallet"),
+        "messageConfirmEnd": MessageLookupByLibrary.simpleMessage(
+            "Are you want to end your trip?"),
         "myJourney": MessageLookupByLibrary.simpleMessage("My journey"),
         "myWallet": MessageLookupByLibrary.simpleMessage("My Wallet"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
@@ -177,6 +181,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Successful registration, login to continue."),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "stationNumber": m2,
+        "stopRentError": MessageLookupByLibrary.simpleMessage(
+            "Return vehicle with problem, please try again"),
         "storageAccessDenied": MessageLookupByLibrary.simpleMessage(
             "Storage access denied. Let open the app setting to enable it!"),
         "submitBtn": MessageLookupByLibrary.simpleMessage("Submit"),

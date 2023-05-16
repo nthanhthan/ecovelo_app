@@ -55,6 +55,9 @@ class HomeController extends GetxController
   }
 
   void getRent() {
+    String bicycleid = Prefs.getString(AppKeys.bicycleIDRent);
+    MQTTClientWrapper newclient = MQTTClientWrapper();
+    newclient.prepareMqttClient(bicycleid);
     String beginTimer = Prefs.getString(AppKeys.beginRent);
     if (beginTimer.isNotEmpty) {
       startTime = DateTime.parse(beginTimer);
@@ -123,22 +126,26 @@ class HomeController extends GetxController
     }
   }
 
-  Future<bool> stopRentBicycle() async {
-    ProcessingDialog processingDialog = ProcessingDialog.show();
-    int rentID = Prefs.getInt(AppKeys.rentID);
-    final result = await _rentHttpService.stopRentBicycle(bikeID, rentID);
-    if (result.isSuccess() && result.data != null) {
-      processingDialog.hide();
-      if (result.data == -1) {
-        return false;
-      }
-      Prefs.removeKey(AppKeys.bicycleIDRent);
-      Prefs.removeKey(AppKeys.beginRent);
-      Prefs.removeKey(AppKeys.rentID);
-      return true;
-    }
-
-    processingDialog.hide();
-    return false;
+  void stopRentBicycle() {
+    // ProcessingDialog processingDialog = ProcessingDialog.show();
+    // int rentID = Prefs.getInt(AppKeys.rentID);
+    // final result = await _rentHttpService.stopRentBicycle(bikeID, rentID);
+    // if (result.isSuccess() && result.data != null) {
+    //   processingDialog.hide();
+    //   _loginManager.saveUser(result.data);
+    //   Prefs.removeKey(AppKeys.bicycleIDRent);
+    //   Prefs.removeKey(AppKeys.beginRent);
+    //   Prefs.removeKey(AppKeys.rentID);
+    //   return true;
+    // }
+    // processingDialog.hide();
+    // return false;
+    Get.dialog<void>(
+      ConfirmDialog(
+        message: S.of(Get.context!).lockFirst,
+        isHideCancelButton: true,
+        approveText: S.of(Get.context!).ok,
+      ),
+    );
   }
 }

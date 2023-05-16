@@ -15,8 +15,8 @@ class RentHttpService extends BaseApiClient {
       },
     );
   }
-    Future<BaseResp<double>> stopRentBicycle(String bicycleID, int idRent) async {
-    return request<double>(
+    Future<BaseResp<UserModel>> stopRentBicycle(String bicycleID, int idRent) async {
+    return request<UserModel>(
       Method.post,
       AppApi.stopRentBicycle,
          data: {
@@ -24,8 +24,8 @@ class RentHttpService extends BaseApiClient {
         "bicycleID": bicycleID,
       },
       onDeserialize: (dynamic jsonValue) {
-        if (jsonValue is double) {
-          return jsonValue;
+        if (jsonValue is Map) {
+           return UserModel.fromJson(jsonValue as Map<String, dynamic>);
         } else {
           return null;
         }
