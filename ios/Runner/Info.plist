@@ -10,6 +10,12 @@
 		<string>googlemaps</string>
 		<string>comgooglemaps</string>
 	</array>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Looking for local tcp Bonjour service</string>
+	<key>NSBonjourServices</key>
+	<array>
+  	<string>mqtt.tcp</string>
+	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Your current location to calculate the distance to stations around you</string>
 	<key>NSCameraUsageDescription</key>

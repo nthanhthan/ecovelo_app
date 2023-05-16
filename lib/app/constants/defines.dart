@@ -6,6 +6,10 @@ class AppKeys {
   static const voiceMode = "voice-mode";
   static const firstLaunch = "first-launch";
   static const loginKey = "login-key";
+  static const userKey = "user-key";
+  static const beginRent = "begin-rent";
+  static const bicycleIDRent = "bicycle-ID";
+  static const rentID = "rent-ID";
 }
 
 class AppColors {

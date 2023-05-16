@@ -32,7 +32,7 @@ class MapView extends GetView<MapController> {
       body: Stack(
         children: [
           Obx(
-            () => controller.isLoading
+            () => controller.isLoading && controller.myMarkers.isNotEmpty
                 ? GoogleMap(
                     initialCameraPosition: CameraPosition(
                       target: LatLng(
@@ -41,7 +41,7 @@ class MapView extends GetView<MapController> {
                       ),
                       zoom: 13,
                     ),
-                    markers: controller.myMarkers,
+                    markers:  controller.myMarkers,
                   )
                 : const GoogleMap(
                     initialCameraPosition: CameraPosition(
@@ -67,7 +67,7 @@ class MapView extends GetView<MapController> {
               onChanged: _onChangeSearch,
               itemBuilder: (context, station) {
                 return ListTile(
-                  key: ValueKey(station.stationId),
+                  key: ValueKey(station.id),
                   title: StationInfoWidget(station: station),
                 );
               },
@@ -130,7 +130,7 @@ class MapView extends GetView<MapController> {
             ),
             const SizedBox(height: 10),
             Text(
-              S.of(context).stationNumber(station.stationId ?? ""),
+              S.of(context).stationNumber(station.id ?? ""),
               style: AppTextStyles.subHeading1()
                   .copyWith(color: AppColors.grey.shade500),
             ),

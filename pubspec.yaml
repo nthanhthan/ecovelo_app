@@ -127,6 +127,8 @@ dependencies:
   url_launcher: ^6.1.4
  # detect keyboard shown
   flutter_keyboard_visibility: ^5.4.0
+  #mqtt
+  mqtt_client: ^9.6.7
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

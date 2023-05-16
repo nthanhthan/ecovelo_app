@@ -25,10 +25,13 @@ class SettingController extends GetxController {
 
   late final SessionManager _sessionM;
 
+  late final AuthHttpService _authHttpService;
+
   @override
   void onInit() {
     _loginManager = Get.find<LoginManager>();
     _sessionM = Get.find<SessionManager>();
+    _authHttpService = Get.find<AuthHttpService>();
     initLanguageSupported();
     String langCode = Prefs.getString(AppKeys.languageKey);
     _languageSelected = (languageSupported.firstWhereOrNull(
@@ -72,6 +75,7 @@ class SettingController extends GetxController {
   void logoutUser() {
     ProcessingDialog processingDialog = ProcessingDialog.show();
     _loginManager.deleteUser().then((value) async {
+      await _authHttpService.logout();
       await _sessionM.cleanSession();
       processingDialog.hide();
       Get.offAllNamed(Routes.signin);

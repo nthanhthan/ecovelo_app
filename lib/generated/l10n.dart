@@ -1329,6 +1329,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Vehicle is in use, please change to another vehicle`
+  String get bicycleRented {
+    return Intl.message(
+      'Vehicle is in use, please change to another vehicle',
+      name: 'bicycleRented',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Minimum score is 5000, please recharge`
+  String get score {
+    return Intl.message(
+      'Minimum score is 5000, please recharge',
+      name: 'score',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Return vehicle with problem, please try again`
+  String get stopRentError {
+    return Intl.message(
+      'Return vehicle with problem, please try again',
+      name: 'stopRentError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you want to end your trip?`
+  String get messageConfirmEnd {
+    return Intl.message(
+      'Are you want to end your trip?',
+      name: 'messageConfirmEnd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You must do the your bike lock first`
+  String get lockFirst {
+    return Intl.message(
+      'You must do the your bike lock first',
+      name: 'lockFirst',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

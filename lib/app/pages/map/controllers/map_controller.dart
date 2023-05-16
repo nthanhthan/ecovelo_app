@@ -57,7 +57,7 @@ class MapController extends GetxController {
     }
     customMarker().then((value) {
       _getCurrentLocation().then((value) {
-        setMarker();
+       setMarker() ;
         isLoading = true;
       });
     });
@@ -92,7 +92,7 @@ class MapController extends GetxController {
   void setMarker() {
     for (StationModel value in listStation) {
       final markerStation = Marker(
-          markerId: MarkerId(value.stationId.toString()),
+          markerId: MarkerId(value.id.toString()),
           position: LatLng(value.lat ?? 0, value.lng ?? 0),
           icon: checkNumbicycle(value.numBicycle ?? 0) ? marker! : markerRed!,
           onTap: () {

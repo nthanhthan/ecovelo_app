@@ -32,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "addMoney": MessageLookupByLibrary.simpleMessage("Add money"),
         "appName": MessageLookupByLibrary.simpleMessage("ECOVELO"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "bicycleRented": MessageLookupByLibrary.simpleMessage(
+            "Vehicle is in use, please change to another vehicle"),
         "bikeNumber": MessageLookupByLibrary.simpleMessage("Bike Number"),
         "bikeVandalized":
             MessageLookupByLibrary.simpleMessage("Bike vandalized"),
@@ -105,8 +107,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Search for EcoVelo stations"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "lockBroken": MessageLookupByLibrary.simpleMessage("Lock broken"),
+        "lockFirst": MessageLookupByLibrary.simpleMessage(
+            "You must do the your bike lock first"),
         "logout": MessageLookupByLibrary.simpleMessage("Log out"),
         "mainWallet": MessageLookupByLibrary.simpleMessage("Main Wallet"),
+        "messageConfirmEnd": MessageLookupByLibrary.simpleMessage(
+            "Are you want to end your trip?"),
         "myJourney": MessageLookupByLibrary.simpleMessage("My journey"),
         "myWallet": MessageLookupByLibrary.simpleMessage("My Wallet"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
@@ -163,6 +169,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Recent Activities"),
         "reportProblem": MessageLookupByLibrary.simpleMessage("Report Problem"),
         "scanToRide": MessageLookupByLibrary.simpleMessage("Scan to Ride"),
+        "score": MessageLookupByLibrary.simpleMessage(
+            "Minimum score is 5000, please recharge"),
         "selectProblem": MessageLookupByLibrary.simpleMessage("Select Problem"),
         "selectSource": MessageLookupByLibrary.simpleMessage("Select Source"),
         "selectVoucher": MessageLookupByLibrary.simpleMessage("Select Voucher"),
@@ -173,6 +181,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Successful registration, login to continue."),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "stationNumber": m2,
+        "stopRentError": MessageLookupByLibrary.simpleMessage(
+            "Return vehicle with problem, please try again"),
         "storageAccessDenied": MessageLookupByLibrary.simpleMessage(
             "Storage access denied. Let open the app setting to enable it!"),
         "submitBtn": MessageLookupByLibrary.simpleMessage("Submit"),

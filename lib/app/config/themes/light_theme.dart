@@ -19,9 +19,9 @@ final ThemeData lightTheme = ThemeData(
   ),
   fontFamily: AppProperties.fontFamilyName,
   brightness: Brightness.light,
-  primaryColor: const Color(0xff0F6EFA),
+  primaryColor: const Color(0xff3C5041),
   primaryColorLight: const Color(0xffe0d5f6),
-  primaryColorDark: const Color(0xff3c1a7f),
+  primaryColorDark: const Color(0xff3C5041),
   appBarTheme: const AppBarTheme(
     backgroundColor: Color(0xff11141a),
     titleTextStyle: TextStyle(

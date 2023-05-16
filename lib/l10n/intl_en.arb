@@ -126,5 +126,10 @@
     "validatePhone": "Please enter valid mobile number", 
     "erEmailOrPasswordInvalid": "Your phone number or password is incorrect.",
     "signupsucess": "Successful registration, login to continue.",
-    "errorQR": "QR Code is incorrect, please try again"
+    "errorQR": "QR Code is incorrect, please try again",
+    "bicycleRented" : "Vehicle is in use, please change to another vehicle",
+    "score": "Minimum score is 5000, please recharge",
+    "stopRentError": "Return vehicle with problem, please try again",
+    "messageConfirmEnd": "Are you want to end your trip?",
+    "lockFirst": "You must do the your bike lock first"
 }

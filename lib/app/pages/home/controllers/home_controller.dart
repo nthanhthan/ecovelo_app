@@ -1,5 +1,6 @@
 import 'package:ecoveloapp/app/core.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class HomeController extends GetxController
     with GetSingleTickerProviderStateMixin, WidgetsBindingObserver {
@@ -9,7 +10,7 @@ class HomeController extends GetxController
   final PageStorageBucket bucket = PageStorageBucket();
   late LoginManager _loginManager;
 
-  LoginResp? loginResp;
+  UserModel? loginResp;
 
   List<Widget> screen = [
     const HomeScreen(),
@@ -25,16 +26,45 @@ class HomeController extends GetxController
   bool? get isCloseBottomModel => _isCloseBottomModel.value;
 
   String bikeID = "";
+  late DateTime startTime;
+  late Timer timer;
+
+  final RxInt _elapsedTimeInSeconds = 0.obs;
+  set elapsedTimeInSeconds(int value) => _elapsedTimeInSeconds.value = value;
+  int get elapsedTimeInSeconds => _elapsedTimeInSeconds.value;
+
+  late final RentHttpService _rentHttpService;
 
   @override
   void onInit() {
     WidgetsBinding.instance.addObserver(this);
     _loginManager = Get.find<LoginManager>();
+    _rentHttpService = Get.find<RentHttpService>();
     loginResp = _loginManager.getUser();
+    String bicycleID = Prefs.getString(AppKeys.bicycleIDRent);
+    if (bicycleID.isNotEmpty) {
+      bikeID = bicycleID;
+      getRent();
+    }
     if (Get.arguments != null && Get.arguments is String) {
       bikeID = Get.arguments as String;
+      Prefs.saveString(AppKeys.bicycleIDRent, bikeID);
+      getRent();
     }
     super.onInit();
+  }
+
+  void getRent() {
+    String bicycleid = Prefs.getString(AppKeys.bicycleIDRent);
+    MQTTClientWrapper newclient = MQTTClientWrapper();
+    newclient.prepareMqttClient(bicycleid);
+    String beginTimer = Prefs.getString(AppKeys.beginRent);
+    if (beginTimer.isNotEmpty) {
+      startTime = DateTime.parse(beginTimer);
+    } else {
+      startTime = DateTime.now();
+    }
+    beginRent();
   }
 
   @override
@@ -52,6 +82,27 @@ class HomeController extends GetxController
   }
 
   @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
+  }
+
+  void beginRent() {
+    Prefs.saveString(AppKeys.beginRent, startTime.toString());
+    timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
+      elapsedTimeInSeconds = DateTime.now().difference(startTime).inSeconds;
+    });
+  }
+
+  String caculateTimer() {
+    bool isOverOneHour = elapsedTimeInSeconds >= 3600;
+    String elapsedTimeText = isOverOneHour
+        ? '${(elapsedTimeInSeconds / 3600).floor()}:${((elapsedTimeInSeconds / 60) % 60).floor().toString().padLeft(2, '0')}:${(elapsedTimeInSeconds % 60).toString().padLeft(2, '0')}'
+        : '${(elapsedTimeInSeconds / 60).floor()}:${(elapsedTimeInSeconds % 60).toString().padLeft(2, '0')}';
+    return elapsedTimeText;
+  }
+
+  @override
   void didChangeAppLifecycleState(AppLifecycleState state) async {
     super.didChangeAppLifecycleState(state);
     if (state == AppLifecycleState.resumed) {
@@ -63,8 +114,8 @@ class HomeController extends GetxController
     return screen[currentTab];
   }
 
-  void updateCloseBottomModel() {
-    isCloseBottomModel ??= true;
+  void updateCloseBottomModel(bool value) {
+    isCloseBottomModel = value;
   }
 
   bool checkCloseBottomModel() {
@@ -73,5 +124,28 @@ class HomeController extends GetxController
     } else {
       return false;
     }
+  }
+
+  void stopRentBicycle() {
+    // ProcessingDialog processingDialog = ProcessingDialog.show();
+    // int rentID = Prefs.getInt(AppKeys.rentID);
+    // final result = await _rentHttpService.stopRentBicycle(bikeID, rentID);
+    // if (result.isSuccess() && result.data != null) {
+    //   processingDialog.hide();
+    //   _loginManager.saveUser(result.data);
+    //   Prefs.removeKey(AppKeys.bicycleIDRent);
+    //   Prefs.removeKey(AppKeys.beginRent);
+    //   Prefs.removeKey(AppKeys.rentID);
+    //   return true;
+    // }
+    // processingDialog.hide();
+    // return false;
+    Get.dialog<void>(
+      ConfirmDialog(
+        message: S.of(Get.context!).lockFirst,
+        isHideCancelButton: true,
+        approveText: S.of(Get.context!).ok,
+      ),
+    );
   }
 }

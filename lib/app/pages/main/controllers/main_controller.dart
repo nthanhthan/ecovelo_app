@@ -11,9 +11,11 @@ class MainController extends GetxController {
   late final SessionManager _sessionM;
 
   LoginResp? loginResp;
+   AuthHttpService? authHttpService;
   @override
   void onInit() {
     _loginManager = Get.find<LoginManager>();
+authHttpService= Get.find<AuthHttpService>();
     appInitializer();
     super.onInit();
   }
@@ -61,7 +63,7 @@ class MainController extends GetxController {
 
     await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
-    loginResp = _loginManager.getUser();
+    loginResp = _loginManager.getLogin();
 
     //Delay for show Splash screen
     await Future.delayed(const Duration(seconds: 2), () {
@@ -73,6 +75,10 @@ class MainController extends GetxController {
     if (loginResp != null) {
       bool isAuthenticated = await _isAuthenticated();
       if (isAuthenticated) {
+        final result = await authHttpService!.getUser();
+        if (result.isSuccess() && result.data != null) {
+           _loginManager.saveUser(result.data);
+        }
         Get.offNamed(Routes.home);
       } else {
         Get.offNamed(Routes.signin);
@@ -89,7 +95,8 @@ class MainController extends GetxController {
   }
 
   Future<bool> _isAuthenticated() async {
-    if (_sessionM.hasSession()) {
+    bool checkSession = await _sessionM.hasSession();
+    if (checkSession) {
       await _sessionM.initSession(_sessionM.session!);
       return true;
     } else {
