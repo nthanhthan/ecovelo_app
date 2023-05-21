@@ -12,3 +12,4 @@ export 'journey/journey.dart';
 export 'add_money/add_money.dart';
 export 'transfer_success/transfer_success.dart';
 export 'feedback/feedback.dart';
+export 'history/history_view.dart';

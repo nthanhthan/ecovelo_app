@@ -93,5 +93,11 @@ class AppPages {
       binding: HomeBinding(),
       transition: Transition.rightToLeft,
     ),
+    GetPage<dynamic>(
+      name: Routes.transactionHistory,
+      page: () => const HistoryView(),
+      binding: HistoryBingding(),
+      transition: Transition.rightToLeft,
+    ),
   ];
 }

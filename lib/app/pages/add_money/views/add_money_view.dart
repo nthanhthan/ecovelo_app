@@ -39,9 +39,9 @@ class AddMoneyView extends GetView<AddMoneyController> {
             color: AppColors.grey.shade700,
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.defaultBackground,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.defaultBackground,
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: SingleChildScrollView(
