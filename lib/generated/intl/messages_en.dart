@@ -207,6 +207,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "totalDistances":
             MessageLookupByLibrary.simpleMessage("Total distances"),
         "totalTime": MessageLookupByLibrary.simpleMessage("Total time"),
+        "transferError":
+            MessageLookupByLibrary.simpleMessage("Error! Please try again"),
         "transferOk":
             MessageLookupByLibrary.simpleMessage("Transfer Successfully"),
         "unableToAccessCamera":

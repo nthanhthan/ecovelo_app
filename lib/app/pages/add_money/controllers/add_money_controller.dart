@@ -67,10 +67,11 @@ class AddMoneyController extends GetxController {
           addMoney,
         );
         TransactionReq transactionReq = TransactionReq(
-            money: addMoney,
-            titleTransaction: "addtest",
-            isMainPoint: true,
-            isStatus: true);
+          money: addMoney,
+          titleTransaction: "Transfer Money from Stripe",
+          isMainPoint: true,
+          isStatus: true,
+        );
         final result =
             await _addMoneyService.addMoney(transactionReq: transactionReq);
         if (result.isSuccess() && result.data != null) {
@@ -82,10 +83,12 @@ class AddMoneyController extends GetxController {
           return true;
         } else {
           processingDialog.hide();
+          ToastMessage.error(message: S.of(Get.context!).transferError);
           return false;
         }
       } catch (e) {
         processingDialog.hide();
+        ToastMessage.error(message: S.of(Get.context!).transferError);
         return false;
       }
     } else {

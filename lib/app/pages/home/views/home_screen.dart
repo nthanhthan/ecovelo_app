@@ -209,7 +209,7 @@ class HomeScreen extends GetView<HomeController> {
                           controller.userModel?.mainPoint?.toInt().toString() ??
                               "0",
                         )
-                      : ThreeBounceLoading(),
+                      : ThreeBounceLoading(color: AppColors.white),
                 ),
                 Obx(
                   () => controller.isLoading
@@ -219,7 +219,7 @@ class HomeScreen extends GetView<HomeController> {
                           controller.userModel?.proPoint?.toInt().toString() ??
                               "0",
                         )
-                      : ThreeBounceLoading(),
+                      : ThreeBounceLoading(color: AppColors.white),
                 ),
               ],
             ),

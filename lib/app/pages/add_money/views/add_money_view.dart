@@ -6,10 +6,7 @@ class AddMoneyView extends GetView<AddMoneyController> {
   const AddMoneyView({Key? key}) : super(key: key);
 
   _continueOnLick() async {
-    bool status = await controller.payment();
-    if (status) {
-      //Get.offNamed(Routes.transferSuccess);
-    }
+    await controller.payment();
   }
 
   void _selectedMoney(MoneyModel moneyModel) {
