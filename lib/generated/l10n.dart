@@ -1459,6 +1459,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Error! Please try again`
+  String get transferError {
+    return Intl.message(
+      'Error! Please try again',
+      name: 'transferError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
