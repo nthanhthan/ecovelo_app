@@ -91,6 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "helpCenter": MessageLookupByLibrary.simpleMessage("Help Center"),
         "hi": m0,
         "hintDes": MessageLookupByLibrary.simpleMessage("Enter desciption..."),
+        "historyTransaction":
+            MessageLookupByLibrary.simpleMessage("Transaction History"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "introduction": MessageLookupByLibrary.simpleMessage("Introduction"),
         "invalidEmailAddress": MessageLookupByLibrary.simpleMessage(

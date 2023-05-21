@@ -21,6 +21,10 @@ class SettingView extends GetView<SettingController> {
   void _deActiveClick() {}
   void _helpCenterClick() {}
   void _aboutClick() {}
+  void _transactionHistory() {
+    Get.toNamed(Routes.transactionHistory);
+  }
+
   void _logoutClick() {
     controller.logoutUser();
   }
@@ -95,6 +99,12 @@ class SettingView extends GetView<SettingController> {
               ),
               _contentWidget(
                 context,
+                S.of(context).historyTransaction,
+                AssetsConst.icChangPass,
+                _transactionHistory,
+              ),
+              _contentWidget(
+                context,
                 S.of(context).changePass,
                 AssetsConst.icChangPass,
                 _changePassClick,
@@ -140,7 +150,7 @@ class SettingView extends GetView<SettingController> {
   Widget _contentWidget(
       BuildContext context, String title, String icon, void Function()? handle,
       {bool logout = false}) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         handle?.call();
       },

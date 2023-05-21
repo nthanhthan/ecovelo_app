@@ -140,5 +140,6 @@
     "date": "Date",
     "time": "Time",
     "total": "Total",
-    "transferError": "Error! Please try again"
+    "transferError": "Error! Please try again",
+    "historyTransaction": "Transaction History"
 }
