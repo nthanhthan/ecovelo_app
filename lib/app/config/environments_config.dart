@@ -6,7 +6,7 @@ class DevEnv extends Env {
 
   @override
   //String baseApi = "http://192.168.1.4:8080/api/v1";
-  String baseApi = "http://192.168.1.76:8080/api/v1";
+  String baseApi = "http://192.168.1.59:8080/api/v1";
   //String baseApi = "http://192.168.31.111:8080/api/v1";
   // String baseApi = "http://192.168.1.120:8080/api/v1";
   //String baseApi = "http://172.20.10.3:8080/api/v1";

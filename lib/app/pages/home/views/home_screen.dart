@@ -32,7 +32,7 @@ class HomeScreen extends GetView<HomeController> {
   }
 
   void _finishRideClick() async {
- controller.stopRentBicycle();
+    controller.stopRentBicycle();
     // if (check) {
     //   Get.offAllNamed(Routes.feedback);
     // } else {}
@@ -143,18 +143,22 @@ class HomeScreen extends GetView<HomeController> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          S.of(context).hi(
-                              controller.loginResp?.nameUser ??
-                                  ""),
-                          style: AppTextStyles.subHeading1()
-                              .copyWith(color: AppColors.main.shade300),
+                        Obx(
+                          () => controller.isLoading
+                              ? Text(
+                                  S
+                                      .of(context)
+                                      .hi(controller.userModel?.nameUser ?? ""),
+                                  style: AppTextStyles.subHeading1()
+                                      .copyWith(color: AppColors.main.shade300),
+                                )
+                              : ThreeBounceLoading(),
                         ),
                         Text(
                           S.of(context).niceDay,
                           style: AppTextStyles.tiny()
                               .copyWith(color: AppColors.main.shade300),
-                        )
+                        ),
                       ],
                     ),
                   ],
@@ -197,16 +201,25 @@ class HomeScreen extends GetView<HomeController> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _itemWallet(
-                  context,
-                  S.of(context).mainWallet,
-                  controller.loginResp?.mainPoint.toString() ?? "0",
+                Obx(
+                  () => controller.isLoading
+                      ? _itemWallet(
+                          context,
+                          S.of(context).mainWallet,
+                          controller.userModel?.mainPoint?.toInt().toString() ??
+                              "0",
+                        )
+                      : ThreeBounceLoading(),
                 ),
-                _itemWallet(
-                  context,
-                  S.of(context).promoWallet,
-                  controller.loginResp?.proPoint.toString() ??
-                      "0",
+                Obx(
+                  () => controller.isLoading
+                      ? _itemWallet(
+                          context,
+                          S.of(context).promoWallet,
+                          controller.userModel?.proPoint?.toInt().toString() ??
+                              "0",
+                        )
+                      : ThreeBounceLoading(),
                 ),
               ],
             ),
@@ -238,7 +251,7 @@ class HomeScreen extends GetView<HomeController> {
             color: AppColors.main.shade400,
             fontWeight: FontWeight.w600,
           ),
-        )
+        ),
       ],
     );
   }

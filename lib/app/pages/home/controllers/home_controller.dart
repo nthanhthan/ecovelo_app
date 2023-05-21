@@ -10,7 +10,7 @@ class HomeController extends GetxController
   final PageStorageBucket bucket = PageStorageBucket();
   late LoginManager _loginManager;
 
-  UserModel? loginResp;
+  UserModel? userModel;
 
   List<Widget> screen = [
     const HomeScreen(),
@@ -34,13 +34,24 @@ class HomeController extends GetxController
   int get elapsedTimeInSeconds => _elapsedTimeInSeconds.value;
 
   late final RentHttpService _rentHttpService;
+  late final AuthHttpService _authHttpService;
+
+  final RxBool _isLoading = false.obs;
+  set isLoading(bool value) => _isLoading.value = value;
+  bool get isLoading => _isLoading.value;
 
   @override
   void onInit() {
+    isLoading = false;
     WidgetsBinding.instance.addObserver(this);
     _loginManager = Get.find<LoginManager>();
     _rentHttpService = Get.find<RentHttpService>();
-    loginResp = _loginManager.getUser();
+    _authHttpService = Get.find<AuthHttpService>();
+    getUser().then((value) {
+      if (value) {
+        isLoading = true;
+      }
+    });
     String bicycleID = Prefs.getString(AppKeys.bicycleIDRent);
     if (bicycleID.isNotEmpty) {
       bikeID = bicycleID;
@@ -52,6 +63,15 @@ class HomeController extends GetxController
       getRent();
     }
     super.onInit();
+  }
+
+  Future<bool> getUser() async {
+    final result = await _authHttpService.getUser();
+    if (result.isSuccess() && result.data != null) {
+      _loginManager.saveUser(result.data);
+    }
+    userModel = _loginManager.getUser();
+    return true;
   }
 
   void getRent() {

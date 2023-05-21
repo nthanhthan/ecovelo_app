@@ -1379,6 +1379,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Transfer Successfully`
+  String get transferOk {
+    return Intl.message(
+      'Transfer Successfully',
+      name: 'transferOk',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Receipt`
+  String get receipt {
+    return Intl.message(
+      'Receipt',
+      name: 'receipt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount`
+  String get amount {
+    return Intl.message(
+      'Amount',
+      name: 'amount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fee`
+  String get fee {
+    return Intl.message(
+      'Fee',
+      name: 'fee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Free`
+  String get free {
+    return Intl.message(
+      'Free',
+      name: 'free',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get date {
+    return Intl.message(
+      'Date',
+      name: 'date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time`
+  String get time {
+    return Intl.message(
+      'Time',
+      name: 'time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total`
+  String get total {
+    return Intl.message(
+      'Total',
+      name: 'total',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -23,7 +23,8 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       mainPoint: fields[5] as double?,
       proPoint: fields[6] as double?,
       verify: fields[4] as bool?,
-    )..userId = fields[0] as int?;
+      userId: fields[0] as int?,
+    );
   }
 
   @override
@@ -68,7 +69,8 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       mainPoint: (json['mainPoint'] as num?)?.toDouble(),
       proPoint: (json['proPoint'] as num?)?.toDouble(),
       verify: json['verify'] as bool?,
-    )..userId = json['userId'] as int?;
+      userId: json['userId'] as int?,
+    );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'userId': instance.userId,

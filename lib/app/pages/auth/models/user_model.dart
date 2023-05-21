@@ -12,6 +12,7 @@ class UserModel {
     this.mainPoint,
     this.proPoint,
     this.verify,
+    this.userId,
   });
   @HiveField(0)
   int? userId;

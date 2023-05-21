@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
-
 import 'package:ecoveloapp/app/core.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_tags_x/flutter_tags_x.dart';
 
 class AddMoneyView extends GetView<AddMoneyController> {
   const AddMoneyView({Key? key}) : super(key: key);
 
-  _continueOnLick(){
-    Get.toNamed(Routes.transferSuccess);
+  _continueOnLick() async {
+    bool status = await controller.payment();
+    if (status) {
+      //Get.offNamed(Routes.transferSuccess);
+    }
   }
-  
+
+  void _selectedMoney(MoneyModel moneyModel) {
+    controller.selectedMoney(moneyModel);
+  }
+
+  void _seclectedBank(BankModel bankModel) {
+    controller.selectedBank(bankModel);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,10 +73,10 @@ class AddMoneyView extends GetView<AddMoneyController> {
                       cursorColor: AppColors.black,
                       showCursor: false,
                       decoration: InputDecoration(
-                        hintText: "\$0",
+                        hintText: "0 đ",
                         hintStyle: AppTextStyles.largeHeading2().copyWith(
                           fontWeight: FontWeight.w500,
-                          color: AppColors.main[300],
+                          color: AppColors.main.shade300,
                         ),
                         fillColor: Colors.transparent,
                         border: InputBorder.none,
@@ -76,62 +85,23 @@ class AddMoneyView extends GetView<AddMoneyController> {
                       ),
                       style: AppTextStyles.largeHeading2().copyWith(
                         fontWeight: FontWeight.w500,
-                        color: AppColors.main[300],
+                        color: AppColors.main.shade300,
                       ),
                       keyboardType: TextInputType.number,
-                      onChanged: (string) {
-                        if (string != "") {
-                          string = controller
-                              .formatNumber(string.replaceAll(',', ''));
-                        }
-                        controller.enterMoneyController.value =
-                            TextEditingValue(
-                          text: string,
-                          selection:
-                              TextSelection.collapsed(offset: string.length),
-                        );
-                      },
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 16),
-              Tags(
-                columns: 3,
-                itemCount: DefaultValues.addMoneyValues.length,
-                itemBuilder: (index) {
-                  return Container(
-                    width: 120,
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 1.0, color: Colors.grey),
-                      borderRadius: BorderRadius.circular(26),
-                    ),
-                    child: ItemTags(
-                      index: index,
-                      title:
-                          "\$" + DefaultValues.addMoneyValues[index].toString(),
-                      border: Border.all(width: 0, color: Colors.transparent),
-                      singleItem: true,
-                      elevation: 0.0,
-                      activeColor: AppColors.main[300] as Color,
-                      textActiveColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 45, vertical: 10),
-                      onPressed: (i) {
-                        controller.enterMoneyController.text =
-                            i.title!.split('\$')[1];
-                        controller.enterMoneyController.selection =
-                            TextSelection.fromPosition(TextPosition(
-                                offset: controller
-                                    .enterMoneyController.text.length));
-                        FocusScope.of(context).unfocus();
-                      },
-                      textStyle: AppTextStyles.body2().copyWith(
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.main[200]),
-                    ),
+              Wrap(
+                spacing: 25,
+                runSpacing: 15,
+                children: DefaultValues.addMoneyValues.asMap().entries.map((e) {
+                  return _moneyItemWidget(
+                    context,
+                    DefaultValues.addMoneyValues[e.key],
                   );
-                },
+                }).toList(),
               ),
               const SizedBox(height: 24),
               Align(
@@ -146,29 +116,30 @@ class AddMoneyView extends GetView<AddMoneyController> {
               ),
               const SizedBox(height: 20),
               Column(
-                  children:
-                      List.generate(DefaultValues.bankList.length, (index) {
-                return Padding(
-                    padding: const EdgeInsets.only(bottom: 12),
-                    child: BuildBankItem(
-                      title: DefaultValues.bankList[index]["title"].toString(),
-                      body: DefaultValues.bankList[index]["body"].toString(),
-                      asset: DefaultValues.bankList[index]["asset"].toString(),
-                      controller: controller,
-                    ));
-              })),
+                children: DefaultValues.bankList.asMap().entries.map(
+                  (e) {
+                    return _bankWidget(
+                      context,
+                      DefaultValues.bankList[e.key],
+                    );
+                  },
+                ).toList(),
+              ),
               Column(
-                  children: List.generate(
-                      DefaultValues.paymentMethodList.length, (index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: BuildPaymentItem(
-                      title: DefaultValues.paymentMethodList[index]['title']
-                          .toString(),
-                      asset: DefaultValues.paymentMethodList[index]['asset']
-                          .toString()),
-                );
-              })),
+                children: List.generate(
+                  DefaultValues.paymentMethodList.length,
+                  (index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: BuildPaymentItem(
+                          title: DefaultValues.paymentMethodList[index]['title']
+                              .toString(),
+                          asset: DefaultValues.paymentMethodList[index]['asset']
+                              .toString()),
+                    );
+                  },
+                ),
+              ),
               const SizedBox(height: 100),
             ],
           ),
@@ -179,24 +150,124 @@ class AddMoneyView extends GetView<AddMoneyController> {
         child: InkWell(
           onTap: _continueOnLick,
           child: Container(
-              width: double.infinity,
-              height: 55,
-              decoration: BoxDecoration(
-                  color: AppColors.main.shade200,
-                  borderRadius: BorderRadius.circular(16)),
-              padding: const EdgeInsets.all(12),
-              child: Center(
-                child: Text(
-                  S.of(context).continueBtn,
-                  style: AppTextStyles.body1().copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.main.shade400,
-                  ),
+            width: double.infinity,
+            height: 55,
+            decoration: BoxDecoration(
+                color: AppColors.main.shade200,
+                borderRadius: BorderRadius.circular(16)),
+            padding: const EdgeInsets.all(12),
+            child: Center(
+              child: Text(
+                S.of(context).continueBtn,
+                style: AppTextStyles.body1().copyWith(
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.main.shade400,
                 ),
-              )),
+              ),
+            ),
+          ),
         ),
       ),
     );
+  }
+
+  Widget _moneyItemWidget(
+    BuildContext context,
+    MoneyModel moneyModel,
+  ) {
+    return Obx(
+      () => GestureDetector(
+        onTap: () {
+          _selectedMoney(moneyModel);
+        },
+        child: Container(
+          width: 110,
+          padding: const EdgeInsets.symmetric(
+            vertical: 12,
+          ),
+          decoration: BoxDecoration(
+            color:
+                controller.indexMoney == moneyModel.id ? AppColors.main : null,
+            border: controller.indexMoney == moneyModel.id
+                ? null
+                : Border.all(width: 1.0, color: Colors.grey),
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Center(
+            child: Text(
+              controller.parseMoney(moneyModel.money),
+              style: AppTextStyles.body2().copyWith(
+                fontWeight: FontWeight.w500,
+                color: controller.indexMoney == moneyModel.id
+                    ? AppColors.white
+                    : AppColors.main.shade200,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _bankWidget(BuildContext context, BankModel bankModel) {
+    return Obx(() {
+      return InkWell(
+        onTap: () {
+          _seclectedBank(bankModel);
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: AnimatedContainer(
+            curve: Curves.easeIn,
+            duration: const Duration(milliseconds: 350),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: controller.indexBank == bankModel.id
+                      ? AppColors.main.shade200
+                      : AppColors.grey.shade600,
+                  borderRadius: BorderRadius.circular(16)),
+              padding: const EdgeInsets.all(12),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        bankModel.logo,
+                        height: 30,
+                      ),
+                      const SizedBox(width: 12),
+                      SizedBox(
+                        width: Get.width * 0.62,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            BuildTextTitle(
+                              text: bankModel.nameBank,
+                              color: controller.indexBank == bankModel.id
+                                  ? AppColors.main.shade400
+                                  : AppColors.grey.shade500,
+                            ),
+                            BuildTextBody(
+                                text: bankModel.desBank,
+                                color: controller.indexBank == bankModel.id
+                                    ? AppColors.main.shade400
+                                    : AppColors.grey.shade500)
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  controller.indexBank == bankModel.id
+                      ? SvgPicture.asset(AssetsConst.activeCircle)
+                      : SvgPicture.asset(AssetsConst.disableCircle)
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    });
   }
 }
 
@@ -214,7 +285,9 @@ class BuildPaymentItem extends StatelessWidget {
       onTap: () {},
       child: Container(
         decoration: BoxDecoration(
-            color: AppColors.grey[00], borderRadius: BorderRadius.circular(16)),
+          color: AppColors.grey[00],
+          borderRadius: BorderRadius.circular(16),
+        ),
         padding: const EdgeInsets.all(20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -237,75 +310,6 @@ class BuildPaymentItem extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class BuildBankItem extends StatelessWidget {
-  const BuildBankItem(
-      {Key? key,
-      required this.title,
-      required this.body,
-      required this.asset,
-      required this.controller})
-      : super(key: key);
-  final String title;
-  final String body;
-  final String asset;
-  final AddMoneyController controller;
-  @override
-  Widget build(BuildContext context) {
-    return Obx(() {
-      return InkWell(
-        onTap: () {
-          controller.selectBank(title);
-        },
-        child: AnimatedContainer(
-          curve: Curves.easeIn,
-          duration: const Duration(milliseconds: 350),
-          child: Container(
-            decoration: BoxDecoration(
-                color: controller.selectedBank.value == title
-                    ? AppColors.main.shade200
-                    : AppColors.grey.shade600,
-                borderRadius: BorderRadius.circular(16)),
-            padding: const EdgeInsets.all(12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    SvgPicture.asset(asset),
-                    const SizedBox(width: 12),
-                    SizedBox(
-                      width: Get.width * 0.62,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          BuildTextTitle(
-                            text: title,
-                            color: controller.selectedBank.value == title
-                                ? AppColors.main.shade400
-                                : AppColors.grey.shade500,
-                          ),
-                          BuildTextBody(
-                              text: body,
-                              color: controller.selectedBank.value == title
-                                  ? AppColors.main.shade400
-                                  : AppColors.grey.shade500)
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                controller.selectedBank.value == title
-                    ? SvgPicture.asset(AssetsConst.activeCircle)
-                    : SvgPicture.asset(AssetsConst.disableCircle)
-              ],
-            ),
-          ),
-        ),
-      );
-    });
   }
 }
 
