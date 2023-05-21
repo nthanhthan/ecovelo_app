@@ -1,6 +1,7 @@
 import 'package:ecoveloapp/app/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 
 class HistoryView extends GetView<HistoryController> {
   const HistoryView({Key? key}) : super(key: key);
@@ -30,18 +31,36 @@ class HistoryView extends GetView<HistoryController> {
         backgroundColor: AppColors.defaultBackground,
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            _historyByDay(context),
-            _historyByDay(context),
-            _historyByDay(context),
-          ],
+        child: Obx(
+          () => controller.isLoading
+              ? controller.historyGroupDay != null
+                  ? ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: controller.historyGroupDay?.length,
+                      itemBuilder: (context, index) {
+                        final date =
+                            controller.historyGroupDay?.keys.elementAt(index);
+                        final listHistories = controller.historyGroupDay?[date];
+                        return _historyByDay(
+                          context,
+                          date,
+                          listHistories,
+                        );
+                      })
+                  : const SizedBox()
+              : Padding(
+                  padding: const EdgeInsets.all(100),
+                  child: ThreeBounceLoading(),
+                ),
         ),
       ),
     );
   }
 
-  Widget _historyByDay(BuildContext context) {
+  Widget _historyByDay(
+      BuildContext context, DateTime? time, List<HistoryModel>? listHistories) {
+    String datetime = "${time?.day} - ${time?.month} - ${time?.year}";
     return Container(
       margin: const EdgeInsets.symmetric(
         horizontal: 25,
@@ -56,20 +75,27 @@ class HistoryView extends GetView<HistoryController> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Today - 01 May, 2023",
+            datetime,
             style: AppTextStyles.body1().copyWith(color: AppColors.black),
           ),
           const SizedBox(height: 20),
-          _transferDetail(context),
-          _transferDetail(context),
-          _transferDetail(context),
-          _transferDetail(context),
+          Column(
+            children: listHistories!.asMap().entries.map((e) {
+              return _transferDetail(
+                context,
+                listHistories[e.key],
+              );
+            }).toList(),
+          ),
         ],
       ),
     );
   }
 
-  Widget _transferDetail(BuildContext context) {
+  Widget _transferDetail(BuildContext context, HistoryModel historyModel) {
+    DateTime date = DateTime.fromMillisecondsSinceEpoch(
+        historyModel.dateTimeTransaction ?? 0);
+    String datetime = "${date.hour} :${date.minute}";
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: Row(
@@ -92,7 +118,7 @@ class HistoryView extends GetView<HistoryController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Transfer Money from Stripe",
+                  historyModel.titleTransaction ?? "",
                   style: AppTextStyles.body2().copyWith(
                     color: AppColors.black,
                     fontWeight: FontWeight.w600,
@@ -127,7 +153,7 @@ class HistoryView extends GetView<HistoryController> {
                     ),
                     const SizedBox(width: 10),
                     Text(
-                      "4:00 PM",
+                      datetime,
                       style: AppTextStyles.tiny()
                           .copyWith(color: AppColors.grey.shade300),
                     ),
@@ -137,7 +163,9 @@ class HistoryView extends GetView<HistoryController> {
             ),
           ),
           Text(
-            "+10.0000",
+            "+" +
+                NumberFormat.currency(locale: 'vi_VN', symbol: '₫')
+                    .format(historyModel.point ?? 0),
             style: AppTextStyles.body2().copyWith(
               color: AppColors.success,
               fontWeight: FontWeight.w600,
