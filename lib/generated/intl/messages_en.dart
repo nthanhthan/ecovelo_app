@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about": MessageLookupByLibrary.simpleMessage("About"),
         "addMoney": MessageLookupByLibrary.simpleMessage("Add money"),
+        "amount": MessageLookupByLibrary.simpleMessage("Amount"),
         "appName": MessageLookupByLibrary.simpleMessage("ECOVELO"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "bicycleRented": MessageLookupByLibrary.simpleMessage(
@@ -49,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "continueBtn": MessageLookupByLibrary.simpleMessage("Continue"),
         "correct": MessageLookupByLibrary.simpleMessage("Password match"),
+        "date": MessageLookupByLibrary.simpleMessage("Date"),
         "deactiveAcc": MessageLookupByLibrary.simpleMessage("Deactive Account"),
         "desWeekPoint": MessageLookupByLibrary.simpleMessage(
             "Keep participating in weekly chanllenges and earn rewards."),
@@ -72,6 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Your phone number or password is incorrect."),
         "errorQR": MessageLookupByLibrary.simpleMessage(
             "QR Code is incorrect, please try again"),
+        "fee": MessageLookupByLibrary.simpleMessage("Fee"),
         "fileAlreadyExists":
             MessageLookupByLibrary.simpleMessage("File already exists!"),
         "fileTooLarge": MessageLookupByLibrary.simpleMessage(
@@ -80,6 +83,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "flatTire": MessageLookupByLibrary.simpleMessage("Flat tire"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "free": MessageLookupByLibrary.simpleMessage("Free"),
         "getMoreTime": MessageLookupByLibrary.simpleMessage("Get  more time"),
         "goStation": MessageLookupByLibrary.simpleMessage("Go!"),
         "haveAccount":
@@ -165,6 +169,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "qrError": MessageLookupByLibrary.simpleMessage("QR error"),
         "ready": MessageLookupByLibrary.simpleMessage("Ready"),
         "readyRide": MessageLookupByLibrary.simpleMessage("Ready to Ride"),
+        "receipt": MessageLookupByLibrary.simpleMessage("Receipt"),
         "recentActivities":
             MessageLookupByLibrary.simpleMessage("Recent Activities"),
         "reportProblem": MessageLookupByLibrary.simpleMessage("Report Problem"),
@@ -190,6 +195,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "textBanner": MessageLookupByLibrary.simpleMessage(
             "Let\'s enjoy a stress-free ride during peak hours and "),
         "ticketType": MessageLookupByLibrary.simpleMessage("Ticket Type"),
+        "time": MessageLookupByLibrary.simpleMessage("Time"),
         "titleDes": MessageLookupByLibrary.simpleMessage("Description"),
         "titleJourneyCode":
             MessageLookupByLibrary.simpleMessage("Journey Code"),
@@ -197,9 +203,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "titleTime": MessageLookupByLibrary.simpleMessage("Time"),
         "titleWeekPoint":
             MessageLookupByLibrary.simpleMessage("This week points"),
+        "total": MessageLookupByLibrary.simpleMessage("Total"),
         "totalDistances":
             MessageLookupByLibrary.simpleMessage("Total distances"),
         "totalTime": MessageLookupByLibrary.simpleMessage("Total time"),
+        "transferOk":
+            MessageLookupByLibrary.simpleMessage("Transfer Successfully"),
         "unableToAccessCamera":
             MessageLookupByLibrary.simpleMessage("Unable to access camera!"),
         "unableToAccessStorage":

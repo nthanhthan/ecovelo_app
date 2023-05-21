@@ -77,6 +77,7 @@ class SignInController extends GetxController {
         await _authHttpService.login(userName: account, password: password);
     if (res.isSuccess() && res.data != null) {
       _loginManager.saveLogin(res.data);
+      _loginManager.saveUser(res.data.userResponse);
       await _sessionManager.initSession(res.data);
       processingDialog.hide();
       Get.offNamed(Routes.home);

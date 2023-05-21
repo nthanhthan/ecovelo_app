@@ -69,7 +69,7 @@ class AppPages {
       binding: AddMoneyBinding(),
       transition: Transition.rightToLeft,
     ),
-     GetPage<dynamic>(
+    GetPage<dynamic>(
       name: Routes.register,
       page: () => const RegisterView(),
       binding: AuthBinding(),
@@ -78,6 +78,7 @@ class AppPages {
     GetPage<dynamic>(
       name: Routes.transferSuccess,
       page: () => const TransferSuccessView(),
+      binding: TransferSuccessBinding(),
       transition: Transition.rightToLeft,
     ),
     GetPage<dynamic>(
@@ -86,7 +87,7 @@ class AppPages {
       binding: FeedbackBinding(),
       transition: Transition.rightToLeft,
     ),
-      GetPage<dynamic>(
+    GetPage<dynamic>(
       name: Routes.stationBike,
       page: () => const MapView(),
       binding: HomeBinding(),

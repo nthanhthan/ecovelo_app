@@ -16,4 +16,6 @@ class AppApi {
   //rent
   static const String rentBicycle = "$apiVer/bicycle/rent-bicycle";
   static const String stopRentBicycle = "$apiVer/bicycle/stop-rent";
+  //add money
+  static const String addMoney = "$apiVer/auth/addMoney";
 }
