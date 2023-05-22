@@ -57,7 +57,7 @@ class MapController extends GetxController {
     }
     customMarker().then((value) {
       _getCurrentLocation().then((value) {
-       setMarker() ;
+        setMarker();
         isLoading = true;
       });
     });
@@ -206,26 +206,19 @@ class MapController extends GetxController {
     if (key.isNotEmpty && ((key.trim().isEmpty) || _keyStation == key.trim())) {
       return listStation;
     }
-
-    // facilities.clear();
-    // _keyStation = key.trim();
-    // bool isConnected = await NetworkUtil.isConnected();
-
-    // if (isConnected) {
-    //   var resp = await _riskScanHttp.searchFacility(_keyFacility);
-    //   if (resp.isSuccess() && resp.data != null) {
-    //     facilities = resp.data ?? [];
-    //   } else {
-    //     facilities = [];
-    //   }
-    // } else {
-    //   facilities = await _searchFacilityInCache(key);
-    // }
-    // //if (facilities.isEmpty) {
-    //SnackBars.error(message: S.current.noResultFound).show(duration: 2000);
-    //}
-    return listStation;
+    try {
+      List<StationModel> lisStationBySearch = [];
+      lisStationBySearch = listStation
+          .where((element) =>
+              element.address!.toLowerCase().contains(key.toLowerCase()))
+          .toList();
+      return lisStationBySearch;
+    } catch (e) {
+      return [];
+    }
   }
 
-  void chooseStation(StationModel station) {}
+  void chooseStation(StationModel station) {
+    onMarkerTapped(station);
+  }
 }
