@@ -116,7 +116,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "lockFirst": MessageLookupByLibrary.simpleMessage(
             "You must do the your bike lock first"),
         "logout": MessageLookupByLibrary.simpleMessage("Log out"),
-        "mainWallet": MessageLookupByLibrary.simpleMessage("Main Wallet"),
+        "mainWallet": MessageLookupByLibrary.simpleMessage("Main Point"),
         "messageConfirmEnd": MessageLookupByLibrary.simpleMessage(
             "Are you want to end your trip?"),
         "myJourney": MessageLookupByLibrary.simpleMessage("My journey"),
@@ -167,7 +167,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Pick file using?"),
         "proceed": MessageLookupByLibrary.simpleMessage("Proceed to start!"),
         "processing": MessageLookupByLibrary.simpleMessage("Processing..."),
-        "promoWallet": MessageLookupByLibrary.simpleMessage("Promo Wallet"),
+        "promoWallet": MessageLookupByLibrary.simpleMessage("Promo Point"),
         "qrError": MessageLookupByLibrary.simpleMessage("QR error"),
         "ready": MessageLookupByLibrary.simpleMessage("Ready"),
         "readyRide": MessageLookupByLibrary.simpleMessage("Ready to Ride"),

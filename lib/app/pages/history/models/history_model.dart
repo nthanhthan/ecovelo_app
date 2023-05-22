@@ -7,11 +7,13 @@ class HistoryModel {
   String? titleTransaction;
   double? point;
   int? dateTimeTransaction;
+  bool? ecovelo;
   HistoryModel({
     this.id,
     this.titleTransaction,
     this.dateTimeTransaction,
     this.point,
+    this.ecovelo,
   });
 
   factory HistoryModel.fromJson(Map<String, dynamic> json) =>

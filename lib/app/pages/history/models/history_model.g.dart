@@ -11,6 +11,7 @@ HistoryModel _$HistoryModelFromJson(Map<String, dynamic> json) => HistoryModel(
       titleTransaction: json['titleTransaction'] as String?,
       dateTimeTransaction: json['dateTimeTransaction'] as int?,
       point: (json['point'] as num?)?.toDouble(),
+      ecovelo: json['ecovelo'] as bool?,
     );
 
 Map<String, dynamic> _$HistoryModelToJson(HistoryModel instance) =>
@@ -19,4 +20,5 @@ Map<String, dynamic> _$HistoryModelToJson(HistoryModel instance) =>
       'titleTransaction': instance.titleTransaction,
       'point': instance.point,
       'dateTimeTransaction': instance.dateTimeTransaction,
+      'ecovelo': instance.ecovelo,
     };

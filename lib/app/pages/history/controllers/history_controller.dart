@@ -46,6 +46,9 @@ class HistoryController extends GetxController {
         groups[day] = group;
       }
       historyGroupDay = groups;
+      historyGroupDay?.forEach((key, value) {
+        historyGroupDay![key] = value.reversed.toList();
+      });
       Map<DateTime, List<HistoryModel>> reversedHistoryGroupDay = {};
       List<DateTime> keys = historyGroupDay!.keys.toList()
         ..sort((a, b) => b.compareTo(a));
