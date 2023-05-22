@@ -46,7 +46,7 @@ class FilledBtnStyle {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderRadius),
       ),
-      primary: background ?? AppColors.main.shade300,
+      primary: background ?? AppColors.main.shade200,
       splashFactory: NoSplash.splashFactory,
       fixedSize: fixedSize,
       tapTargetSize: tapTargetSize,
@@ -56,17 +56,17 @@ class FilledBtnStyle {
   static ButtonStyle disable({
     SizeButtonType sizeType = SizeButtonType.large,
     EdgeInsetsGeometry? customPadding,
+    bool isFullWidth = false,
     double borderRadius = 30,
   }) {
     return ElevatedButton.styleFrom(
       primary: AppColors.disableButtonBackground,
-      onPrimary: AppColors.disableTextColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderRadius),
       ),
       splashFactory: NoSplash.splashFactory,
       padding: _getBtnPadding(customPadding: customPadding, sizeType: sizeType),
-      minimumSize: const Size(48, 10),
+      minimumSize: Size(isFullWidth ? Get.width : 48, 10),
     );
   }
 }
@@ -158,7 +158,7 @@ class OutlineButtonStyle {
       minimumSize: Size(isFullWidth ? Get.width : 48, 10),
       primary: background,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(16),
       ),
       side: outlineColor != null
           ? BorderSide(

@@ -2,10 +2,28 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>geo</string>
+		<string>googlemaps</string>
+		<string>comgooglemaps</string>
+	</array>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Looking for local tcp Bonjour service</string>
+	<key>NSBonjourServices</key>
+	<array>
+  	<string>mqtt.tcp</string>
+	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your current location to calculate the distance to stations around you</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Used to scan QR code</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Ecovelo</string>
+	<string>EcoVelo</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

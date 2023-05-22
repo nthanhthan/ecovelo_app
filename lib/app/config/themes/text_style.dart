@@ -22,7 +22,7 @@ class AppTextStyles {
 
   static TextStyle body1() {
     return const TextStyle(
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w700,
       fontSize: 16,
       color: AppColors.defaultTextColor,
       fontFamily: AppProperties.fontFamilyName,
@@ -31,7 +31,7 @@ class AppTextStyles {
 
   static TextStyle body2() {
     return const TextStyle(
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w700,
       fontSize: 14,
       color: AppColors.white,
       fontFamily: AppProperties.fontFamilyName,
@@ -48,8 +48,8 @@ class AppTextStyles {
 
   static TextStyle largeHeading1() {
     return const TextStyle(
-      fontWeight: FontWeight.w400,
-      fontSize: 38,
+      fontWeight: FontWeight.w700,
+      fontSize: 40,
       color: AppColors.defaultTextColor,
       fontFamily: AppProperties.fontFamilyName,
     );
@@ -57,8 +57,8 @@ class AppTextStyles {
 
   static TextStyle largeHeading2() {
     return const TextStyle(
-      fontWeight: FontWeight.w500,
-      fontSize: 30,
+      fontWeight: FontWeight.w700,
+      fontSize: 32,
       color: AppColors.defaultTextColor,
       fontFamily: AppProperties.fontFamilyName,
     );
@@ -66,7 +66,7 @@ class AppTextStyles {
 
   static TextStyle heading1() {
     return const TextStyle(
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w700,
       fontSize: 24,
       color: AppColors.defaultTextColor,
       fontFamily: AppProperties.fontFamilyName,
@@ -75,7 +75,7 @@ class AppTextStyles {
 
   static TextStyle heading2() {
     return const TextStyle(
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w700,
       fontSize: 20,
       color: AppColors.defaultTextColor,
       fontFamily: AppProperties.fontFamilyName,
@@ -110,14 +110,16 @@ class AppTextStyles {
       fontWeight: FontWeight.w400,
       fontSize: 10,
       color: AppColors.defaultTextColor,
+      fontFamily: AppProperties.fontFamilyName,
     );
   }
 
   static TextStyle tiny() {
     return const TextStyle(
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w400,
       fontSize: 12,
       color: AppColors.defaultTextColor,
+      fontFamily: AppProperties.fontFamilyName,
     );
   }
 
@@ -165,6 +167,15 @@ class AppTextStyles {
     return const TextStyle(
       fontWeight: FontWeight.w800,
       fontSize: 18,
+      fontFamily: AppProperties.fontFamilyName,
+    );
+  }
+
+  static TextStyle subHeading1() {
+    return const TextStyle(
+      fontWeight: FontWeight.w700,
+      fontSize: 18,
+      color: AppColors.defaultTextColor,
       fontFamily: AppProperties.fontFamilyName,
     );
   }

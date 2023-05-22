@@ -3,14 +3,18 @@ part of 'app_pages.dart';
 abstract class Routes {
   static const main = '/main_view';
   static const home = '/home_view';
-  static const choosePlan = '/choose_plan_view';
   static const onBoarding = '/onBoarding_view';
-  static const setting = '/setting_view';
+  static const signin = '/signin_view';
   static const language = '/language_view';
-  static const voice = '/voice_view';
-  static const selectPlan = '/select_plan_view/';
-  static const history = '/history';
-  static const chat = '/chat';
-  static const question = '/question';
-  static const choosePlanConfig = '/choose_plan_config';
+  static const scanQR = '/scan_view';
+  static const rentBicycle = '/rent_bicycle_view';
+  static const journey = '/journey_view';
+  static const journeyDetail = '/journey_detail_view';
+  static const reportProblem = '/report_problem_view';
+  static const addMoney = '/add_money_view';
+  static const register = '/register_view';
+  static const transferSuccess = '/transfer_success_view';
+  static const feedback = '/feedback_view';
+  static const stationBike = '/station_view';
+  static const transactionHistory = '/history_view';
 }

@@ -5,6 +5,7 @@ export 'processing.dart';
 export 'custom_switch.dart';
 export 'header_contents.dart';
 export 'inputs/inputs.dart';
+export 'inputs/upload_file_input.dart';
 export 'dialog/confirm_dialog.dart';
 export 'dialog/processing_dialog.dart';
 export 'dialog/app_dialog.dart';

@@ -1,5 +1,6 @@
 import 'package:ecoveloapp/app/core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:simple_shadow/simple_shadow.dart';
 
 class SplashView extends StatelessWidget {
@@ -13,23 +14,42 @@ class SplashView extends StatelessWidget {
   }
 
   Widget buildBody(BuildContext context) {
-    double maxWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: AppColors.main.shade300,
       body: Stack(
-        fit: StackFit.expand,
         children: [
-          Container(
-            color: Colors.black,
+          Positioned(
+            top: 0,
+            left: 0,
+            child: SvgPicture.asset(AssetsConst.line1Splash),
           ),
-          Center(
-            child: Padding(
-              padding: EdgeInsets.all(maxWidth * .2),
-              child: SimpleShadow(
+          Positioned(
+            top: 0,
+            right: 0,
+            child: SvgPicture.asset(AssetsConst.line2Splash),
+          ),
+          Positioned(
+            bottom: 30,
+            right: 0,
+            child: SvgPicture.asset(AssetsConst.line3Splash),
+          ),
+          SizedBox(
+            width: double.infinity,
+            height: double.infinity,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SimpleShadow(
                   opacity: 0.6,
                   color: AppColors.main.shade300,
                   offset: const Offset(0, 0),
                   sigma: 12,
-                  child: Image.asset(AssetsConst.ecoveloSplash)),
+                  child: SvgPicture.asset(AssetsConst.logoSplash),
+                ),
+                const SizedBox(height: 10),
+                SvgPicture.asset(AssetsConst.textSplash),
+              ],
             ),
           ),
         ],
