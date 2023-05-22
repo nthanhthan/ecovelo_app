@@ -107,7 +107,9 @@ class HistoryView extends GetView<HistoryController> {
                 color: AppColors.grey.shade200.withOpacity(0.4),
                 borderRadius: BorderRadius.circular(8)),
             child: SvgPicture.asset(
-              AssetsConst.stripeIc,
+              historyModel.ecovelo == true
+                  ? AssetsConst.logoScanner
+                  : AssetsConst.stripeIc,
               height: 25,
             ),
           ),
@@ -163,11 +165,13 @@ class HistoryView extends GetView<HistoryController> {
             ),
           ),
           Text(
-            "+" +
+            (historyModel.ecovelo == true ? "-" : "+") +
                 NumberFormat.currency(locale: 'vi_VN', symbol: '₫')
                     .format(historyModel.point ?? 0),
             style: AppTextStyles.body2().copyWith(
-              color: AppColors.success,
+              color: historyModel.ecovelo == true
+                  ? AppColors.warning
+                  : AppColors.success,
               fontWeight: FontWeight.w600,
             ),
           ),

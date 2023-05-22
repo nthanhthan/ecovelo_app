@@ -530,20 +530,20 @@ class S {
     );
   }
 
-  /// `Main Wallet`
+  /// `Main Point`
   String get mainWallet {
     return Intl.message(
-      'Main Wallet',
+      'Main Point',
       name: 'mainWallet',
       desc: '',
       args: [],
     );
   }
 
-  /// `Promo Wallet`
+  /// `Promo Point`
   String get promoWallet {
     return Intl.message(
-      'Promo Wallet',
+      'Promo Point',
       name: 'promoWallet',
       desc: '',
       args: [],

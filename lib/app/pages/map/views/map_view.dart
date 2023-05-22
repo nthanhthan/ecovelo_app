@@ -19,6 +19,7 @@ class MapView extends GetView<MapController> {
   }
 
   void _onChooseSuggestFacility(StationModel station) {
+    controller.stationTextController.clear();
     controller.chooseStation(station);
   }
 
@@ -41,7 +42,7 @@ class MapView extends GetView<MapController> {
                       ),
                       zoom: 13,
                     ),
-                    markers:  controller.myMarkers,
+                    markers: controller.myMarkers,
                   )
                 : const GoogleMap(
                     initialCameraPosition: CameraPosition(
@@ -250,12 +251,11 @@ class MapView extends GetView<MapController> {
                   ],
                 ),
               ),
-              Obx(
-                () => _containerItinerary(
-                  context,
-                  controller.getStationAddress ?? "",
-                  Icons.location_on,
-                ),
+              _containerItinerary(
+                context,
+                station.address ?? "",
+                // controller.getStationAddress ?? "",
+                Icons.location_on,
               ),
             ],
           ),

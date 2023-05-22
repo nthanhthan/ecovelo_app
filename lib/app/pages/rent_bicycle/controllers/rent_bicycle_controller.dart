@@ -11,6 +11,10 @@ class RentBicycleController extends GetxController {
 
   late final RentHttpService _rentHttpService;
 
+  late LoginManager _loginManager;
+
+  UserModel? userModel;
+
   void changeWallet() {
     isMainWallet = !isMainWallet;
   }
@@ -19,6 +23,8 @@ class RentBicycleController extends GetxController {
   @override
   void onInit() {
     _rentHttpService = Get.find<RentHttpService>();
+    _loginManager = Get.find<LoginManager>();
+    userModel = _loginManager.getUser();
     if (Get.arguments != null && Get.arguments is String) {
       bikeID = Get.arguments as String;
     }
