@@ -1,6 +1,7 @@
 import 'package:ecoveloapp/app/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class JourneyView extends GetView<JourneyConroller> {
@@ -11,8 +12,11 @@ class JourneyView extends GetView<JourneyConroller> {
     return _buildBody(context);
   }
 
-  void _viewDetailClick() {
-    Get.toNamed(Routes.journeyDetail);
+  void _viewDetailClick(DetailJouneyModel detailJouneyModel) {
+    Get.toNamed(
+      Routes.journeyDetail,
+      arguments: detailJouneyModel,
+    );
   }
 
   Widget _buildBody(BuildContext context) {
@@ -96,19 +100,23 @@ class JourneyView extends GetView<JourneyConroller> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _itemAnalysis(
-                  context,
-                  AssetsConst.iconDistanceGreen,
-                  S.of(context).totalDistances,
-                  "19",
-                  "km",
+                Obx(
+                  () => _itemAnalysis(
+                    context,
+                    AssetsConst.iconDistanceGreen,
+                    S.of(context).totalDistances,
+                    controller.totalDistance.toStringAsFixed(1),
+                    "km",
+                  ),
                 ),
-                _itemAnalysis(
-                  context,
-                  AssetsConst.iconClock,
-                  S.of(context).totalTime,
-                  "300",
-                  "minutes",
+                Obx(
+                  () => _itemAnalysis(
+                    context,
+                    AssetsConst.iconClock,
+                    S.of(context).totalTime,
+                    (controller.totalTime / 60).toStringAsFixed(1),
+                    "minutes",
+                  ),
                 ),
               ],
             ),
@@ -117,19 +125,23 @@ class JourneyView extends GetView<JourneyConroller> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _itemAnalysis(
-                  context,
-                  AssetsConst.iconCarbon,
-                  S.of(context).carbon,
-                  "0.8",
-                  "kg",
+                Obx(
+                  () => _itemAnalysis(
+                    context,
+                    AssetsConst.iconCarbon,
+                    S.of(context).carbon,
+                    controller.totalCardbon.toStringAsFixed(1),
+                    "kg",
+                  ),
                 ),
-                _itemAnalysis(
-                  context,
-                  AssetsConst.iconEnrgy,
-                  S.of(context).energy,
-                  "200",
-                  "kcal",
+                Obx(
+                  () => _itemAnalysis(
+                    context,
+                    AssetsConst.iconEnrgy,
+                    S.of(context).energy,
+                    controller.totalEnergy.toStringAsFixed(1),
+                    "kcal",
+                  ),
                 ),
               ],
             ),
@@ -274,112 +286,147 @@ class JourneyView extends GetView<JourneyConroller> {
         vertical: 10,
         horizontal: 20,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Today",
-            style: AppTextStyles.tiny().copyWith(
-                color: AppColors.grey.shade500, fontWeight: FontWeight.w500),
+      child: Obx(
+        () => controller.isLoading
+            ? controller.historyGroupDay != null
+                ? ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: controller.historyGroupDay?.length,
+                    itemBuilder: (context, index) {
+                      final date =
+                          controller.historyGroupDay?.keys.elementAt(index);
+                      final listHistories = controller.historyGroupDay?[date];
+                      return _historyByDay(
+                        context,
+                        date,
+                        listHistories,
+                      );
+                    })
+                : const SizedBox()
+            : ThreeBounceLoading(),
+      ),
+    );
+  }
+
+  Widget _historyByDay(
+    BuildContext context,
+    DateTime? time,
+    List<DetailJouneyModel>? listHistories,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          DateFormat("MMM dd, yyyy").format(time!),
+          style: AppTextStyles.body2().copyWith(
+              color: AppColors.grey.shade500, fontWeight: FontWeight.w700),
+        ),
+        const SizedBox(height: 10),
+        Column(
+          children: listHistories!
+              .asMap()
+              .entries
+              .map(
+                (e) => _recentActivity(
+                  context,
+                  listHistories[e.key],
+                ),
+              )
+              .toList(),
+        )
+      ],
+    );
+  }
+
+  Widget _recentActivity(
+    BuildContext context,
+    DetailJouneyModel detailJouneyModel,
+  ) {
+    DateTime beginTime = DateTime.fromMillisecondsSinceEpoch(
+        detailJouneyModel.beginTimeRent ?? 0);
+    DateTime endTime =
+        DateTime.fromMillisecondsSinceEpoch(detailJouneyModel.endTimeRent ?? 0);
+    String begin =
+        "${beginTime.hour}:${beginTime.minute} - ${endTime.hour}:${endTime.minute}";
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20),
+      child: OutlinedButton(
+        onPressed: () {
+          _viewDetailClick(detailJouneyModel);
+        },
+        style: OutlineButtonStyle.enable(
+          sizeType: SizeButtonType.custom,
+          outlineColor: AppColors.grey.shade100,
+          customPadding: const EdgeInsets.symmetric(
+            vertical: 10,
+            horizontal: 15,
           ),
-          const SizedBox(height: 10),
-          OutlinedButton(
-            onPressed: _viewDetailClick,
-            style: OutlineButtonStyle.enable(
-              sizeType: SizeButtonType.custom,
-              outlineColor: AppColors.grey.shade100,
-              customPadding: const EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 15,
-              ),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Text(
+                  begin,
+                  style: AppTextStyles.body2().copyWith(
+                    color: AppColors.main.shade200,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Morning ride",
-                      style: AppTextStyles.body2().copyWith(
-                        color: AppColors.main.shade200,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          S.of(context).detail,
-                          style: AppTextStyles.tiny()
-                              .copyWith(color: AppColors.main.shade200),
-                        ),
-                        const SizedBox(width: 5),
-                        Icon(
-                          Icons.chevron_right,
-                          color: AppColors.main.shade200,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.schedule,
-                      color: AppColors.grey.shade300,
-                      size: 15,
+                      S.of(context).detail,
+                      style: AppTextStyles.tiny()
+                          .copyWith(color: AppColors.main.shade200),
                     ),
                     const SizedBox(width: 5),
-                    RichText(
-                      text: TextSpan(
-                        style: AppTextStyles.small()
-                            .copyWith(color: AppColors.grey.shade300),
-                        children: const <TextSpan>[
-                          TextSpan(text: "07:30 - 8:30   "),
-                          TextSpan(text: "o"),
-                          TextSpan(text: "   01 May 2023"),
-                        ],
-                      ),
+                    Icon(
+                      Icons.chevron_right,
+                      color: AppColors.main.shade200,
                     ),
                   ],
-                ),
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10),
-                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                  decoration: const BoxDecoration(
-                    border: Border(
-                      top: BorderSide(
-                          color: Color(0xFFF5F5F5),
-                          width: 1.0,
-                          style: BorderStyle.solid),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _itemActivites(
-                        context,
-                        AssetsConst.iconDistanceGreen,
-                        S.of(context).totalDistances,
-                        "4",
-                        "km",
-                      ),
-                      _itemActivites(
-                        context,
-                        AssetsConst.iconClock,
-                        S.of(context).totalTime,
-                        "60",
-                        "minutes",
-                      ),
-                    ],
-                  ),
                 ),
               ],
             ),
-          ),
-        ],
+            const SizedBox(height: 5),
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+              decoration: const BoxDecoration(
+                border: Border(
+                  top: BorderSide(
+                      color: Color(0xFFF5F5F5),
+                      width: 1.0,
+                      style: BorderStyle.solid),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _itemActivites(
+                    context,
+                    AssetsConst.iconDistanceGreen,
+                    S.of(context).totalDistances,
+                    detailJouneyModel.distance?.toStringAsFixed(1) ?? "0",
+                    "km",
+                  ),
+                  _itemActivites(
+                    context,
+                    AssetsConst.iconClock,
+                    S.of(context).totalTime,
+                    (detailJouneyModel.totalTime! / 60).toStringAsFixed(1),
+                    "minutes",
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

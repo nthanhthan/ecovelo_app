@@ -60,7 +60,6 @@ class HistoryView extends GetView<HistoryController> {
 
   Widget _historyByDay(
       BuildContext context, DateTime? time, List<HistoryModel>? listHistories) {
-    String datetime = "${time?.day} - ${time?.month} - ${time?.year}";
     return Container(
       margin: const EdgeInsets.symmetric(
         horizontal: 25,
@@ -75,7 +74,7 @@ class HistoryView extends GetView<HistoryController> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            datetime,
+            DateFormat("MMM dd, yyyy").format(time!),
             style: AppTextStyles.body1().copyWith(color: AppColors.black),
           ),
           const SizedBox(height: 20),

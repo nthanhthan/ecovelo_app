@@ -55,7 +55,7 @@ class AppPages {
     GetPage<dynamic>(
       name: Routes.journeyDetail,
       page: () => const JourneyDetailView(),
-      binding: JourneyBinding(),
+      binding: JourneyDetailBinding(),
       transition: Transition.rightToLeft,
     ),
     GetPage<dynamic>(
