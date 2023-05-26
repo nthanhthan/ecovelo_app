@@ -1479,6 +1479,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Enter Code`
+  String get enterCode {
+    return Intl.message(
+      'Enter Code',
+      name: 'enterCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Find and enter the code`
+  String get findCode {
+    return Intl.message(
+      'Find and enter the code',
+      name: 'findCode',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

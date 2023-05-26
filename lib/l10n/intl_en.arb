@@ -141,5 +141,7 @@
     "time": "Time",
     "total": "Total",
     "transferError": "Error! Please try again",
-    "historyTransaction": "Transaction History"
+    "historyTransaction": "Transaction History",
+    "enterCode": "Enter Code",
+    "findCode": "Find and enter the code"
 }

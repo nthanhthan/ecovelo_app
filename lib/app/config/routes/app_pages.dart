@@ -55,7 +55,7 @@ class AppPages {
     GetPage<dynamic>(
       name: Routes.journeyDetail,
       page: () => const JourneyDetailView(),
-      binding: JourneyBinding(),
+      binding: JourneyDetailBinding(),
       transition: Transition.rightToLeft,
     ),
     GetPage<dynamic>(
@@ -97,6 +97,12 @@ class AppPages {
       name: Routes.transactionHistory,
       page: () => const HistoryView(),
       binding: HistoryBingding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.enterCode,
+      page: () => const KeyBoardCode(),
+      binding: EnterCodeBinding(),
       transition: Transition.rightToLeft,
     ),
   ];
