@@ -2,7 +2,7 @@ import 'package:ecoveloapp/app/core.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class ScanController extends GetxController {
-  late QRViewController? qrController;
+  QRViewController? qrController;
 
   final _isCameraPermissionGranted = false.obs;
   bool get isCameraPermissionGranted => _isCameraPermissionGranted.value;
@@ -28,6 +28,12 @@ class ScanController extends GetxController {
     _loginManager = Get.find<LoginManager>();
     userModel = _loginManager.getUser();
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    qrController?.dispose();
+    super.onClose();
   }
 
   void setQrCodeScan(QRViewController cont) {

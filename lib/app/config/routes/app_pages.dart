@@ -99,5 +99,11 @@ class AppPages {
       binding: HistoryBingding(),
       transition: Transition.rightToLeft,
     ),
+    GetPage<dynamic>(
+      name: Routes.enterCode,
+      page: () => const KeyBoardCode(),
+      binding: EnterCodeBinding(),
+      transition: Transition.rightToLeft,
+    ),
   ];
 }

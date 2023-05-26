@@ -64,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "energy": MessageLookupByLibrary.simpleMessage("Energy"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
+        "enterCode": MessageLookupByLibrary.simpleMessage("Enter Code"),
         "enterMoney":
             MessageLookupByLibrary.simpleMessage("Enter Money Amount"),
         "enterPass":
@@ -79,6 +80,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("File already exists!"),
         "fileTooLarge": MessageLookupByLibrary.simpleMessage(
             "File upload must be smaller than 10 Mb"),
+        "findCode":
+            MessageLookupByLibrary.simpleMessage("Find and enter the code"),
         "finishRide": MessageLookupByLibrary.simpleMessage("Finish ride"),
         "flatTire": MessageLookupByLibrary.simpleMessage("Flat tire"),
         "forgotPassword":

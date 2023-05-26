@@ -43,28 +43,6 @@ class JourneyView extends GetView<JourneyConroller> {
           ),
         ),
       ),
-      bottomNavigationBar: SafeArea(
-        child: Container(
-          height: 50,
-          margin: const EdgeInsets.fromLTRB(30, 0, 30, 10),
-          padding: const EdgeInsets.symmetric(
-            horizontal: 120,
-            vertical: 12,
-          ),
-          decoration: BoxDecoration(
-            color: AppColors.main.shade200,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          alignment: Alignment.center,
-          child: Text(
-            S.of(context).continueBtn,
-            style: AppTextStyles.body1().copyWith(
-              color: AppColors.main.shade400,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ),
-      ),
       body: SingleChildScrollView(
           child: Column(
         children: [
