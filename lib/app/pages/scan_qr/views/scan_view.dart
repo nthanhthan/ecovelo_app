@@ -38,6 +38,15 @@ class ScanView extends GetView<ScanController> {
     }
   }
 
+  void _encodeCodeClicked() {
+    double currentPoint = (controller.userModel?.mainPoint ?? 0) +
+        (controller.userModel?.proPoint ?? 0);
+    Get.offNamed(
+      Routes.enterCode,
+      arguments: currentPoint,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return LimitedScaleFactor(
@@ -106,11 +115,21 @@ class ScanView extends GetView<ScanController> {
   }
 
   Widget _buildActions(BuildContext context) {
-    return Align(
-      alignment: Alignment.center,
-      child: Container(
-        margin: const EdgeInsets.fromLTRB(0, 30, 12, 15),
-        child: CircleAvatar(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        CircleAvatar(
+          radius: 30,
+          backgroundColor: Theme.of(context).dividerColor,
+          child: IconButton(
+            onPressed: _encodeCodeClicked,
+            icon: const Icon(
+              Icons.keyboard,
+              color: AppColors.main,
+            ),
+          ),
+        ),
+        CircleAvatar(
           radius: 30,
           backgroundColor: Theme.of(context).dividerColor,
           child: IconButton(
@@ -126,13 +145,16 @@ class ScanView extends GetView<ScanController> {
                     color: AppColors.main,
                   );
                 } else {
-                  return const Icon(Icons.flash_on, color: AppColors.main);
+                  return const Icon(
+                    Icons.flash_on,
+                    color: AppColors.main,
+                  );
                 }
               },
             ),
           ),
         ),
-      ),
+      ],
     );
   }
 

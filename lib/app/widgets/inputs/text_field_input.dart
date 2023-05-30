@@ -275,6 +275,7 @@ class _TextFieldInputState extends State<TextFieldInput> {
         readOnly: widget.readOnly,
         maxLines: widget.maxLines,
         minLines: widget.minLines,
+        textAlign: TextAlign.center,
         scrollController: widget.scrollController,
         onChanged: (String? val) {
           if (widget.autoTrimValidator) {
@@ -357,7 +358,7 @@ class _TextFieldInputState extends State<TextFieldInput> {
         ),
         textCapitalization: widget.isApplyFirstCharacterCapitalization
             ? TextCapitalization.sentences
-            : TextCapitalization.none,
+            : TextCapitalization.characters,
         inputFormatters: (widget.inputFormatters ?? [])
           ..insertAll(0, [
             if (!widget.isAllowEmoji)

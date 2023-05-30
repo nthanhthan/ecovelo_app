@@ -81,7 +81,6 @@ class MQTTClientWrapper {
     client.secure = true;
     client.securityContext = SecurityContext.defaultContext;
     client.keepAlivePeriod = 20;
-    client.onDisconnected = _onDisconnected;
     client.onConnected = _onConnected;
     client.onSubscribed = _onSubscribed;
   }

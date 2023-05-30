@@ -1,5 +1,9 @@
 export 'bindings/journey_binding.dart';
+export 'bindings/journey_detail_bindings.dart';
 export 'controllers/journey_controller.dart';
 export 'controllers/journey_detail_controller.dart';
 export 'views/jourmey_view.dart';
 export 'views/journey_detail_view.dart';
+export 'services/journey_service.dart';
+export 'models/coordinate_model.dart';
+export 'models/detail_journey_model.dart';

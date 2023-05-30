@@ -17,4 +17,5 @@ abstract class Routes {
   static const feedback = '/feedback_view';
   static const stationBike = '/station_view';
   static const transactionHistory = '/history_view';
+  static const enterCode = '/enter_code_view';
 }
