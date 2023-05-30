@@ -10,8 +10,8 @@
         </intent>
     </queries>
    <application
-        android:label="ecoveloapp"
-        android:name="Ecovelo"
+        android:label="EcoVelo"
+        android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
