@@ -118,17 +118,21 @@ class RentBicycleView extends GetView<RentBicycleController> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                _itemTextBottom(
-                                  context,
-                                  AssetsConst.iconIntroduction,
-                                  S.of(context).introduction,
-                                  _introductionClick,
+                                Flexible(
+                                  child: _itemTextBottom(
+                                    context,
+                                    AssetsConst.iconIntroduction,
+                                    S.of(context).introduction,
+                                    _introductionClick,
+                                  ),
                                 ),
-                                _itemTextBottom(
-                                  context,
-                                  AssetsConst.iconHELP,
-                                  S.of(context).needHelp,
-                                  _needHelpClick,
+                                Flexible(
+                                  child: _itemTextBottom(
+                                    context,
+                                    AssetsConst.iconHELP,
+                                    S.of(context).needHelp,
+                                    _needHelpClick,
+                                  ),
                                 ),
                               ],
                             ),

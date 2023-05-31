@@ -143,5 +143,14 @@
     "transferError": "Error! Please try again",
     "historyTransaction": "Transaction History",
     "enterCode": "Enter Code",
-    "findCode": "Find and enter the code"
+    "findCode": "Find and enter the code",
+    "tellWithUs": "Tell us your feedback ",
+    "writeSometh": "Write something for us!",
+    "enterFeedback": "Enter feedback",
+    "submitFeedback": "Submit feedback",
+    "enterReason": "Enter reason",
+    "reasonFall": "Please enter the reason why the bike fell",
+    "countFall": "Bike Fall Count",
+    "thanksTrip": "Thanks for being eco-conscious and choosing sustainable transportation.",
+    "completeTrip": "The journey is complete!"
 }
