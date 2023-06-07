@@ -16,7 +16,7 @@ class JourneyConroller extends GetxController {
   final RxBool _isLoading = false.obs;
   set isLoading(bool value) => _isLoading.value = value;
   bool get isLoading => _isLoading.value;
-  
+
   @override
   void onInit() {
     getListTrip().then((value) {
@@ -61,6 +61,7 @@ class JourneyConroller extends GetxController {
       for (DateTime key in keys) {
         reversedHistoryGroupDay[key] = historyGroupDay![key]!;
       }
+      historyGroupDay?.clear();
       historyGroupDay = reversedHistoryGroupDay;
       return true;
     }
