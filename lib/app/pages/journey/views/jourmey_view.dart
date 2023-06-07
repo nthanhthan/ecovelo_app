@@ -61,8 +61,6 @@ class JourneyView extends GetView<JourneyConroller> {
             ),
           ),
           _recentActivities(context),
-          _recentActivities(context),
-          _recentActivities(context),
         ],
       )),
     );
