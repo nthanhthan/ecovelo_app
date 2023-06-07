@@ -1,7 +1,8 @@
 import 'package:ecoveloapp/app/core.dart';
+import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-class ScanController extends GetxController {
+class ScanController extends GetxController with GetSingleTickerProviderStateMixin, WidgetsBindingObserver{
   QRViewController? qrController;
 
   final _isCameraPermissionGranted = false.obs;
@@ -24,6 +25,7 @@ class ScanController extends GetxController {
 
   @override
   void onInit() {
+  WidgetsBinding.instance.addObserver(this);
     _scanHttpService = Get.find<ScanHttpService>();
     _loginManager = Get.find<LoginManager>();
     userModel = _loginManager.getUser();

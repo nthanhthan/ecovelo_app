@@ -15,7 +15,7 @@ class MainController extends GetxController {
   @override
   void onInit() {
     _loginManager = Get.find<LoginManager>();
-authHttpService= Get.find<AuthHttpService>();
+    authHttpService = Get.find<AuthHttpService>();
     appInitializer();
     super.onInit();
   }
@@ -77,7 +77,7 @@ authHttpService= Get.find<AuthHttpService>();
       if (isAuthenticated) {
         final result = await authHttpService!.getUser();
         if (result.isSuccess() && result.data != null) {
-           _loginManager.saveUser(result.data);
+          _loginManager.saveUser(result.data);
         }
         Get.offNamed(Routes.home);
       } else {

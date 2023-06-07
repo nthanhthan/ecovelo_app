@@ -47,9 +47,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Choose file from Directory"),
         "chooseFromGallery":
             MessageLookupByLibrary.simpleMessage("Choose from Gallery"),
+        "completeTrip":
+            MessageLookupByLibrary.simpleMessage("The journey is complete!"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "continueBtn": MessageLookupByLibrary.simpleMessage("Continue"),
         "correct": MessageLookupByLibrary.simpleMessage("Password match"),
+        "countFall": MessageLookupByLibrary.simpleMessage("Bike Fall Count"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "deactiveAcc": MessageLookupByLibrary.simpleMessage("Deactive Account"),
         "desWeekPoint": MessageLookupByLibrary.simpleMessage(
@@ -65,12 +68,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "energy": MessageLookupByLibrary.simpleMessage("Energy"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
         "enterCode": MessageLookupByLibrary.simpleMessage("Enter Code"),
+        "enterFeedback": MessageLookupByLibrary.simpleMessage("Enter feedback"),
         "enterMoney":
             MessageLookupByLibrary.simpleMessage("Enter Money Amount"),
         "enterPass":
             MessageLookupByLibrary.simpleMessage("Please enter your pass"),
         "enterPhone":
             MessageLookupByLibrary.simpleMessage("Please enter mobile number"),
+        "enterReason": MessageLookupByLibrary.simpleMessage("Enter reason"),
         "erEmailOrPasswordInvalid": MessageLookupByLibrary.simpleMessage(
             "Your phone number or password is incorrect."),
         "errorQR": MessageLookupByLibrary.simpleMessage(
@@ -174,6 +179,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "qrError": MessageLookupByLibrary.simpleMessage("QR error"),
         "ready": MessageLookupByLibrary.simpleMessage("Ready"),
         "readyRide": MessageLookupByLibrary.simpleMessage("Ready to Ride"),
+        "reasonFall": MessageLookupByLibrary.simpleMessage(
+            "Please enter the reason why the bike fell"),
         "receipt": MessageLookupByLibrary.simpleMessage("Receipt"),
         "recentActivities":
             MessageLookupByLibrary.simpleMessage("Recent Activities"),
@@ -196,9 +203,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "storageAccessDenied": MessageLookupByLibrary.simpleMessage(
             "Storage access denied. Let open the app setting to enable it!"),
         "submitBtn": MessageLookupByLibrary.simpleMessage("Submit"),
+        "submitFeedback":
+            MessageLookupByLibrary.simpleMessage("Submit feedback"),
         "takePhoto": MessageLookupByLibrary.simpleMessage("Take Photo"),
+        "tellWithUs":
+            MessageLookupByLibrary.simpleMessage("Tell us your feedback "),
         "textBanner": MessageLookupByLibrary.simpleMessage(
             "Let\'s enjoy a stress-free ride during peak hours and "),
+        "thanksTrip": MessageLookupByLibrary.simpleMessage(
+            "Thanks for being eco-conscious and choosing sustainable transportation."),
         "ticketType": MessageLookupByLibrary.simpleMessage("Ticket Type"),
         "time": MessageLookupByLibrary.simpleMessage("Time"),
         "titleDes": MessageLookupByLibrary.simpleMessage("Description"),
@@ -229,6 +242,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter valid mobile number"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("VietNamese"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome!"),
+        "writeSometh":
+            MessageLookupByLibrary.simpleMessage("Write something for us!"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes"),
         "yourAddress": MessageLookupByLibrary.simpleMessage("Your Address")
       };

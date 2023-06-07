@@ -1499,6 +1499,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Tell us your feedback `
+  String get tellWithUs {
+    return Intl.message(
+      'Tell us your feedback ',
+      name: 'tellWithUs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write something for us!`
+  String get writeSometh {
+    return Intl.message(
+      'Write something for us!',
+      name: 'writeSometh',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter feedback`
+  String get enterFeedback {
+    return Intl.message(
+      'Enter feedback',
+      name: 'enterFeedback',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit feedback`
+  String get submitFeedback {
+    return Intl.message(
+      'Submit feedback',
+      name: 'submitFeedback',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter reason`
+  String get enterReason {
+    return Intl.message(
+      'Enter reason',
+      name: 'enterReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the reason why the bike fell`
+  String get reasonFall {
+    return Intl.message(
+      'Please enter the reason why the bike fell',
+      name: 'reasonFall',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bike Fall Count`
+  String get countFall {
+    return Intl.message(
+      'Bike Fall Count',
+      name: 'countFall',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thanks for being eco-conscious and choosing sustainable transportation.`
+  String get thanksTrip {
+    return Intl.message(
+      'Thanks for being eco-conscious and choosing sustainable transportation.',
+      name: 'thanksTrip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The journey is complete!`
+  String get completeTrip {
+    return Intl.message(
+      'The journey is complete!',
+      name: 'completeTrip',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
