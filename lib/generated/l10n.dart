@@ -1589,6 +1589,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Welcome to EcoVelo!`
+  String get welcomeEcovelo {
+    return Intl.message(
+      'Welcome to EcoVelo!',
+      name: 'welcomeEcovelo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please login to continue`
+  String get loginToContinue {
+    return Intl.message(
+      'Please login to continue',
+      name: 'loginToContinue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create New Account`
+  String get createNewAcc {
+    return Intl.message(
+      'Create New Account',
+      name: 'createNewAcc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your information below`
+  String get infoAcc {
+    return Intl.message(
+      'Please enter your information below',
+      name: 'infoAcc',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -120,10 +120,10 @@ class MQTTClientWrapper {
     subscriptionState = MqttSubscriptionState.subscribed;
   }
 
-  void _onDisconnected() {
-    LogUtil.d('OnDisconnected client callback - Client disconnection');
-    connectionState = MqttCurrentConnectionState.disconect;
-  }
+  // void _onDisconnected() {
+  //   LogUtil.d('OnDisconnected client callback - Client disconnection');
+  //   connectionState = MqttCurrentConnectionState.disconect;
+  // }
 
   void _onConnected() {
     connectionState = MqttCurrentConnectionState.conneted;

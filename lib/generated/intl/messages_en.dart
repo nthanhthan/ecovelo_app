@@ -53,6 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "continueBtn": MessageLookupByLibrary.simpleMessage("Continue"),
         "correct": MessageLookupByLibrary.simpleMessage("Password match"),
         "countFall": MessageLookupByLibrary.simpleMessage("Bike Fall Count"),
+        "createNewAcc":
+            MessageLookupByLibrary.simpleMessage("Create New Account"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "deactiveAcc": MessageLookupByLibrary.simpleMessage("Deactive Account"),
         "desWeekPoint": MessageLookupByLibrary.simpleMessage(
@@ -102,6 +104,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "historyTransaction":
             MessageLookupByLibrary.simpleMessage("Transaction History"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "infoAcc": MessageLookupByLibrary.simpleMessage(
+            "Please enter your information below"),
         "introduction": MessageLookupByLibrary.simpleMessage("Introduction"),
         "invalidEmailAddress": MessageLookupByLibrary.simpleMessage(
             "Please enter your email address in format: yourname@example.com"),
@@ -123,6 +127,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "lockBroken": MessageLookupByLibrary.simpleMessage("Lock broken"),
         "lockFirst": MessageLookupByLibrary.simpleMessage(
             "You must do the your bike lock first"),
+        "loginToContinue":
+            MessageLookupByLibrary.simpleMessage("Please login to continue"),
         "logout": MessageLookupByLibrary.simpleMessage("Log out"),
         "mainWallet": MessageLookupByLibrary.simpleMessage("Main Point"),
         "messageConfirmEnd": MessageLookupByLibrary.simpleMessage(
@@ -242,6 +248,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter valid mobile number"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("VietNamese"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome!"),
+        "welcomeEcovelo":
+            MessageLookupByLibrary.simpleMessage("Welcome to EcoVelo!"),
         "writeSometh":
             MessageLookupByLibrary.simpleMessage("Write something for us!"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes"),
