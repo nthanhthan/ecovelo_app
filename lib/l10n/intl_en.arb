@@ -152,5 +152,9 @@
     "reasonFall": "Please enter the reason why the bike fell",
     "countFall": "Bike Fall Count",
     "thanksTrip": "Thanks for being eco-conscious and choosing sustainable transportation.",
-    "completeTrip": "The journey is complete!"
+    "completeTrip": "The journey is complete!",
+    "welcomeEcovelo": "Welcome to EcoVelo!",
+    "loginToContinue": "Please login to continue" ,
+    "createNewAcc": "Create New Account",
+    "infoAcc": "Please enter your information below"
 }

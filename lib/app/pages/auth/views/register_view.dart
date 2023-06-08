@@ -73,6 +73,24 @@ class RegisterView extends GetView<SignUpController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Center(
+              child: Column(
+                children: [
+                  Text(
+                    S.of(context).createNewAcc,
+                    style: AppTextStyles.heading2()
+                        .copyWith(color: AppColors.main.shade200),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    S.of(context).infoAcc,
+                    style: AppTextStyles.tiny()
+                        .copyWith(color: AppColors.grey.shade400),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 30),
             TextFormField(
               maxLines: 1,
               textInputAction: TextInputAction.next,
@@ -202,7 +220,6 @@ class RegisterView extends GetView<SignUpController> {
                   return controller.passwordValidation(
                     text?.trim(),
                   );
-                
                 }),
             const SizedBox(height: 15),
             TextFormField(
