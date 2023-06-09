@@ -156,5 +156,9 @@
     "welcomeEcovelo": "Welcome to EcoVelo!",
     "loginToContinue": "Please login to continue" ,
     "createNewAcc": "Create New Account",
-    "infoAcc": "Please enter your information below"
+    "infoAcc": "Please enter your information below",
+    "uploadError": "Error, please try again!",
+    "reportSend": "Report Send",
+    "desReport": "Hi, Your problem report has been sent successfully. Our team has received your report and we''ll do out best to help you resolve the issue as quickly as possible",
+    "goBackHome": "Go back to home"
 }

@@ -63,72 +63,78 @@ class ScanView extends GetView<ScanController> {
         preferredSize: const Size.fromHeight(50),
         child: AppBar(
           backgroundColor: AppColors.white,
-          leading: Container(
-            margin: const EdgeInsets.all(5),
-            decoration: BoxDecoration(
-                shape: BoxShape.circle, color: AppColors.main.shade200),
-            child: InkWell(
-              onTap: () {
-                Get.offNamed(Routes.home);
-              },
-              child: Icon(
-                Icons.arrow_back_ios_new,
-                size: 20,
-                color: AppColors.grey.shade100,
-              ),
+          leading: InkWell(
+            onTap: () {
+              Get.offNamed(Routes.home);
+            },
+            child: const Icon(
+              Icons.arrow_back,
+              size: 30,
+              color: Color(0xff28303f),
             ),
           ),
         ),
       ),
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(50, 30, 50, 40),
-          child: Column(
-            children: [
-              SvgPicture.asset(
-                AssetsConst.logoScanner,
-                height: 60,
-              ),
-              const SizedBox(height: 15),
-              Text(
-                S.of(context).scanToRide,
-                style: AppTextStyles.subHeading1()
-                    .copyWith(color: AppColors.main.shade300),
-              ),
-              Expanded(
-                child: Obx(() {
-                  if (controller.isCameraPermissionGranted) {
-                    return _buildQrView(context);
-                  } else {
-                    return Center(
-                      child: Text(S.of(context).noCameraPermissionDesctiption),
-                    );
-                  }
-                }),
-              ),
-              _buildActions(context),
-            ],
-          ),
+        child: Column(
+          children: [
+            SvgPicture.asset(
+              AssetsConst.logoScanner,
+              height: 60,
+            ),
+            const SizedBox(height: 15),
+            controller.isReport == true
+                ? const SizedBox()
+                : Text(
+                    S.of(context).scanToRide,
+                    style: AppTextStyles.subHeading1()
+                        .copyWith(color: AppColors.main.shade300),
+                  ),
+            const SizedBox(height: 15),
+            Expanded(
+              child: Obx(() {
+                if (controller.isCameraPermissionGranted) {
+                  return Stack(
+                    children: [
+                      _buildQrView(context),
+                      Positioned(
+                        top: 10,
+                        right: 20,
+                        child: _buildActions(context),
+                      ),
+                    ],
+                  );
+                } else {
+                  return Center(
+                    child: Text(S.of(context).noCameraPermissionDesctiption),
+                  );
+                }
+              }),
+            ),
+          ],
         ),
       ),
     );
   }
 
   Widget _buildActions(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        CircleAvatar(
-          radius: 30,
-          backgroundColor: Theme.of(context).dividerColor,
-          child: IconButton(
-            onPressed: _encodeCodeClicked,
-            icon: const Icon(
-              Icons.keyboard,
-              color: AppColors.main,
-            ),
-          ),
-        ),
+        controller.isReport
+            ? const SizedBox()
+            : CircleAvatar(
+                radius: 30,
+                backgroundColor: Theme.of(context).dividerColor,
+                child: IconButton(
+                  onPressed: _encodeCodeClicked,
+                  icon: const Icon(
+                    Icons.keyboard,
+                    color: AppColors.main,
+                  ),
+                ),
+              ),
+        const SizedBox(height: 20),
         CircleAvatar(
           radius: 30,
           backgroundColor: Theme.of(context).dividerColor,
@@ -160,19 +166,20 @@ class ScanView extends GetView<ScanController> {
 
   Widget _buildQrView(BuildContext context) {
     GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-    var scanArea = (MediaQuery.of(context).size.width < 500 ||
-            MediaQuery.of(context).size.height < 800)
-        ? 400.0
-        : 600.0;
+    var scanArea = (MediaQuery.of(context).size.width < 400 ||
+            MediaQuery.of(context).size.height < 400)
+        ? 200.0
+        : 300.0;
     return QRView(
       key: qrKey,
-      onQRViewCreated: controller.setQrCodeScan,
+      onQRViewCreated: controller.isReport
+          ? controller.checkBicycleID
+          : controller.setQrCodeScan,
       overlay: QrScannerOverlayShape(
           borderColor: AppColors.main.shade200,
-          overlayColor: AppColors.defaultBackground,
-          borderRadius: 8,
-          borderLength: 17,
-          borderWidth: 5,
+          borderRadius: 10,
+          borderLength: 30,
+          borderWidth: 10,
           cutOutSize: scanArea),
       onPermissionSet: (ctrl, p) => _onPermissionSet(context, ctrl, p),
     );

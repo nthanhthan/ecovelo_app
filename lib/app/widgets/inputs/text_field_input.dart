@@ -64,6 +64,7 @@ class TextFieldInput extends StatefulWidget {
   final bool isApplyNoLeadingSpace;
   final bool isApplyDebounceTextChanged;
   final bool isApplyFirstCharacterCapitalization;
+  final TextAlign textAlign;
 
   const TextFieldInput({
     Key? key,
@@ -124,6 +125,7 @@ class TextFieldInput extends StatefulWidget {
     this.isApplyNoLeadingSpace = true,
     this.isApplyDebounceTextChanged = false,
     this.isApplyFirstCharacterCapitalization = true,
+    this.textAlign = TextAlign.center,
   }) : super(key: key);
 
   @override
@@ -275,7 +277,7 @@ class _TextFieldInputState extends State<TextFieldInput> {
         readOnly: widget.readOnly,
         maxLines: widget.maxLines,
         minLines: widget.minLines,
-        textAlign: TextAlign.center,
+        textAlign: widget.textAlign,
         scrollController: widget.scrollController,
         onChanged: (String? val) {
           if (widget.autoTrimValidator) {

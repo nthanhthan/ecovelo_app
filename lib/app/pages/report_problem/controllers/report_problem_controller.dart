@@ -1,5 +1,7 @@
 import 'package:ecoveloapp/app/core.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'dart:io';
 
 class ReportProblemController extends GetxController {
   final RxnInt _isProblem = RxnInt();
@@ -18,8 +20,25 @@ class ReportProblemController extends GetxController {
   bool get enableSaveButton => _enableSaveButton.value;
   set enableSaveButton(bool value) => _enableSaveButton.value = value;
 
-  void selectProblem(int index) {
-    isProblem = index;
+  TextEditingController ecoveloID = TextEditingController();
+
+  String? problemName;
+
+  FirebaseStorage storage = FirebaseStorage.instance;
+
+  String? url;
+
+  late ReportProblemService _reportProblemService;
+
+  @override
+  void onInit() {
+    _reportProblemService = Get.put(ReportProblemService());
+    super.onInit();
+  }
+
+  void selectProblem(ProblemModel problemModel) {
+    isProblem = problemModel.id;
+    problemName = problemModel.name;
     _checkFormValidation();
   }
 
@@ -36,10 +55,45 @@ class ReportProblemController extends GetxController {
   }
 
   void _checkFormValidation() {
-    if (filesPathSelected.isNotEmpty && isProblem != null) {
+    if (filesPathSelected.isNotEmpty &&
+        problemName != null &&
+        ecoveloID.text.isNotEmpty) {
       enableSaveButton = true;
     } else {
       enableSaveButton = false;
+    }
+  }
+
+  Future<void> uploadFile() async {
+    ProcessingDialog processingDialog = ProcessingDialog.show();
+    Reference ref = storage
+        .ref()
+        .child("problem/${ecoveloID.text}/$problemName/${DateTime.now()}");
+    File file = File(filesPathSelected.first);
+    UploadTask task = ref.putFile(file);
+    try {
+      await task.whenComplete(() async {
+        url = await ref.getDownloadURL();
+      });
+      String token = Prefs.getString(SessionStoreKey.accessTokenKey);
+      ReportProblemReq reportProblemReq = ReportProblemReq(
+        description: desciptionProblemController.text,
+        idBicycle: ecoveloID.text,
+        urlImage: url,
+        idProblem: isProblem,
+        token: token,
+      );
+      final res = await _reportProblemService.reportProblem(reportProblemReq);
+      if (res.isSuccess() && res.data != null && res.data == true) {
+        processingDialog.hide();
+        const ReportProblemView().reportSuccess(Get.context!);
+      } else {
+        processingDialog.hide();
+        SnackBars.error(message: S.of(Get.context!).uploadError).show();
+      }
+    } catch (error) {
+      processingDialog.hide();
+      SnackBars.error(message: S.of(Get.context!).uploadError).show();
     }
   }
 }

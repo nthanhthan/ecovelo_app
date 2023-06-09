@@ -38,4 +38,15 @@ class DefaultValues {
   static const List<Map<String, String>> paymentMethodList = [
     {"title": "Add New Card", "asset": AssetsConst.addRectangle},
   ];
+
+  static List<ProblemModel> listProblems = [
+    ProblemModel(id: 1, name: S.of(Get.context!).unlock),
+    ProblemModel(id: 2, name: S.of(Get.context!).qrError),
+    ProblemModel(id: 3, name: S.of(Get.context!).lockBroken),
+    ProblemModel(id: 4, name: S.of(Get.context!).bikeVandalized),
+    ProblemModel(id: 5, name: S.of(Get.context!).notBuyMorePoint),
+    ProblemModel(id: 6, name: S.of(Get.context!).flatTire),
+    ProblemModel(id: 7, name: S.of(Get.context!).notFinishRide),
+    ProblemModel(id: 8, name: S.of(Get.context!).other),
+  ];
 }

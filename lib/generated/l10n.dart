@@ -1629,6 +1629,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Error, please try again!`
+  String get uploadError {
+    return Intl.message(
+      'Error, please try again!',
+      name: 'uploadError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report Send`
+  String get reportSend {
+    return Intl.message(
+      'Report Send',
+      name: 'reportSend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hi, Your problem report has been sent successfully. Our team has received your report and we''ll do out best to help you resolve the issue as quickly as possible`
+  String get desReport {
+    return Intl.message(
+      'Hi, Your problem report has been sent successfully. Our team has received your report and we\'\'ll do out best to help you resolve the issue as quickly as possible',
+      name: 'desReport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go back to home`
+  String get goBackHome {
+    return Intl.message(
+      'Go back to home',
+      name: 'goBackHome',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
