@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "292099490857",
+    "project_id": "ecovelo-b640d",
+    "storage_bucket": "ecovelo-b640d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292099490857:android:46c2ee08d5e99fe0b80838",
+        "android_client_info": {
+          "package_name": "com.app.ecovelo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292099490857-0ct0d34uufshnaufis3phjsjgioktoai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBR9YE2P-2EXlElZ9izpYFtqY54WJ3neoQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292099490857-0ct0d34uufshnaufis3phjsjgioktoai.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "292099490857-slvu164im9v776ltgdntkpa8a2b404dh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.ecovelo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

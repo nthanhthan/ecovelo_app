@@ -57,6 +57,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Create New Account"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "deactiveAcc": MessageLookupByLibrary.simpleMessage("Deactive Account"),
+        "desReport": MessageLookupByLibrary.simpleMessage(
+            "Hi, Your problem report has been sent successfully. Our team has received your report and we\'\'ll do out best to help you resolve the issue as quickly as possible"),
         "desWeekPoint": MessageLookupByLibrary.simpleMessage(
             "Keep participating in weekly chanllenges and earn rewards."),
         "detail": MessageLookupByLibrary.simpleMessage("View details"),
@@ -95,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "free": MessageLookupByLibrary.simpleMessage("Free"),
         "getMoreTime": MessageLookupByLibrary.simpleMessage("Get  more time"),
+        "goBackHome": MessageLookupByLibrary.simpleMessage("Go back to home"),
         "goStation": MessageLookupByLibrary.simpleMessage("Go!"),
         "haveAccount":
             MessageLookupByLibrary.simpleMessage("Have been an account."),
@@ -191,6 +194,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "recentActivities":
             MessageLookupByLibrary.simpleMessage("Recent Activities"),
         "reportProblem": MessageLookupByLibrary.simpleMessage("Report Problem"),
+        "reportSend": MessageLookupByLibrary.simpleMessage("Report Send"),
         "scanToRide": MessageLookupByLibrary.simpleMessage("Scan to Ride"),
         "score": MessageLookupByLibrary.simpleMessage(
             "Minimum score is 5000, please recharge"),
@@ -241,6 +245,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Unable to access storage!"),
         "unlock": MessageLookupByLibrary.simpleMessage("Can\'t unlock"),
         "uploadAnother": MessageLookupByLibrary.simpleMessage("Upload Another"),
+        "uploadError":
+            MessageLookupByLibrary.simpleMessage("Error, please try again!"),
         "uploadFile": MessageLookupByLibrary.simpleMessage("Upload File"),
         "uploadImage":
             MessageLookupByLibrary.simpleMessage("Upload Image or Video"),
