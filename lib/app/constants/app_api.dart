@@ -13,6 +13,7 @@ class AppApi {
   static const String getListStation = "$apiVer/station/getStation";
   //QR
   static const String checkQR = "$apiVer/bicycle/checkQR";
+  static const String checkQRReport = "$apiVer/bicycle/check-report";
   //bicycle
   static const String rentBicycle = "$apiVer/bicycle/rent-bicycle";
   static const String stopRentBicycle = "$apiVer/bicycle/stop-rent";

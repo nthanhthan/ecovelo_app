@@ -84,7 +84,7 @@ class ReportProblemController extends GetxController {
         token: token,
       );
       final res = await _reportProblemService.reportProblem(reportProblemReq);
-      if (res.isSuccess() && res.data != null) {
+      if (res.isSuccess() && res.data != null && res.data == true) {
         processingDialog.hide();
         const ReportProblemView().reportSuccess(Get.context!);
       } else {

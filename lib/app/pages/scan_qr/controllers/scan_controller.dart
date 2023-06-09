@@ -26,12 +26,17 @@ class ScanController extends GetxController
 
   late LoginManager _loginManager;
 
+  bool isReport = false;
+
   @override
   void onInit() {
     WidgetsBinding.instance.addObserver(this);
     _scanHttpService = Get.find<ScanHttpService>();
     _loginManager = Get.find<LoginManager>();
     userModel = _loginManager.getUser();
+    if (Get.arguments != null && Get.arguments is bool) {
+      isReport = true;
+    }
     super.onInit();
   }
 
@@ -67,6 +72,39 @@ class ScanController extends GetxController
           }
         } else {
           resetScan(S.current.score);
+        }
+
+        _qrCodeScanned = "";
+      }
+    });
+
+    Future.delayed(const Duration(milliseconds: 300), () {
+      qrController?.getFlashStatus().then((value) {
+        isEnableFlash = (value ?? false);
+      });
+    });
+  }
+
+  void checkBicycleID(QRViewController cont) {
+    qrController = cont;
+    if (Platform.isAndroid) {
+      qrController?.resumeCamera();
+    }
+    qrController?.scannedDataStream.listen((scanData) async {
+      if (scanData.code != null && scanData.code != _qrCodeScanned) {
+        await qrController?.pauseCamera();
+        final result = await _scanHttpService.checkQR(
+          scanData.code!,
+          isReport: true,
+        );
+        if (result.isSuccess() && result.data != null) {
+          if (result.data == true) {
+            Get.back(result: scanData.code);
+          } else {
+            resetScan(S.current.errorQR);
+          }
+        } else {
+          resetScan(S.current.errorQR);
         }
 
         _qrCodeScanned = "";

@@ -20,8 +20,12 @@ class ReportProblemView extends GetView<ReportProblemController> {
     Get.offAllNamed(Routes.home);
   }
 
-  void scanBicycleID() {
-    Get.toNamed(Routes.scanQR);
+  Future<void> scanBicycleID() async {
+    String result = await Get.toNamed(
+      Routes.scanQR,
+      arguments: true,
+    );
+    controller.ecoveloID.text = result;
   }
 
   Widget _buildBody(BuildContext context) {

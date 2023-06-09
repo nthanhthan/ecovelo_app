@@ -83,11 +83,13 @@ class ScanView extends GetView<ScanController> {
               height: 60,
             ),
             const SizedBox(height: 15),
-            Text(
-              S.of(context).scanToRide,
-              style: AppTextStyles.subHeading1()
-                  .copyWith(color: AppColors.main.shade300),
-            ),
+            controller.isReport == true
+                ? const SizedBox()
+                : Text(
+                    S.of(context).scanToRide,
+                    style: AppTextStyles.subHeading1()
+                        .copyWith(color: AppColors.main.shade300),
+                  ),
             const SizedBox(height: 15),
             Expanded(
               child: Obx(() {
@@ -119,17 +121,19 @@ class ScanView extends GetView<ScanController> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        CircleAvatar(
-          radius: 30,
-          backgroundColor: Theme.of(context).dividerColor,
-          child: IconButton(
-            onPressed: _encodeCodeClicked,
-            icon: const Icon(
-              Icons.keyboard,
-              color: AppColors.main,
-            ),
-          ),
-        ),
+        controller.isReport
+            ? const SizedBox()
+            : CircleAvatar(
+                radius: 30,
+                backgroundColor: Theme.of(context).dividerColor,
+                child: IconButton(
+                  onPressed: _encodeCodeClicked,
+                  icon: const Icon(
+                    Icons.keyboard,
+                    color: AppColors.main,
+                  ),
+                ),
+              ),
         const SizedBox(height: 20),
         CircleAvatar(
           radius: 30,
@@ -168,7 +172,9 @@ class ScanView extends GetView<ScanController> {
         : 300.0;
     return QRView(
       key: qrKey,
-      onQRViewCreated: controller.setQrCodeScan,
+      onQRViewCreated: controller.isReport
+          ? controller.checkBicycleID
+          : controller.setQrCodeScan,
       overlay: QrScannerOverlayShape(
           borderColor: AppColors.main.shade200,
           borderRadius: 10,
