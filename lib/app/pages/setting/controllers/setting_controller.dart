@@ -27,9 +27,12 @@ class SettingController extends GetxController {
 
   late final AuthHttpService _authHttpService;
 
+  UserModel? userModel;
+
   @override
   void onInit() {
     _loginManager = Get.find<LoginManager>();
+    userModel = _loginManager.getUser();
     _sessionM = Get.find<SessionManager>();
     _authHttpService = Get.find<AuthHttpService>();
     initLanguageSupported();

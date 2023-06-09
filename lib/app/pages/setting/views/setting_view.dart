@@ -16,6 +16,10 @@ class SettingView extends GetView<SettingController> {
     Get.toNamed(Routes.language);
   }
 
+  void _verifiAccOnClick() {
+    Get.toNamed(Routes.verifiAccount);
+  }
+
   void _changePassClick() {}
   void _notificationClick() {}
   void _deActiveClick() {}
@@ -65,7 +69,9 @@ class SettingView extends GetView<SettingController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            S.of(context).hi("Than"),
+                            S
+                                .of(context)
+                                .hi(controller.userModel?.nameUser ?? ""),
                             style: AppTextStyles.subHeading1()
                                 .copyWith(color: AppColors.main.shade300),
                           ),
@@ -84,11 +90,28 @@ class SettingView extends GetView<SettingController> {
                   ),
                 ],
               ),
+              const SizedBox(height: 10),
+              Center(
+                child: ElevatedButton(
+                  onPressed: _verifiAccOnClick,
+                  style: FilledBtnStyle.enable(
+                    isFullWidth: true,
+                    borderRadius: 15,
+                  ),
+                  child: Text(
+                    S.of(context).verifiAcc,
+                    style: AppTextStyles.body1().copyWith(
+                      color: AppColors.white,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ),
               Container(
                 height: 0.3,
                 color: AppColors.grey.shade300,
                 margin: const EdgeInsets.symmetric(
-                  vertical: 20,
+                  vertical: 15,
                 ),
               ),
               _contentWidget(

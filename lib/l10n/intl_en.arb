@@ -160,5 +160,14 @@
     "uploadError": "Error, please try again!",
     "reportSend": "Report Send",
     "desReport": "Hi, Your problem report has been sent successfully. Our team has received your report and we''ll do out best to help you resolve the issue as quickly as possible",
-    "goBackHome": "Go back to home"
+    "goBackHome": "Go back to home",
+    "verifiAcc": "Account Verification",
+    "messVerifi": "Please send a photo of your valid ID, original photo not scanned or photocopy",
+    "choosePersonal" : "Choose the type of document",
+    "takeTowSide": "Take two-sided documents",
+    "frontView": "Font view",
+    "backView": "Back view",
+    "citizenID": "Citizen ID",
+    "cmnd": "Identity Card",
+    "license": "Motorbicycle License"
 }

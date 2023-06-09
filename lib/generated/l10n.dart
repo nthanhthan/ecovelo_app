@@ -1669,6 +1669,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Account Verification`
+  String get verifiAcc {
+    return Intl.message(
+      'Account Verification',
+      name: 'verifiAcc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please send a photo of your valid ID, original photo not scanned or photocopy`
+  String get messVerifi {
+    return Intl.message(
+      'Please send a photo of your valid ID, original photo not scanned or photocopy',
+      name: 'messVerifi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose the type of document`
+  String get choosePersonal {
+    return Intl.message(
+      'Choose the type of document',
+      name: 'choosePersonal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Take two-sided documents`
+  String get takeTowSide {
+    return Intl.message(
+      'Take two-sided documents',
+      name: 'takeTowSide',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Font view`
+  String get frontView {
+    return Intl.message(
+      'Font view',
+      name: 'frontView',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back view`
+  String get backView {
+    return Intl.message(
+      'Back view',
+      name: 'backView',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Citizen ID`
+  String get citizenID {
+    return Intl.message(
+      'Citizen ID',
+      name: 'citizenID',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Identity Card`
+  String get cmnd {
+    return Intl.message(
+      'Identity Card',
+      name: 'cmnd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Motorbicycle License`
+  String get license {
+    return Intl.message(
+      'Motorbicycle License',
+      name: 'license',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

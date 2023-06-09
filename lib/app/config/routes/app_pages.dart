@@ -105,5 +105,11 @@ class AppPages {
       binding: EnterCodeBinding(),
       transition: Transition.rightToLeft,
     ),
+    GetPage<dynamic>(
+      name: Routes.verifiAccount,
+      page: () => const VerifiAccountView(),
+      binding: VerifiAccountBinding(),
+      transition: Transition.rightToLeft,
+    ),
   ];
 }
