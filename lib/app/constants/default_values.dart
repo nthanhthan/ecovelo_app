@@ -40,13 +40,13 @@ class DefaultValues {
   ];
 
   static List<ProblemModel> listProblems = [
-    ProblemModel(id: 0, name: S.of(Get.context!).unlock),
-    ProblemModel(id: 1, name: S.of(Get.context!).qrError),
-    ProblemModel(id: 2, name: S.of(Get.context!).lockBroken),
-    ProblemModel(id: 3, name: S.of(Get.context!).bikeVandalized),
-    ProblemModel(id: 4, name: S.of(Get.context!).notBuyMorePoint),
-    ProblemModel(id: 5, name: S.of(Get.context!).flatTire),
-    ProblemModel(id: 6, name: S.of(Get.context!).notFinishRide),
-    ProblemModel(id: 7, name: S.of(Get.context!).other),
+    ProblemModel(id: 1, name: S.of(Get.context!).unlock),
+    ProblemModel(id: 2, name: S.of(Get.context!).qrError),
+    ProblemModel(id: 3, name: S.of(Get.context!).lockBroken),
+    ProblemModel(id: 4, name: S.of(Get.context!).bikeVandalized),
+    ProblemModel(id: 5, name: S.of(Get.context!).notBuyMorePoint),
+    ProblemModel(id: 6, name: S.of(Get.context!).flatTire),
+    ProblemModel(id: 7, name: S.of(Get.context!).notFinishRide),
+    ProblemModel(id: 8, name: S.of(Get.context!).other),
   ];
 }

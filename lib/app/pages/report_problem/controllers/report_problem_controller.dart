@@ -28,6 +28,14 @@ class ReportProblemController extends GetxController {
 
   String? url;
 
+  late ReportProblemService _reportProblemService;
+
+  @override
+  void onInit() {
+    _reportProblemService = Get.put(ReportProblemService());
+    super.onInit();
+  }
+
   void selectProblem(ProblemModel problemModel) {
     isProblem = problemModel.id;
     problemName = problemModel.name;
@@ -67,9 +75,22 @@ class ReportProblemController extends GetxController {
       await task.whenComplete(() async {
         url = await ref.getDownloadURL();
       });
-
-      processingDialog.hide();
-      const ReportProblemView().reportSuccess(Get.context!);
+      String token = Prefs.getString(SessionStoreKey.accessTokenKey);
+      ReportProblemReq reportProblemReq = ReportProblemReq(
+        description: desciptionProblemController.text,
+        idBicycle: ecoveloID.text,
+        urlImage: url,
+        idProblem: isProblem,
+        token: token,
+      );
+      final res = await _reportProblemService.reportProblem(reportProblemReq);
+      if (res.isSuccess() && res.data != null) {
+        processingDialog.hide();
+        const ReportProblemView().reportSuccess(Get.context!);
+      } else {
+        processingDialog.hide();
+        SnackBars.error(message: S.of(Get.context!).uploadError).show();
+      }
     } catch (error) {
       processingDialog.hide();
       SnackBars.error(message: S.of(Get.context!).uploadError).show();
