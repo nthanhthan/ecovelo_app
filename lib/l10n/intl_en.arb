@@ -36,7 +36,7 @@
     "deactiveAcc": "Deactive Account",
     "helpCenter": "Help Center",
     "about": "About",
-    "logout": "Log out",
+    "logout": "Logout",
     "english": "English",
     "vietnamese": "VietNamese",
     "niceDay": "Have a nice day!",
@@ -169,5 +169,8 @@
     "backView": "Back view",
     "citizenID": "Citizen ID",
     "cmnd": "Identity Card",
-    "license": "Motorbicycle License"
+    "license": "Motorbicycle License",
+    "proccessingVerify": "Authentication is in progress",
+    "questionLogout": "Are you sure you want to log out?",
+    "confirmLogout": "Yes, Logout"
 }

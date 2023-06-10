@@ -31,12 +31,10 @@ class AuthHttpService extends BaseApiClient {
   }
 
   Future<BaseResp<LoginResp>> refreshToken(String refreshToken) async {
-        return request<LoginResp>(
+    return request<LoginResp>(
       Method.post,
       AppApi.refreshToken,
-      data: {
-      refreshToken
-      },
+      data: {refreshToken},
       onDeserialize: (dynamic jsonValue) {
         if (jsonValue is Map) {
           return LoginResp.fromJson(jsonValue as Map<String, dynamic>);
@@ -45,15 +43,17 @@ class AuthHttpService extends BaseApiClient {
         }
       },
     );
-
   }
-    Future<BaseResp<dynamic>> getUser() async {
+
+  Future<BaseResp<dynamic>> getUser() async {
     return request<UserModel>(
       Method.get,
       AppApi.getUser,
       onDeserialize: (dynamic jsonValue) {
         if (jsonValue is Map) {
-          return UserModel.fromJson(jsonValue as Map<String, dynamic>);
+          UserModel user =
+              UserModel.fromJson(jsonValue as Map<String, dynamic>);
+          return user;
         } else {
           return null;
         }

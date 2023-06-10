@@ -49,4 +49,10 @@ class DefaultValues {
     ProblemModel(id: 7, name: S.of(Get.context!).notFinishRide),
     ProblemModel(id: 8, name: S.of(Get.context!).other),
   ];
+
+  static List<LegalModel> listLegals = [
+    LegalModel(id: 1, name: S.of(Get.context!).citizenID),
+    LegalModel(id: 2, name: S.of(Get.context!).cmnd),
+    LegalModel(id: 3, name: S.of(Get.context!).license),
+  ];
 }

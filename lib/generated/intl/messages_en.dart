@@ -55,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "completeTrip":
             MessageLookupByLibrary.simpleMessage("The journey is complete!"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "confirmLogout": MessageLookupByLibrary.simpleMessage("Yes, Logout"),
         "continueBtn": MessageLookupByLibrary.simpleMessage("Continue"),
         "correct": MessageLookupByLibrary.simpleMessage("Password match"),
         "countFall": MessageLookupByLibrary.simpleMessage("Bike Fall Count"),
@@ -139,7 +140,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "You must do the your bike lock first"),
         "loginToContinue":
             MessageLookupByLibrary.simpleMessage("Please login to continue"),
-        "logout": MessageLookupByLibrary.simpleMessage("Log out"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "mainWallet": MessageLookupByLibrary.simpleMessage("Main Point"),
         "messVerifi": MessageLookupByLibrary.simpleMessage(
             "Please send a photo of your valid ID, original photo not scanned or photocopy"),
@@ -191,10 +192,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "pickeFileUsing":
             MessageLookupByLibrary.simpleMessage("Pick file using?"),
+        "proccessingVerify": MessageLookupByLibrary.simpleMessage(
+            "Authentication is in progress"),
         "proceed": MessageLookupByLibrary.simpleMessage("Proceed to start!"),
         "processing": MessageLookupByLibrary.simpleMessage("Processing..."),
         "promoWallet": MessageLookupByLibrary.simpleMessage("Promo Point"),
         "qrError": MessageLookupByLibrary.simpleMessage("QR error"),
+        "questionLogout": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to log out?"),
         "ready": MessageLookupByLibrary.simpleMessage("Ready"),
         "readyRide": MessageLookupByLibrary.simpleMessage("Ready to Ride"),
         "reasonFall": MessageLookupByLibrary.simpleMessage(

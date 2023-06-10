@@ -9,6 +9,7 @@ class AppApi {
   static const String logout = "$apiVer/auth/logout";
   static const String checkPointUser = "$apiVer/auth/checkPoint";
   static const String getUser = "$apiVer/auth/getUser";
+  static const String verifyAccount = "$apiVer/auth/verify";
   //station
   static const String getListStation = "$apiVer/station/getStation";
   //QR

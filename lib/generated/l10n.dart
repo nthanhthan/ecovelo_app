@@ -420,10 +420,10 @@ class S {
     );
   }
 
-  /// `Log out`
+  /// `Logout`
   String get logout {
     return Intl.message(
-      'Log out',
+      'Logout',
       name: 'logout',
       desc: '',
       args: [],
@@ -1755,6 +1755,36 @@ class S {
     return Intl.message(
       'Motorbicycle License',
       name: 'license',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Authentication is in progress`
+  String get proccessingVerify {
+    return Intl.message(
+      'Authentication is in progress',
+      name: 'proccessingVerify',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to log out?`
+  String get questionLogout {
+    return Intl.message(
+      'Are you sure you want to log out?',
+      name: 'questionLogout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes, Logout`
+  String get confirmLogout {
+    return Intl.message(
+      'Yes, Logout',
+      name: 'confirmLogout',
       desc: '',
       args: [],
     );

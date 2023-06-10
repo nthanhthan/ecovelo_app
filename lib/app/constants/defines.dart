@@ -10,6 +10,7 @@ class AppKeys {
   static const beginRent = "begin-rent";
   static const bicycleIDRent = "bicycle-ID";
   static const rentID = "rent-ID";
+  static const isverify = "verify";
 }
 
 class AppColors {

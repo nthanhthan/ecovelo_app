@@ -20,6 +20,7 @@ class UploadFileInput extends StatelessWidget {
     this.isSinglePick = false,
     this.fileFormats = const ['pdf', 'jpg'],
     this.iconUpload,
+    this.isShowImage = false,
   }) : super(key: key);
 
   final String title;
@@ -30,6 +31,7 @@ class UploadFileInput extends StatelessWidget {
   final ImagePicker _imagePicker = ImagePicker();
   final bool isSinglePick;
   final String? iconUpload;
+  final bool isShowImage;
 
   Future<PermissionStatus> _checkCameraPermission(BuildContext context) async {
     var status = await Permission.camera.request();
@@ -300,6 +302,7 @@ class UploadFileInput extends StatelessWidget {
   }
 
   Widget _buildItemFile(BuildContext context, String path) {
+    File pathUrl = File(path);
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
       decoration: BoxDecoration(
@@ -316,24 +319,33 @@ class UploadFileInput extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(
-            path.isImage() ? Icons.image : Icons.picture_as_pdf_outlined,
-            color: AppColors.main.shade300,
-          ),
-          const SizedBox(
-            width: 8,
-          ),
+          isShowImage
+              ? const SizedBox()
+              : Icon(
+                  path.isImage() ? Icons.image : Icons.picture_as_pdf_outlined,
+                  color: AppColors.main.shade300,
+                ),
+          isShowImage
+              ? const SizedBox()
+              : const SizedBox(
+                  width: 8,
+                ),
           Expanded(
             child: Container(
               alignment: Alignment.centerLeft,
-              child: Text(
-                FileUtil.getFileName(path),
-                style: const TextStyle(
-                  color: AppColors.main,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+              child: isShowImage
+                  ? Image.file(
+                      pathUrl,
+                      fit: BoxFit.cover,
+                    )
+                  : Text(
+                      FileUtil.getFileName(path),
+                      style: const TextStyle(
+                        color: AppColors.main,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
             ),
           ),
           const SizedBox(

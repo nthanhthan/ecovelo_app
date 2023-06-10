@@ -10,6 +10,10 @@ class VerifiAccountView extends GetView<VerifiAccountController> {
     return _buildBody(context);
   }
 
+  void _submitOnClicked() {
+    controller.uploadProfile();
+  }
+
   Widget _buildBody(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.defaultBackground,
@@ -35,26 +39,32 @@ class VerifiAccountView extends GetView<VerifiAccountController> {
       ),
       bottomNavigationBar: SafeArea(
         child: InkWell(
-          onTap: () {},
-          child: Container(
-            height: 50,
-            margin: const EdgeInsets.symmetric(
-              horizontal: 30,
-              vertical: 5,
-            ),
-            padding: const EdgeInsets.symmetric(
-              vertical: 10,
-            ),
-            decoration: BoxDecoration(
-              color: AppColors.main.shade200,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            alignment: Alignment.center,
-            child: Text(
-              S.of(context).submitBtn,
-              style: AppTextStyles.body1().copyWith(
-                color: AppColors.main.shade400,
-                fontWeight: FontWeight.w500,
+          onTap: () {
+            controller.enableSaveButton ? _submitOnClicked() : null;
+          },
+          child: Obx(
+            () => Container(
+              height: 50,
+              margin: const EdgeInsets.symmetric(
+                horizontal: 30,
+                vertical: 5,
+              ),
+              padding: const EdgeInsets.symmetric(
+                vertical: 10,
+              ),
+              decoration: BoxDecoration(
+                color: controller.enableSaveButton
+                    ? AppColors.main.shade200
+                    : AppColors.grey.shade200,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                S.of(context).submitBtn,
+                style: AppTextStyles.body1().copyWith(
+                  color: AppColors.main.shade400,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ),
@@ -169,6 +179,7 @@ class VerifiAccountView extends GetView<VerifiAccountController> {
                 isSinglePick: true,
                 iconUpload: AssetsConst.uploadImage,
                 fileFormats: const ['jpg', 'png'],
+                isShowImage: true,
               );
             }),
           ),
@@ -187,6 +198,7 @@ class VerifiAccountView extends GetView<VerifiAccountController> {
                 isSinglePick: true,
                 iconUpload: AssetsConst.uploadImage,
                 fileFormats: const ['jpg', 'png'],
+                isShowImage: true,
               );
             }),
           ),
@@ -216,17 +228,17 @@ class VerifiAccountView extends GetView<VerifiAccountController> {
                 S.of(context).choosePersonal,
                 style: AppTextStyles.body1(),
               ),
-              _itemDocument(
-                context,
-                S.of(context).citizenID,
-              ),
-              _itemDocument(
-                context,
-                S.of(context).cmnd,
-              ),
-              _itemDocument(
-                context,
-                S.of(context).license,
+              Column(
+                children: DefaultValues.listLegals
+                    .asMap()
+                    .entries
+                    .map(
+                      (e) => _itemDocument(
+                        context,
+                        DefaultValues.listLegals[e.key],
+                      ),
+                    )
+                    .toList(),
               ),
             ],
           ),
@@ -235,13 +247,10 @@ class VerifiAccountView extends GetView<VerifiAccountController> {
     );
   }
 
-  Widget _itemDocument(
-    BuildContext context,
-    String name,
-  ) {
+  Widget _itemDocument(BuildContext context, LegalModel legalModel) {
     return GestureDetector(
       onTap: () {
-        controller.nameDocument = name;
+        controller.selectLegal(legalModel);
         Navigator.of(context).pop();
       },
       child: Container(
@@ -260,7 +269,7 @@ class VerifiAccountView extends GetView<VerifiAccountController> {
           ),
         ),
         child: Text(
-          name,
+          legalModel.name ?? "",
           style: AppTextStyles.body2().copyWith(
             color: AppColors.grey,
             fontWeight: FontWeight.w500,
