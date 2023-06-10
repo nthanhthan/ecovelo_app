@@ -183,14 +183,14 @@ class MapController extends GetxController {
   }
 
   Future<void> goClick() async {
-    _launchMapsUrl(_currentStation?.lat ?? 0, _currentStation?.lng ?? 0);
+    launchMapsUrl(_currentStation?.lat ?? 0, _currentStation?.lng ?? 0);
   }
 
   bool checkMyPositon() {
     return position != null;
   }
 
-  void _launchMapsUrl(double lat, double lng) async {
+  void launchMapsUrl(double lat, double lng) async {
     final url = 'https://www.google.com/maps/search/?api=1&query=$lat,$lng';
     // ignore: deprecated_member_use
     if (await canLaunch(url)) {

@@ -43,6 +43,16 @@ class HomeController extends GetxController
 
   Position? position;
 
+  final RxList<StationModel> _listStation = <StationModel>[].obs;
+  set listStation(List<StationModel> stationModel) =>
+      _listStation.value = stationModel;
+  // ignore: invalid_use_of_protected_member
+  List<StationModel> get listStation => _listStation.value;
+
+  late MapController mapController;
+
+  late StationHttpService _stationHttpService;
+
   @override
   void onInit() {
     isLoading = false;
@@ -64,6 +74,7 @@ class HomeController extends GetxController
       Prefs.saveString(AppKeys.bicycleIDRent, bikeID);
       getRent();
     }
+    mapController = Get.find<MapController>();
     super.onInit();
   }
 
@@ -191,5 +202,34 @@ class HomeController extends GetxController
         rentID);
     if (result.isSuccess()) {}
     return true;
+  }
+
+  Future<void> getStationNear() async {
+    _stationHttpService = Get.find<StationHttpService>();
+    final result = await _stationHttpService.getListStation();
+    listStation = [];
+    if (result.isSuccess() && result.data != null) {
+      listStation = result.data ?? [];
+      if (listStation.isNotEmpty) {
+        mapController.getMyPositionCurrent();
+        Position? position = mapController.position;
+        if (position != null) {
+          listStation.sort(
+            (a, b) {
+              _listStation.refresh();
+              double distanceToA = Geolocator.distanceBetween(position.latitude,
+                  position.longitude, a.lat ?? 0, a.lng ?? 0);
+              double distanceToB = Geolocator.distanceBetween(position.latitude,
+                  position.longitude, b.lat ?? 0, b.lng ?? 0);
+              return distanceToA.compareTo(distanceToB);
+            },
+          );
+        }
+      }
+    }
+  }
+
+  void stationNearMe(StationModel stationModel) {
+    mapController.launchMapsUrl(stationModel.lat ?? 0, stationModel.lng ?? 0);
   }
 }
