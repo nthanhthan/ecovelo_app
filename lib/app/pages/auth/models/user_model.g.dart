@@ -24,13 +24,14 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       proPoint: fields[6] as double?,
       verify: fields[4] as bool?,
       userId: fields[0] as int?,
+      proccessing: fields[7] as bool?,
     );
   }
 
   @override
   void write(BinaryWriter writer, UserModel obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.userId)
       ..writeByte(1)
@@ -44,7 +45,9 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       ..writeByte(5)
       ..write(obj.mainPoint)
       ..writeByte(6)
-      ..write(obj.proPoint);
+      ..write(obj.proPoint)
+      ..writeByte(7)
+      ..write(obj.proccessing);
   }
 
   @override
@@ -70,6 +73,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       proPoint: (json['proPoint'] as num?)?.toDouble(),
       verify: json['verify'] as bool?,
       userId: json['userId'] as int?,
+      proccessing: json['proccessing'] as bool?,
     );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
@@ -80,4 +84,5 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'verify': instance.verify,
       'mainPoint': instance.mainPoint,
       'proPoint': instance.proPoint,
+      'proccessing': instance.proccessing,
     };

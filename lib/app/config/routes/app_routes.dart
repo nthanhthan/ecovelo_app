@@ -18,4 +18,5 @@ abstract class Routes {
   static const stationBike = '/station_view';
   static const transactionHistory = '/history_view';
   static const enterCode = '/enter_code_view';
+  static const verifiAccount = '/verifi_account_view';
 }

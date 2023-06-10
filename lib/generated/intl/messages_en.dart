@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "amount": MessageLookupByLibrary.simpleMessage("Amount"),
         "appName": MessageLookupByLibrary.simpleMessage("ECOVELO"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "backView": MessageLookupByLibrary.simpleMessage("Back view"),
         "bicycleRented": MessageLookupByLibrary.simpleMessage(
             "Vehicle is in use, please change to another vehicle"),
         "bikeNumber": MessageLookupByLibrary.simpleMessage("Bike Number"),
@@ -47,9 +48,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Choose file from Directory"),
         "chooseFromGallery":
             MessageLookupByLibrary.simpleMessage("Choose from Gallery"),
+        "choosePersonal":
+            MessageLookupByLibrary.simpleMessage("Choose the type of document"),
+        "citizenID": MessageLookupByLibrary.simpleMessage("Citizen ID"),
+        "cmnd": MessageLookupByLibrary.simpleMessage("Identity Card"),
         "completeTrip":
             MessageLookupByLibrary.simpleMessage("The journey is complete!"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "confirmLogout": MessageLookupByLibrary.simpleMessage("Yes, Logout"),
         "continueBtn": MessageLookupByLibrary.simpleMessage("Continue"),
         "correct": MessageLookupByLibrary.simpleMessage("Password match"),
         "countFall": MessageLookupByLibrary.simpleMessage("Bike Fall Count"),
@@ -96,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "free": MessageLookupByLibrary.simpleMessage("Free"),
+        "frontView": MessageLookupByLibrary.simpleMessage("Font view"),
         "getMoreTime": MessageLookupByLibrary.simpleMessage("Get  more time"),
         "goBackHome": MessageLookupByLibrary.simpleMessage("Go back to home"),
         "goStation": MessageLookupByLibrary.simpleMessage("Go!"),
@@ -127,13 +134,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "lableSearch":
             MessageLookupByLibrary.simpleMessage("Search for EcoVelo stations"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "license": MessageLookupByLibrary.simpleMessage("Motorbicycle License"),
         "lockBroken": MessageLookupByLibrary.simpleMessage("Lock broken"),
         "lockFirst": MessageLookupByLibrary.simpleMessage(
             "You must do the your bike lock first"),
         "loginToContinue":
             MessageLookupByLibrary.simpleMessage("Please login to continue"),
-        "logout": MessageLookupByLibrary.simpleMessage("Log out"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "mainWallet": MessageLookupByLibrary.simpleMessage("Main Point"),
+        "messVerifi": MessageLookupByLibrary.simpleMessage(
+            "Please send a photo of your valid ID, original photo not scanned or photocopy"),
         "messageConfirmEnd": MessageLookupByLibrary.simpleMessage(
             "Are you want to end your trip?"),
         "myJourney": MessageLookupByLibrary.simpleMessage("My journey"),
@@ -182,10 +192,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "pickeFileUsing":
             MessageLookupByLibrary.simpleMessage("Pick file using?"),
+        "proccessingVerify": MessageLookupByLibrary.simpleMessage(
+            "Authentication is in progress"),
         "proceed": MessageLookupByLibrary.simpleMessage("Proceed to start!"),
         "processing": MessageLookupByLibrary.simpleMessage("Processing..."),
         "promoWallet": MessageLookupByLibrary.simpleMessage("Promo Point"),
         "qrError": MessageLookupByLibrary.simpleMessage("QR error"),
+        "questionLogout": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to log out?"),
         "ready": MessageLookupByLibrary.simpleMessage("Ready"),
         "readyRide": MessageLookupByLibrary.simpleMessage("Ready to Ride"),
         "reasonFall": MessageLookupByLibrary.simpleMessage(
@@ -216,6 +230,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "submitFeedback":
             MessageLookupByLibrary.simpleMessage("Submit feedback"),
         "takePhoto": MessageLookupByLibrary.simpleMessage("Take Photo"),
+        "takeTowSide":
+            MessageLookupByLibrary.simpleMessage("Take two-sided documents"),
         "tellWithUs":
             MessageLookupByLibrary.simpleMessage("Tell us your feedback "),
         "textBanner": MessageLookupByLibrary.simpleMessage(
@@ -252,6 +268,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Upload Image or Video"),
         "validatePhone": MessageLookupByLibrary.simpleMessage(
             "Please enter valid mobile number"),
+        "verifiAcc":
+            MessageLookupByLibrary.simpleMessage("Account Verification"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("VietNamese"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome!"),
         "welcomeEcovelo":

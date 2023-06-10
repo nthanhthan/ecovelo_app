@@ -73,6 +73,7 @@ class HomeController extends GetxController
       _loginManager.saveUser(result.data);
     }
     userModel = _loginManager.getUser();
+    Prefs.saveBool(AppKeys.isverify, userModel?.proccessing ?? false);
     return true;
   }
 

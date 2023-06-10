@@ -95,5 +95,8 @@ class AssetsConst {
   static const String iconSearch = "${preIconPath}icon_search.svg";
   static const String iconLocation = "${preIconPath}location.svg";
   static const String stripeIc = "${preIconPath}stripe_ic.svg";
+  static const String cardPerson = "${preIconPath}card_person.svg";
+  static const String cameraIc = "${preIconPath}camera_ic.svg";
+  static const String uploadImage = "${preIconPath}upload_image.svg";
 
 }
