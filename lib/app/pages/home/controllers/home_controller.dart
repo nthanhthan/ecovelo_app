@@ -43,6 +43,16 @@ class HomeController extends GetxController
 
   Position? position;
 
+  final RxList<StationModel> _listStation = <StationModel>[].obs;
+  set listStation(List<StationModel> stationModel) =>
+      _listStation.value = stationModel;
+  // ignore: invalid_use_of_protected_member
+  List<StationModel> get listStation => _listStation.value;
+
+  late MapController mapController;
+
+  late StationHttpService _stationHttpService;
+
   @override
   void onInit() {
     isLoading = false;
@@ -64,6 +74,7 @@ class HomeController extends GetxController
       Prefs.saveString(AppKeys.bicycleIDRent, bikeID);
       getRent();
     }
+    mapController = Get.find<MapController>();
     super.onInit();
   }
 
@@ -154,15 +165,6 @@ class HomeController extends GetxController
     }
   }
 
-  void stopRentBicycle() {
-    Get.dialog<void>(
-      ConfirmDialog(
-        message: S.of(Get.context!).lockFirst,
-        isHideCancelButton: true,
-        approveText: S.of(Get.context!).ok,
-      ),
-    );
-  }
 
   Future<void> _getCurrentLocation() async {
     LocationPermission permission = await Geolocator.checkPermission();
@@ -191,5 +193,43 @@ class HomeController extends GetxController
         rentID);
     if (result.isSuccess()) {}
     return true;
+  }
+
+  Future<void> getStationNear() async {
+    _stationHttpService = Get.find<StationHttpService>();
+    final result = await _stationHttpService.getListStation();
+    listStation = [];
+    if (result.isSuccess() && result.data != null) {
+      listStation = result.data ?? [];
+      if (listStation.isNotEmpty) {
+        mapController.getMyPositionCurrent();
+        Position? position = mapController.position;
+        if (position != null) {
+          listStation.sort(
+            (a, b) {
+              _listStation.refresh();
+              double distanceToA = Geolocator.distanceBetween(position.latitude,
+                  position.longitude, a.lat ?? 0, a.lng ?? 0);
+              double distanceToB = Geolocator.distanceBetween(position.latitude,
+                  position.longitude, b.lat ?? 0, b.lng ?? 0);
+              a.distance = showDistance(distanceToA);
+              b.distance = showDistance(distanceToB);
+              return distanceToA.compareTo(distanceToB);
+            },
+          );
+        }
+      }
+    }
+  }
+
+  String showDistance(double distance) {
+    if (distance > 1000) {
+      return "${distance.toInt() / 1000} km";
+    }
+    return "${distance.toInt()} m";
+  }
+
+  void stationNearMe(StationModel stationModel) {
+    mapController.launchMapsUrl(stationModel.lat ?? 0, stationModel.lng ?? 0);
   }
 }

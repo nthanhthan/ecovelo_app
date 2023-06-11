@@ -221,6 +221,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "signupsucess": MessageLookupByLibrary.simpleMessage(
             "Successful registration, login to continue."),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "stationNearMe": MessageLookupByLibrary.simpleMessage("Station near"),
         "stationNumber": m2,
         "stopRentError": MessageLookupByLibrary.simpleMessage(
             "Return vehicle with problem, please try again"),

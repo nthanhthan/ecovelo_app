@@ -111,5 +111,10 @@ class AppPages {
       binding: VerifiAccountBinding(),
       transition: Transition.rightToLeft,
     ),
+    GetPage<dynamic>(
+      name: Routes.nearStation,
+      page: () => const StationNearView(),
+      transition: Transition.rightToLeft,
+    ),
   ];
 }

@@ -1789,6 +1789,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Station near`
+  String get stationNearMe {
+    return Intl.message(
+      'Station near',
+      name: 'stationNearMe',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

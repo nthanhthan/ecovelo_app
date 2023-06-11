@@ -8,14 +8,16 @@ class StationModel {
   double? lat;
   double? lng;
   int? numBicycle;
+  String? distance;
   StationModel({
     this.id,
     this.address,
     this.lat,
     this.lng,
     this.numBicycle,
+    this.distance,
   });
-    factory StationModel.fromJson(Map<String, dynamic> json) =>
+  factory StationModel.fromJson(Map<String, dynamic> json) =>
       _$StationModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$StationModelToJson(this);

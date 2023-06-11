@@ -172,5 +172,6 @@
     "license": "Motorbicycle License",
     "proccessingVerify": "Authentication is in progress",
     "questionLogout": "Are you sure you want to log out?",
-    "confirmLogout": "Yes, Logout"
+    "confirmLogout": "Yes, Logout",
+    "stationNearMe": "Station near"
 }
