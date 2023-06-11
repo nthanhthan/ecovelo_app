@@ -22,6 +22,7 @@ class AppApi {
   //trip
   static const String sendTrip = "$apiVer/trip/addTripDetail";
   static const String getListTrip = "$apiVer/trip/getListTrip";
+  static const String feeadback = "$apiVer/bicycle/feedback";
   //add money
   static const String addMoney = "$apiVer/auth/addMoney";
   static const String getHistory = "$apiVer/transaction/getTransaction";

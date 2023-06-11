@@ -10,7 +10,14 @@ class FeedBackView extends GetView<FeedbackController> {
     controller.isShowFeedback = true;
   }
 
-  _onSubmitFeedback() {}
+  void _onSubmitFeedback() async {
+    bool result = await controller.feedBackTrip();
+    if (result) {
+      Get.offAllNamed(Routes.home);
+    } else {
+      SnackBars.error(message: S.of(Get.context!).errorFeedback);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +54,7 @@ class FeedBackView extends GetView<FeedbackController> {
               ),
               const SizedBox(height: 8),
               Text(
-               S.of(context).thanksTrip,
+                S.of(context).thanksTrip,
                 style: AppTextStyles.body2().copyWith(
                     color: AppColors.grey[400], fontWeight: FontWeight.w400),
                 textAlign: TextAlign.center,
@@ -95,6 +102,7 @@ class FeedBackView extends GetView<FeedbackController> {
                               )),
                           child: TextFormField(
                             maxLength: 100,
+                            controller: controller.reasonController,
                             decoration: InputDecoration(
                               hintText: S.of(context).enterReason,
                               hintStyle: AppTextStyles.body2().copyWith(
@@ -127,13 +135,14 @@ class FeedBackView extends GetView<FeedbackController> {
                     ),
                     const SizedBox(height: 25),
                     RatingBar(
+                      initialRating: controller.star,
                       ratingWidget: RatingWidget(
                         full: SvgPicture.asset(AssetsConst.activeStar),
                         half: const SizedBox.shrink(),
                         empty: SvgPicture.asset(AssetsConst.deactiveStar),
                       ),
                       onRatingUpdate: (value) {
-                        controller.star = value.toInt();
+                        controller.star = value;
                       },
                       itemPadding: const EdgeInsets.symmetric(horizontal: 6),
                     ),
@@ -171,6 +180,7 @@ class FeedBackView extends GetView<FeedbackController> {
                                     width: 1,
                                   )),
                               child: TextFormField(
+                                controller: controller.feedbackController,
                                 maxLength: 100,
                                 decoration: InputDecoration(
                                   hintText: S.of(context).enterFeedback,

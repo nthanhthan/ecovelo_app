@@ -88,6 +88,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterReason": MessageLookupByLibrary.simpleMessage("Enter reason"),
         "erEmailOrPasswordInvalid": MessageLookupByLibrary.simpleMessage(
             "Your phone number or password is incorrect."),
+        "errorFeedback": MessageLookupByLibrary.simpleMessage(
+            "Sorry, Processing is failing, please try again later."),
         "errorQR": MessageLookupByLibrary.simpleMessage(
             "QR Code is incorrect, please try again"),
         "fee": MessageLookupByLibrary.simpleMessage("Fee"),

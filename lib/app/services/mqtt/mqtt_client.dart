@@ -14,9 +14,8 @@ enum MqttCurrentConnectionState {
 
 enum MqttSubscriptionState { idle, subscribed }
 
-Future<bool> enTripClick(MqttServerClient client) async {
+Future<StopResponse?> enTripClick(MqttServerClient client) async {
   final RentHttpService _rentHttpService = Get.find<RentHttpService>();
-  final LoginManager _loginManager = Get.find<LoginManager>();
   ProcessingDialog processingDialog = ProcessingDialog.show();
   int rentID = Prefs.getInt(AppKeys.rentID);
   String bicycleID = Prefs.getString(AppKeys.bicycleIDRent);
@@ -24,14 +23,14 @@ Future<bool> enTripClick(MqttServerClient client) async {
   if (result.isSuccess() && result.data != null) {
     client.disconnect();
     processingDialog.hide();
-    _loginManager.saveUser(result.data);
+    StopResponse? stopResponse = result.data;
     Prefs.removeKey(AppKeys.bicycleIDRent);
     Prefs.removeKey(AppKeys.beginRent);
     Prefs.removeKey(AppKeys.rentID);
-    return true;
+    return stopResponse;
   }
   processingDialog.hide();
-  return false;
+  return null;
 }
 
 class MQTTClientWrapper {
@@ -105,7 +104,6 @@ class MQTTClientWrapper {
   void confirmStopRent(BuildContext context) {
     showDialog<void>(
       context: context,
-      barrierDismissible: false,
       builder: (BuildContext context) {
         return Dialog(
           shape: RoundedRectangleBorder(
@@ -142,8 +140,11 @@ class MQTTClientWrapper {
                         OutlinedButton(
                           onPressed: () {
                             enTripClick(client).then((value) {
-                              if (value == true) {
-                                Get.offAllNamed(Routes.feedback);
+                              if (value != null) {
+                                Get.offAllNamed(
+                                  Routes.feedback,
+                                  arguments: value,
+                                );
                               } else {
                                 ToastMessage.error(
                                     message: S.of(Get.context!).stopRentError);
