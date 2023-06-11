@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:ecoveloapp/app/core.dart';
+import 'package:flutter/material.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 
@@ -96,22 +97,95 @@ class MQTTClientWrapper {
       LogUtil.d('YOU GOT A NEW MESSAGE:');
       LogUtil.d(message);
       if (message == "2") {
-        Get.dialog<void>(
-          ConfirmDialog(
-            message: S.of(Get.context!).messageConfirmEnd,
-            onApproval: () {
-              enTripClick(client).then((value) {
-                if (value == true) {
-                  Get.offAllNamed(Routes.feedback);
-                } else {
-                  ToastMessage.error(message: S.of(Get.context!).stopRentError);
-                }
-              });
-            },
-          ),
-        );
+        confirmStopRent(Get.context!);
       }
     });
+  }
+
+  void confirmStopRent(BuildContext context) {
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25),
+          ),
+          child: Stack(
+            children: [
+              ListView(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 30),
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 15,
+                    ),
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 15),
+                        Text(
+                          S.of(context).messageConfirmEnd,
+                          style: AppTextStyles.body1().copyWith(
+                            color: AppColors.main.shade200,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                        const SizedBox(height: 30),
+                        OutlinedButton(
+                          onPressed: () {
+                            enTripClick(client).then((value) {
+                              if (value == true) {
+                                Get.offAllNamed(Routes.feedback);
+                              } else {
+                                ToastMessage.error(
+                                    message: S.of(Get.context!).stopRentError);
+                              }
+                            });
+                          },
+                          style: OutlineButtonStyle.enable(isFullWidth: true),
+                          child: Text(
+                            S.of(context).confirm,
+                            style: AppTextStyles.body2().copyWith(
+                              color: AppColors.main.shade200,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Positioned(
+                top: 0,
+                left: 110,
+                child: Transform.translate(
+                  offset: const Offset(0, -60),
+                  child: Center(
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: AppColors.main,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   // callbacks for different events

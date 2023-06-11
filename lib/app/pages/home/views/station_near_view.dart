@@ -63,7 +63,7 @@ class StationNearView extends GetView<HomeController> {
       },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10),
-        margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 30),
+        margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
@@ -80,11 +80,24 @@ class StationNearView extends GetView<HomeController> {
             ),
             const SizedBox(width: 10),
             Expanded(
-              child: Text(
-                "ECO_STATION ${stationModel.id} \n${stationModel.address}",
-                style: AppTextStyles.body1().copyWith(
-                  fontWeight: FontWeight.w500,
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "ECO_STATION ${stationModel.id}",
+                    style: AppTextStyles.body1().copyWith(
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.main,
+                    ),
+                  ),
+                  Text(
+                    stationModel.address ?? "",
+                    style: AppTextStyles.body2().copyWith(
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.grey.shade500,
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(width: 10),
@@ -105,7 +118,7 @@ class StationNearView extends GetView<HomeController> {
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  "100 m",
+                  stationModel.distance ?? "",
                   style: AppTextStyles.body2().copyWith(color: AppColors.main),
                 )
               ],

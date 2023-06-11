@@ -165,15 +165,6 @@ class HomeController extends GetxController
     }
   }
 
-  void stopRentBicycle() {
-    Get.dialog<void>(
-      ConfirmDialog(
-        message: S.of(Get.context!).lockFirst,
-        isHideCancelButton: true,
-        approveText: S.of(Get.context!).ok,
-      ),
-    );
-  }
 
   Future<void> _getCurrentLocation() async {
     LocationPermission permission = await Geolocator.checkPermission();
@@ -221,12 +212,21 @@ class HomeController extends GetxController
                   position.longitude, a.lat ?? 0, a.lng ?? 0);
               double distanceToB = Geolocator.distanceBetween(position.latitude,
                   position.longitude, b.lat ?? 0, b.lng ?? 0);
+              a.distance = showDistance(distanceToA);
+              b.distance = showDistance(distanceToB);
               return distanceToA.compareTo(distanceToB);
             },
           );
         }
       }
     }
+  }
+
+  String showDistance(double distance) {
+    if (distance > 1000) {
+      return "${distance.toInt() / 1000} km";
+    }
+    return "${distance.toInt()} m";
   }
 
   void stationNearMe(StationModel stationModel) {

@@ -32,7 +32,7 @@ class HomeScreen extends GetView<HomeController> {
   }
 
   void _finishRideClick() async {
-    controller.stopRentBicycle();
+    notifyStopRent();
   }
 
   void _stationNearClicked() {
@@ -581,6 +581,64 @@ class HomeScreen extends GetView<HomeController> {
           ),
         ),
       ),
+    );
+  }
+
+  void notifyStopRent() {
+    showDialog<void>(
+      context: Get.context!,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25),
+          ),
+          child: ListView(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 30),
+                decoration: BoxDecoration(
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 15,
+                ),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 15),
+                    Text(
+                      S.of(context).lockFirst,
+                      style: AppTextStyles.body1().copyWith(
+                        color: AppColors.main.shade200,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 30),
+                    OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      style: OutlineButtonStyle.enable(isFullWidth: true),
+                      child: Text(
+                        S.of(context).ok,
+                        style: AppTextStyles.body2().copyWith(
+                          color: AppColors.main.shade200,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
