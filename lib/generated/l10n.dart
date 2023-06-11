@@ -1799,6 +1799,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Sorry, Processing is failing, please try again later.`
+  String get errorFeedback {
+    return Intl.message(
+      'Sorry, Processing is failing, please try again later.',
+      name: 'errorFeedback',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

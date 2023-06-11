@@ -173,5 +173,6 @@
     "proccessingVerify": "Authentication is in progress",
     "questionLogout": "Are you sure you want to log out?",
     "confirmLogout": "Yes, Logout",
-    "stationNearMe": "Station near"
+    "stationNearMe": "Station near",
+    "errorFeedback": "Sorry, Processing is failing, please try again later."
 }
