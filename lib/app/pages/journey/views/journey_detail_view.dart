@@ -148,7 +148,7 @@ class JourneyDetailView extends GetView<JourneyDetailConroller> {
                         S.of(context).totalTime,
                         (controller.detailJouneyModel!.totalTime! / 60)
                             .toStringAsFixed(1),
-                        "minutes",
+                        S.of(context).timeMinutes,
                       ),
                     ],
                   ),

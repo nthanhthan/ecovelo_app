@@ -1809,6 +1809,26 @@ class S {
       args: [],
     );
   }
+
+  /// `minutes`
+  String get timeMinutes {
+    return Intl.message(
+      'minutes',
+      name: 'timeMinutes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Completed`
+  String get complete {
+    return Intl.message(
+      'Completed',
+      name: 'complete',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -1817,6 +1837,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'vi'),
     ];
   }
 
