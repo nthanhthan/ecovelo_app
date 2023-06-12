@@ -52,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Choose the type of document"),
         "citizenID": MessageLookupByLibrary.simpleMessage("Citizen ID"),
         "cmnd": MessageLookupByLibrary.simpleMessage("Identity Card"),
+        "complete": MessageLookupByLibrary.simpleMessage("Completed"),
         "completeTrip":
             MessageLookupByLibrary.simpleMessage("The journey is complete!"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
@@ -243,6 +244,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Thanks for being eco-conscious and choosing sustainable transportation."),
         "ticketType": MessageLookupByLibrary.simpleMessage("Ticket Type"),
         "time": MessageLookupByLibrary.simpleMessage("Time"),
+        "timeMinutes": MessageLookupByLibrary.simpleMessage("minutes"),
         "titleDes": MessageLookupByLibrary.simpleMessage("Description"),
         "titleJourneyCode":
             MessageLookupByLibrary.simpleMessage("Journey Code"),

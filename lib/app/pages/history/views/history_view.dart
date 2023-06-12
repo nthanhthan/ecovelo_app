@@ -139,7 +139,7 @@ class HistoryView extends GetView<HistoryController> {
                     ),
                     const SizedBox(width: 10),
                     Text(
-                      "Completed",
+                      S.of(context).complete,
                       style: AppTextStyles.tiny()
                           .copyWith(color: AppColors.grey.shade300),
                     ),
