@@ -31,8 +31,28 @@ class HomeScreen extends GetView<HomeController> {
     Get.toNamed(Routes.journey);
   }
 
+  void _openLockTemporary() {
+    controller.openLockTemporary();
+  }
+
   void _finishRideClick() async {
-    notifyStopRent();
+    // notifyStopRent();
+    final RentHttpService _rentHttpService = Get.find<RentHttpService>();
+    ProcessingDialog processingDialog = ProcessingDialog.show();
+    int rentID = Prefs.getInt(AppKeys.rentID);
+    String bicycleID = Prefs.getString(AppKeys.bicycleIDRent);
+    final result = await _rentHttpService.stopRentBicycle(bicycleID, rentID);
+    if (result.isSuccess() && result.data != null) {
+      // client.disconnect();
+      processingDialog.hide();
+      StopResponse? stopResponse = result.data;
+      Prefs.removeKey(AppKeys.bicycleIDRent);
+      Prefs.removeKey(AppKeys.beginRent);
+      Prefs.removeKey(AppKeys.rentID);
+      //return stopResponse;
+    }
+    processingDialog.hide();
+    // return null;
   }
 
   void _stationNearClicked() {
@@ -169,13 +189,23 @@ class HomeScreen extends GetView<HomeController> {
                   () => Visibility(
                     visible: controller.isCloseBottomModel ??
                         controller.checkCloseBottomModel(),
-                    child: GestureDetector(
-                      onTap: () {
-                        controller.checkCloseBottomModel() == true
-                            ? showBottomSheetRentBicycle(context)
-                            : null;
-                      },
-                      child: _durationRide(context),
+                    child: Obx(
+                      () => Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              controller.checkCloseBottomModel() == true
+                                  ? showBottomSheetRentBicycle(context)
+                                  : null;
+                            },
+                            child: _durationRide(context),
+                          ),
+                          const SizedBox(width: 10),
+                          controller.isLockTemporary
+                              ? _lockTemporary(context)
+                              : const SizedBox.shrink(),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -410,25 +440,30 @@ class HomeScreen extends GetView<HomeController> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  controller.bikeID,
-                                  style: AppTextStyles.subHeading1()
-                                      .copyWith(color: AppColors.main.shade200),
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
-                                ),
-                                const SizedBox(width: 10),
-                                Align(
-                                  alignment: Alignment.topLeft,
-                                  child: SvgPicture.asset(
-                                    AssetsConst.checkRent,
-                                    height: 20,
+                            Obx(
+                              () => Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    controller.bikeID,
+                                    style: AppTextStyles.subHeading1().copyWith(
+                                        color: AppColors.main.shade200),
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
                                   ),
-                                ),
-                              ],
+                                  const SizedBox(width: 10),
+                                  controller.isLockTemporary
+                                      ? _lockTemporary(context)
+                                      : Align(
+                                          alignment: Alignment.topLeft,
+                                          child: SvgPicture.asset(
+                                            AssetsConst.checkRent,
+                                            height: 20,
+                                          ),
+                                        ),
+                                ],
+                              ),
                             ),
                             const SizedBox(height: 10),
                             _durationRide(context),
@@ -514,6 +549,33 @@ class HomeScreen extends GetView<HomeController> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _lockTemporary(BuildContext context) {
+    return GestureDetector(
+      onTap: _openLockTemporary,
+      child: Container(
+        width: 50,
+        padding: const EdgeInsets.symmetric(
+          vertical: 9,
+          horizontal: 10,
+        ),
+        decoration: BoxDecoration(
+          color: AppColors.secondary.shade300,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Center(
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: Icon(
+              Icons.lock_outline,
+              color: AppColors.main.shade400,
+              size: 20,
+            ),
+          ),
         ),
       ),
     );

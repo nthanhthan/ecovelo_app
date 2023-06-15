@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:ecoveloapp/app/core.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 
@@ -8,55 +9,52 @@ enum MqttCurrentConnectionState {
   idle,
   connecting,
   conneted,
-  disconect,
+  disconnect,
   error,
 }
 
 enum MqttSubscriptionState { idle, subscribed }
 
-Future<StopResponse?> enTripClick(MqttServerClient client) async {
-  final RentHttpService _rentHttpService = Get.find<RentHttpService>();
-  ProcessingDialog processingDialog = ProcessingDialog.show();
-  int rentID = Prefs.getInt(AppKeys.rentID);
-  String bicycleID = Prefs.getString(AppKeys.bicycleIDRent);
-  final result = await _rentHttpService.stopRentBicycle(bicycleID, rentID);
-  if (result.isSuccess() && result.data != null) {
-    client.disconnect();
-    processingDialog.hide();
-    StopResponse? stopResponse = result.data;
-    Prefs.removeKey(AppKeys.bicycleIDRent);
-    Prefs.removeKey(AppKeys.beginRent);
-    Prefs.removeKey(AppKeys.rentID);
-    return stopResponse;
-  }
-  processingDialog.hide();
-  return null;
-}
-
 class MQTTClientWrapper {
+  static final MQTTClientWrapper _instance = MQTTClientWrapper._internal();
+  factory MQTTClientWrapper() {
+    return _instance;
+  }
+  MQTTClientWrapper._internal();
   late MqttServerClient client;
-
+  late List<StationModel> listStation;
   MqttCurrentConnectionState connectionState = MqttCurrentConnectionState.idle;
   MqttSubscriptionState subscriptionState = MqttSubscriptionState.idle;
+  final MapController _mapController = Get.put<MapController>(MapController());
 
   // using async tasks, so the connection won't hinder the code flow
   void prepareMqttClient(String bicycleID) async {
     _setupMqttClient();
-    await _connectClient();
+    await connectClient();
     _subscribeToTopic(bicycleID);
     //_publishMessage('Hello');
   }
 
+  void checkConnected(String bicycleID) {
+    if (connectionState != MqttCurrentConnectionState.conneted &&
+        connectionState != MqttCurrentConnectionState.connecting) {
+      prepareMqttClient(bicycleID);
+    }
+  }
+
   // waiting for the connection, if an error occurs, print it and disconnect
-  Future<void> _connectClient() async {
+  Future<void> connectClient() async {
     try {
-      LogUtil.d('client connecting....');
-      connectionState = MqttCurrentConnectionState.connecting;
-      await client.connect('ecovelo', '0901948483');
+      if (connectionState != MqttCurrentConnectionState.conneted &&
+          connectionState != MqttCurrentConnectionState.connecting) {
+        LogUtil.d('client connecting....');
+        connectionState = MqttCurrentConnectionState.connecting;
+        await client.connect('ecovelo', '0901948483');
+      }
     } on Exception catch (e) {
       LogUtil.d('client exception - $e');
       connectionState = MqttCurrentConnectionState.error;
-      client.disconnect();
+      //client.disconnect();
     }
 
     // when connected, print a confirmation, else print an error
@@ -67,7 +65,7 @@ class MQTTClientWrapper {
       LogUtil.d(
           'ERROR client connection failed - disconnecting, status is ${client.connectionStatus}');
       connectionState = MqttCurrentConnectionState.error;
-      client.disconnect();
+      // client.disconnect();
     }
   }
 
@@ -79,15 +77,24 @@ class MQTTClientWrapper {
     // the next 2 lines are necessary to connect with tls, which is used by HiveMQ Cloud
     client.secure = true;
     client.securityContext = SecurityContext.defaultContext;
-    client.keepAlivePeriod = 20;
+    client.keepAlivePeriod = 1200;
     client.onConnected = _onConnected;
     client.onSubscribed = _onSubscribed;
+    client.onDisconnected = _onDisconnected;
+    client.autoReconnect = true;
+    client.onAutoReconnected = _onAutoReconnected;
   }
 
-  void _subscribeToTopic(String topicName) {
+  void _onAutoReconnected() {
+    LogUtil.d('Auto Reconected');
+    connectionState = MqttCurrentConnectionState.conneted;
+  }
+
+  Future<void> _subscribeToTopic(String topicName) async {
     LogUtil.d('Subscribing to the $topicName topic');
     client.subscribe(topicName, MqttQos.atMostOnce);
 
+    listStation = await _mapController.getListStation();
     // print the message when it is received
     client.updates?.listen((List<MqttReceivedMessage<MqttMessage>> c) {
       final recMess = c[0].payload as MqttPublishMessage;
@@ -96,12 +103,58 @@ class MQTTClientWrapper {
       LogUtil.d('YOU GOT A NEW MESSAGE:');
       LogUtil.d(message);
       if (message == "2") {
-        confirmStopRent(Get.context!);
+        if (listStation.isNotEmpty) {
+          double? stationDistance = checkPositonUserNearStation();
+          if (stationDistance != null && stationDistance != -1) {
+            if (stationDistance >= 0 && stationDistance < 10) {
+              confirmStopRent(
+                Get.context!,
+                S.of(Get.context!).messageConfirmEnd,
+                confirmEndtrip,
+              );
+            } else {
+              connectClient();
+              confirmStopRent(Get.context!, S.of(Get.context!).temoraryLock,
+                  () {
+                confirmtTemoraryLock(topicName);
+              });
+            }
+          } else {
+            confirmStopRent(
+              Get.context!,
+              S.of(Get.context!).endTripError,
+              endTripError,
+            );
+          }
+        }
       }
     });
   }
 
-  void confirmStopRent(BuildContext context) {
+  double? checkPositonUserNearStation() {
+    _mapController.getMyPositionCurrent();
+    Position? myPositon = _mapController.position;
+    if (myPositon != null) {
+      listStation.sort(
+        (a, b) {
+          double distanceToA = Geolocator.distanceBetween(
+              myPositon.latitude, myPositon.longitude, a.lat ?? 0, a.lng ?? 0);
+          double distanceToB = Geolocator.distanceBetween(
+              myPositon.latitude, myPositon.longitude, b.lat ?? 0, b.lng ?? 0);
+          a.distance = distanceToA.toString();
+          b.distance = distanceToB.toString();
+          return distanceToA.compareTo(distanceToB);
+        },
+      );
+    }
+    return double.tryParse(listStation.first.distance ?? "-1");
+  }
+
+  void confirmStopRent(
+    BuildContext context,
+    String message,
+    Function handle,
+  ) {
     showDialog<void>(
       context: context,
       builder: (BuildContext context) {
@@ -129,7 +182,7 @@ class MQTTClientWrapper {
                       children: [
                         const SizedBox(height: 15),
                         Text(
-                          S.of(context).messageConfirmEnd,
+                          message,
                           style: AppTextStyles.body1().copyWith(
                             color: AppColors.main.shade200,
                             fontWeight: FontWeight.w600,
@@ -139,17 +192,7 @@ class MQTTClientWrapper {
                         const SizedBox(height: 30),
                         OutlinedButton(
                           onPressed: () {
-                            enTripClick(client).then((value) {
-                              if (value != null) {
-                                Get.offAllNamed(
-                                  Routes.feedback,
-                                  arguments: value,
-                                );
-                              } else {
-                                ToastMessage.error(
-                                    message: S.of(Get.context!).stopRentError);
-                              }
-                            });
+                            handle.call();
                           },
                           style: OutlineButtonStyle.enable(isFullWidth: true),
                           child: Text(
@@ -195,13 +238,97 @@ class MQTTClientWrapper {
     subscriptionState = MqttSubscriptionState.subscribed;
   }
 
-  // void _onDisconnected() {
-  //   LogUtil.d('OnDisconnected client callback - Client disconnection');
-  //   connectionState = MqttCurrentConnectionState.disconect;
-  // }
+  void _onDisconnected() {
+    LogUtil.d('OnDisconnected client callback - Client disconnection');
+    if (connectionState == MqttCurrentConnectionState.conneted) {
+      connectionState = MqttCurrentConnectionState.disconnect;
+    }
+  }
 
   void _onConnected() {
     connectionState = MqttCurrentConnectionState.conneted;
     LogUtil.d('OnConnected client callback - Client connection was sucessful');
+  }
+
+  Future<StopResponse?> enTripClick(MqttServerClient client) async {
+    final RentHttpService _rentHttpService = Get.find<RentHttpService>();
+    ProcessingDialog processingDialog = ProcessingDialog.show();
+    int rentID = Prefs.getInt(AppKeys.rentID);
+    String bicycleID = Prefs.getString(AppKeys.bicycleIDRent);
+    final result = await _rentHttpService.stopRentBicycle(bicycleID, rentID);
+    if (result.isSuccess() && result.data != null) {
+      client.disconnect();
+      processingDialog.hide();
+      StopResponse? stopResponse = result.data;
+      Prefs.removeKey(AppKeys.bicycleIDRent);
+      Prefs.removeKey(AppKeys.beginRent);
+      Prefs.removeKey(AppKeys.rentID);
+      Prefs.removeKey(AppKeys.lockTemporary);
+      return stopResponse;
+    }
+    processingDialog.hide();
+    return null;
+  }
+
+  void confirmEndtrip() {
+    enTripClick(client).then((value) {
+      if (value != null) {
+        Get.offAllNamed(
+          Routes.feedback,
+          arguments: value,
+        );
+      } else {
+        ToastMessage.error(message: S.of(Get.context!).stopRentError);
+      }
+    });
+  }
+
+  void confirmtTemoraryLock(String topicName) {
+    checkConnected(topicName);
+    if (connectionState == MqttCurrentConnectionState.conneted) {
+      final builder = MqttClientPayloadBuilder();
+      builder.addString('3');
+      if (builder.payload != null) {
+        client.publishMessage(topicName, MqttQos.atLeastOnce, builder.payload!);
+        Prefs.saveBool(AppKeys.lockTemporary, true);
+        Navigator.of(Get.context!).pop();
+        Get.offAllNamed(Routes.home);
+      } else {
+        confirmStopRent(
+          Get.context!,
+          S.of(Get.context!).temoraryLockError,
+          endTripError,
+        );
+      }
+    } else {
+      SnackBars.complete(message: "Try again");
+    }
+  }
+
+  void endTripError() {
+    Navigator.of(Get.context!).pop();
+  }
+
+  void showOpenLock(String topicName) {
+    confirmStopRent(Get.context!, S.of(Get.context!).openLockContinue, () {
+      confirmOpenLock(topicName);
+    });
+  }
+
+  void confirmOpenLock(String topicName) {
+    if (connectionState == MqttCurrentConnectionState.conneted) {
+      final builder = MqttClientPayloadBuilder();
+      builder.addString('0');
+      if (builder.payload != null) {
+        client.publishMessage(topicName, MqttQos.atLeastOnce, builder.payload!);
+        Prefs.removeKey(AppKeys.lockTemporary);
+        Navigator.of(Get.context!).pop();
+        client.disconnect();
+        prepareMqttClient(topicName);
+        Get.offAllNamed(Routes.home);
+      }
+    } else {
+      SnackBars.complete(message: "Try again");
+    }
   }
 }

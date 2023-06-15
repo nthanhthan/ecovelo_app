@@ -49,20 +49,24 @@ class MapController extends GetxController {
 
   @override
   Future<void> onInit() async {
-    _stationHttpService = Get.find<StationHttpService>();
-    final result = await _stationHttpService.getListStation();
-    listStation = [];
-    if (result.isSuccess() && result.data != null) {
-      listStation = result.data ?? [];
-    }
+    await getListStation();
     customMarker().then((value) {
       _getCurrentLocation().then((value) {
         setMarker();
         isLoading = true;
       });
     });
-
     super.onInit();
+  }
+
+  Future<List<StationModel>> getListStation() async {
+    _stationHttpService = Get.put<StationHttpService>(StationHttpService());
+    final result = await _stationHttpService.getListStation();
+    listStation = [];
+    if (result.isSuccess() && result.data != null) {
+      listStation = result.data ?? [];
+    }
+    return listStation;
   }
 
   Future<void> _getCurrentLocation() async {

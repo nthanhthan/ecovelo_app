@@ -53,12 +53,17 @@ class HomeController extends GetxController
 
   late StationHttpService _stationHttpService;
 
+  final RxBool _isLockTemporary = false.obs;
+  bool get isLockTemporary => _isLockTemporary.value;
+  set isLockTemporary(bool value) => _isLockTemporary.value = value;
+
   @override
   void onInit() {
     isLoading = false;
     WidgetsBinding.instance.addObserver(this);
     _loginManager = Get.find<LoginManager>();
     _authHttpService = Get.find<AuthHttpService>();
+    isLockTemporary = Prefs.getBool(AppKeys.lockTemporary);
     getUser().then((value) {
       if (value) {
         isLoading = true;
@@ -90,8 +95,7 @@ class HomeController extends GetxController
 
   void getRent() {
     String bicycleid = Prefs.getString(AppKeys.bicycleIDRent);
-    MQTTClientWrapper newclient = MQTTClientWrapper();
-    newclient.prepareMqttClient(bicycleid);
+    MQTTClientWrapper().checkConnected(bicycleid);
     String beginTimer = Prefs.getString(AppKeys.beginRent);
     if (beginTimer.isNotEmpty) {
       startTime = DateTime.parse(beginTimer);
@@ -165,7 +169,6 @@ class HomeController extends GetxController
     }
   }
 
-
   Future<void> _getCurrentLocation() async {
     LocationPermission permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
@@ -231,5 +234,11 @@ class HomeController extends GetxController
 
   void stationNearMe(StationModel stationModel) {
     mapController.launchMapsUrl(stationModel.lat ?? 0, stationModel.lng ?? 0);
+  }
+
+  Future<void> openLockTemporary() async {
+    String bicycleid = Prefs.getString(AppKeys.bicycleIDRent);
+    MQTTClientWrapper().checkConnected(bicycleid);
+    MQTTClientWrapper().showOpenLock(bicycleid);
   }
 }

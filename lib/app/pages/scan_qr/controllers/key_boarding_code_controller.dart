@@ -13,9 +13,12 @@ class EnterCodeController extends GetxController {
 
   double? pointUser;
 
+  late ScanController _scanController;
+
   @override
   void onInit() {
     _scanHttpService = Get.find<ScanHttpService>();
+    _scanController = Get.find<ScanController>();
     if (Get.arguments != null && Get.arguments is double) {
       pointUser = Get.arguments as double;
     }
@@ -24,27 +27,31 @@ class EnterCodeController extends GetxController {
 
   Future<void> checkCode() async {
     ProcessingDialog processingDialog = ProcessingDialog.show();
-
-    if (pointUser != null && pointUser! >= 5000) {
-      final result =
-          await _scanHttpService.checkQR(codeEcoveloController.text.trim());
-      if (result.isSuccess() && result.data != null) {
-        if (result.data == true) {
-          Get.offNamed(
-            Routes.rentBicycle,
-            arguments: codeEcoveloController.text.trim(),
-          );
+    if (_scanController.userModel?.verify == true) {
+      if (pointUser != null && pointUser! >= 5000) {
+        final result =
+            await _scanHttpService.checkQR(codeEcoveloController.text.trim());
+        if (result.isSuccess() && result.data != null) {
+          if (result.data == true) {
+            Get.offNamed(
+              Routes.rentBicycle,
+              arguments: codeEcoveloController.text.trim(),
+            );
+          } else {
+            processingDialog.hide();
+            resetScan(S.of(Get.context!).errorQR);
+          }
         } else {
           processingDialog.hide();
-          resetScan(S.current.errorQR);
+          resetScan(S.of(Get.context!).errorQR);
         }
       } else {
         processingDialog.hide();
-        resetScan(S.current.errorQR);
+        resetScan(S.of(Get.context!).score);
       }
     } else {
       processingDialog.hide();
-      resetScan(S.current.score);
+      resetScan(S.of(Get.context!).accountMustVeifi);
     }
   }
 

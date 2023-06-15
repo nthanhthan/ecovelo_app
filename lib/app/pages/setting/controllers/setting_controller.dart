@@ -50,6 +50,8 @@ class SettingController extends GetxController {
           isLoading = true;
         }
       });
+    }else{
+      isLoading = true;
     }
 
     initLanguageSupported();
