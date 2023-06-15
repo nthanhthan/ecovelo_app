@@ -34,8 +34,7 @@ class RentBicycleController extends GetxController {
   Future<bool> startRentBicycle() async {
     ProcessingDialog processingDialog = ProcessingDialog.show();
     final result = await _rentHttpService.rentBicycle(bikeID);
-    MQTTClientWrapper newclient = MQTTClientWrapper();
-    newclient.prepareMqttClient(bikeID);
+    MQTTClientWrapper().prepareMqttClient(bikeID);
     if (result.isSuccess() && result.data != null) {
       processingDialog.hide();
       if (result.data == -1) {
@@ -44,7 +43,6 @@ class RentBicycleController extends GetxController {
       Prefs.saveInt(AppKeys.rentID, result.data!);
       return true;
     }
-
     processingDialog.hide();
     return false;
   }

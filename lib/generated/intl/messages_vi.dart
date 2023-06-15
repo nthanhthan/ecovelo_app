@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about": MessageLookupByLibrary.simpleMessage("Thông tin"),
+        "accountMustVeifi": MessageLookupByLibrary.simpleMessage(
+            "Xin lỗi, tài khoản của bạn chưa được xác minh"),
         "addMoney": MessageLookupByLibrary.simpleMessage("Nạp điểm"),
         "amount": MessageLookupByLibrary.simpleMessage("Số tiền"),
         "appName": MessageLookupByLibrary.simpleMessage("ECOVELO"),
@@ -77,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "ecoVoucher": MessageLookupByLibrary.simpleMessage("Khuyến mãi Eco"),
         "ecoitem": MessageLookupByLibrary.simpleMessage("Eco velo"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "endTripError": MessageLookupByLibrary.simpleMessage(
+            "Xin lỗi, Quá trình xử lí gặp vấn đề, vui lòng thử lại! "),
         "energy": MessageLookupByLibrary.simpleMessage("Năng lượng"),
         "english": MessageLookupByLibrary.simpleMessage("Tiếng Anh"),
         "enterCode": MessageLookupByLibrary.simpleMessage("Nhập mã xe"),
@@ -186,6 +190,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "onBoardingPage3Description": MessageLookupByLibrary.simpleMessage(
             "Ứng dụng của chúng tôi học hỏi từ các tương tác của bạn để cung cấp các đề xuất và đề xuất được cá nhân hóa phù hợp với nhu cầu và sở thích cụ thể của bạn"),
         "oneTimeTicket": MessageLookupByLibrary.simpleMessage("Vẽ một chiều"),
+        "openLockContinue": MessageLookupByLibrary.simpleMessage(
+            "Bạn muốn mở khoá xe để tiếp tục phải không?"),
         "other": MessageLookupByLibrary.simpleMessage("Vấn đề khác"),
         "passWordAgain":
             MessageLookupByLibrary.simpleMessage("Nhập lại mật khẩu"),
@@ -240,6 +246,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Chụp hai mặt giấy tờ"),
         "tellWithUs": MessageLookupByLibrary.simpleMessage(
             "Hãy cho chúng tôi biết phản hồi của bạn "),
+        "temoraryLock": MessageLookupByLibrary.simpleMessage(
+            "Bạn muốn khoá xe tạm thời phải không"),
+        "temoraryLockError": MessageLookupByLibrary.simpleMessage(
+            "Xin lỗi, Khoá xe tạm thời gặp vấn đề."),
         "textBanner": MessageLookupByLibrary.simpleMessage(
             "Hãy tận hưởng một chuyến đi thoải mái trong giờ cao điểm và "),
         "thanksTrip": MessageLookupByLibrary.simpleMessage(

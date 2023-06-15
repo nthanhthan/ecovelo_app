@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about": MessageLookupByLibrary.simpleMessage("About"),
+        "accountMustVeifi": MessageLookupByLibrary.simpleMessage(
+            "Sorry, Your account haven\'t been verified"),
         "addMoney": MessageLookupByLibrary.simpleMessage("Add money"),
         "amount": MessageLookupByLibrary.simpleMessage("Amount"),
         "appName": MessageLookupByLibrary.simpleMessage("ECOVELO"),
@@ -76,6 +78,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "ecoVoucher": MessageLookupByLibrary.simpleMessage("Eco Voucher"),
         "ecoitem": MessageLookupByLibrary.simpleMessage("Eco velo"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "endTripError": MessageLookupByLibrary.simpleMessage(
+            "Sorry,There is a problem with processing, please try again! "),
         "energy": MessageLookupByLibrary.simpleMessage("Energy"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
         "enterCode": MessageLookupByLibrary.simpleMessage("Enter Code"),
@@ -188,6 +192,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Our app learns from your interactions to provide personalized recommendations and suggestions that suit your specific needs and preferences"),
         "oneTimeTicket":
             MessageLookupByLibrary.simpleMessage("One-time Ticket"),
+        "openLockContinue": MessageLookupByLibrary.simpleMessage(
+            "Do you want to unlock the car to continue?"),
         "other": MessageLookupByLibrary.simpleMessage("Other"),
         "passWordAgain":
             MessageLookupByLibrary.simpleMessage("Enter the password again"),
@@ -238,6 +244,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Take two-sided documents"),
         "tellWithUs":
             MessageLookupByLibrary.simpleMessage("Tell us your feedback "),
+        "temoraryLock": MessageLookupByLibrary.simpleMessage(
+            "Do you want to temporarily lock the bicycle?"),
+        "temoraryLockError": MessageLookupByLibrary.simpleMessage(
+            "Sorry, Temporarily lock the bicycle error"),
         "textBanner": MessageLookupByLibrary.simpleMessage(
             "Let\'s enjoy a stress-free ride during peak hours and "),
         "thanksTrip": MessageLookupByLibrary.simpleMessage(

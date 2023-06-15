@@ -176,5 +176,11 @@
     "stationNearMe": "Trạm xe gần tôi",
     "errorFeedback": "Xin lỗi, Quá trình xử lý không thành công, vui lòng thử lại sau.",
     "timeMinutes": "Phút",
-    "complete": "Đã hoàn thành"
+    "complete": "Đã hoàn thành",
+    "accountMustVeifi": "Xin lỗi, tài khoản của bạn chưa được xác minh",
+    "temoraryLock": "Bạn muốn khoá xe tạm thời phải không",
+    "endTripError": "Xin lỗi, Quá trình xử lí gặp vấn đề, vui lòng thử lại! ",
+    "temoraryLockError": "Xin lỗi, Khoá xe tạm thời gặp vấn đề.",
+    "openLockContinue": "Bạn muốn mở khoá xe để tiếp tục phải không?"
+    
 }

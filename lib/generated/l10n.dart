@@ -1829,6 +1829,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Sorry, Your account haven't been verified`
+  String get accountMustVeifi {
+    return Intl.message(
+      'Sorry, Your account haven\'t been verified',
+      name: 'accountMustVeifi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to temporarily lock the bicycle?`
+  String get temoraryLock {
+    return Intl.message(
+      'Do you want to temporarily lock the bicycle?',
+      name: 'temoraryLock',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sorry,There is a problem with processing, please try again! `
+  String get endTripError {
+    return Intl.message(
+      'Sorry,There is a problem with processing, please try again! ',
+      name: 'endTripError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sorry, Temporarily lock the bicycle error`
+  String get temoraryLockError {
+    return Intl.message(
+      'Sorry, Temporarily lock the bicycle error',
+      name: 'temoraryLockError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to unlock the car to continue?`
+  String get openLockContinue {
+    return Intl.message(
+      'Do you want to unlock the car to continue?',
+      name: 'openLockContinue',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -56,25 +56,29 @@ class ScanController extends GetxController
         await qrController?.pauseCamera();
         double currentPoint =
             (userModel?.mainPoint ?? 0) + (userModel?.proPoint ?? 0);
-        if (currentPoint >= 5000) {
-          final result = await _scanHttpService.checkQR(scanData.code!);
-          if (result.isSuccess() && result.data != null) {
-            if (result.data == true) {
-              Get.offNamed(
-                Routes.rentBicycle,
-                arguments: scanData.code,
-              );
+        if (userModel?.verify == true) {
+          if (currentPoint >= 5000) {
+            final result = await _scanHttpService.checkQR(scanData.code!);
+            if (result.isSuccess() && result.data != null) {
+              if (result.data == true) {
+                Get.offNamed(
+                  Routes.rentBicycle,
+                  arguments: scanData.code,
+                );
+              } else {
+                resetScan(S.of(Get.context!).errorQR);
+              }
             } else {
-              resetScan(S.current.errorQR);
+              resetScan(S.of(Get.context!).errorQR);
             }
           } else {
-            resetScan(S.current.errorQR);
+            resetScan(S.of(Get.context!).score);
           }
-        } else {
-          resetScan(S.current.score);
-        }
 
-        _qrCodeScanned = "";
+          _qrCodeScanned = "";
+        } else {
+          resetScan(S.of(Get.context!).accountMustVeifi);
+        }
       }
     });
 
@@ -101,10 +105,10 @@ class ScanController extends GetxController
           if (result.data == true) {
             Get.back(result: scanData.code);
           } else {
-            resetScan(S.current.errorQR);
+            resetScan(S.of(Get.context!).errorQR);
           }
         } else {
-          resetScan(S.current.errorQR);
+          resetScan(S.of(Get.context!).errorQR);
         }
 
         _qrCodeScanned = "";
