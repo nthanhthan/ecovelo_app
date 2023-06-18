@@ -20,9 +20,7 @@ class SettingView extends GetView<SettingController> {
     Get.toNamed(Routes.verifiAccount);
   }
 
-  void _changePassClick() {
-    Get.toNamed(Routes.feedback);
-  }
+  void _changePassClick() {}
 
   void _notificationClick() {}
   void _deActiveClick() {}

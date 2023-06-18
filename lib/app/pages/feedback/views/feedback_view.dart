@@ -27,7 +27,7 @@ class FeedBackView extends GetView<FeedbackController> {
         elevation: 0.0,
         leading: IconButton(
           onPressed: () {
-            Get.offNamed(Routes.home);
+            Get.offAllNamed(Routes.home);
           },
           icon: SvgPicture.asset(
             AssetsConst.leftArrow,

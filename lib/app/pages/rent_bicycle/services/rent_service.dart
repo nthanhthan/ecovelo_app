@@ -17,13 +17,17 @@ class RentHttpService extends BaseApiClient {
   }
 
   Future<BaseResp<StopResponse>> stopRentBicycle(
-      String bicycleID, int idRent) async {
+    String bicycleID,
+    int idRent,
+    int idStation,
+  ) async {
     return request<StopResponse>(
       Method.post,
       AppApi.stopRentBicycle,
       data: {
         "rentID": idRent,
         "bicycleID": bicycleID,
+        "stationID": idStation
       },
       onDeserialize: (dynamic jsonValue) {
         if (jsonValue is Map) {
@@ -39,6 +43,16 @@ class RentHttpService extends BaseApiClient {
       Method.post,
       AppApi.sendTrip,
       data: {"lat": lat, "lng": lng, "id_rent": rentId},
+      onDeserialize: (dynamic jsonValue) {
+        return jsonValue;
+      },
+    );
+  }
+
+  Future<BaseResp<void>> fallBicyle(int idRent) async {
+    return request<void>(
+      Method.get,
+      AppApi.fallBicycle(idRent),
       onDeserialize: (dynamic jsonValue) {
         return jsonValue;
       },
