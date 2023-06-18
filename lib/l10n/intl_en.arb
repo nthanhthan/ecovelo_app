@@ -187,5 +187,13 @@
     "accUser": "Eco User",
     "fixProblem": "Fix Problem",
     "station": "Eco Station",
-    "revenue": "Revenue"
+    "revenue": "Revenue",
+    "totalUser": "Total User",
+    "authenticated": "Authenticated User",
+    "unauthenticated": "Unauthenticated User",
+    "pendingProcessing": "Pending processing",
+    "totalRent": "Total Rent",
+    "numFall": "Num Fall",
+    "userDetail": "User Detail"
+
 }

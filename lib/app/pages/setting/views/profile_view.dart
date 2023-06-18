@@ -31,9 +31,10 @@ class ProfileView extends GetView<ProfileController> {
         ),
       ),
       body: Center(
-          child: Image.asset(
-        AssetsConst.profileEmpty,
-      )),
+        child: Image.asset(
+          AssetsConst.profileEmpty,
+        ),
+      ),
     );
   }
 }

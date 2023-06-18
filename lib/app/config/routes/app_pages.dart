@@ -118,10 +118,21 @@ class AppPages {
       page: () => const StationNearView(),
       transition: Transition.rightToLeft,
     ),
-      GetPage<dynamic>(
+    GetPage<dynamic>(
       name: Routes.profile,
-      page: () => const  ProfileView(),
-       binding: ProfileBinding(),
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.ecoUser,
+      page: () => const EcoUserView(),
+      binding: EcoUseBinding(),
+      transition: Transition.rightToLeft,
+    ),
+      GetPage<dynamic>(
+      name: Routes.ecoUserDetail,
+      page: () => const EcoUserDetail(),
       transition: Transition.rightToLeft,
     ),
   ];

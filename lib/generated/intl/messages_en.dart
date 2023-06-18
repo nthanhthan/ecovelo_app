@@ -35,6 +35,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "addMoney": MessageLookupByLibrary.simpleMessage("Add money"),
         "amount": MessageLookupByLibrary.simpleMessage("Amount"),
         "appName": MessageLookupByLibrary.simpleMessage("ECOVELO"),
+        "authenticated":
+            MessageLookupByLibrary.simpleMessage("Authenticated User"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "backView": MessageLookupByLibrary.simpleMessage("Back view"),
         "bicycleRented": MessageLookupByLibrary.simpleMessage(
@@ -181,6 +183,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Desciption must be shorter than or equal to 255 characters"),
         "notifi": MessageLookupByLibrary.simpleMessage("Notification"),
         "numDistances": m1,
+        "numFall": MessageLookupByLibrary.simpleMessage("Num Fall"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "onBoarding1Title":
             MessageLookupByLibrary.simpleMessage("Locate Stations Nearby"),
@@ -202,6 +205,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "passWordAgain":
             MessageLookupByLibrary.simpleMessage("Enter the password again"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "pendingProcessing":
+            MessageLookupByLibrary.simpleMessage("Pending processing"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "pickeFileUsing":
             MessageLookupByLibrary.simpleMessage("Pick file using?"),
@@ -272,7 +277,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "total": MessageLookupByLibrary.simpleMessage("Total"),
         "totalDistances":
             MessageLookupByLibrary.simpleMessage("Total distances"),
+        "totalRent": MessageLookupByLibrary.simpleMessage("Total Rent"),
         "totalTime": MessageLookupByLibrary.simpleMessage("Total time"),
+        "totalUser": MessageLookupByLibrary.simpleMessage("Total User"),
         "transferError":
             MessageLookupByLibrary.simpleMessage("Error! Please try again"),
         "transferOk":
@@ -281,6 +288,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Unable to access camera!"),
         "unableToAccessStorage":
             MessageLookupByLibrary.simpleMessage("Unable to access storage!"),
+        "unauthenticated":
+            MessageLookupByLibrary.simpleMessage("Unauthenticated User"),
         "unlock": MessageLookupByLibrary.simpleMessage("Can\'t unlock"),
         "uploadAnother": MessageLookupByLibrary.simpleMessage("Upload Another"),
         "uploadError":
@@ -288,6 +297,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "uploadFile": MessageLookupByLibrary.simpleMessage("Upload File"),
         "uploadImage":
             MessageLookupByLibrary.simpleMessage("Upload Image or Video"),
+        "userDetail": MessageLookupByLibrary.simpleMessage("User Detail"),
         "validatePhone": MessageLookupByLibrary.simpleMessage(
             "Please enter valid mobile number"),
         "verifiAcc":
