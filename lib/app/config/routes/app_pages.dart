@@ -1,3 +1,5 @@
+import 'package:ecoveloapp/app/pages/setting/bindings/profile_binding.dart';
+
 import '../../core.dart';
 part 'app_routes.dart';
 
@@ -114,6 +116,12 @@ class AppPages {
     GetPage<dynamic>(
       name: Routes.nearStation,
       page: () => const StationNearView(),
+      transition: Transition.rightToLeft,
+    ),
+      GetPage<dynamic>(
+      name: Routes.profile,
+      page: () => const  ProfileView(),
+       binding: ProfileBinding(),
       transition: Transition.rightToLeft,
     ),
   ];

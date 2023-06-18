@@ -182,6 +182,7 @@
     "endTripError": "Xin lỗi, Quá trình xử lí gặp vấn đề, vui lòng thử lại! ",
     "temoraryLockError": "Xin lỗi, Khoá xe tạm thời gặp vấn đề.",
     "openLockContinue": "Bạn muốn mở khoá xe để tiếp tục phải không?",
-    "fallBicycle": "EcoVelo ngã rồi, hãy giúp tôi đứng dậy nhé. Cảm ơn bạn!"
+    "fallBicycle": "EcoVelo ngã rồi, hãy giúp tôi đứng dậy nhé. Cảm ơn bạn!",
+    "profile": "Thông tin cá nhân"
     
 }

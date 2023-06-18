@@ -16,6 +16,7 @@ class AssetsConst {
   static const String bikeStation = "${preImgPath}station_bike.png";
   static const String verifed = "${preImgPath}verified.gif";
   static const String notifyEmpty = "${preImgPath}notify_empty.jpg";
+  static const String profileEmpty = "${preImgPath}profile_empty.jpg";
 
   //json
   static const String qrScan = "${preJsonPath}qr_scan.json";
@@ -99,5 +100,6 @@ class AssetsConst {
   static const String cardPerson = "${preIconPath}card_person.svg";
   static const String cameraIc = "${preIconPath}camera_ic.svg";
   static const String uploadImage = "${preIconPath}upload_image.svg";
+  static const String problemIC = "${preIconPath}problem_ic.svg";
 
 }

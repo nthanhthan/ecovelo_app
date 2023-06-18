@@ -20,4 +20,5 @@ abstract class Routes {
   static const enterCode = '/enter_code_view';
   static const verifiAccount = '/verifi_account_view';
   static const nearStation = '/near_station_view';
+  static const profile = '/profile_view';
 }

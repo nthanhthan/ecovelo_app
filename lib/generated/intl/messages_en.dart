@@ -207,6 +207,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Authentication is in progress"),
         "proceed": MessageLookupByLibrary.simpleMessage("Proceed to start!"),
         "processing": MessageLookupByLibrary.simpleMessage("Processing..."),
+        "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "promoWallet": MessageLookupByLibrary.simpleMessage("Promo Point"),
         "qrError": MessageLookupByLibrary.simpleMessage("QR error"),
         "questionLogout": MessageLookupByLibrary.simpleMessage(

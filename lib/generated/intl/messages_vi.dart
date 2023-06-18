@@ -205,6 +205,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Đang xử lí xác thực"),
         "proceed": MessageLookupByLibrary.simpleMessage("Kéo sang để bắt đầu!"),
         "processing": MessageLookupByLibrary.simpleMessage("Đang xử lí..."),
+        "profile": MessageLookupByLibrary.simpleMessage("Thông tin cá nhân"),
         "promoWallet": MessageLookupByLibrary.simpleMessage("Điểm thưởng"),
         "qrError": MessageLookupByLibrary.simpleMessage("Mã QR lỗi"),
         "questionLogout": MessageLookupByLibrary.simpleMessage(
