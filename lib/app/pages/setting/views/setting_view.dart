@@ -38,6 +38,10 @@ class SettingView extends GetView<SettingController> {
     controller.logoutUser();
   }
 
+  void _profileClick() {
+    Get.toNamed(Routes.profile);
+  }
+
   Widget _buildBody(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.defaultBackground,
@@ -89,9 +93,12 @@ class SettingView extends GetView<SettingController> {
                       ),
                     ],
                   ),
-                  SvgPicture.asset(
-                    AssetsConst.icEdit,
-                    height: 20,
+                  InkWell(
+                    onTap: _profileClick,
+                    child: SvgPicture.asset(
+                      AssetsConst.icEdit,
+                      height: 20,
+                    ),
                   ),
                 ],
               ),

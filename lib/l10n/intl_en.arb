@@ -182,6 +182,7 @@
     "endTripError": "Sorry,There is a problem with processing, please try again! ",
     "temoraryLockError": "Sorry, Temporarily lock the bicycle error",
     "openLockContinue": "Do you want to unlock the car to continue?",
-    "fallBicycle": "EcoVelo fell, please help me up. Thank you!"
+    "fallBicycle": "EcoVelo fell, please help me up. Thank you!",
+    "profile": "Profile"
 
 }
