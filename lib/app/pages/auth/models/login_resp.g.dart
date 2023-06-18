@@ -21,13 +21,14 @@ class LoginRespAdapter extends TypeAdapter<LoginResp> {
       refreshToken: fields[1] as String,
       expired: fields[2] as int,
       userResponse: fields[3] as UserModel?,
+      admin: fields[4] as bool?,
     );
   }
 
   @override
   void write(BinaryWriter writer, LoginResp obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.accessToken)
       ..writeByte(1)
@@ -35,7 +36,9 @@ class LoginRespAdapter extends TypeAdapter<LoginResp> {
       ..writeByte(2)
       ..write(obj.expired)
       ..writeByte(3)
-      ..write(obj.userResponse);
+      ..write(obj.userResponse)
+      ..writeByte(4)
+      ..write(obj.admin);
   }
 
   @override
@@ -60,6 +63,7 @@ LoginResp _$LoginRespFromJson(Map<String, dynamic> json) => LoginResp(
       userResponse: json['userResponse'] == null
           ? null
           : UserModel.fromJson(json['userResponse'] as Map<String, dynamic>),
+      admin: json['admin'] as bool?,
     );
 
 Map<String, dynamic> _$LoginRespToJson(LoginResp instance) => <String, dynamic>{
@@ -67,4 +71,5 @@ Map<String, dynamic> _$LoginRespToJson(LoginResp instance) => <String, dynamic>{
       'refreshToken': instance.refreshToken,
       'expired': instance.expired,
       'userResponse': instance.userResponse,
+      'admin': instance.admin,
     };

@@ -550,10 +550,10 @@ class S {
     );
   }
 
-  /// `Eco velo`
+  /// `EcoVelo`
   String get ecoitem {
     return Intl.message(
-      'Eco velo',
+      'EcoVelo',
       name: 'ecoitem',
       desc: '',
       args: [],
@@ -1895,6 +1895,46 @@ class S {
     return Intl.message(
       'Profile',
       name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Eco User`
+  String get accUser {
+    return Intl.message(
+      'Eco User',
+      name: 'accUser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fix Problem`
+  String get fixProblem {
+    return Intl.message(
+      'Fix Problem',
+      name: 'fixProblem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Eco Station`
+  String get station {
+    return Intl.message(
+      'Eco Station',
+      name: 'station',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Revenue`
+  String get revenue {
+    return Intl.message(
+      'Revenue',
+      name: 'revenue',
       desc: '',
       args: [],
     );

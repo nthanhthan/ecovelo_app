@@ -57,11 +57,21 @@ class HomeController extends GetxController
   bool get isLockTemporary => _isLockTemporary.value;
   set isLockTemporary(bool value) => _isLockTemporary.value = value;
 
+  bool? isAdmin;
+
+  LoginResp? _loginResp;
+
   @override
   void onInit() {
     isLoading = false;
     WidgetsBinding.instance.addObserver(this);
     _loginManager = Get.find<LoginManager>();
+    _loginResp = _loginManager.getLogin();
+    if (_loginResp != null) {
+      isAdmin = _loginResp!.admin;
+    } else {
+      isAdmin = false;
+    }
     _authHttpService = Get.find<AuthHttpService>();
     isLockTemporary = Prefs.getBool(AppKeys.lockTemporary);
     getUser().then((value) {
