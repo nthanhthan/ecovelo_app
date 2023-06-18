@@ -97,6 +97,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Sorry, Processing is failing, please try again later."),
         "errorQR": MessageLookupByLibrary.simpleMessage(
             "QR Code is incorrect, please try again"),
+        "fallBicycle": MessageLookupByLibrary.simpleMessage(
+            "EcoVelo fell, please help me up. Thank you!"),
         "fee": MessageLookupByLibrary.simpleMessage("Fee"),
         "fileAlreadyExists":
             MessageLookupByLibrary.simpleMessage("File already exists!"),

@@ -118,7 +118,7 @@ class RentBicycleView extends GetView<RentBicycleController> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Flexible(
+                                Expanded(
                                   child: _itemTextBottom(
                                     context,
                                     AssetsConst.iconIntroduction,
@@ -126,7 +126,7 @@ class RentBicycleView extends GetView<RentBicycleController> {
                                     _introductionClick,
                                   ),
                                 ),
-                                Flexible(
+                                Expanded(
                                   child: _itemTextBottom(
                                     context,
                                     AssetsConst.iconHELP,
@@ -293,11 +293,13 @@ class RentBicycleView extends GetView<RentBicycleController> {
       children: [
         SvgPicture.asset(icon),
         const SizedBox(width: 10),
-        Text(
-          text,
-          style: AppTextStyles.body2().copyWith(
-            color: AppColors.main.shade200,
-            fontWeight: FontWeight.w500,
+        Expanded(
+          child: Text(
+            text,
+            style: AppTextStyles.body2().copyWith(
+              color: AppColors.main.shade200,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
       ],

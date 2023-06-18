@@ -12,6 +12,7 @@ class AppKeys {
   static const rentID = "rent-ID";
   static const isverify = "verify";
   static const lockTemporary = "lock-temporary";
+  static const fallBicycle = "fallBicycle";
 }
 
 class AppColors {

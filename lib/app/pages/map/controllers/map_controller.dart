@@ -124,9 +124,9 @@ class MapController extends GetxController {
   }
 
   bool checkNumbicycle(int num) {
-    if (num > 0 && num < 5) {
+    if (num > 0 && num < 8) {
       return false;
-    } else if (num > 5) {
+    } else if (num > 8) {
       return true;
     }
     return false;

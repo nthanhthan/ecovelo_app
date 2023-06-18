@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:ecoveloapp/app/core.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:intl/intl.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 
@@ -128,6 +129,9 @@ class MQTTClientWrapper {
           }
         }
       }
+      if (message == "fall") {
+        fallBicyle();
+      }
     });
   }
 
@@ -153,7 +157,7 @@ class MQTTClientWrapper {
   void confirmStopRent(
     BuildContext context,
     String message,
-    Function handle,
+    Function? handle,
   ) {
     showDialog<void>(
       context: context,
@@ -192,7 +196,11 @@ class MQTTClientWrapper {
                         const SizedBox(height: 30),
                         OutlinedButton(
                           onPressed: () {
-                            handle.call();
+                            if (handle != null) {
+                              handle.call();
+                            } else {
+                              Navigator.of(context).pop();
+                            }
                           },
                           style: OutlineButtonStyle.enable(isFullWidth: true),
                           child: Text(
@@ -255,16 +263,20 @@ class MQTTClientWrapper {
     ProcessingDialog processingDialog = ProcessingDialog.show();
     int rentID = Prefs.getInt(AppKeys.rentID);
     String bicycleID = Prefs.getString(AppKeys.bicycleIDRent);
-    final result = await _rentHttpService.stopRentBicycle(bicycleID, rentID);
-    if (result.isSuccess() && result.data != null) {
-      client.disconnect();
-      processingDialog.hide();
-      StopResponse? stopResponse = result.data;
-      Prefs.removeKey(AppKeys.bicycleIDRent);
-      Prefs.removeKey(AppKeys.beginRent);
-      Prefs.removeKey(AppKeys.rentID);
-      Prefs.removeKey(AppKeys.lockTemporary);
-      return stopResponse;
+    if (listStation.first.id != null) {
+      final result = await _rentHttpService.stopRentBicycle(
+          bicycleID, rentID, listStation.first.id!);
+      if (result.isSuccess() && result.data != null) {
+        client.disconnect();
+        processingDialog.hide();
+        StopResponse? stopResponse = result.data;
+        Prefs.removeKey(AppKeys.bicycleIDRent);
+        Prefs.removeKey(AppKeys.beginRent);
+        Prefs.removeKey(AppKeys.rentID);
+        Prefs.removeKey(AppKeys.lockTemporary);
+        Prefs.removeKey(AppKeys.fallBicycle);
+        return stopResponse;
+      }
     }
     processingDialog.hide();
     return null;
@@ -329,6 +341,39 @@ class MQTTClientWrapper {
       }
     } else {
       SnackBars.complete(message: "Try again");
+    }
+  }
+
+  Future<void> fallBicyle() async {
+    bool isFall = false;
+    if (Prefs.getString(AppKeys.fallBicycle).isNotEmpty) {
+      String beforeTime = Prefs.getString(AppKeys.fallBicycle);
+      int checkTime = DateTime.now()
+          .difference(DateFormat("yyyy-MM-dd HH:mm:ss").parse(beforeTime))
+          .inSeconds;
+      if (checkTime >= 60) {
+        confirmStopRent(
+          Get.context!,
+          S.of(Get.context!).fallBicycle,
+          null,
+        );
+        Prefs.saveString(AppKeys.fallBicycle, DateTime.now().toString());
+        isFall = true;
+      }
+    } else {
+      Prefs.saveString(AppKeys.fallBicycle, DateTime.now().toString());
+      confirmStopRent(
+        Get.context!,
+        S.of(Get.context!).fallBicycle,
+        null,
+      );
+      isFall = true;
+    }
+    if (isFall) {
+      final RentHttpService _rentHttpService = Get.find<RentHttpService>();
+      int rentID = Prefs.getInt(AppKeys.rentID);
+      final result = await _rentHttpService.fallBicyle(rentID);
+      if (result.isSuccess()) {}
     }
   }
 }

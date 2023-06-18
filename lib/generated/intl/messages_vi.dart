@@ -97,6 +97,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Xin lỗi, Quá trình xử lý không thành công, vui lòng thử lại sau."),
         "errorQR": MessageLookupByLibrary.simpleMessage(
             "Mã QR không chính xác, vui lòng thử lại"),
+        "fallBicycle": MessageLookupByLibrary.simpleMessage(
+            "EcoVelo ngã rồi, hãy giúp tôi đứng dậy nhé. Cảm ơn bạn!"),
         "fee": MessageLookupByLibrary.simpleMessage("Phí"),
         "fileAlreadyExists":
             MessageLookupByLibrary.simpleMessage("Tệp đã tồn tại!"),

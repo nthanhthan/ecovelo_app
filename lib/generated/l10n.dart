@@ -1879,6 +1879,16 @@ class S {
       args: [],
     );
   }
+
+  /// `EcoVelo fell, please help me up. Thank you!`
+  String get fallBicycle {
+    return Intl.message(
+      'EcoVelo fell, please help me up. Thank you!',
+      name: 'fallBicycle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

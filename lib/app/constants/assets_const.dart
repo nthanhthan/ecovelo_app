@@ -15,6 +15,7 @@ class AssetsConst {
   static const String stationRed = "${preImgPath}staion_pin.png";
   static const String bikeStation = "${preImgPath}station_bike.png";
   static const String verifed = "${preImgPath}verified.gif";
+  static const String notifyEmpty = "${preImgPath}notify_empty.jpg";
 
   //json
   static const String qrScan = "${preJsonPath}qr_scan.json";

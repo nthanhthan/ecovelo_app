@@ -36,23 +36,23 @@ class HomeScreen extends GetView<HomeController> {
   }
 
   void _finishRideClick() async {
-    // notifyStopRent();
-    final RentHttpService _rentHttpService = Get.find<RentHttpService>();
-    ProcessingDialog processingDialog = ProcessingDialog.show();
-    int rentID = Prefs.getInt(AppKeys.rentID);
-    String bicycleID = Prefs.getString(AppKeys.bicycleIDRent);
-    final result = await _rentHttpService.stopRentBicycle(bicycleID, rentID);
-    if (result.isSuccess() && result.data != null) {
-      // client.disconnect();
-      processingDialog.hide();
-      StopResponse? stopResponse = result.data;
-      Prefs.removeKey(AppKeys.bicycleIDRent);
-      Prefs.removeKey(AppKeys.beginRent);
-      Prefs.removeKey(AppKeys.rentID);
-      //return stopResponse;
-    }
-    processingDialog.hide();
-    // return null;
+    notifyStopRent();
+    // final RentHttpService _rentHttpService = Get.find<RentHttpService>();
+    // ProcessingDialog processingDialog = ProcessingDialog.show();
+    // int rentID = Prefs.getInt(AppKeys.rentID);
+    // String bicycleID = Prefs.getString(AppKeys.bicycleIDRent);
+    // final result = await _rentHttpService.stopRentBicycle(bicycleID, rentID);
+    // if (result.isSuccess() && result.data != null) {
+    //   // client.disconnect();
+    //   processingDialog.hide();
+    //   StopResponse? stopResponse = result.data;
+    //   Prefs.removeKey(AppKeys.bicycleIDRent);
+    //   Prefs.removeKey(AppKeys.beginRent);
+    //   Prefs.removeKey(AppKeys.rentID);
+    //   //return stopResponse;
+    // }
+    // processingDialog.hide();
+    // // return null;
   }
 
   void _stationNearClicked() {
@@ -311,7 +311,7 @@ class HomeScreen extends GetView<HomeController> {
             ),
             _itemMain(
               context,
-              S.of(context).myWallet,
+              S.of(context).reportProblem,
               AssetsConst.myWallet,
               _myWalletClick,
             ),
@@ -620,21 +620,14 @@ class HomeScreen extends GetView<HomeController> {
   }
 
   Widget _bottomWidget(BuildContext context) {
-    return InkWell(
-      onTap: _finishRideClick,
-      child: Container(
-        margin: const EdgeInsets.only(
-          top: 20,
-          bottom: 20,
-        ),
-        padding: const EdgeInsets.symmetric(
-          horizontal: 120,
-          vertical: 12,
-        ),
-        decoration: BoxDecoration(
-          color: AppColors.main.shade200,
-          borderRadius: BorderRadius.circular(20),
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
+      child: ElevatedButton(
+        onPressed: _finishRideClick,
+        style: FilledBtnStyle.enable(
+            isFullWidth: true,
+            sizeType: SizeButtonType.custom,
+            customPadding: const EdgeInsets.symmetric(vertical: 15)),
         child: Text(
           S.of(context).finishRide,
           style: AppTextStyles.body1().copyWith(
