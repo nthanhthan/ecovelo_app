@@ -77,7 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "distances": MessageLookupByLibrary.simpleMessage("Khoảng cách "),
         "done": MessageLookupByLibrary.simpleMessage("Xong"),
         "ecoVoucher": MessageLookupByLibrary.simpleMessage("Khuyến mãi Eco"),
-        "ecoitem": MessageLookupByLibrary.simpleMessage("Eco velo"),
+        "ecoitem": MessageLookupByLibrary.simpleMessage("EcoVelo"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "endTripError": MessageLookupByLibrary.simpleMessage(
             "Xin lỗi, Quá trình xử lí gặp vấn đề, vui lòng thử lại! "),

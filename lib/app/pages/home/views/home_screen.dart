@@ -69,6 +69,9 @@ class HomeScreen extends GetView<HomeController> {
             _topBanner(context),
             _animationHome(context),
             _mainContentWiget(context),
+            controller.isAdmin == true
+                ? _adminWidget(context)
+                : const SizedBox.shrink(),
             _voucherWidget(context),
           ],
         ),
@@ -309,10 +312,10 @@ class HomeScreen extends GetView<HomeController> {
               AssetsConst.addMoney,
               _addMoneyClicked,
             ),
-            _itemMain(
+            _itemAdmin(
               context,
               S.of(context).reportProblem,
-              AssetsConst.myWallet,
+              AssetsConst.fixProblem,
               _myWalletClick,
             ),
             _itemMain(
@@ -323,6 +326,89 @@ class HomeScreen extends GetView<HomeController> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _adminWidget(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 30,
+        vertical: 10,
+      ),
+      child: SizedBox(
+        height: 100,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _itemAdmin(
+              context,
+              S.of(context).accUser,
+              AssetsConst.accUser,
+              null,
+            ),
+            _itemAdmin(
+              context,
+              S.of(context).fixProblem,
+              AssetsConst.problemIC,
+              null,
+            ),
+            _itemAdmin(
+              context,
+              S.of(context).station,
+              AssetsConst.stationIC,
+              null,
+            ),
+            _itemMain(
+              context,
+              S.of(context).revenue,
+              AssetsConst.myWallet,
+              null,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _itemAdmin(
+    BuildContext context,
+    String name,
+    String icon,
+    void Function()? handle,
+  ) {
+    return GestureDetector(
+      onTap: () {
+        handle?.call();
+      },
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 14),
+            decoration: BoxDecoration(
+              color: AppColors.grey.shade600,
+              borderRadius: BorderRadius.circular(19),
+            ),
+            child: Column(
+              children: [
+                SvgPicture.asset(
+                  icon,
+                  height: 30,
+                  width: 30,
+                  color: AppColors.main.shade200,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            name,
+            style: AppTextStyles.tiny().copyWith(
+              color: AppColors.main.shade200,
+              fontWeight: FontWeight.w500,
+            ),
+          )
+        ],
       ),
     );
   }

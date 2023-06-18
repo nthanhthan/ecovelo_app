@@ -10,6 +10,7 @@ class LoginResp {
     required this.refreshToken,
     required this.expired,
     this.userResponse,
+    this.admin,
   });
   @HiveField(0)
   String accessToken;
@@ -19,6 +20,8 @@ class LoginResp {
   int expired;
   @HiveField(3)
   UserModel? userResponse;
+  @HiveField(4)
+  bool? admin;
   factory LoginResp.fromJson(Map<String, dynamic> json) =>
       _$LoginRespFromJson(json);
 

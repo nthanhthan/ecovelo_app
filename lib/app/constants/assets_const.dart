@@ -101,5 +101,8 @@ class AssetsConst {
   static const String cameraIc = "${preIconPath}camera_ic.svg";
   static const String uploadImage = "${preIconPath}upload_image.svg";
   static const String problemIC = "${preIconPath}problem_ic.svg";
-
+  static const String stationIC = "${preIconPath}station_eco.svg";
+  static const String fixProblem = "${preIconPath}fix_problem.svg";
+  static const String accUser = "${preIconPath}acc_user.svg";
+  static const String revenueIC = "${preIconPath}revenue_ic.svg";
 }

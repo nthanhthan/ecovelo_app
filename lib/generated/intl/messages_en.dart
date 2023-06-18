@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about": MessageLookupByLibrary.simpleMessage("About"),
+        "accUser": MessageLookupByLibrary.simpleMessage("Eco User"),
         "accountMustVeifi": MessageLookupByLibrary.simpleMessage(
             "Sorry, Your account haven\'t been verified"),
         "addMoney": MessageLookupByLibrary.simpleMessage("Add money"),
@@ -76,7 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "distances": MessageLookupByLibrary.simpleMessage("Distances "),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
         "ecoVoucher": MessageLookupByLibrary.simpleMessage("Eco Voucher"),
-        "ecoitem": MessageLookupByLibrary.simpleMessage("Eco velo"),
+        "ecoitem": MessageLookupByLibrary.simpleMessage("EcoVelo"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "endTripError": MessageLookupByLibrary.simpleMessage(
             "Sorry,There is a problem with processing, please try again! "),
@@ -107,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "findCode":
             MessageLookupByLibrary.simpleMessage("Find and enter the code"),
         "finishRide": MessageLookupByLibrary.simpleMessage("Finish ride"),
+        "fixProblem": MessageLookupByLibrary.simpleMessage("Fix Problem"),
         "flatTire": MessageLookupByLibrary.simpleMessage("Flat tire"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
@@ -221,6 +223,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Recent Activities"),
         "reportProblem": MessageLookupByLibrary.simpleMessage("Report Problem"),
         "reportSend": MessageLookupByLibrary.simpleMessage("Report Send"),
+        "revenue": MessageLookupByLibrary.simpleMessage("Revenue"),
         "scanToRide": MessageLookupByLibrary.simpleMessage("Scan to Ride"),
         "score": MessageLookupByLibrary.simpleMessage(
             "Minimum score is 5000, please recharge"),
@@ -233,6 +236,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "signupsucess": MessageLookupByLibrary.simpleMessage(
             "Successful registration, login to continue."),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "station": MessageLookupByLibrary.simpleMessage("Eco Station"),
         "stationNearMe": MessageLookupByLibrary.simpleMessage("Station near"),
         "stationNumber": m2,
         "stopRentError": MessageLookupByLibrary.simpleMessage(
