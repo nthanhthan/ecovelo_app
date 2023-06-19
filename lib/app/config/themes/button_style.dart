@@ -92,6 +92,7 @@ class ElevatedBtnStyle {
   static ButtonStyle disable({
     SizeButtonType sizeType = SizeButtonType.large,
     EdgeInsetsGeometry? customPadding,
+    bool isFullWidth = false,
   }) {
     return ElevatedButton.styleFrom(
       primary: AppColors.disableButtonBackground,

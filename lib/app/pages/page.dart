@@ -14,3 +14,4 @@ export 'transfer_success/transfer_success.dart';
 export 'feedback/feedback.dart';
 export 'history/history_view.dart';
 export 'verifi_account/verifi_account.dart';
+export 'eco_user/eco_user.dart';

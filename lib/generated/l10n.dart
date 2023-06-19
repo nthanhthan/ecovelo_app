@@ -1939,6 +1939,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Total User`
+  String get totalUser {
+    return Intl.message(
+      'Total User',
+      name: 'totalUser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Authenticated User`
+  String get authenticated {
+    return Intl.message(
+      'Authenticated User',
+      name: 'authenticated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unauthenticated User`
+  String get unauthenticated {
+    return Intl.message(
+      'Unauthenticated User',
+      name: 'unauthenticated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending processing`
+  String get pendingProcessing {
+    return Intl.message(
+      'Pending processing',
+      name: 'pendingProcessing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Rent`
+  String get totalRent {
+    return Intl.message(
+      'Total Rent',
+      name: 'totalRent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Num Fall`
+  String get numFall {
+    return Intl.message(
+      'Num Fall',
+      name: 'numFall',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User Detail`
+  String get userDetail {
+    return Intl.message(
+      'User Detail',
+      name: 'userDetail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change Role`
+  String get changeRole {
+    return Intl.message(
+      'Change Role',
+      name: 'changeRole',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User Authencation`
+  String get authenUser {
+    return Intl.message(
+      'User Authencation',
+      name: 'authenUser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type User's Document`
+  String get typeDocument {
+    return Intl.message(
+      'Type User\'s Document',
+      name: 'typeDocument',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

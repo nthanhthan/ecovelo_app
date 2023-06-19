@@ -21,4 +21,8 @@ abstract class Routes {
   static const verifiAccount = '/verifi_account_view';
   static const nearStation = '/near_station_view';
   static const profile = '/profile_view';
+  static const ecoUser = '/eco_user_view';
+  static const ecoUserDetail = '/eco_user_detail_view';
+  static const changeRole = '/change_role_view';
+  static const authencationView = '/authencation_view';
 }

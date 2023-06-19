@@ -35,6 +35,10 @@ class HomeScreen extends GetView<HomeController> {
     controller.openLockTemporary();
   }
 
+  void _ecoUser() {
+    Get.toNamed(Routes.ecoUser);
+  }
+
   void _finishRideClick() async {
     notifyStopRent();
     // final RentHttpService _rentHttpService = Get.find<RentHttpService>();
@@ -345,7 +349,7 @@ class HomeScreen extends GetView<HomeController> {
               context,
               S.of(context).accUser,
               AssetsConst.accUser,
-              null,
+              _ecoUser,
             ),
             _itemAdmin(
               context,
