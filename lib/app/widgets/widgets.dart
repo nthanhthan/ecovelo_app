@@ -29,3 +29,4 @@ export 'scroll/scroll_wrapper.dart';
 export 'linear_percent_indicator.dart';
 export 'expanded_section.dart';
 export 'jumping_dots.dart';
+export 'dropdown_input.dart';

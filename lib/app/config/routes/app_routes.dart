@@ -25,4 +25,6 @@ abstract class Routes {
   static const ecoUserDetail = '/eco_user_detail_view';
   static const changeRole = '/change_role_view';
   static const authencationView = '/authencation_view';
+  static const fixProblem = '/fix_problem_view';
+  static const fixProblemDetail = '/fix_problem_detail_view';
 }

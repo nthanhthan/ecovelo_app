@@ -2039,6 +2039,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Total Problem`
+  String get totalProblem {
+    return Intl.message(
+      'Total Problem',
+      name: 'totalProblem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resolved`
+  String get resolvedProblem {
+    return Intl.message(
+      'Resolved',
+      name: 'resolvedProblem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending`
+  String get pending {
+    return Intl.message(
+      'Pending',
+      name: 'pending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Problem`
+  String get problem {
+    return Intl.message(
+      'Problem',
+      name: 'problem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change`
+  String get changeProblem {
+    return Intl.message(
+      'Change',
+      name: 'changeProblem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New User`
+  String get newUser {
+    return Intl.message(
+      'New User',
+      name: 'newUser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Problem Detail`
+  String get problemDetail {
+    return Intl.message(
+      'Problem Detail',
+      name: 'problemDetail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resolve`
+  String get resolve {
+    return Intl.message(
+      'Resolve',
+      name: 'resolve',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

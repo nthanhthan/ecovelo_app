@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "carbon": MessageLookupByLibrary.simpleMessage("Carbon Reduced"),
         "changePass": MessageLookupByLibrary.simpleMessage("Chnage Password"),
+        "changeProblem": MessageLookupByLibrary.simpleMessage("Change"),
         "changeRole": MessageLookupByLibrary.simpleMessage("Change Role"),
         "chooseFromFileDirectory":
             MessageLookupByLibrary.simpleMessage("Choose file from Directory"),
@@ -165,6 +166,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "myWallet": MessageLookupByLibrary.simpleMessage("My Wallet"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "needHelp": MessageLookupByLibrary.simpleMessage("Need Help ?"),
+        "newUser": MessageLookupByLibrary.simpleMessage("New User"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "niceDay": MessageLookupByLibrary.simpleMessage("Have a nice day!"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
@@ -207,11 +209,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "passWordAgain":
             MessageLookupByLibrary.simpleMessage("Enter the password again"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "pending": MessageLookupByLibrary.simpleMessage("Pending"),
         "pendingProcessing":
             MessageLookupByLibrary.simpleMessage("Pending processing"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "pickeFileUsing":
             MessageLookupByLibrary.simpleMessage("Pick file using?"),
+        "problem": MessageLookupByLibrary.simpleMessage("Problem"),
+        "problemDetail": MessageLookupByLibrary.simpleMessage("Problem Detail"),
         "proccessingVerify": MessageLookupByLibrary.simpleMessage(
             "Authentication is in progress"),
         "proceed": MessageLookupByLibrary.simpleMessage("Proceed to start!"),
@@ -230,6 +235,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Recent Activities"),
         "reportProblem": MessageLookupByLibrary.simpleMessage("Report Problem"),
         "reportSend": MessageLookupByLibrary.simpleMessage("Report Send"),
+        "resolve": MessageLookupByLibrary.simpleMessage("Resolve"),
+        "resolvedProblem": MessageLookupByLibrary.simpleMessage("Resolved"),
         "revenue": MessageLookupByLibrary.simpleMessage("Revenue"),
         "scanToRide": MessageLookupByLibrary.simpleMessage("Scan to Ride"),
         "score": MessageLookupByLibrary.simpleMessage(
@@ -279,6 +286,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "total": MessageLookupByLibrary.simpleMessage("Total"),
         "totalDistances":
             MessageLookupByLibrary.simpleMessage("Total distances"),
+        "totalProblem": MessageLookupByLibrary.simpleMessage("Total Problem"),
         "totalRent": MessageLookupByLibrary.simpleMessage("Total Rent"),
         "totalTime": MessageLookupByLibrary.simpleMessage("Total time"),
         "totalUser": MessageLookupByLibrary.simpleMessage("Total User"),

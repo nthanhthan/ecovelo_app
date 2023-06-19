@@ -39,6 +39,10 @@ class HomeScreen extends GetView<HomeController> {
     Get.toNamed(Routes.ecoUser);
   }
 
+  void _fixProblemClick() {
+    Get.toNamed(Routes.fixProblem);
+  }
+
   void _finishRideClick() async {
     notifyStopRent();
     // final RentHttpService _rentHttpService = Get.find<RentHttpService>();
@@ -355,7 +359,7 @@ class HomeScreen extends GetView<HomeController> {
               context,
               S.of(context).fixProblem,
               AssetsConst.problemIC,
-              null,
+              _fixProblemClick,
             ),
             _itemAdmin(
               context,

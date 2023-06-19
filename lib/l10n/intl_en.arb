@@ -197,6 +197,14 @@
     "userDetail": "User Detail",
     "changeRole": "Change Role",
     "authenUser": "User Authencation",
-    "typeDocument": "Type User's Document"
+    "typeDocument": "Type User's Document",
+    "totalProblem": "Total Problem",
+    "resolvedProblem": "Resolved",
+    "pending": "Pending",
+    "problem": "Problem",
+    "changeProblem": "Change",
+    "newUser": "New User",
+    "problemDetail": "Problem Detail",
+    "resolve": "Resolve"
 
 }
