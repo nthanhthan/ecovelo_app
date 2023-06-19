@@ -1,5 +1,6 @@
 import 'package:ecoveloapp/app/core.dart';
 
+
 class EcoUserController extends GetxController {
   final RxInt _role = 1.obs;
   set role(int value) => _role.value = value;

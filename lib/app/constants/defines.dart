@@ -76,7 +76,12 @@ class AppColors {
   static const colorChoosePlan = Color(0xff2C303E);
   static const colorText = Color(0xff1D1D1D);
 }
-
+class AppElevation {
+  static const card = .5;
+  static const button = 1;
+  static const navigationBar = 2;
+  static const popup = 2;
+}
 class AppProperties {
   //animation time duration
   static const String fontFamilyName = "Poppins";

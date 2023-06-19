@@ -76,7 +76,7 @@ class AddMoneyController extends GetxController {
             await _addMoneyService.addMoney(transactionReq: transactionReq);
         if (result.isSuccess() && result.data != null) {
           processingDialog.hide();
-          Get.offNamed(
+          Get.offAllNamed(
             Routes.transferSuccess,
             arguments: result.data,
           );

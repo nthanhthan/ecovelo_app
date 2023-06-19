@@ -1,6 +1,6 @@
 import 'package:ecoveloapp/app/core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_charts/flutter_charts.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EcoUserView extends GetView<EcoUserController> {
@@ -41,8 +41,23 @@ class EcoUserView extends GetView<EcoUserController> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.main),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Column(
+                  children: [
+                    const BarChartSample3(),
+                    Text(
+                      S.of(context).newUser,
+                      style: AppTextStyles.body1(),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
               _topWiget(context),
-              chartToRun(),
               const SizedBox(height: 20),
               _itemUser(context),
               _itemUser(context),
@@ -124,7 +139,7 @@ class EcoUserView extends GetView<EcoUserController> {
         style: OutlineButtonStyle.enable(
           sizeType: SizeButtonType.custom,
           customPadding: const EdgeInsets.fromLTRB(12, 15, 5, 15),
-          outlineColor: AppColors.secondary.shade200,
+          outlineColor: AppColors.white,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -167,7 +182,7 @@ class EcoUserView extends GetView<EcoUserController> {
           sizeType: SizeButtonType.custom,
           outlineColor: AppColors.grey.shade300,
           customPadding: const EdgeInsets.symmetric(
-            vertical: 20,
+            vertical: 10,
             horizontal: 15,
           ),
         ),
@@ -201,7 +216,7 @@ class EcoUserView extends GetView<EcoUserController> {
                 ),
                 Text(
                   "Authenticated",
-                  style: AppTextStyles.body2().copyWith(color: AppColors.main),
+                  style: AppTextStyles.body1().copyWith(color: AppColors.main),
                 )
               ],
             ),
@@ -240,44 +255,6 @@ class EcoUserView extends GetView<EcoUserController> {
         ),
       ),
     );
-  }
-
-  Widget chartToRun() {
-    LabelLayoutStrategy? xContainerLabelLayoutStrategy;
-    ChartData chartData;
-    ChartOptions chartOptions = const ChartOptions();
-    // Example shows how to create ChartOptions instance
-    //   which will request to end Y axis at maximum data (as all data negative).
-    // Even though startYAxisAtDataMinRequested is set to true, this will not be granted on bar chart,
-    //   as it does not make sense there.
-    chartOptions = const ChartOptions(
-      dataContainerOptions: DataContainerOptions(
-        startYAxisAtDataMinRequested: true,
-      ),
-    );
-    chartData = ChartData(
-      dataRows: const [
-        [-20.0, -25.0, -30.0, -35.0, -40.0, -20.0],
-        [-35.0, -40.0, -20.0, -25.0, -30.0, -20.0],
-      ],
-      xUserLabels: const ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-      dataRowsLegends: const [
-        'Off zero 1',
-        'Off zero 2',
-      ],
-      chartOptions: chartOptions,
-    );
-    var lineChartContainer = LineChartTopContainer(
-      chartData: chartData,
-      xContainerLabelLayoutStrategy: xContainerLabelLayoutStrategy,
-    );
-
-    var lineChart = LineChart(
-      painter: LineChartPainter(
-        lineChartContainer: lineChartContainer,
-      ),
-    );
-    return lineChart;
   }
 
   Widget _itemActivites(

@@ -145,5 +145,16 @@ class AppPages {
       page: () => const AuthencationView(),
       transition: Transition.rightToLeft,
     ),
+    GetPage<dynamic>(
+      name: Routes.fixProblem,
+      page: () => const FixProblemView(),
+      binding: FixProblemBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.fixProblemDetail,
+      page: () => const FixProblemDetail(),
+      transition: Transition.rightToLeft,
+    ),
   ];
 }

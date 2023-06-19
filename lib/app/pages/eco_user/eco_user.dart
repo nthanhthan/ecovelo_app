@@ -4,3 +4,4 @@ export 'views/eco_user_view.dart';
 export 'views/eco_user_detail.dart';
 export 'views/change_role.dart';
 export 'views/authencation_view.dart';
+export 'views/line_chart.dart';

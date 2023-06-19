@@ -2,17 +2,17 @@ import 'package:ecoveloapp/app/core.dart';
 import 'package:flutter/material.dart';
 
 
-class SelectorInput<T> extends StatelessWidget {
-  final List<InputItem<T>> itemList;
-  final InputItem<T>? selected;
+class SelectorInput extends StatelessWidget {
+  final List<InputItem> itemList;
+  final InputItem? seleted;
   final bool isDisabled;
   final Axis direction;
-  final void Function(InputItem<T>?) onChanged;
+  final void Function(InputItem?) onChanged;
 
   const SelectorInput({
     Key? key,
     required this.itemList,
-    required this.selected,
+    required this.seleted,
     this.isDisabled = false,
     this.direction = Axis.vertical,
     required this.onChanged,
@@ -33,7 +33,7 @@ class SelectorInput<T> extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         itemCount: itemList.length,
         itemBuilder: (context, index) {
-          bool isSelected = itemList[index].isMatched(selected);
+          bool isSelected = itemList[index].value == (seleted?.value ?? "");
           return _buildOptionItem(
             context,
             isSelected: isSelected,
@@ -48,7 +48,7 @@ class SelectorInput<T> extends StatelessWidget {
     } else {
       return Wrap(
         children: itemList.map((item) {
-          bool isSelected = item.isMatched(selected);
+          bool isSelected = item.value == (seleted?.value ?? "");
           return _buildOptionItem(
             context,
             isSelected: isSelected,
@@ -81,7 +81,7 @@ class SelectorInput<T> extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(AppProperties.circleRadius),
-          color: isSelected ? Theme.of(context).primaryColor : AppColors.white,
+          color: isSelected ? AppColors.secondary : AppColors.white,
         ),
         child: Text(
           title,
