@@ -130,9 +130,19 @@ class AppPages {
       binding: EcoUseBinding(),
       transition: Transition.rightToLeft,
     ),
-      GetPage<dynamic>(
+    GetPage<dynamic>(
       name: Routes.ecoUserDetail,
       page: () => const EcoUserDetail(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.changeRole,
+      page: () => const ChangeRoleView(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.authencationView,
+      page: () => const AuthencationView(),
       transition: Transition.rightToLeft,
     ),
   ];

@@ -9,6 +9,14 @@ class EcoUserDetail extends GetView<EcoUserController> {
     return _buildBody(context);
   }
 
+  void _changeRoleClick() {
+    Get.toNamed(Routes.changeRole);
+  }
+
+  void _authencationClick() {
+    Get.toNamed(Routes.authencationView);
+  }
+
   Widget _buildBody(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.defaultBackground,
@@ -53,7 +61,7 @@ class EcoUserDetail extends GetView<EcoUserController> {
                 "User",
                 true,
                 nameChange: "Change",
-                handle: null,
+                handle: _changeRoleClick,
               ),
               _detailItem(
                 context,
@@ -61,7 +69,7 @@ class EcoUserDetail extends GetView<EcoUserController> {
                 "Authencated",
                 true,
                 nameChange: "View",
-                handle: null,
+                handle: _authencationClick,
               ),
               _detailItem(
                 context,
@@ -117,6 +125,8 @@ class EcoUserDetail extends GetView<EcoUserController> {
                 "0",
                 false,
               ),
+              const SizedBox(height: 20),
+              _btnBottom(context),
             ],
           ),
         ),
@@ -132,50 +142,76 @@ class EcoUserDetail extends GetView<EcoUserController> {
     String? nameChange,
     Function? handle,
   }) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
-      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: const Color(0xff8C8C8C),
-          width: 1.0,
-          style: BorderStyle.solid,
-        ),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: AppTextStyles.body2().copyWith(
-                  color: AppColors.grey.shade400,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              Text(
-                value,
-                style: AppTextStyles.body1().copyWith(
-                  color: AppColors.main.shade200,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
+    return GestureDetector(
+      onTap: () {
+        handle?.call();
+      },
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: const Color(0xff8C8C8C),
+            width: 1.0,
+            style: BorderStyle.solid,
           ),
-          change
-              ? Text(
-                  nameChange ?? "",
-                  style: AppTextStyles.body1()
-                      .copyWith(fontWeight: FontWeight.w600),
-                )
-              : const SizedBox.shrink()
-        ],
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: AppTextStyles.body2().copyWith(
+                    color: AppColors.grey.shade400,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  value,
+                  style: AppTextStyles.body1().copyWith(
+                    color: AppColors.main.shade200,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+            change
+                ? Text(
+                    nameChange ?? "",
+                    style: AppTextStyles.body1()
+                        .copyWith(fontWeight: FontWeight.w600),
+                  )
+                : const SizedBox.shrink()
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _btnBottom(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 30),
+      child: ElevatedButton(
+        onPressed: null,
+        style: FilledBtnStyle.enable(
+            isFullWidth: true,
+            borderRadius: 20,
+            customPadding: const EdgeInsets.symmetric(vertical: 15),
+            sizeType: SizeButtonType.custom),
+        child: Text(
+          S.of(context).deactiveAcc,
+          style: AppTextStyles.subHeading1().copyWith(
+            color: AppColors.white,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
       ),
     );
   }

@@ -194,6 +194,9 @@
     "pendingProcessing": "Pending processing",
     "totalRent": "Total Rent",
     "numFall": "Num Fall",
-    "userDetail": "User Detail"
+    "userDetail": "User Detail",
+    "changeRole": "Change Role",
+    "authenUser": "User Authencation",
+    "typeDocument": "Type User's Document"
 
 }

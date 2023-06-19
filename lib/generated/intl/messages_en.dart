@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addMoney": MessageLookupByLibrary.simpleMessage("Add money"),
         "amount": MessageLookupByLibrary.simpleMessage("Amount"),
         "appName": MessageLookupByLibrary.simpleMessage("ECOVELO"),
+        "authenUser": MessageLookupByLibrary.simpleMessage("User Authencation"),
         "authenticated":
             MessageLookupByLibrary.simpleMessage("Authenticated User"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
@@ -49,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "carbon": MessageLookupByLibrary.simpleMessage("Carbon Reduced"),
         "changePass": MessageLookupByLibrary.simpleMessage("Chnage Password"),
+        "changeRole": MessageLookupByLibrary.simpleMessage("Change Role"),
         "chooseFromFileDirectory":
             MessageLookupByLibrary.simpleMessage("Choose file from Directory"),
         "chooseFromGallery":
@@ -284,6 +286,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error! Please try again"),
         "transferOk":
             MessageLookupByLibrary.simpleMessage("Transfer Successfully"),
+        "typeDocument":
+            MessageLookupByLibrary.simpleMessage("Type User\'s Document"),
         "unableToAccessCamera":
             MessageLookupByLibrary.simpleMessage("Unable to access camera!"),
         "unableToAccessStorage":

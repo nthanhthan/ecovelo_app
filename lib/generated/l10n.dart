@@ -2009,6 +2009,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Change Role`
+  String get changeRole {
+    return Intl.message(
+      'Change Role',
+      name: 'changeRole',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User Authencation`
+  String get authenUser {
+    return Intl.message(
+      'User Authencation',
+      name: 'authenUser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type User's Document`
+  String get typeDocument {
+    return Intl.message(
+      'Type User\'s Document',
+      name: 'typeDocument',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
