@@ -27,4 +27,5 @@ abstract class Routes {
   static const authencationView = '/authencation_view';
   static const fixProblem = '/fix_problem_view';
   static const fixProblemDetail = '/fix_problem_detail_view';
+  static const ecoStation = '/eco_station_view';
 }

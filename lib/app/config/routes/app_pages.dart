@@ -156,5 +156,11 @@ class AppPages {
       page: () => const FixProblemDetail(),
       transition: Transition.rightToLeft,
     ),
+    GetPage<dynamic>(
+      name: Routes.ecoStation,
+      page: () => const EcoStationView(),
+      binding: EcoStationBinding(),
+      transition: Transition.rightToLeft,
+    ),
   ];
 }
