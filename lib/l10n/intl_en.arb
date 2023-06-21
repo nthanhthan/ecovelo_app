@@ -205,6 +205,8 @@
     "changeProblem": "Change",
     "newUser": "New User",
     "problemDetail": "Problem Detail",
-    "resolve": "Resolve"
+    "resolve": "Resolve",
+    "searchBicycle": "Search for Eco bicycle",
+    "confirmActiveBicycle": "Are you sure that off this {bicycleID} bike"
 
 }

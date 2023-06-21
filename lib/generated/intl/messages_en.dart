@@ -20,11 +20,13 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m0(name) => "Hi ${name},";
+  static String m0(bicycleID) => "Are you sure that off this ${bicycleID} bike";
 
-  static String m1(nums) => "${nums}+";
+  static String m1(name) => "Hi ${name},";
 
-  static String m2(number) => "ECO - Station ${number} ";
+  static String m2(nums) => "${nums}+";
+
+  static String m3(number) => "ECO - Station ${number} ";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -64,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "completeTrip":
             MessageLookupByLibrary.simpleMessage("The journey is complete!"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "confirmActiveBicycle": m0,
         "confirmLogout": MessageLookupByLibrary.simpleMessage("Yes, Logout"),
         "continueBtn": MessageLookupByLibrary.simpleMessage("Continue"),
         "correct": MessageLookupByLibrary.simpleMessage("Password match"),
@@ -125,7 +128,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "haveAccount":
             MessageLookupByLibrary.simpleMessage("Have been an account."),
         "helpCenter": MessageLookupByLibrary.simpleMessage("Help Center"),
-        "hi": m0,
+        "hi": m1,
         "hintDes": MessageLookupByLibrary.simpleMessage("Enter desciption..."),
         "historyTransaction":
             MessageLookupByLibrary.simpleMessage("Transaction History"),
@@ -186,7 +189,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notesMustShorterThan": MessageLookupByLibrary.simpleMessage(
             "Desciption must be shorter than or equal to 255 characters"),
         "notifi": MessageLookupByLibrary.simpleMessage("Notification"),
-        "numDistances": m1,
+        "numDistances": m2,
         "numFall": MessageLookupByLibrary.simpleMessage("Num Fall"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "onBoarding1Title":
@@ -241,6 +244,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "scanToRide": MessageLookupByLibrary.simpleMessage("Scan to Ride"),
         "score": MessageLookupByLibrary.simpleMessage(
             "Minimum score is 5000, please recharge"),
+        "searchBicycle":
+            MessageLookupByLibrary.simpleMessage("Search for Eco bicycle"),
         "selectProblem": MessageLookupByLibrary.simpleMessage("Select Problem"),
         "selectSource": MessageLookupByLibrary.simpleMessage("Select Source"),
         "selectVoucher": MessageLookupByLibrary.simpleMessage("Select Voucher"),
@@ -252,7 +257,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "station": MessageLookupByLibrary.simpleMessage("Eco Station"),
         "stationNearMe": MessageLookupByLibrary.simpleMessage("Station near"),
-        "stationNumber": m2,
+        "stationNumber": m3,
         "stopRentError": MessageLookupByLibrary.simpleMessage(
             "Return vehicle with problem, please try again"),
         "storageAccessDenied": MessageLookupByLibrary.simpleMessage(

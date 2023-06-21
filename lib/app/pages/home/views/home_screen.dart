@@ -68,6 +68,10 @@ class HomeScreen extends GetView<HomeController> {
     Get.toNamed(Routes.nearStation);
   }
 
+  void _ecoStationOnClick() {
+    Get.toNamed(Routes.ecoStation);
+  }
+
   Widget _buildBody(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.defaultBackground,
@@ -365,7 +369,7 @@ class HomeScreen extends GetView<HomeController> {
               context,
               S.of(context).station,
               AssetsConst.stationIC,
-              null,
+              _ecoStationOnClick,
             ),
             _itemMain(
               context,

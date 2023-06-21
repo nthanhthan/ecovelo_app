@@ -2119,6 +2119,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Search for Eco bicycle`
+  String get searchBicycle {
+    return Intl.message(
+      'Search for Eco bicycle',
+      name: 'searchBicycle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure that off this {bicycleID} bike`
+  String confirmActiveBicycle(Object bicycleID) {
+    return Intl.message(
+      'Are you sure that off this $bicycleID bike',
+      name: 'confirmActiveBicycle',
+      desc: '',
+      args: [bicycleID],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
