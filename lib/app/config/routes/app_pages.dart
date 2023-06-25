@@ -162,5 +162,11 @@ class AppPages {
       binding: EcoStationBinding(),
       transition: Transition.rightToLeft,
     ),
+       GetPage<dynamic>(
+      name: Routes.revenueView,
+      page: () => const RevenueView(),
+      binding: RevenueBinding(),
+      transition: Transition.rightToLeft,
+    ),
   ];
 }

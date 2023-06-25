@@ -2139,6 +2139,46 @@ class S {
       args: [bicycleID],
     );
   }
+
+  /// `Revenue Statistics`
+  String get revenueStatistics {
+    return Intl.message(
+      'Revenue Statistics',
+      name: 'revenueStatistics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Revenue`
+  String get totalRevenue {
+    return Intl.message(
+      'Total Revenue',
+      name: 'totalRevenue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amounted used`
+  String get amountused {
+    return Intl.message(
+      'Amounted used',
+      name: 'amountused',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Negative Amount`
+  String get negativeAmount {
+    return Intl.message(
+      'Negative Amount',
+      name: 'negativeAmount',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -55,4 +55,24 @@ class DefaultValues {
     LegalModel(id: 2, name: S.of(Get.context!).cmnd),
     LegalModel(id: 3, name: S.of(Get.context!).license),
   ];
+  static List<RevenueModel> listRevenues = [
+    RevenueModel(
+      typeRevenue: S.of(Get.context!).totalRevenue,
+      money: 200000,
+      isRaise: true,
+      color: 0xff1E4C2F,
+    ),
+    RevenueModel(
+      typeRevenue: S.of(Get.context!).amountused,
+      money: 120000,
+      isRaise: false,
+      color: 0xFF7E7DD1,
+    ),
+    RevenueModel(
+      typeRevenue: S.of(Get.context!).negativeAmount,
+      money: 5000,
+      isRaise: true,
+      color: 0xffEE5E78,
+    ),
+  ];
 }
