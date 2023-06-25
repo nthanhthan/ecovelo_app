@@ -118,17 +118,21 @@ class RentBicycleView extends GetView<RentBicycleController> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                _itemTextBottom(
-                                  context,
-                                  AssetsConst.iconIntroduction,
-                                  S.of(context).introduction,
-                                  _introductionClick,
+                                Expanded(
+                                  child: _itemTextBottom(
+                                    context,
+                                    AssetsConst.iconIntroduction,
+                                    S.of(context).introduction,
+                                    _introductionClick,
+                                  ),
                                 ),
-                                _itemTextBottom(
-                                  context,
-                                  AssetsConst.iconHELP,
-                                  S.of(context).needHelp,
-                                  _needHelpClick,
+                                Expanded(
+                                  child: _itemTextBottom(
+                                    context,
+                                    AssetsConst.iconHELP,
+                                    S.of(context).needHelp,
+                                    _needHelpClick,
+                                  ),
                                 ),
                               ],
                             ),
@@ -289,11 +293,13 @@ class RentBicycleView extends GetView<RentBicycleController> {
       children: [
         SvgPicture.asset(icon),
         const SizedBox(width: 10),
-        Text(
-          text,
-          style: AppTextStyles.body2().copyWith(
-            color: AppColors.main.shade200,
-            fontWeight: FontWeight.w500,
+        Expanded(
+          child: Text(
+            text,
+            style: AppTextStyles.body2().copyWith(
+              color: AppColors.main.shade200,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
       ],

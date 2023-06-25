@@ -27,11 +27,33 @@ class SettingController extends GetxController {
 
   late final AuthHttpService _authHttpService;
 
+  UserModel? userModel;
+
+  bool isVerified = false;
+  bool isProccesingVerify = false;
+
+  final RxBool _isLoading = false.obs;
+  set isLoading(bool value) => _isLoading.value = value;
+  bool get isLoading => _isLoading.value;
+
   @override
   void onInit() {
     _loginManager = Get.find<LoginManager>();
+    userModel = _loginManager.getUser();
+    isVerified = userModel?.verify ?? false;
     _sessionM = Get.find<SessionManager>();
     _authHttpService = Get.find<AuthHttpService>();
+    if (!isVerified) {
+      getUser().then((value) {
+        if (value) {
+          isProccesingVerify = userModel?.proccessing ?? false;
+          isLoading = true;
+        }
+      });
+    }else{
+      isLoading = true;
+    }
+
     initLanguageSupported();
     String langCode = Prefs.getString(AppKeys.languageKey);
     _languageSelected = (languageSupported.firstWhereOrNull(
@@ -39,9 +61,18 @@ class SettingController extends GetxController {
             languageSupported.first)
         .obs;
     _currentLang = languageSelected;
-
     switchVoice = Prefs.getBool(AppKeys.voiceMode, defaultValue: true);
     super.onInit();
+  }
+
+  Future<bool> getUser() async {
+    final result = await _authHttpService.getUser();
+    if (result.isSuccess() && result.data != null) {
+      _loginManager.saveUser(result.data);
+    }
+    userModel = _loginManager.getUser();
+    Prefs.saveBool(AppKeys.isverify, userModel?.proccessing ?? false);
+    return true;
   }
 
   void initLanguageSupported() {
@@ -74,12 +105,15 @@ class SettingController extends GetxController {
 
   void logoutUser() {
     ProcessingDialog processingDialog = ProcessingDialog.show();
-    _loginManager.deleteUser().then((value) async {
-      await _authHttpService.logout();
-      await _sessionM.cleanSession();
-      processingDialog.hide();
-      Get.offAllNamed(Routes.signin);
-    });
+    _loginManager.deleteUser().then(
+      (value) async {
+        await _authHttpService.logout();
+        await _sessionM.cleanSession();
+        Prefs.removeKey(AppKeys.isverify);
+        processingDialog.hide();
+        Get.offAllNamed(Routes.signin);
+      },
+    );
     processingDialog.hide();
   }
 }

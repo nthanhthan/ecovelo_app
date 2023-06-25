@@ -1,3 +1,5 @@
+import 'package:ecoveloapp/app/pages/setting/bindings/profile_binding.dart';
+
 import '../../core.dart';
 part 'app_routes.dart';
 
@@ -55,7 +57,7 @@ class AppPages {
     GetPage<dynamic>(
       name: Routes.journeyDetail,
       page: () => const JourneyDetailView(),
-      binding: JourneyBinding(),
+      binding: JourneyDetailBinding(),
       transition: Transition.rightToLeft,
     ),
     GetPage<dynamic>(
@@ -97,6 +99,73 @@ class AppPages {
       name: Routes.transactionHistory,
       page: () => const HistoryView(),
       binding: HistoryBingding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.enterCode,
+      page: () => const KeyBoardCode(),
+      binding: EnterCodeBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.verifiAccount,
+      page: () => const VerifiAccountView(),
+      binding: VerifiAccountBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.nearStation,
+      page: () => const StationNearView(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.profile,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.ecoUser,
+      page: () => const EcoUserView(),
+      binding: EcoUseBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.ecoUserDetail,
+      page: () => const EcoUserDetail(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.changeRole,
+      page: () => const ChangeRoleView(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.authencationView,
+      page: () => const AuthencationView(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.fixProblem,
+      page: () => const FixProblemView(),
+      binding: FixProblemBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.fixProblemDetail,
+      page: () => const FixProblemDetail(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.ecoStation,
+      page: () => const EcoStationView(),
+      binding: EcoStationBinding(),
+      transition: Transition.rightToLeft,
+    ),
+       GetPage<dynamic>(
+      name: Routes.revenueView,
+      page: () => const RevenueView(),
+      binding: RevenueBinding(),
       transition: Transition.rightToLeft,
     ),
   ];

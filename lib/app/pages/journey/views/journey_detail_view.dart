@@ -14,65 +14,69 @@ class JourneyDetailView extends GetView<JourneyDetailConroller> {
   Widget _builbody(BuildContext context) {
     _showBottomSheet(context);
     return Scaffold(
-      extendBody: true,
-      backgroundColor: AppColors.defaultBackground,
-      appBar: AppBar(
+        extendBody: true,
         backgroundColor: AppColors.defaultBackground,
-        title: Text(
-          S.of(context).journeyDetail,
-          style: AppTextStyles.subHeading1().copyWith(
-            color: AppColors.colorText,
-            fontWeight: FontWeight.w600,
+        appBar: AppBar(
+          backgroundColor: AppColors.defaultBackground,
+          title: Text(
+            S.of(context).journeyDetail,
+            style: AppTextStyles.subHeading1().copyWith(
+              color: AppColors.colorText,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          centerTitle: true,
+          leading: InkWell(
+            onTap: () {
+              Get.back();
+            },
+            child: const Icon(
+              Icons.arrow_back,
+              size: 30,
+              color: Color(0xff28303f),
+            ),
           ),
         ),
-        centerTitle: true,
-        leading: InkWell(
-          onTap: () {
-            Get.back();
-          },
-          child: const Icon(
-            Icons.arrow_back,
-            size: 30,
-            color: Color(0xff28303f),
-          ),
-        ),
-      ),
-      bottomNavigationBar: SafeArea(
-        child: InkWell(
-          onTap: () {
-            _showBottomSheet(context);  
-          },
-          child: Container(
-            height: 50,
-            margin: const EdgeInsets.symmetric(
-              horizontal: 30,
-              vertical: 10,
-            ),
-            padding: const EdgeInsets.symmetric(
-              vertical: 10,
-            ),
-            decoration: BoxDecoration(
-              color: AppColors.main.shade200,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            alignment: Alignment.center,
-            child: Text(
-              S.of(context).detail,
-              style: AppTextStyles.body1().copyWith(
-                color: AppColors.main.shade400,
-                fontWeight: FontWeight.w500,
+        bottomNavigationBar: SafeArea(
+          child: InkWell(
+            onTap: () {
+              _showBottomSheet(context);
+            },
+            child: Container(
+              height: 50,
+              margin: const EdgeInsets.symmetric(
+                horizontal: 30,
+                vertical: 10,
+              ),
+              padding: const EdgeInsets.symmetric(
+                vertical: 10,
+              ),
+              decoration: BoxDecoration(
+                color: AppColors.main.shade200,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                S.of(context).detail,
+                style: AppTextStyles.body1().copyWith(
+                  color: AppColors.main.shade400,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ),
         ),
-      ),
-      body: const GoogleMap(
-        initialCameraPosition: CameraPosition(
-          target: LatLng(16.0706181, 108.2240623),
-          zoom: 12,
-        ),
-      ),
-    );
+        body: Obx(
+          () => GoogleMap(
+            initialCameraPosition: CameraPosition(
+              target: controller.currentPosition ??
+                  const LatLng(16.0706181, 108.2240623),
+              zoom: 30,
+            ),
+            // ignore: invalid_use_of_protected_member
+            polylines: controller.polylines.value,
+          ),
+        ));
   }
 
   void _showBottomSheet(BuildContext context) {
@@ -90,10 +94,15 @@ class JourneyDetailView extends GetView<JourneyDetailConroller> {
           ),
           builder: (BuildContext context) {
             return ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxHeight: MediaQuery.of(context).size.height * 0.6,
-                ),
-                child: _gridAnalysis(context));
+              constraints: BoxConstraints(
+                maxHeight: MediaQuery.of(context).size.height * 0.6,
+              ),
+              child: Obx(
+                () => controller.isLoading
+                    ? _gridAnalysis(context)
+                    : ThreeBounceLoading(),
+              ),
+            );
           },
         );
       },
@@ -128,15 +137,18 @@ class JourneyDetailView extends GetView<JourneyDetailConroller> {
                         context,
                         AssetsConst.iconDistanceGreen,
                         S.of(context).totalDistances,
-                        "19",
+                        controller.detailJouneyModel?.distance
+                                ?.toStringAsFixed(1) ??
+                            "0",
                         "km",
                       ),
                       _itemAnalysis(
                         context,
                         AssetsConst.iconClock,
                         S.of(context).totalTime,
-                        "300",
-                        "minutes",
+                        (controller.detailJouneyModel!.totalTime! / 60)
+                            .toStringAsFixed(1),
+                        S.of(context).timeMinutes,
                       ),
                     ],
                   ),
@@ -149,14 +161,18 @@ class JourneyDetailView extends GetView<JourneyDetailConroller> {
                         context,
                         AssetsConst.iconCarbon,
                         S.of(context).carbon,
-                        "0.8",
+                        controller.detailJouneyModel?.carbonReduced
+                                ?.toStringAsFixed(1) ??
+                            "0",
                         "kg",
                       ),
                       _itemAnalysis(
                         context,
                         AssetsConst.iconEnrgy,
                         S.of(context).energy,
-                        "200",
+                        controller.detailJouneyModel?.energy
+                                ?.toStringAsFixed(1) ??
+                            "0",
                         "kcal",
                       ),
                     ],
@@ -170,17 +186,17 @@ class JourneyDetailView extends GetView<JourneyDetailConroller> {
                 _detailJourney(
                   context,
                   S.of(context).titleTime,
-                  "07:30 - 08:30 o 01 May 2023",
+                  controller.convertDateTime(),
                 ),
                 _detailJourney(
                   context,
                   S.of(context).titleJourneyCode,
-                  "#011100110",
+                  controller.detailJouneyModel?.id.toString() ?? "Error",
                 ),
                 _detailJourney(
                   context,
                   S.of(context).titlePayment,
-                  "Ride Pass",
+                  "Ecovelo Point",
                 ),
               ],
             ),
@@ -236,14 +252,18 @@ class JourneyDetailView extends GetView<JourneyDetailConroller> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              _containerItinerary(
-                context,
-                "ECO 01 - Hodfords - 74 Do Ba",
+              Obx(
+                () => _containerItinerary(
+                  context,
+                  controller.startStation,
+                ),
               ),
-              _containerItinerary(
-                context,
-                "ECO 02 - Son Tra 01 - 06 Bui Quoc Hung",
-              ),
+              Obx(
+                () => _containerItinerary(
+                  context,
+                  controller.endStation,
+                ),
+              )
             ],
           ),
         )

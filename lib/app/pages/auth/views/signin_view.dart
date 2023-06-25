@@ -64,7 +64,7 @@ class SignInView extends GetView<SignInController> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 90, 20, 0),
+        padding: const EdgeInsets.fromLTRB(20, 50, 20, 0),
         child: _buildLoginView(context),
       ),
     );
@@ -78,6 +78,23 @@ class SignInView extends GetView<SignInController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Center(
+              child: Column(
+                children: [
+                  Text(
+                    S.of(context).welcomeEcovelo,
+                    style: AppTextStyles.heading2()
+                        .copyWith(color: AppColors.main.shade200),
+                  ),
+                  Text(
+                    S.of(context).loginToContinue,
+                    style: AppTextStyles.tiny()
+                        .copyWith(color: AppColors.grey.shade400),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 40),
             TextFormField(
               key: const ValueKey('phoneSignInField'),
               maxLines: 1,

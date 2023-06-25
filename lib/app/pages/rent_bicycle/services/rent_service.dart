@@ -15,20 +15,46 @@ class RentHttpService extends BaseApiClient {
       },
     );
   }
-    Future<BaseResp<UserModel>> stopRentBicycle(String bicycleID, int idRent) async {
-    return request<UserModel>(
+
+  Future<BaseResp<StopResponse>> stopRentBicycle(
+    String bicycleID,
+    int idRent,
+    int idStation,
+  ) async {
+    return request<StopResponse>(
       Method.post,
       AppApi.stopRentBicycle,
-         data: {
+      data: {
         "rentID": idRent,
         "bicycleID": bicycleID,
+        "stationID": idStation
       },
       onDeserialize: (dynamic jsonValue) {
         if (jsonValue is Map) {
-           return UserModel.fromJson(jsonValue as Map<String, dynamic>);
-        } else {
-          return null;
+          return StopResponse.fromJson(jsonValue as Map<String, dynamic>);
         }
+        return null;
+      },
+    );
+  }
+
+  Future<BaseResp<void>> sendTrip(String lat, String lng, int rentId) async {
+    return request<void>(
+      Method.post,
+      AppApi.sendTrip,
+      data: {"lat": lat, "lng": lng, "id_rent": rentId},
+      onDeserialize: (dynamic jsonValue) {
+        return jsonValue;
+      },
+    );
+  }
+
+  Future<BaseResp<void>> fallBicyle(int idRent) async {
+    return request<void>(
+      Method.get,
+      AppApi.fallBicycle(idRent),
+      onDeserialize: (dynamic jsonValue) {
+        return jsonValue;
       },
     );
   }

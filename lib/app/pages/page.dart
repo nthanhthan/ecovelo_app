@@ -13,3 +13,8 @@ export 'add_money/add_money.dart';
 export 'transfer_success/transfer_success.dart';
 export 'feedback/feedback.dart';
 export 'history/history_view.dart';
+export 'verifi_account/verifi_account.dart';
+export 'eco_user/eco_user.dart';
+export 'fix_problem/fix_problem.dart';
+export 'eco_station/eco_station.dart';
+export 'revenue/revenue.dart';

@@ -16,7 +16,12 @@ class SettingView extends GetView<SettingController> {
     Get.toNamed(Routes.language);
   }
 
+  void _verifiAccOnClick() {
+    Get.toNamed(Routes.verifiAccount);
+  }
+
   void _changePassClick() {}
+
   void _notificationClick() {}
   void _deActiveClick() {}
   void _helpCenterClick() {}
@@ -26,7 +31,15 @@ class SettingView extends GetView<SettingController> {
   }
 
   void _logoutClick() {
+    showConfirmLogout(Get.context!);
+  }
+
+  void _confirmLogout() {
     controller.logoutUser();
+  }
+
+  void _profileClick() {
+    Get.toNamed(Routes.profile);
   }
 
   Widget _buildBody(BuildContext context) {
@@ -65,7 +78,9 @@ class SettingView extends GetView<SettingController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            S.of(context).hi("Than"),
+                            S
+                                .of(context)
+                                .hi(controller.userModel?.nameUser ?? ""),
                             style: AppTextStyles.subHeading1()
                                 .copyWith(color: AppColors.main.shade300),
                           ),
@@ -78,17 +93,54 @@ class SettingView extends GetView<SettingController> {
                       ),
                     ],
                   ),
-                  SvgPicture.asset(
-                    AssetsConst.icEdit,
-                    height: 20,
+                  InkWell(
+                    onTap: _profileClick,
+                    child: SvgPicture.asset(
+                      AssetsConst.icEdit,
+                      height: 20,
+                    ),
                   ),
                 ],
+              ),
+              const SizedBox(height: 10),
+              Obx(
+                () => controller.isLoading
+                    ? controller.isVerified
+                        ? const SizedBox()
+                        : Center(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                controller.isProccesingVerify == true
+                                    ? null
+                                    : _verifiAccOnClick();
+                              },
+                              style: controller.isProccesingVerify
+                                  ? FilledBtnStyle.disable(
+                                      isFullWidth: true,
+                                      borderRadius: 15,
+                                    )
+                                  : FilledBtnStyle.enable(
+                                      isFullWidth: true,
+                                      borderRadius: 15,
+                                    ),
+                              child: Text(
+                                controller.isProccesingVerify
+                                    ? S.of(context).proccessingVerify
+                                    : S.of(context).verifiAcc,
+                                style: AppTextStyles.body1().copyWith(
+                                  color: AppColors.white,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          )
+                    : ThreeBounceLoading(),
               ),
               Container(
                 height: 0.3,
                 color: AppColors.grey.shade300,
                 margin: const EdgeInsets.symmetric(
-                  vertical: 20,
+                  vertical: 15,
                 ),
               ),
               _contentWidget(
@@ -198,6 +250,141 @@ class SettingView extends GetView<SettingController> {
           ),
         ),
       ),
+    );
+  }
+
+  void showConfirmLogout(BuildContext context) async {
+    await showModalBottomSheet(
+      context: context,
+      backgroundColor: AppColors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30.0),
+          topRight: Radius.circular(30.0),
+        ),
+      ),
+      builder: (BuildContext context) {
+        return ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.35,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  height: 5,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    color: AppColors.grey.shade200,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      S.of(context).logout,
+                      style: AppTextStyles.heading1().copyWith(
+                        color: AppColors.warning.shade300,
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    SvgPicture.asset(
+                      AssetsConst.icLogout,
+                      height: 30,
+                    )
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  height: 2,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: AppColors.grey.shade200,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  S.of(context).questionLogout,
+                  style: AppTextStyles.heading2().copyWith(
+                    color: AppColors.grey.shade700,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(
+                            vertical: 12,
+                            horizontal: 5,
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 15,
+                            horizontal: 10,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.grey.shade200,
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Center(
+                            child: Text(
+                              S.of(context).cancel,
+                              style: AppTextStyles.body1().copyWith(
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          _confirmLogout();
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(
+                            vertical: 12,
+                            horizontal: 5,
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 15,
+                            horizontal: 10,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.main.shade300,
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Center(
+                            child: Text(
+                              S.of(context).confirmLogout,
+                              style: AppTextStyles.body1().copyWith(
+                                color: AppColors.white,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

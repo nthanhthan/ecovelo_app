@@ -17,4 +17,16 @@ abstract class Routes {
   static const feedback = '/feedback_view';
   static const stationBike = '/station_view';
   static const transactionHistory = '/history_view';
+  static const enterCode = '/enter_code_view';
+  static const verifiAccount = '/verifi_account_view';
+  static const nearStation = '/near_station_view';
+  static const profile = '/profile_view';
+  static const ecoUser = '/eco_user_view';
+  static const ecoUserDetail = '/eco_user_detail_view';
+  static const changeRole = '/change_role_view';
+  static const authencationView = '/authencation_view';
+  static const fixProblem = '/fix_problem_view';
+  static const fixProblemDetail = '/fix_problem_detail_view';
+  static const ecoStation = '/eco_station_view';
+  static const revenueView = '/revenue_view';
 }

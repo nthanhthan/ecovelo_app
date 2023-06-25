@@ -31,11 +31,49 @@ class HomeScreen extends GetView<HomeController> {
     Get.toNamed(Routes.journey);
   }
 
+  void _openLockTemporary() {
+    controller.openLockTemporary();
+  }
+
+  void _ecoUser() {
+    Get.toNamed(Routes.ecoUser);
+  }
+
+  void _fixProblemClick() {
+    Get.toNamed(Routes.fixProblem);
+  }
+
   void _finishRideClick() async {
-    controller.stopRentBicycle();
-    // if (check) {
-    //   Get.offAllNamed(Routes.feedback);
-    // } else {}
+    notifyStopRent();
+    // final RentHttpService _rentHttpService = Get.find<RentHttpService>();
+    // ProcessingDialog processingDialog = ProcessingDialog.show();
+    // int rentID = Prefs.getInt(AppKeys.rentID);
+    // String bicycleID = Prefs.getString(AppKeys.bicycleIDRent);
+    // final result = await _rentHttpService.stopRentBicycle(bicycleID, rentID);
+    // if (result.isSuccess() && result.data != null) {
+    //   // client.disconnect();
+    //   processingDialog.hide();
+    //   StopResponse? stopResponse = result.data;
+    //   Prefs.removeKey(AppKeys.bicycleIDRent);
+    //   Prefs.removeKey(AppKeys.beginRent);
+    //   Prefs.removeKey(AppKeys.rentID);
+    //   //return stopResponse;
+    // }
+    // processingDialog.hide();
+    // // return null;
+  }
+
+  void _stationNearClicked() {
+    controller.getStationNear();
+    Get.toNamed(Routes.nearStation);
+  }
+
+  void _ecoStationOnClick() {
+    Get.toNamed(Routes.ecoStation);
+  }
+
+  void _revenueOnClick() {
+    Get.toNamed(Routes.revenueView);
   }
 
   Widget _buildBody(BuildContext context) {
@@ -47,6 +85,9 @@ class HomeScreen extends GetView<HomeController> {
             _topBanner(context),
             _animationHome(context),
             _mainContentWiget(context),
+            controller.isAdmin == true
+                ? _adminWidget(context)
+                : const SizedBox.shrink(),
             _voucherWidget(context),
           ],
         ),
@@ -167,13 +208,23 @@ class HomeScreen extends GetView<HomeController> {
                   () => Visibility(
                     visible: controller.isCloseBottomModel ??
                         controller.checkCloseBottomModel(),
-                    child: GestureDetector(
-                      onTap: () {
-                        controller.checkCloseBottomModel() == true
-                            ? showBottomSheetRentBicycle(context)
-                            : null;
-                      },
-                      child: _durationRide(context),
+                    child: Obx(
+                      () => Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              controller.checkCloseBottomModel() == true
+                                  ? showBottomSheetRentBicycle(context)
+                                  : null;
+                            },
+                            child: _durationRide(context),
+                          ),
+                          const SizedBox(width: 10),
+                          controller.isLockTemporary
+                              ? _lockTemporary(context)
+                              : const SizedBox.shrink(),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -277,10 +328,10 @@ class HomeScreen extends GetView<HomeController> {
               AssetsConst.addMoney,
               _addMoneyClicked,
             ),
-            _itemMain(
+            _itemAdmin(
               context,
-              S.of(context).myWallet,
-              AssetsConst.myWallet,
+              S.of(context).reportProblem,
+              AssetsConst.fixProblem,
               _myWalletClick,
             ),
             _itemMain(
@@ -291,6 +342,89 @@ class HomeScreen extends GetView<HomeController> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _adminWidget(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 30,
+        vertical: 10,
+      ),
+      child: SizedBox(
+        height: 100,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _itemAdmin(
+              context,
+              S.of(context).accUser,
+              AssetsConst.accUser,
+              _ecoUser,
+            ),
+            _itemAdmin(
+              context,
+              S.of(context).fixProblem,
+              AssetsConst.problemIC,
+              _fixProblemClick,
+            ),
+            _itemAdmin(
+              context,
+              S.of(context).station,
+              AssetsConst.stationIC,
+              _ecoStationOnClick,
+            ),
+            _itemMain(
+              context,
+              S.of(context).revenue,
+              AssetsConst.myWallet,
+              _revenueOnClick,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _itemAdmin(
+    BuildContext context,
+    String name,
+    String icon,
+    void Function()? handle,
+  ) {
+    return GestureDetector(
+      onTap: () {
+        handle?.call();
+      },
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 14),
+            decoration: BoxDecoration(
+              color: AppColors.grey.shade600,
+              borderRadius: BorderRadius.circular(19),
+            ),
+            child: Column(
+              children: [
+                SvgPicture.asset(
+                  icon,
+                  height: 30,
+                  width: 30,
+                  color: AppColors.main.shade200,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            name,
+            style: AppTextStyles.tiny().copyWith(
+              color: AppColors.main.shade200,
+              fontWeight: FontWeight.w500,
+            ),
+          )
+        ],
       ),
     );
   }
@@ -408,25 +542,30 @@ class HomeScreen extends GetView<HomeController> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  controller.bikeID,
-                                  style: AppTextStyles.subHeading1()
-                                      .copyWith(color: AppColors.main.shade200),
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
-                                ),
-                                const SizedBox(width: 10),
-                                Align(
-                                  alignment: Alignment.topLeft,
-                                  child: SvgPicture.asset(
-                                    AssetsConst.checkRent,
-                                    height: 20,
+                            Obx(
+                              () => Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    controller.bikeID,
+                                    style: AppTextStyles.subHeading1().copyWith(
+                                        color: AppColors.main.shade200),
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
                                   ),
-                                ),
-                              ],
+                                  const SizedBox(width: 10),
+                                  controller.isLockTemporary
+                                      ? _lockTemporary(context)
+                                      : Align(
+                                          alignment: Alignment.topLeft,
+                                          child: SvgPicture.asset(
+                                            AssetsConst.checkRent,
+                                            height: 20,
+                                          ),
+                                        ),
+                                ],
+                              ),
                             ),
                             const SizedBox(height: 10),
                             _durationRide(context),
@@ -450,15 +589,21 @@ class HomeScreen extends GetView<HomeController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _bottomItemShowModel(
-                        context,
-                        AssetsConst.iconAdd,
-                        S.of(context).getMoreTime,
+                      Expanded(
+                        child: _bottomItemShowModel(
+                          context,
+                          AssetsConst.iconHELP,
+                          S.of(context).getMoreTime,
+                          _stationNearClicked,
+                        ),
                       ),
-                      _bottomItemShowModel(
-                        context,
-                        AssetsConst.iconHELP,
-                        S.of(context).needHelp,
+                      Expanded(
+                        child: _bottomItemShowModel(
+                          context,
+                          AssetsConst.iconAdd,
+                          S.of(context).stationNearMe,
+                          _stationNearClicked,
+                        ),
                       ),
                     ],
                   ),
@@ -511,24 +656,62 @@ class HomeScreen extends GetView<HomeController> {
     );
   }
 
-  Widget _bottomItemShowModel(BuildContext context, String icon, String text) {
-    return OutlinedButton(
-      onPressed: null,
-      style: OutlineButtonStyle.enable(
+  Widget _lockTemporary(BuildContext context) {
+    return GestureDetector(
+      onTap: _openLockTemporary,
+      child: Container(
+        width: 50,
+        padding: const EdgeInsets.symmetric(
+          vertical: 9,
+          horizontal: 10,
+        ),
+        decoration: BoxDecoration(
+          color: AppColors.secondary.shade300,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Center(
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: Icon(
+              Icons.lock_outline,
+              color: AppColors.main.shade400,
+              size: 20,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _bottomItemShowModel(
+    BuildContext context,
+    String icon,
+    String text,
+    Function handle,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: OutlinedButton(
+        onPressed: () {
+          handle.call();
+        },
+        style: OutlineButtonStyle.enable(
           sizeType: SizeButtonType.custom,
-          customPadding: const EdgeInsets.fromLTRB(15, 15, 0, 15)),
-      child: SizedBox(
-        width: 150,
+          customPadding: const EdgeInsets.fromLTRB(15, 15, 5, 15),
+        ),
         child: Row(
           children: [
             SvgPicture.asset(icon),
-            const SizedBox(width: 10),
+            const SizedBox(width: 5),
             Expanded(
-              child: Text(
-                text,
-                style: AppTextStyles.body2().copyWith(
-                  color: AppColors.main.shade200,
-                  fontWeight: FontWeight.w500,
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  text,
+                  style: AppTextStyles.body2().copyWith(
+                    color: AppColors.main.shade200,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             )
@@ -539,21 +722,14 @@ class HomeScreen extends GetView<HomeController> {
   }
 
   Widget _bottomWidget(BuildContext context) {
-    return InkWell(
-      onTap: _finishRideClick,
-      child: Container(
-        margin: const EdgeInsets.only(
-          top: 20,
-          bottom: 20,
-        ),
-        padding: const EdgeInsets.symmetric(
-          horizontal: 120,
-          vertical: 12,
-        ),
-        decoration: BoxDecoration(
-          color: AppColors.main.shade200,
-          borderRadius: BorderRadius.circular(20),
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
+      child: ElevatedButton(
+        onPressed: _finishRideClick,
+        style: FilledBtnStyle.enable(
+            isFullWidth: true,
+            sizeType: SizeButtonType.custom,
+            customPadding: const EdgeInsets.symmetric(vertical: 15)),
         child: Text(
           S.of(context).finishRide,
           style: AppTextStyles.body1().copyWith(
@@ -562,6 +738,64 @@ class HomeScreen extends GetView<HomeController> {
           ),
         ),
       ),
+    );
+  }
+
+  void notifyStopRent() {
+    showDialog<void>(
+      context: Get.context!,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25),
+          ),
+          child: ListView(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 30),
+                decoration: BoxDecoration(
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 15,
+                ),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 15),
+                    Text(
+                      S.of(context).lockFirst,
+                      style: AppTextStyles.body1().copyWith(
+                        color: AppColors.main.shade200,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 30),
+                    OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      style: OutlineButtonStyle.enable(isFullWidth: true),
+                      child: Text(
+                        S.of(context).ok,
+                        style: AppTextStyles.body2().copyWith(
+                          color: AppColors.main.shade200,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

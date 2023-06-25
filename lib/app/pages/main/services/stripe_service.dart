@@ -69,6 +69,7 @@ class StripeService extends BaseApiClient {
         customerId: customerId,
         paymentIntentClientSecret: paymentIntentClientSecret,
         allowsDelayedPaymentMethods: true,
+        googlePay: const  PaymentSheetGooglePay(merchantCountryCode: "vnd")
       ),
     );
       await Stripe.instance.presentPaymentSheet();

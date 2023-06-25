@@ -9,13 +9,21 @@ class AppApi {
   static const String logout = "$apiVer/auth/logout";
   static const String checkPointUser = "$apiVer/auth/checkPoint";
   static const String getUser = "$apiVer/auth/getUser";
+  static const String verifyAccount = "$apiVer/auth/verify";
   //station
   static const String getListStation = "$apiVer/station/getStation";
   //QR
   static const String checkQR = "$apiVer/bicycle/checkQR";
-  //rent
+  static const String checkQRReport = "$apiVer/bicycle/check-report";
+  //bicycle
   static const String rentBicycle = "$apiVer/bicycle/rent-bicycle";
   static const String stopRentBicycle = "$apiVer/bicycle/stop-rent";
+  static const String reportProblem = "$apiVer/bicycle/report-problem";
+  static  String fallBicycle(idRent) => "$apiVer/bicycle/fallBicycle/$idRent";
+  //trip
+  static const String sendTrip = "$apiVer/trip/addTripDetail";
+  static const String getListTrip = "$apiVer/trip/getListTrip";
+  static const String feeadback = "$apiVer/bicycle/feedback";
   //add money
   static const String addMoney = "$apiVer/auth/addMoney";
   static const String getHistory = "$apiVer/transaction/getTransaction";

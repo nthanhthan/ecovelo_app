@@ -420,10 +420,10 @@ class S {
     );
   }
 
-  /// `Log out`
+  /// `Logout`
   String get logout {
     return Intl.message(
-      'Log out',
+      'Logout',
       name: 'logout',
       desc: '',
       args: [],
@@ -550,10 +550,10 @@ class S {
     );
   }
 
-  /// `Eco velo`
+  /// `EcoVelo`
   String get ecoitem {
     return Intl.message(
-      'Eco velo',
+      'EcoVelo',
       name: 'ecoitem',
       desc: '',
       args: [],
@@ -1479,6 +1479,706 @@ class S {
       args: [],
     );
   }
+
+  /// `Enter Code`
+  String get enterCode {
+    return Intl.message(
+      'Enter Code',
+      name: 'enterCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Find and enter the code`
+  String get findCode {
+    return Intl.message(
+      'Find and enter the code',
+      name: 'findCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tell us your feedback `
+  String get tellWithUs {
+    return Intl.message(
+      'Tell us your feedback ',
+      name: 'tellWithUs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write something for us!`
+  String get writeSometh {
+    return Intl.message(
+      'Write something for us!',
+      name: 'writeSometh',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter feedback`
+  String get enterFeedback {
+    return Intl.message(
+      'Enter feedback',
+      name: 'enterFeedback',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit feedback`
+  String get submitFeedback {
+    return Intl.message(
+      'Submit feedback',
+      name: 'submitFeedback',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter reason`
+  String get enterReason {
+    return Intl.message(
+      'Enter reason',
+      name: 'enterReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter the reason why the bike fell`
+  String get reasonFall {
+    return Intl.message(
+      'Please enter the reason why the bike fell',
+      name: 'reasonFall',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bike Fall Count`
+  String get countFall {
+    return Intl.message(
+      'Bike Fall Count',
+      name: 'countFall',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thanks for being eco-conscious and choosing sustainable transportation.`
+  String get thanksTrip {
+    return Intl.message(
+      'Thanks for being eco-conscious and choosing sustainable transportation.',
+      name: 'thanksTrip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The journey is complete!`
+  String get completeTrip {
+    return Intl.message(
+      'The journey is complete!',
+      name: 'completeTrip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to EcoVelo!`
+  String get welcomeEcovelo {
+    return Intl.message(
+      'Welcome to EcoVelo!',
+      name: 'welcomeEcovelo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please login to continue`
+  String get loginToContinue {
+    return Intl.message(
+      'Please login to continue',
+      name: 'loginToContinue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create New Account`
+  String get createNewAcc {
+    return Intl.message(
+      'Create New Account',
+      name: 'createNewAcc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your information below`
+  String get infoAcc {
+    return Intl.message(
+      'Please enter your information below',
+      name: 'infoAcc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error, please try again!`
+  String get uploadError {
+    return Intl.message(
+      'Error, please try again!',
+      name: 'uploadError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report Send`
+  String get reportSend {
+    return Intl.message(
+      'Report Send',
+      name: 'reportSend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hi, Your problem report has been sent successfully. Our team has received your report and we''ll do out best to help you resolve the issue as quickly as possible`
+  String get desReport {
+    return Intl.message(
+      'Hi, Your problem report has been sent successfully. Our team has received your report and we\'\'ll do out best to help you resolve the issue as quickly as possible',
+      name: 'desReport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go back to home`
+  String get goBackHome {
+    return Intl.message(
+      'Go back to home',
+      name: 'goBackHome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account Verification`
+  String get verifiAcc {
+    return Intl.message(
+      'Account Verification',
+      name: 'verifiAcc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please send a photo of your valid ID, original photo not scanned or photocopy`
+  String get messVerifi {
+    return Intl.message(
+      'Please send a photo of your valid ID, original photo not scanned or photocopy',
+      name: 'messVerifi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose the type of document`
+  String get choosePersonal {
+    return Intl.message(
+      'Choose the type of document',
+      name: 'choosePersonal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Take two-sided documents`
+  String get takeTowSide {
+    return Intl.message(
+      'Take two-sided documents',
+      name: 'takeTowSide',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Font view`
+  String get frontView {
+    return Intl.message(
+      'Font view',
+      name: 'frontView',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back view`
+  String get backView {
+    return Intl.message(
+      'Back view',
+      name: 'backView',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Citizen ID`
+  String get citizenID {
+    return Intl.message(
+      'Citizen ID',
+      name: 'citizenID',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Identity Card`
+  String get cmnd {
+    return Intl.message(
+      'Identity Card',
+      name: 'cmnd',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Motorbicycle License`
+  String get license {
+    return Intl.message(
+      'Motorbicycle License',
+      name: 'license',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Authentication is in progress`
+  String get proccessingVerify {
+    return Intl.message(
+      'Authentication is in progress',
+      name: 'proccessingVerify',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to log out?`
+  String get questionLogout {
+    return Intl.message(
+      'Are you sure you want to log out?',
+      name: 'questionLogout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes, Logout`
+  String get confirmLogout {
+    return Intl.message(
+      'Yes, Logout',
+      name: 'confirmLogout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Station near`
+  String get stationNearMe {
+    return Intl.message(
+      'Station near',
+      name: 'stationNearMe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sorry, Processing is failing, please try again later.`
+  String get errorFeedback {
+    return Intl.message(
+      'Sorry, Processing is failing, please try again later.',
+      name: 'errorFeedback',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `minutes`
+  String get timeMinutes {
+    return Intl.message(
+      'minutes',
+      name: 'timeMinutes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Completed`
+  String get complete {
+    return Intl.message(
+      'Completed',
+      name: 'complete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sorry, Your account haven't been verified`
+  String get accountMustVeifi {
+    return Intl.message(
+      'Sorry, Your account haven\'t been verified',
+      name: 'accountMustVeifi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to temporarily lock the bicycle?`
+  String get temoraryLock {
+    return Intl.message(
+      'Do you want to temporarily lock the bicycle?',
+      name: 'temoraryLock',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sorry,There is a problem with processing, please try again! `
+  String get endTripError {
+    return Intl.message(
+      'Sorry,There is a problem with processing, please try again! ',
+      name: 'endTripError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sorry, Temporarily lock the bicycle error`
+  String get temoraryLockError {
+    return Intl.message(
+      'Sorry, Temporarily lock the bicycle error',
+      name: 'temoraryLockError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to unlock the car to continue?`
+  String get openLockContinue {
+    return Intl.message(
+      'Do you want to unlock the car to continue?',
+      name: 'openLockContinue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EcoVelo fell, please help me up. Thank you!`
+  String get fallBicycle {
+    return Intl.message(
+      'EcoVelo fell, please help me up. Thank you!',
+      name: 'fallBicycle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message(
+      'Profile',
+      name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Eco User`
+  String get accUser {
+    return Intl.message(
+      'Eco User',
+      name: 'accUser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fix Problem`
+  String get fixProblem {
+    return Intl.message(
+      'Fix Problem',
+      name: 'fixProblem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Eco Station`
+  String get station {
+    return Intl.message(
+      'Eco Station',
+      name: 'station',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Revenue`
+  String get revenue {
+    return Intl.message(
+      'Revenue',
+      name: 'revenue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total User`
+  String get totalUser {
+    return Intl.message(
+      'Total User',
+      name: 'totalUser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Authenticated User`
+  String get authenticated {
+    return Intl.message(
+      'Authenticated User',
+      name: 'authenticated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unauthenticated User`
+  String get unauthenticated {
+    return Intl.message(
+      'Unauthenticated User',
+      name: 'unauthenticated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending processing`
+  String get pendingProcessing {
+    return Intl.message(
+      'Pending processing',
+      name: 'pendingProcessing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Rent`
+  String get totalRent {
+    return Intl.message(
+      'Total Rent',
+      name: 'totalRent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Num Fall`
+  String get numFall {
+    return Intl.message(
+      'Num Fall',
+      name: 'numFall',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User Detail`
+  String get userDetail {
+    return Intl.message(
+      'User Detail',
+      name: 'userDetail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change Role`
+  String get changeRole {
+    return Intl.message(
+      'Change Role',
+      name: 'changeRole',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User Authencation`
+  String get authenUser {
+    return Intl.message(
+      'User Authencation',
+      name: 'authenUser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type User's Document`
+  String get typeDocument {
+    return Intl.message(
+      'Type User\'s Document',
+      name: 'typeDocument',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Problem`
+  String get totalProblem {
+    return Intl.message(
+      'Total Problem',
+      name: 'totalProblem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resolved`
+  String get resolvedProblem {
+    return Intl.message(
+      'Resolved',
+      name: 'resolvedProblem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending`
+  String get pending {
+    return Intl.message(
+      'Pending',
+      name: 'pending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Problem`
+  String get problem {
+    return Intl.message(
+      'Problem',
+      name: 'problem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change`
+  String get changeProblem {
+    return Intl.message(
+      'Change',
+      name: 'changeProblem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New User`
+  String get newUser {
+    return Intl.message(
+      'New User',
+      name: 'newUser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Problem Detail`
+  String get problemDetail {
+    return Intl.message(
+      'Problem Detail',
+      name: 'problemDetail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resolve`
+  String get resolve {
+    return Intl.message(
+      'Resolve',
+      name: 'resolve',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search for Eco bicycle`
+  String get searchBicycle {
+    return Intl.message(
+      'Search for Eco bicycle',
+      name: 'searchBicycle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure that off this {bicycleID} bike`
+  String confirmActiveBicycle(Object bicycleID) {
+    return Intl.message(
+      'Are you sure that off this $bicycleID bike',
+      name: 'confirmActiveBicycle',
+      desc: '',
+      args: [bicycleID],
+    );
+  }
+
+  /// `Revenue Statistics`
+  String get revenueStatistics {
+    return Intl.message(
+      'Revenue Statistics',
+      name: 'revenueStatistics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Revenue`
+  String get totalRevenue {
+    return Intl.message(
+      'Total Revenue',
+      name: 'totalRevenue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amounted used`
+  String get amountused {
+    return Intl.message(
+      'Amounted used',
+      name: 'amountused',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Negative Amount`
+  String get negativeAmount {
+    return Intl.message(
+      'Negative Amount',
+      name: 'negativeAmount',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -1487,6 +2187,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'vi'),
     ];
   }
 

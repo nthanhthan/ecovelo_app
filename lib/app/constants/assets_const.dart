@@ -15,6 +15,9 @@ class AssetsConst {
   static const String stationRed = "${preImgPath}staion_pin.png";
   static const String bikeStation = "${preImgPath}station_bike.png";
   static const String verifed = "${preImgPath}verified.gif";
+  static const String notifyEmpty = "${preImgPath}notify_empty.jpg";
+  static const String profileEmpty = "${preImgPath}profile_empty.jpg";
+  static const String noData = "${preImgPath}no_data.jpg";
 
   //json
   static const String qrScan = "${preJsonPath}qr_scan.json";
@@ -84,8 +87,10 @@ class AssetsConst {
   static const String momo = "${preIconPath}momo.svg";
   static const String techcombank = "${preIconPath}techcombank.svg";
   static const String vietinbank = "${preIconPath}vietinbank.svg";
-  static const String transferBackground = "${preIconPath}transfer_background.svg";
-  static const String transferBodyBackground = "${preIconPath}transfer_body_background.svg";
+  static const String transferBackground =
+      "${preIconPath}transfer_background.svg";
+  static const String transferBodyBackground =
+      "${preIconPath}transfer_body_background.svg";
   static const String divider = "${preIconPath}divider.svg";
   static const String closeButton = "${preIconPath}close_button.svg";
   static const String pointer = "${preIconPath}pointer.png";
@@ -95,5 +100,14 @@ class AssetsConst {
   static const String iconSearch = "${preIconPath}icon_search.svg";
   static const String iconLocation = "${preIconPath}location.svg";
   static const String stripeIc = "${preIconPath}stripe_ic.svg";
-
+  static const String cardPerson = "${preIconPath}card_person.svg";
+  static const String cameraIc = "${preIconPath}camera_ic.svg";
+  static const String uploadImage = "${preIconPath}upload_image.svg";
+  static const String problemIC = "${preIconPath}problem_ic.svg";
+  static const String stationIC = "${preIconPath}station_eco.svg";
+  static const String fixProblem = "${preIconPath}fix_problem.svg";
+  static const String accUser = "${preIconPath}acc_user.svg";
+  static const String revenueIC = "${preIconPath}revenue_ic.svg";
+  static const String adminRole = "${preIconPath}admin_role.svg";
+  static const String userRole = "${preIconPath}user_role.svg";
 }

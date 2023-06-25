@@ -131,6 +131,15 @@ dependencies:
   mqtt_client: ^9.6.7
   #stripe
   flutter_stripe: ^8.0.0
+  #fire_base
+  firebase_core: ^2.8.0
+  firebase_storage: ^11.0.10
+  #flutter chart
+  flutter_charts: ^0.5.1
+  #card network image 
+  cached_network_image: ^3.2.0
+  #fl chart
+  fl_chart: ^0.55.2
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

@@ -10,7 +10,14 @@ class FeedBackView extends GetView<FeedbackController> {
     controller.isShowFeedback = true;
   }
 
-  _onSubmitFeedback() {}
+  void _onSubmitFeedback() async {
+    bool result = await controller.feedBackTrip();
+    if (result) {
+      Get.offAllNamed(Routes.home);
+    } else {
+      SnackBars.error(message: S.of(Get.context!).errorFeedback);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +27,7 @@ class FeedBackView extends GetView<FeedbackController> {
         elevation: 0.0,
         leading: IconButton(
           onPressed: () {
-            Get.offNamed(Routes.home);
+            Get.offAllNamed(Routes.home);
           },
           icon: SvgPicture.asset(
             AssetsConst.leftArrow,
@@ -41,13 +48,13 @@ class FeedBackView extends GetView<FeedbackController> {
                 height: 180,
               ),
               Text(
-                "The journey is complete!",
+                S.of(context).completeTrip,
                 style: AppTextStyles.heading1().copyWith(
                     color: AppColors.main[200], fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 8),
               Text(
-                "Thanks for being eco-conscious and choosing sustainable transportation.",
+                S.of(context).thanksTrip,
                 style: AppTextStyles.body2().copyWith(
                     color: AppColors.grey[400], fontWeight: FontWeight.w400),
                 textAlign: TextAlign.center,
@@ -58,7 +65,7 @@ class FeedBackView extends GetView<FeedbackController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Bike Fall Count",
+                          S.of(context).countFall,
                           style: AppTextStyles.body2().copyWith(
                               fontWeight: FontWeight.w600,
                               color: AppColors.grey[500]),
@@ -78,7 +85,7 @@ class FeedBackView extends GetView<FeedbackController> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          "Please enter the reason why the bike fell",
+                          S.of(context).reasonFall,
                           style: AppTextStyles.body2().copyWith(
                               fontWeight: FontWeight.w400,
                               color: AppColors.grey[400]),
@@ -95,8 +102,9 @@ class FeedBackView extends GetView<FeedbackController> {
                               )),
                           child: TextFormField(
                             maxLength: 100,
+                            controller: controller.reasonController,
                             decoration: InputDecoration(
-                              hintText: "Enter reason",
+                              hintText: S.of(context).enterReason,
                               hintStyle: AppTextStyles.body2().copyWith(
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.grey[300]),
@@ -121,18 +129,20 @@ class FeedBackView extends GetView<FeedbackController> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "Tell us your feedback 🙌",
+                      S.of(context).tellWithUs + " 🙌",
                       style: AppTextStyles.subHeading1().copyWith(
                           color: AppColors.white, fontWeight: FontWeight.w600),
                     ),
                     const SizedBox(height: 25),
                     RatingBar(
+                      initialRating: controller.star,
                       ratingWidget: RatingWidget(
-                          full: SvgPicture.asset(AssetsConst.activeStar),
-                          half: const SizedBox.shrink(),
-                          empty: SvgPicture.asset(AssetsConst.deactiveStar)),
+                        full: SvgPicture.asset(AssetsConst.activeStar),
+                        half: const SizedBox.shrink(),
+                        empty: SvgPicture.asset(AssetsConst.deactiveStar),
+                      ),
                       onRatingUpdate: (value) {
-                        controller.star = value.toInt();
+                        controller.star = value;
                       },
                       itemPadding: const EdgeInsets.symmetric(horizontal: 6),
                     ),
@@ -143,7 +153,7 @@ class FeedBackView extends GetView<FeedbackController> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Write something for us!",
+                            S.of(context).writeSometh,
                             style: AppTextStyles.body1().copyWith(
                                 color: AppColors.white,
                                 fontWeight: FontWeight.w400),
@@ -170,9 +180,10 @@ class FeedBackView extends GetView<FeedbackController> {
                                     width: 1,
                                   )),
                               child: TextFormField(
+                                controller: controller.feedbackController,
                                 maxLength: 100,
                                 decoration: InputDecoration(
-                                  hintText: "Enter feedback",
+                                  hintText: S.of(context).enterFeedback,
                                   hintStyle: AppTextStyles.body2().copyWith(
                                       fontWeight: FontWeight.w400,
                                       color: AppColors.grey[300]),
@@ -204,7 +215,7 @@ class FeedBackView extends GetView<FeedbackController> {
               padding: const EdgeInsets.all(12),
               child: Center(
                 child: Text(
-                  "Submit feedback",
+                  S.of(context).submitFeedback,
                   style: AppTextStyles.body1().copyWith(
                     fontWeight: FontWeight.w500,
                     color: AppColors.main.shade400,

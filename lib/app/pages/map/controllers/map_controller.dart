@@ -49,20 +49,24 @@ class MapController extends GetxController {
 
   @override
   Future<void> onInit() async {
-    _stationHttpService = Get.find<StationHttpService>();
+    await getListStation();
+    customMarker().then((value) {
+      _getCurrentLocation().then((value) {
+        setMarker();
+        isLoading = true;
+      });
+    });
+    super.onInit();
+  }
+
+  Future<List<StationModel>> getListStation() async {
+    _stationHttpService = Get.put<StationHttpService>(StationHttpService());
     final result = await _stationHttpService.getListStation();
     listStation = [];
     if (result.isSuccess() && result.data != null) {
       listStation = result.data ?? [];
     }
-    customMarker().then((value) {
-      _getCurrentLocation().then((value) {
-       setMarker() ;
-        isLoading = true;
-      });
-    });
-
-    super.onInit();
+    return listStation;
   }
 
   Future<void> _getCurrentLocation() async {
@@ -120,9 +124,9 @@ class MapController extends GetxController {
   }
 
   bool checkNumbicycle(int num) {
-    if (num > 0 && num < 5) {
+    if (num > 0 && num < 8) {
       return false;
-    } else if (num > 5) {
+    } else if (num > 8) {
       return true;
     }
     return false;
@@ -183,14 +187,14 @@ class MapController extends GetxController {
   }
 
   Future<void> goClick() async {
-    _launchMapsUrl(_currentStation?.lat ?? 0, _currentStation?.lng ?? 0);
+    launchMapsUrl(_currentStation?.lat ?? 0, _currentStation?.lng ?? 0);
   }
 
   bool checkMyPositon() {
     return position != null;
   }
 
-  void _launchMapsUrl(double lat, double lng) async {
+  void launchMapsUrl(double lat, double lng) async {
     final url = 'https://www.google.com/maps/search/?api=1&query=$lat,$lng';
     // ignore: deprecated_member_use
     if (await canLaunch(url)) {
@@ -206,26 +210,19 @@ class MapController extends GetxController {
     if (key.isNotEmpty && ((key.trim().isEmpty) || _keyStation == key.trim())) {
       return listStation;
     }
-
-    // facilities.clear();
-    // _keyStation = key.trim();
-    // bool isConnected = await NetworkUtil.isConnected();
-
-    // if (isConnected) {
-    //   var resp = await _riskScanHttp.searchFacility(_keyFacility);
-    //   if (resp.isSuccess() && resp.data != null) {
-    //     facilities = resp.data ?? [];
-    //   } else {
-    //     facilities = [];
-    //   }
-    // } else {
-    //   facilities = await _searchFacilityInCache(key);
-    // }
-    // //if (facilities.isEmpty) {
-    //SnackBars.error(message: S.current.noResultFound).show(duration: 2000);
-    //}
-    return listStation;
+    try {
+      List<StationModel> lisStationBySearch = [];
+      lisStationBySearch = listStation
+          .where((element) =>
+              element.address!.toLowerCase().contains(key.toLowerCase()))
+          .toList();
+      return lisStationBySearch;
+    } catch (e) {
+      return [];
+    }
   }
 
-  void chooseStation(StationModel station) {}
+  void chooseStation(StationModel station) {
+    onMarkerTapped(station);
+  }
 }

@@ -10,6 +10,9 @@ class AppKeys {
   static const beginRent = "begin-rent";
   static const bicycleIDRent = "bicycle-ID";
   static const rentID = "rent-ID";
+  static const isverify = "verify";
+  static const lockTemporary = "lock-temporary";
+  static const fallBicycle = "fallBicycle";
 }
 
 class AppColors {
@@ -73,7 +76,12 @@ class AppColors {
   static const colorChoosePlan = Color(0xff2C303E);
   static const colorText = Color(0xff1D1D1D);
 }
-
+class AppElevation {
+  static const card = .5;
+  static const button = 1;
+  static const navigationBar = 2;
+  static const popup = 2;
+}
 class AppProperties {
   //animation time duration
   static const String fontFamilyName = "Poppins";

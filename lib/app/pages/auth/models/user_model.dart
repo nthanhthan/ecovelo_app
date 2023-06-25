@@ -13,6 +13,7 @@ class UserModel {
     this.proPoint,
     this.verify,
     this.userId,
+    this.proccessing,
   });
   @HiveField(0)
   int? userId;
@@ -28,6 +29,8 @@ class UserModel {
   double? mainPoint;
   @HiveField(6)
   double? proPoint;
+  @HiveField(7)
+  bool? proccessing;
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
 
