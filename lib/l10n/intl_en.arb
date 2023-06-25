@@ -207,6 +207,10 @@
     "problemDetail": "Problem Detail",
     "resolve": "Resolve",
     "searchBicycle": "Search for Eco bicycle",
-    "confirmActiveBicycle": "Are you sure that off this {bicycleID} bike"
+    "confirmActiveBicycle": "Are you sure that off this {bicycleID} bike",
+    "revenueStatistics":"Revenue Statistics",
+    "totalRevenue": "Total Revenue",
+    "amountused": "Amounted used",
+    "negativeAmount": "Negative Amount"
 
 }

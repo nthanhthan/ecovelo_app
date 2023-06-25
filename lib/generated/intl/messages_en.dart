@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Sorry, Your account haven\'t been verified"),
         "addMoney": MessageLookupByLibrary.simpleMessage("Add money"),
         "amount": MessageLookupByLibrary.simpleMessage("Amount"),
+        "amountused": MessageLookupByLibrary.simpleMessage("Amounted used"),
         "appName": MessageLookupByLibrary.simpleMessage("ECOVELO"),
         "authenUser": MessageLookupByLibrary.simpleMessage("User Authencation"),
         "authenticated":
@@ -169,6 +170,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "myWallet": MessageLookupByLibrary.simpleMessage("My Wallet"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "needHelp": MessageLookupByLibrary.simpleMessage("Need Help ?"),
+        "negativeAmount":
+            MessageLookupByLibrary.simpleMessage("Negative Amount"),
         "newUser": MessageLookupByLibrary.simpleMessage("New User"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "niceDay": MessageLookupByLibrary.simpleMessage("Have a nice day!"),
@@ -241,6 +244,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "resolve": MessageLookupByLibrary.simpleMessage("Resolve"),
         "resolvedProblem": MessageLookupByLibrary.simpleMessage("Resolved"),
         "revenue": MessageLookupByLibrary.simpleMessage("Revenue"),
+        "revenueStatistics":
+            MessageLookupByLibrary.simpleMessage("Revenue Statistics"),
         "scanToRide": MessageLookupByLibrary.simpleMessage("Scan to Ride"),
         "score": MessageLookupByLibrary.simpleMessage(
             "Minimum score is 5000, please recharge"),
@@ -293,6 +298,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Total distances"),
         "totalProblem": MessageLookupByLibrary.simpleMessage("Total Problem"),
         "totalRent": MessageLookupByLibrary.simpleMessage("Total Rent"),
+        "totalRevenue": MessageLookupByLibrary.simpleMessage("Total Revenue"),
         "totalTime": MessageLookupByLibrary.simpleMessage("Total time"),
         "totalUser": MessageLookupByLibrary.simpleMessage("Total User"),
         "transferError":

@@ -72,6 +72,10 @@ class HomeScreen extends GetView<HomeController> {
     Get.toNamed(Routes.ecoStation);
   }
 
+  void _revenueOnClick() {
+    Get.toNamed(Routes.revenueView);
+  }
+
   Widget _buildBody(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.defaultBackground,
@@ -375,7 +379,7 @@ class HomeScreen extends GetView<HomeController> {
               context,
               S.of(context).revenue,
               AssetsConst.myWallet,
-              null,
+              _revenueOnClick,
             ),
           ],
         ),
