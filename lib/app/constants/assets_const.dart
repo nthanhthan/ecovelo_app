@@ -18,6 +18,7 @@ class AssetsConst {
   static const String notifyEmpty = "${preImgPath}notify_empty.jpg";
   static const String profileEmpty = "${preImgPath}profile_empty.jpg";
   static const String noData = "${preImgPath}no_data.jpg";
+  static const String ai = "${preImgPath}ai_icon.png";
 
   //json
   static const String qrScan = "${preJsonPath}qr_scan.json";
@@ -110,4 +111,18 @@ class AssetsConst {
   static const String revenueIC = "${preIconPath}revenue_ic.svg";
   static const String adminRole = "${preIconPath}admin_role.svg";
   static const String userRole = "${preIconPath}user_role.svg";
+  static const String robot1 = "${preIconPath}robot_1.svg";
+  static const String robot2 = "${preIconPath}robot_2.svg";
+  static const String robot3 = "${preIconPath}robot_3.svg";
+  static const String robot4 = "${preIconPath}robot_4.svg";
+  static const String robot5 = "${preIconPath}robot_5.svg";
+  static const String robot6 = "${preIconPath}robot_6.svg";
+  static const String robot7 = "${preIconPath}robot_7.svg";
+  static const String robot8 = "${preIconPath}robot_8.svg";
+  static const String aiBot = "${preIconPath}ai-bot.svg";
+  static const String busIc = "${preIconPath}bus_ic.svg";
+  static const String hotelIc = "${preIconPath}hotel_ic.svg";
+  static const String locationIc = "${preIconPath}location_ic.svg";
+  static const String restaurantIc = "${preIconPath}restaurant_ic.svg";
+  static const String schoolIc = "${preIconPath}school_ic.svg";
 }

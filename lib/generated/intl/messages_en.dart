@@ -37,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "addMoney": MessageLookupByLibrary.simpleMessage("Add money"),
         "amount": MessageLookupByLibrary.simpleMessage("Amount"),
         "amountused": MessageLookupByLibrary.simpleMessage("Amounted used"),
+        "analysisStation":
+            MessageLookupByLibrary.simpleMessage("Station Analysis"),
         "appName": MessageLookupByLibrary.simpleMessage("ECOVELO"),
         "authenUser": MessageLookupByLibrary.simpleMessage("User Authencation"),
         "authenticated":
@@ -172,6 +174,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "needHelp": MessageLookupByLibrary.simpleMessage("Need Help ?"),
         "negativeAmount":
             MessageLookupByLibrary.simpleMessage("Negative Amount"),
+        "newStation":
+            MessageLookupByLibrary.simpleMessage("New Eco Station Analysis"),
         "newUser": MessageLookupByLibrary.simpleMessage("New User"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "niceDay": MessageLookupByLibrary.simpleMessage("Have a nice day!"),

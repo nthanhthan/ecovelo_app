@@ -2179,6 +2179,26 @@ class S {
       args: [],
     );
   }
+
+  /// `New Eco Station Analysis`
+  String get newStation {
+    return Intl.message(
+      'New Eco Station Analysis',
+      name: 'newStation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Station Analysis`
+  String get analysisStation {
+    return Intl.message(
+      'Station Analysis',
+      name: 'analysisStation',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

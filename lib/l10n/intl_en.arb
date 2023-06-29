@@ -211,6 +211,8 @@
     "revenueStatistics":"Revenue Statistics",
     "totalRevenue": "Total Revenue",
     "amountused": "Amounted used",
-    "negativeAmount": "Negative Amount"
+    "negativeAmount": "Negative Amount",
+    "newStation": "New Eco Station Analysis",
+    "analysisStation": "Station Analysis"
 
 }
