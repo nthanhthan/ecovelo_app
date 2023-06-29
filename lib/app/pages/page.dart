@@ -18,3 +18,4 @@ export 'eco_user/eco_user.dart';
 export 'fix_problem/fix_problem.dart';
 export 'eco_station/eco_station.dart';
 export 'revenue/revenue.dart';
+export 'new_station/new_station.dart';

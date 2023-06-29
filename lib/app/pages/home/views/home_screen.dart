@@ -76,6 +76,10 @@ class HomeScreen extends GetView<HomeController> {
     Get.toNamed(Routes.revenueView);
   }
 
+  void __stationAnalysis() {
+    Get.toNamed(Routes.newStation);
+  }
+
   Widget _buildBody(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.defaultBackground,
@@ -86,7 +90,12 @@ class HomeScreen extends GetView<HomeController> {
             _animationHome(context),
             _mainContentWiget(context),
             controller.isAdmin == true
-                ? _adminWidget(context)
+                ? Column(
+                    children: [
+                      _adminWidget(context),
+                      _stationAI(context),
+                    ],
+                  )
                 : const SizedBox.shrink(),
             _voucherWidget(context),
           ],
@@ -796,6 +805,50 @@ class HomeScreen extends GetView<HomeController> {
           ),
         );
       },
+    );
+  }
+
+  Widget _stationAI(BuildContext context) {
+    return GestureDetector(
+      onTap: __stationAnalysis,
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        margin: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 5),
+        decoration: BoxDecoration(
+          color: AppColors.grey.shade600,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SimpleShadow(
+                opacity: 0.8,
+                color: AppColors.main,
+                offset: const Offset(.8, .8),
+                sigma: 15,
+                child: SpinKitPumpingHeart(
+                  itemBuilder: (ct, int index) {
+                    return Image.asset(
+                      AssetsConst.ai,
+                      height: 70,
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(width: 10),
+              Text(
+                S.of(context).newStation,
+                style: AppTextStyles.body1().copyWith(
+                  color: AppColors.grey,
+                  fontWeight: FontWeight.w700,
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

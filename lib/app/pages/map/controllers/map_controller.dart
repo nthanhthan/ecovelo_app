@@ -6,6 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MapController extends GetxController {
+  static MapController get to => Get.find();
   BitmapDescriptor? marker;
   BitmapDescriptor? markerRed;
   Set<Marker> myMarkers = {};

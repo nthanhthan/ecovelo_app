@@ -11,7 +11,7 @@ class MainController extends GetxController {
   late final SessionManager _sessionM;
 
   LoginResp? loginResp;
-   AuthHttpService? authHttpService;
+  AuthHttpService? authHttpService;
   @override
   void onInit() {
     _loginManager = Get.find<LoginManager>();
@@ -86,7 +86,8 @@ class MainController extends GetxController {
     } else {
       bool isNotFirstLaunch = Prefs.getBool(AppKeys.firstLaunch);
       if (isNotFirstLaunch) {
-        Get.offNamed(Routes.signin);
+        Get.offNamed<void>(Routes.onBoarding);
+        //Get.offNamed(Routes.signin);
       } else {
         await Prefs.saveBool(AppKeys.firstLaunch, true);
         Get.offNamed<void>(Routes.onBoarding);

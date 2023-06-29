@@ -13,6 +13,7 @@ class AppKeys {
   static const isverify = "verify";
   static const lockTemporary = "lock-temporary";
   static const fallBicycle = "fallBicycle";
+  static const lastUpdateAI = "lastUpdateAI";
 }
 
 class AppColors {
