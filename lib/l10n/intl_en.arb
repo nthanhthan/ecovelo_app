@@ -213,6 +213,12 @@
     "amountused": "Amounted used",
     "negativeAmount": "Negative Amount",
     "newStation": "New Eco Station Analysis",
-    "analysisStation": "Station Analysis"
+    "analysisStation": "Station Analysis",
+    "newJourney": "New Journey: {numJourney}",
+    "recommedStation": "Recommended Eco Station",
+    "lastUpdate": "Last Update:",
+    "viewMap": "View Map",
+    "update": "Update",
+    "ecoStation": "Eco Station {key}"
 
 }

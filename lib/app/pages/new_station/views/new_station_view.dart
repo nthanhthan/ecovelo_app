@@ -76,7 +76,7 @@ class NewStationView extends GetView<NewStationController> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Recommended Eco Station",
+                S.of(context).recommedStation,
                 style: AppTextStyles.subHeading1(),
               ),
               const SizedBox(width: 10),
@@ -93,7 +93,7 @@ class NewStationView extends GetView<NewStationController> {
           Row(
             children: [
               Text(
-                "Last Update:",
+                S.of(context).lastUpdate,
                 style:
                     AppTextStyles.small().copyWith(fontWeight: FontWeight.w500),
               ),
@@ -145,13 +145,13 @@ class NewStationView extends GetView<NewStationController> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Eco Station $key",
+                  S.of(context).ecoStation(key),
                   style: AppTextStyles.body1(),
                 ),
                 Row(
                   children: [
                     Text(
-                      "View Map",
+                      S.of(context).viewMap,
                       style: AppTextStyles.body2().copyWith(
                           color: AppColors.grey, fontWeight: FontWeight.w500),
                     ),
@@ -274,7 +274,7 @@ class NewStationView extends GetView<NewStationController> {
                   SvgPicture.asset(AssetsConst.journey),
                   const SizedBox(width: 10),
                   Text(
-                    "New Journey: ${controller.newJourney}",
+                    S.of(context).newJourney(controller.newJourney),
                     style:
                         AppTextStyles.body1().copyWith(color: AppColors.main),
                   ),
@@ -290,7 +290,7 @@ class NewStationView extends GetView<NewStationController> {
                   }
                 },
                 child: Text(
-                  "Update",
+                  S.of(context).update,
                   style: AppTextStyles.body1().copyWith(
                     fontWeight: FontWeight.w500,
                     color: AppColors.white,

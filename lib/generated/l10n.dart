@@ -2199,6 +2199,66 @@ class S {
       args: [],
     );
   }
+
+  /// `New Journey: {numJourney}`
+  String newJourney(Object numJourney) {
+    return Intl.message(
+      'New Journey: $numJourney',
+      name: 'newJourney',
+      desc: '',
+      args: [numJourney],
+    );
+  }
+
+  /// `Recommended Eco Station`
+  String get recommedStation {
+    return Intl.message(
+      'Recommended Eco Station',
+      name: 'recommedStation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Update:`
+  String get lastUpdate {
+    return Intl.message(
+      'Last Update:',
+      name: 'lastUpdate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View Map`
+  String get viewMap {
+    return Intl.message(
+      'View Map',
+      name: 'viewMap',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update`
+  String get update {
+    return Intl.message(
+      'Update',
+      name: 'update',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Eco Station {key}`
+  String ecoStation(Object key) {
+    return Intl.message(
+      'Eco Station $key',
+      name: 'ecoStation',
+      desc: '',
+      args: [key],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

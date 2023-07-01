@@ -43,6 +43,7 @@ class NewStationController extends GetxController {
   Future<void> onInit() async {
     lastUpdateAI = Prefs.getString(AppKeys.lastUpdateAI);
     _newStationService = Get.find<NewStationService>();
+    _newStationService.getNewStation();
     super.onInit();
   }
 
@@ -54,6 +55,7 @@ class NewStationController extends GetxController {
   }
 
   Future<void> addNewStation() async {
+    newListStation = [];
     LoadingAnswer loading = LoadingAnswer();
     loading.showLoadingAnswer();
     getListStation().then((value) async {
