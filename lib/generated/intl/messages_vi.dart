@@ -20,11 +20,11 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'vi';
 
-  static String m1(name) => "Chào ${name},";
+  static String m2(name) => "Chào ${name},";
 
-  static String m2(nums) => "${nums}+";
+  static String m4(nums) => "${nums}+";
 
-  static String m3(number) => "Trạm xe ECO- ${number} ";
+  static String m5(number) => "Trạm xe ECO- ${number} ";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -117,7 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "goStation": MessageLookupByLibrary.simpleMessage("Đi!"),
         "haveAccount": MessageLookupByLibrary.simpleMessage("Đã có tài khoản."),
         "helpCenter": MessageLookupByLibrary.simpleMessage("Trung tâm hỗ trợ"),
-        "hi": m1,
+        "hi": m2,
         "hintDes": MessageLookupByLibrary.simpleMessage("Nhập mô tả..."),
         "historyTransaction":
             MessageLookupByLibrary.simpleMessage("Lịch sử giao dịch"),
@@ -177,7 +177,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notesMustShorterThan": MessageLookupByLibrary.simpleMessage(
             "Mô tả phải ngắn hơn hoặc bằng 255 ký tự"),
         "notifi": MessageLookupByLibrary.simpleMessage("Thông báo"),
-        "numDistances": m2,
+        "numDistances": m4,
         "ok": MessageLookupByLibrary.simpleMessage("Đồng ý"),
         "onBoarding1Title": MessageLookupByLibrary.simpleMessage(
             "Xác định vị trí các trạm lân cận"),
@@ -236,7 +236,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "skip": MessageLookupByLibrary.simpleMessage("Bỏ qua"),
         "stationNearMe":
             MessageLookupByLibrary.simpleMessage("Trạm xe gần tôi"),
-        "stationNumber": m3,
+        "stationNumber": m5,
         "stopRentError": MessageLookupByLibrary.simpleMessage(
             "Trả xe không được hoàn tất, vui lòng thử lại"),
         "storageAccessDenied": MessageLookupByLibrary.simpleMessage(
