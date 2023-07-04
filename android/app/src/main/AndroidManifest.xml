@@ -14,7 +14,7 @@
    <application
         android:label="EcoVelo"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/logo_ecovelo">
         <activity
             android:name=".MainActivity"
             android:exported="true"

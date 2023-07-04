@@ -185,6 +185,14 @@ flutter:
 flutter_intl:
   enabled: true
 
+flutter_icons:
+  android: "logo_ecovelo"
+  ios: true
+  image_path: "assets/images/logo_ecovelo.png"
+  remove_alpha_ios: true
+  adaptive_icon_background: "assets/images/logo_ecovelo.png" # only available for Android 8.0 devices and above
+  adaptive_icon_foreground: "assets/images/logo_ecovelo.png" # only available for Android 8.0 devices and above
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:
