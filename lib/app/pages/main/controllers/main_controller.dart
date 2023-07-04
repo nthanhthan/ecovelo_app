@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
@@ -9,6 +10,7 @@ class MainController extends GetxController {
 
   late LoginManager _loginManager;
   late final SessionManager _sessionM;
+  late ConfigPackacgeService configService;
 
   LoginResp? loginResp;
   AuthHttpService? authHttpService;
@@ -16,7 +18,14 @@ class MainController extends GetxController {
   void onInit() {
     _loginManager = Get.find<LoginManager>();
     authHttpService = Get.find<AuthHttpService>();
-    appInitializer();
+    configService = ConfigPackacgeService(
+      configAndroid: "config_notification",
+      configIOS: "config_notification",
+    );
+    configService.initializeConfigRemote().then((value) {
+      appInitializer();
+    });
+
     super.onInit();
   }
 
@@ -64,6 +73,25 @@ class MainController extends GetxController {
     await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
     loginResp = _loginManager.getLogin();
+    try {
+      final data = configService.getRemoteConfig();
+      final result =
+          NotificationConfig.fromJson(jsonDecode(data) as Map<String, dynamic>);
+      if (result.isEnable != null && result.isEnable == true) {
+        NotificationService().cancelNotificationAll().then((value) {
+          NotificationService().scheduledNotification(
+            id: 2,
+            title: "EcoVelo",
+            body: result.message ?? "",
+            hour: result.hour??16,
+            minute: result.minutes??30,
+          );
+        });
+      } else {
+        await NotificationService().cancelNotificationAll();
+      }
+      // ignore: empty_catches
+    } catch (e) {}
 
     //Delay for show Splash screen
     await Future.delayed(const Duration(seconds: 2), () {
