@@ -10,7 +10,7 @@ class NotificationService {
   Future<void> initNotification() async {
     _configureLocalTimeZone();
     AndroidInitializationSettings initializationSettingsAndroid =
-        const AndroidInitializationSettings('@mipmap/launcher_icon');
+        const AndroidInitializationSettings('@mipmap/logo_ecovelo');
 
     const IOSInitializationSettings initializationSettingsIOS =
         IOSInitializationSettings();
