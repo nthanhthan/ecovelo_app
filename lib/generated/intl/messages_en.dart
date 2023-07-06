@@ -196,6 +196,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Password don\'t match"),
         "noResultFound":
             MessageLookupByLibrary.simpleMessage("No results found"),
+        "noSupportBank": MessageLookupByLibrary.simpleMessage(
+            "The application does not support this bank yet."),
         "notBuyMorePoint":
             MessageLookupByLibrary.simpleMessage("Can\'t buy more point"),
         "notFinishRide":

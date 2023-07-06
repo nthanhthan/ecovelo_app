@@ -13,7 +13,7 @@ class DefaultValues {
     BankModel(
       id: 0,
       nameBank: "Stripe",
-      desBank: "Ngân hàng TMCP Kỹ thương Việt Nam",
+      desBank: "Dịch vụ tài chính Stripe",
       logo: AssetsConst.stripeIc,
     ),
     BankModel(

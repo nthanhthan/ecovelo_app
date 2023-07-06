@@ -219,6 +219,7 @@
     "lastUpdate": "Last Update:",
     "viewMap": "View Map",
     "update": "Update",
-    "ecoStation": "Eco Station {key}"
+    "ecoStation": "Eco Station {key}",
+    "noSupportBank": "The application does not support this bank yet."
 
 }

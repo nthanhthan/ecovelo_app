@@ -6,7 +6,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class BarChartSample1 extends StatefulWidget {
-  BarChartSample1({super.key});
+  BarChartSample1({super.key, this.loadingRevenue});
+  final void Function()? loadingRevenue;
 
   List<Color> get availableColors => const <Color>[
         AppColors.lightPurple,
@@ -21,15 +22,33 @@ class BarChartSample1 extends StatefulWidget {
   final Color touchedBarColor = AppColors.main;
 
   @override
-  State<StatefulWidget> createState() => BarChartSample1State();
+  // ignore: no_logic_in_create_state
+  State<StatefulWidget> createState() => BarChartSample1State(loadingRevenue);
 }
 
 class BarChartSample1State extends State<BarChartSample1> {
   final Duration animDuration = const Duration(milliseconds: 250);
-
+  final void Function()? loading;
   int touchedIndex = -1;
 
-  bool isPlaying = false;
+  bool isPlaying = true;
+  
+  BarChartSample1State(this.loading);
+  @override
+  void initState() {
+    super.initState();
+
+    // Đăng ký một PostFrameCallback để thực hiện tác vụ sau
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      refreshState();
+      Future.delayed(const Duration(seconds: 5), () {
+        isPlaying = false;
+        refreshState();
+       loading?.call();
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -74,26 +93,26 @@ class BarChartSample1State extends State<BarChartSample1> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: IconButton(
-                  icon: Icon(
-                    isPlaying ? Icons.pause : Icons.play_arrow,
-                    color: AppColors.main,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      isPlaying = !isPlaying;
-                      if (isPlaying) {
-                        refreshState();
-                      }
-                    });
-                  },
-                ),
-              ),
-            )
+            // Padding(
+            //   padding: const EdgeInsets.all(8),
+            //   child: Align(
+            //     alignment: Alignment.topRight,
+            //     child: IconButton(
+            //       icon: Icon(
+            //         isPlaying ? Icons.pause : Icons.play_arrow,
+            //         color: AppColors.main,
+            //       ),
+            //       onPressed: () {
+            //         setState(() {
+            //           isPlaying = !isPlaying;
+            //           if (isPlaying) {
+            //             refreshState();
+            //           }
+            //         });
+            //       },
+            //     ),
+            //   ),
+            // )
           ],
         ),
       ),

@@ -9,6 +9,10 @@ class RevenueView extends GetView<RevenueController> {
     return _buildBody(context);
   }
 
+  void _loadingRevenue() {
+    controller.isLoading = true;
+  }
+
   Widget _buildBody(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.defaultBackground,
@@ -36,7 +40,7 @@ class RevenueView extends GetView<RevenueController> {
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              BarChartSample1(),
+              BarChartSample1(loadingRevenue: _loadingRevenue),
               Column(
                 children: DefaultValues.listRevenues
                     .asMap()
@@ -70,60 +74,67 @@ class RevenueView extends GetView<RevenueController> {
           ),
         ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 22,
-                      height: 13,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Color(revenueModel.color ?? 0xff75CE5A),
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                    Text(
-                      revenueModel.typeRevenue ?? "",
-                      style: AppTextStyles.body1(),
-                    ),
-                  ],
-                ),
-              ),
-              Row(
-                children: [
-                  revenueModel.isRaise == true
-                      ? Icon(
-                          Icons.arrow_upward_rounded,
-                          color: Color(revenueModel.color ?? 0xff75CE5A),
-                        )
-                      : Icon(
-                          Icons.arrow_downward_outlined,
+      child: Obx(
+        () => Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 22,
+                        height: 13,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
                           color: Color(revenueModel.color ?? 0xff75CE5A),
                         ),
-                  const SizedBox(width: 15),
-                  const Icon(
-                    Icons.navigate_next_rounded,
-                    color: AppColors.black,
+                      ),
+                      const SizedBox(width: 20),
+                      Text(
+                        revenueModel.typeRevenue ?? "",
+                        style: AppTextStyles.body1(),
+                      ),
+                    ],
                   ),
-                ],
-              )
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: Text(
-              controller.parseMoney(revenueModel.money),
-              style: AppTextStyles.body1(),
+                ),
+                Visibility(
+                  visible: controller.isLoading,
+                  child: Row(
+                    children: [
+                      revenueModel.isRaise == true
+                          ? Icon(
+                              Icons.arrow_upward_rounded,
+                              color: Color(revenueModel.color ?? 0xff75CE5A),
+                            )
+                          : Icon(
+                              Icons.arrow_downward_outlined,
+                              color: Color(revenueModel.color ?? 0xff75CE5A),
+                            ),
+                      const SizedBox(width: 15),
+                      const Icon(
+                        Icons.navigate_next_rounded,
+                        color: AppColors.black,
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
-          ),
-        ],
+            controller.isLoading
+                ? Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: Text(
+                      controller.parseMoney(revenueModel.money),
+                      style: AppTextStyles.body1(),
+                    ),
+                  )
+                : ThreeBounceLoading(),
+          ],
+        ),
       ),
     );
   }

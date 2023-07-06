@@ -2259,6 +2259,16 @@ class S {
       args: [key],
     );
   }
+
+  /// `The application does not support this bank yet.`
+  String get noSupportBank {
+    return Intl.message(
+      'The application does not support this bank yet.',
+      name: 'noSupportBank',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

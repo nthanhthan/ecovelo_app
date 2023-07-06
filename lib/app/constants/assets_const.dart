@@ -19,6 +19,7 @@ class AssetsConst {
   static const String profileEmpty = "${preImgPath}profile_empty.jpg";
   static const String noData = "${preImgPath}no_data.jpg";
   static const String ai = "${preImgPath}ai_icon.png";
+  static const String logo = "${preImgPath}logo_ecovelo.png";
 
   //json
   static const String qrScan = "${preJsonPath}qr_scan.json";
