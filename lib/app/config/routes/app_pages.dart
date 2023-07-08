@@ -1,5 +1,3 @@
-import 'package:ecoveloapp/app/pages/setting/bindings/profile_binding.dart';
-
 import '../../core.dart';
 part 'app_routes.dart';
 
@@ -131,6 +129,7 @@ class AppPages {
       transition: Transition.rightToLeft,
     ),
     GetPage<dynamic>(
+      binding:EcoUseDetailBinding(),
       name: Routes.ecoUserDetail,
       page: () => const EcoUserDetail(),
       transition: Transition.rightToLeft,
@@ -162,10 +161,21 @@ class AppPages {
       binding: EcoStationBinding(),
       transition: Transition.rightToLeft,
     ),
-       GetPage<dynamic>(
+    GetPage<dynamic>(
       name: Routes.revenueView,
       page: () => const RevenueView(),
       binding: RevenueBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<dynamic>(
+      name: Routes.newStation,
+      page: () => const NewStationView(),
+      binding: NewStationBinding(),
+      transition: Transition.rightToLeft,
+    ),
+      GetPage<dynamic>(
+      name: Routes.mapStation,
+      page: () => const MapViewStaton(),
       transition: Transition.rightToLeft,
     ),
   ];

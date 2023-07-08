@@ -39,7 +39,7 @@ class HistoryController extends GetxController {
         DateTime date = DateTime.fromMillisecondsSinceEpoch(
             historyItem.dateTimeTransaction ?? 0);
 
-        DateTime day = DateTime(date.year, date.month, date.day);
+        DateTime day = DateTime(date.year, date.month);
         List<HistoryModel> group = groups[day] ?? [];
 
         group.add(historyItem);

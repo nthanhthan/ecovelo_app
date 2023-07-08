@@ -18,6 +18,8 @@ export 'services/multipart_file_extended.dart';
 export 'services/error_message_delegate.dart';
 export 'services/http_config.dart';
 export 'services/refresh_token_res.dart';
+export 'services/config_package_service.dart';
+export 'services/notification_service.dart';
 export 'utils/app_orientation.dart';
 export 'utils/date_util.dart';
 export 'utils/device_util.dart';

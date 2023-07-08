@@ -5,3 +5,4 @@ export 'views/language_view.dart';
 export 'views/profile_view.dart';
 export 'models/language_model.dart';
 export 'bindings/setting_binding.dart';
+export 'bindings/profile_binding.dart';

@@ -2179,6 +2179,236 @@ class S {
       args: [],
     );
   }
+
+  /// `New Eco Station Analysis`
+  String get newStation {
+    return Intl.message(
+      'New Eco Station Analysis',
+      name: 'newStation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Station Analysis`
+  String get analysisStation {
+    return Intl.message(
+      'Station Analysis',
+      name: 'analysisStation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Journey: {numJourney}`
+  String newJourney(Object numJourney) {
+    return Intl.message(
+      'New Journey: $numJourney',
+      name: 'newJourney',
+      desc: '',
+      args: [numJourney],
+    );
+  }
+
+  /// `Recommended Eco Station`
+  String get recommedStation {
+    return Intl.message(
+      'Recommended Eco Station',
+      name: 'recommedStation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Update:`
+  String get lastUpdate {
+    return Intl.message(
+      'Last Update:',
+      name: 'lastUpdate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View Map`
+  String get viewMap {
+    return Intl.message(
+      'View Map',
+      name: 'viewMap',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update`
+  String get update {
+    return Intl.message(
+      'Update',
+      name: 'update',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Eco Station {key}`
+  String ecoStation(Object key) {
+    return Intl.message(
+      'Eco Station $key',
+      name: 'ecoStation',
+      desc: '',
+      args: [key],
+    );
+  }
+
+  /// `The application does not support this bank yet.`
+  String get noSupportBank {
+    return Intl.message(
+      'The application does not support this bank yet.',
+      name: 'noSupportBank',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Role`
+  String get role {
+    return Intl.message(
+      'Role',
+      name: 'role',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Authencation`
+  String get authencation {
+    return Intl.message(
+      'Authencation',
+      name: 'authencation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View`
+  String get view {
+    return Intl.message(
+      'View',
+      name: 'view',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Num Rent`
+  String get numRent {
+    return Intl.message(
+      'Num Rent',
+      name: 'numRent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message(
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sorry, Process failed, try again!`
+  String get authenError {
+    return Intl.message(
+      'Sorry, Process failed, try again!',
+      name: 'authenError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Font Side`
+  String get frontSide {
+    return Intl.message(
+      'Font Side',
+      name: 'frontSide',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back Side`
+  String get backSide {
+    return Intl.message(
+      'Back Side',
+      name: 'backSide',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Authencated`
+  String get authencated {
+    return Intl.message(
+      'Authencated',
+      name: 'authencated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `UnAuthencated`
+  String get unAuthencated {
+    return Intl.message(
+      'UnAuthencated',
+      name: 'unAuthencated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Processing`
+  String get processAuthen {
+    return Intl.message(
+      'Processing',
+      name: 'processAuthen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Running`
+  String get running {
+    return Intl.message(
+      'Running',
+      name: 'running',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Active`
+  String get active {
+    return Intl.message(
+      'Active',
+      name: 'active',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Free`
+  String get freeBike {
+    return Intl.message(
+      'Free',
+      name: 'freeBike',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

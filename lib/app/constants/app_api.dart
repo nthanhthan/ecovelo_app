@@ -12,6 +12,10 @@ class AppApi {
   static const String verifyAccount = "$apiVer/auth/verify";
   //station
   static const String getListStation = "$apiVer/station/getStation";
+  static const String getRecommendStation =
+      "http://192.168.1.48:8000/cluster-centers";
+  static String getRecogetNearBy(lat, lng, radius, category, apiKey) =>
+      "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$lat,$lng&radius=$radius&type=$category&key=$apiKey";
   //QR
   static const String checkQR = "$apiVer/bicycle/checkQR";
   static const String checkQRReport = "$apiVer/bicycle/check-report";
@@ -19,7 +23,8 @@ class AppApi {
   static const String rentBicycle = "$apiVer/bicycle/rent-bicycle";
   static const String stopRentBicycle = "$apiVer/bicycle/stop-rent";
   static const String reportProblem = "$apiVer/bicycle/report-problem";
-  static  String fallBicycle(idRent) => "$apiVer/bicycle/fallBicycle/$idRent";
+  static const String getCountRent = "$apiVer/bicycle/count-rent";
+  static String fallBicycle(idRent) => "$apiVer/bicycle/fallBicycle/$idRent";
   //trip
   static const String sendTrip = "$apiVer/trip/addTripDetail";
   static const String getListTrip = "$apiVer/trip/getListTrip";
@@ -27,4 +32,9 @@ class AppApi {
   //add money
   static const String addMoney = "$apiVer/auth/addMoney";
   static const String getHistory = "$apiVer/transaction/getTransaction";
+  //admin
+  static const String getAllUser = "$apiVer/auth/getAllUser";
+  static String getDetailUser(idUser) => "$apiVer/auth/getDetailUser/$idUser";
+  static String cofimAuthencation(idUser) =>
+      "$apiVer/auth/confirm-authencation/$idUser";
 }

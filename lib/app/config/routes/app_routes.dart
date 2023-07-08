@@ -29,4 +29,7 @@ abstract class Routes {
   static const fixProblemDetail = '/fix_problem_detail_view';
   static const ecoStation = '/eco_station_view';
   static const revenueView = '/revenue_view';
+  static const newStation = '/new_station_view';
+  static const mapStation = '/map_station';
+
 }

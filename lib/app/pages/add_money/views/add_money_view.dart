@@ -210,7 +210,11 @@ class AddMoneyView extends GetView<AddMoneyController> {
     return Obx(() {
       return InkWell(
         onTap: () {
-          _seclectedBank(bankModel);
+          if (bankModel.id == 0) {
+            _seclectedBank(bankModel);
+          } else {
+            noSupportBank(context);
+          }
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8),
@@ -265,6 +269,74 @@ class AddMoneyView extends GetView<AddMoneyController> {
         ),
       );
     });
+  }
+
+  void noSupportBank(BuildContext context) {
+    showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25),
+          ),
+          child: Stack(
+            children: [
+              ListView(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 5),
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 15,
+                    ),
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.asset(
+                            AssetsConst.logo,
+                            height: 80,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          S.of(context).noSupportBank,
+                          style: AppTextStyles.body1().copyWith(
+                            color: AppColors.main.shade200,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                        const SizedBox(height: 30),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          style: OutlineButtonStyle.enable(isFullWidth: true),
+                          child: Text(
+                            S.of(context).ok,
+                            style: AppTextStyles.body1().copyWith(
+                              color: AppColors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
 

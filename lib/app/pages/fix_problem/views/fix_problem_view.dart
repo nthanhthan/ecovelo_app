@@ -200,14 +200,16 @@ class FixProblemView extends GetView<FixProblemController> {
                   height: 20,
                 ),
                 const SizedBox(width: 10),
-                Text(
-                  text,
-                  style: AppTextStyles.tiny().copyWith(
-                    color: AppColors.grey,
-                    fontWeight: FontWeight.w600,
+                Expanded(
+                  child: Text(
+                    text,
+                    style: AppTextStyles.tiny().copyWith(
+                      color: AppColors.grey,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),

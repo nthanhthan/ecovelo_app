@@ -1,7 +1,7 @@
 import 'package:ecoveloapp/app/core.dart';
 import 'package:flutter/material.dart';
 
-class EcoUserDetail extends GetView<EcoUserController> {
+class EcoUserDetail extends GetView<EcoUserDetailController> {
   const EcoUserDetail({Key? key}) : super(key: key);
 
   @override
@@ -13,8 +13,11 @@ class EcoUserDetail extends GetView<EcoUserController> {
     Get.toNamed(Routes.changeRole);
   }
 
-  void _authencationClick() {
-    Get.toNamed(Routes.authencationView);
+  Future<void> _authencationClick() async {
+    final result = await Get.toNamed(Routes.authencationView);
+    if (result != null && result is int) {
+      controller.getDetailUser(result);
+    }
   }
 
   Widget _buildBody(BuildContext context) {
@@ -29,7 +32,7 @@ class EcoUserDetail extends GetView<EcoUserController> {
         centerTitle: true,
         leading: InkWell(
           onTap: () {
-            Get.back();
+            Get.offNamed(Routes.ecoUser);
           },
           child: Icon(
             Icons.arrow_back_ios_new,
@@ -41,93 +44,115 @@ class EcoUserDetail extends GetView<EcoUserController> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              _detailItem(
-                context,
-                "ID",
-                "1",
-                false,
-              ),
-              _detailItem(
-                context,
-                "Name",
-                "Thanh Than",
-                false,
-              ),
-              _detailItem(
-                context,
-                "Role",
-                "User",
-                true,
-                nameChange: "Change",
-                handle: _changeRoleClick,
-              ),
-              _detailItem(
-                context,
-                "Authencation",
-                "Authencated",
-                true,
-                nameChange: "View",
-                handle: _authencationClick,
-              ),
-              _detailItem(
-                context,
-                "Num Rent",
-                "20",
-                true,
-                nameChange: "View",
-                handle: null,
-              ),
-              _detailItem(
-                context,
-                "Num Fall",
-                "0",
-                true,
-                nameChange: "View",
-                handle: null,
-              ),
-              _detailItem(
-                context,
-                "Report Problem",
-                "5",
-                true,
-                nameChange: "View",
-                handle: null,
-              ),
-              _detailItem(
-                context,
-                "Phone",
-                "0901948483",
-                false,
-              ),
-              _detailItem(
-                context,
-                "Email",
-                "thanthan2k1@gmail.com",
-                false,
-              ),
-              _detailItem(
-                context,
-                "Address",
-                "Da Nang",
-                false,
-              ),
-              _detailItem(
-                context,
-                "Main Point",
-                "200",
-                false,
-              ),
-              _detailItem(
-                context,
-                "Pro Point",
-                "0",
-                false,
-              ),
-              const SizedBox(height: 20),
-              _btnBottom(context),
-            ],
+          child: Obx(
+            () => controller.isLoading
+                ? Column(
+                    children: [
+                      _detailItem(
+                        context,
+                        "ID",
+                        controller.getEcoUserModel?.userModel?.userId
+                                .toString() ??
+                            "0",
+                        false,
+                      ),
+                      _detailItem(
+                        context,
+                        S.of(context).name,
+                        controller.getEcoUserModel?.userModel?.nameUser ??
+                            "Not Name",
+                        false,
+                      ),
+                      _detailItem(
+                        context,
+                        S.of(context).role,
+                        "User",
+                        true,
+                        nameChange: S.of(context).changeRole,
+                        handle: _changeRoleClick,
+                      ),
+                      _detailItem(
+                        context,
+                        S.of(context).authencation,
+                        controller.getEcoUserModel?.getTypeAuthencation() ??
+                            TypeAuthencation.unAuthencated,
+                        true,
+                        nameChange:
+                            controller.getEcoUserModel?.getTypeAuthencation() !=
+                                    TypeAuthencation.unAuthencated
+                                ? S.of(context).view
+                                : null,
+                        handle:
+                            controller.getEcoUserModel?.getTypeAuthencation() !=
+                                    TypeAuthencation.unAuthencated
+                                ? _authencationClick
+                                : null,
+                      ),
+                      _detailItem(
+                        context,
+                        S.of(context).numRent,
+                        controller.getEcoUserModel?.totalRent.toString() ?? "0",
+                        true,
+                        nameChange: S.of(context).view,
+                        handle: null,
+                      ),
+                      _detailItem(
+                        context,
+                        S.of(context).numFall,
+                        controller.getEcoUserModel?.numFall.toString() ?? "0",
+                        true,
+                        nameChange: S.of(context).view,
+                        handle: null,
+                      ),
+                      _detailItem(
+                        context,
+                        S.of(context).reportProblem,
+                        "0",
+                        true,
+                        nameChange: S.of(context).view,
+                        handle: null,
+                      ),
+                      _detailItem(
+                        context,
+                        S.of(context).phoneNumber,
+                        "0901948483",
+                        false,
+                      ),
+                      _detailItem(
+                        context,
+                        S.of(context).email,
+                        controller.getEcoUserModel?.userModel?.email
+                                .toString() ??
+                            "No Email",
+                        false,
+                      ),
+                      _detailItem(
+                        context,
+                        S.of(context).address,
+                        "Đà Nẵng",
+                        false,
+                      ),
+                      _detailItem(
+                        context,
+                        S.of(context).mainWallet,
+                        controller.parseMoney(controller
+                            .getEcoUserModel?.userModel?.mainPoint
+                            ?.toInt()),
+                        false,
+                      ),
+                      _detailItem(
+                        context,
+                        S.of(context).promoWallet,
+                        controller.parseMoney(controller
+                            .getEcoUserModel?.userModel?.proPoint
+                            ?.toInt()),
+                        false,
+                      ),
+                      const SizedBox(height: 20),
+                      _btnBottom(context),
+                    ],
+                  )
+                : const SizedBox.shrink(),
           ),
         ),
       ),

@@ -6,8 +6,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 class EcoUserView extends GetView<EcoUserController> {
   const EcoUserView({Key? key}) : super(key: key);
 
-  void _userDetailClick() {
-    Get.toNamed(Routes.ecoUserDetail);
+  Future<void> _userDetailClick(EcoUserModel ecoUserModel) async {
+    if (ecoUserModel.userModel != null) {
+      Get.offNamed(
+        Routes.ecoUserDetail,
+        arguments: ecoUserModel.userModel!.userId,
+      );
+    } else {
+      SnackBars.error(message: "Error, Try again please").show();
+    }
   }
 
   @override
@@ -39,33 +46,45 @@ class EcoUserView extends GetView<EcoUserController> {
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.main),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Column(
-                  children: [
-                    const BarChartSample3(),
-                    Text(
-                      S.of(context).newUser,
-                      style: AppTextStyles.body1(),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
-              _topWiget(context),
-              const SizedBox(height: 20),
-              _itemUser(context),
-              _itemUser(context),
-              _itemUser(context),
-              _itemUser(context),
-              _itemUser(context),
-              _itemUser(context),
-            ],
+          child: Obx(
+            () => controller.isLoading
+                ? controller.listEcoUser.isListNullOrEmpty
+                    ? Center(
+                        child: Image.asset(
+                          AssetsConst.profileEmpty,
+                        ),
+                      )
+                    : Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(color: AppColors.main),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Column(
+                              children: [
+                                const BarChartSample3(),
+                                Text(
+                                  S.of(context).newUser,
+                                  style: AppTextStyles.body1(),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          _topWiget(context),
+                          const SizedBox(height: 20),
+                          Column(
+                            children: controller.listEcoUser!
+                                .asMap()
+                                .entries
+                                .map((e) => _itemUser(
+                                    context, controller.listEcoUser![e.key]))
+                                .toList(),
+                          ),
+                        ],
+                      )
+                : const SizedBox.shrink(),
           ),
         ),
       ),
@@ -95,12 +114,12 @@ class EcoUserView extends GetView<EcoUserController> {
                 _itemAnalysis(
                   context,
                   S.of(context).totalUser,
-                  "10",
+                  controller.listEcoUser?.length ?? 0,
                 ),
                 _itemAnalysis(
                   context,
                   S.of(context).authenticated,
-                  "5",
+                  controller.authencated,
                 ),
               ],
             ),
@@ -112,12 +131,12 @@ class EcoUserView extends GetView<EcoUserController> {
                 _itemAnalysis(
                   context,
                   S.of(context).unauthenticated,
-                  "4",
+                  controller.unauthencated,
                 ),
                 _itemAnalysis(
                   context,
                   S.of(context).pendingProcessing,
-                  "1",
+                  controller.processing,
                 ),
               ],
             ),
@@ -130,7 +149,7 @@ class EcoUserView extends GetView<EcoUserController> {
   Widget _itemAnalysis(
     BuildContext context,
     String text,
-    String number,
+    int number,
   ) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
@@ -141,43 +160,40 @@ class EcoUserView extends GetView<EcoUserController> {
           customPadding: const EdgeInsets.fromLTRB(12, 15, 5, 15),
           outlineColor: AppColors.white,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Center(
-                  child: Text(
-                    text,
-                    style: AppTextStyles.tiny().copyWith(
-                      color: AppColors.grey.shade100,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+            Center(
+              child: Text(
+                text,
+                style: AppTextStyles.tiny().copyWith(
+                  color: AppColors.grey.shade100,
+                  fontWeight: FontWeight.w600,
                 ),
-                Text(
-                  number,
-                  style: AppTextStyles.body1().copyWith(
-                    color: AppColors.grey.shade100,
-                  ),
-                ),
-                const SizedBox(width: 4),
-              ],
-            )
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            Text(
+              number.toString(),
+              style: AppTextStyles.body1().copyWith(
+                color: AppColors.grey.shade100,
+              ),
+            ),
+            const SizedBox(width: 4),
           ],
         ),
       ),
     );
   }
 
-  Widget _itemUser(BuildContext context) {
+  Widget _itemUser(BuildContext context, EcoUserModel ecoUserModel) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: OutlinedButton(
-        onPressed: _userDetailClick,
+        onPressed: () {
+          _userDetailClick(ecoUserModel);
+        },
         style: OutlineButtonStyle.enable(
           sizeType: SizeButtonType.custom,
           outlineColor: AppColors.grey.shade300,
@@ -197,28 +213,36 @@ class EcoUserView extends GetView<EcoUserController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "1. Thanh Than -User",
+                        "${ecoUserModel.userModel?.userId} - ${ecoUserModel.userModel?.nameUser}",
                         style: AppTextStyles.body1()
                             .copyWith(color: AppColors.main),
-                      ),
-                      const SizedBox(height: 10),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15),
-                        child: Text(
-                          "0901948483",
-                          style: AppTextStyles.body2()
-                              .copyWith(color: AppColors.main),
-                        ),
                       ),
                       const SizedBox(height: 5),
                     ],
                   ),
                 ),
                 Text(
-                  "Authenticated",
+                  ecoUserModel.getTypeAuthencation(),
                   style: AppTextStyles.body1().copyWith(color: AppColors.main),
                 )
               ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 5),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.email_outlined,
+                    color: AppColors.grey.shade200,
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    ecoUserModel.userModel?.email ?? "0901948483",
+                    style:
+                        AppTextStyles.body2().copyWith(color: AppColors.main),
+                  ),
+                ],
+              ),
             ),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 10),
@@ -240,13 +264,13 @@ class EcoUserView extends GetView<EcoUserController> {
                     context,
                     AssetsConst.icEcovelo,
                     S.of(context).totalRent,
-                    "10",
+                    ecoUserModel.totalRent ?? 0,
                   ),
                   _itemActivites(
                     context,
                     AssetsConst.problemIC,
                     S.of(context).numFall,
-                    "0",
+                    ecoUserModel.numFall ?? 0,
                   ),
                 ],
               ),
@@ -261,7 +285,7 @@ class EcoUserView extends GetView<EcoUserController> {
     BuildContext context,
     String icon,
     String text,
-    String number,
+    int number,
   ) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -290,7 +314,7 @@ class EcoUserView extends GetView<EcoUserController> {
               ),
             ),
             Text(
-              number,
+              number.toString(),
               style: AppTextStyles.body1()
                   .copyWith(color: AppColors.main.shade200),
             ),

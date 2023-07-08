@@ -1,7 +1,11 @@
 export 'bindings/eco_user_binding.dart';
+export 'bindings/eco_user_detail_binding.dart';
 export 'controllers/eco_user_controller.dart';
+export 'controllers/eco_user_detail.dart';
 export 'views/eco_user_view.dart';
 export 'views/eco_user_detail.dart';
 export 'views/change_role.dart';
 export 'views/authencation_view.dart';
 export 'views/line_chart.dart';
+export 'models/eco_user_model.dart';
+export 'services/eco_user_service.dart';

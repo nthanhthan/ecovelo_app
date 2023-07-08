@@ -22,11 +22,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(bicycleID) => "Are you sure that off this ${bicycleID} bike";
 
-  static String m1(name) => "Hi ${name},";
+  static String m1(key) => "Eco Station ${key}";
 
-  static String m2(nums) => "${nums}+";
+  static String m2(name) => "Hi ${name},";
 
-  static String m3(number) => "ECO - Station ${number} ";
+  static String m3(numJourney) => "New Journey: ${numJourney}";
+
+  static String m4(nums) => "${nums}+";
+
+  static String m5(number) => "ECO - Station ${number} ";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -34,14 +38,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "accUser": MessageLookupByLibrary.simpleMessage("Eco User"),
         "accountMustVeifi": MessageLookupByLibrary.simpleMessage(
             "Sorry, Your account haven\'t been verified"),
+        "active": MessageLookupByLibrary.simpleMessage("Active"),
         "addMoney": MessageLookupByLibrary.simpleMessage("Add money"),
+        "address": MessageLookupByLibrary.simpleMessage("Address"),
         "amount": MessageLookupByLibrary.simpleMessage("Amount"),
         "amountused": MessageLookupByLibrary.simpleMessage("Amounted used"),
+        "analysisStation":
+            MessageLookupByLibrary.simpleMessage("Station Analysis"),
         "appName": MessageLookupByLibrary.simpleMessage("ECOVELO"),
+        "authenError": MessageLookupByLibrary.simpleMessage(
+            "Sorry, Process failed, try again!"),
         "authenUser": MessageLookupByLibrary.simpleMessage("User Authencation"),
+        "authencated": MessageLookupByLibrary.simpleMessage("Authencated"),
+        "authencation": MessageLookupByLibrary.simpleMessage("Authencation"),
         "authenticated":
             MessageLookupByLibrary.simpleMessage("Authenticated User"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "backSide": MessageLookupByLibrary.simpleMessage("Back Side"),
         "backView": MessageLookupByLibrary.simpleMessage("Back view"),
         "bicycleRented": MessageLookupByLibrary.simpleMessage(
             "Vehicle is in use, please change to another vehicle"),
@@ -85,6 +98,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "discoutText": MessageLookupByLibrary.simpleMessage("Discount"),
         "distances": MessageLookupByLibrary.simpleMessage("Distances "),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
+        "ecoStation": m1,
         "ecoVoucher": MessageLookupByLibrary.simpleMessage("Eco Voucher"),
         "ecoitem": MessageLookupByLibrary.simpleMessage("EcoVelo"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -122,6 +136,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "free": MessageLookupByLibrary.simpleMessage("Free"),
+        "freeBike": MessageLookupByLibrary.simpleMessage("Free"),
+        "frontSide": MessageLookupByLibrary.simpleMessage("Font Side"),
         "frontView": MessageLookupByLibrary.simpleMessage("Font view"),
         "getMoreTime": MessageLookupByLibrary.simpleMessage("Get  more time"),
         "goBackHome": MessageLookupByLibrary.simpleMessage("Go back to home"),
@@ -129,7 +145,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "haveAccount":
             MessageLookupByLibrary.simpleMessage("Have been an account."),
         "helpCenter": MessageLookupByLibrary.simpleMessage("Help Center"),
-        "hi": m1,
+        "hi": m2,
         "hintDes": MessageLookupByLibrary.simpleMessage("Enter desciption..."),
         "historyTransaction":
             MessageLookupByLibrary.simpleMessage("Transaction History"),
@@ -154,6 +170,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "lableSearch":
             MessageLookupByLibrary.simpleMessage("Search for EcoVelo stations"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "lastUpdate": MessageLookupByLibrary.simpleMessage("Last Update:"),
         "license": MessageLookupByLibrary.simpleMessage("Motorbicycle License"),
         "lockBroken": MessageLookupByLibrary.simpleMessage("Lock broken"),
         "lockFirst": MessageLookupByLibrary.simpleMessage(
@@ -172,6 +189,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "needHelp": MessageLookupByLibrary.simpleMessage("Need Help ?"),
         "negativeAmount":
             MessageLookupByLibrary.simpleMessage("Negative Amount"),
+        "newJourney": m3,
+        "newStation":
+            MessageLookupByLibrary.simpleMessage("New Eco Station Analysis"),
         "newUser": MessageLookupByLibrary.simpleMessage("New User"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "niceDay": MessageLookupByLibrary.simpleMessage("Have a nice day!"),
@@ -185,6 +205,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Password don\'t match"),
         "noResultFound":
             MessageLookupByLibrary.simpleMessage("No results found"),
+        "noSupportBank": MessageLookupByLibrary.simpleMessage(
+            "The application does not support this bank yet."),
         "notBuyMorePoint":
             MessageLookupByLibrary.simpleMessage("Can\'t buy more point"),
         "notFinishRide":
@@ -192,8 +214,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "notesMustShorterThan": MessageLookupByLibrary.simpleMessage(
             "Desciption must be shorter than or equal to 255 characters"),
         "notifi": MessageLookupByLibrary.simpleMessage("Notification"),
-        "numDistances": m2,
+        "numDistances": m4,
         "numFall": MessageLookupByLibrary.simpleMessage("Num Fall"),
+        "numRent": MessageLookupByLibrary.simpleMessage("Num Rent"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "onBoarding1Title":
             MessageLookupByLibrary.simpleMessage("Locate Stations Nearby"),
@@ -226,6 +249,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "proccessingVerify": MessageLookupByLibrary.simpleMessage(
             "Authentication is in progress"),
         "proceed": MessageLookupByLibrary.simpleMessage("Proceed to start!"),
+        "processAuthen": MessageLookupByLibrary.simpleMessage("Processing"),
         "processing": MessageLookupByLibrary.simpleMessage("Processing..."),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "promoWallet": MessageLookupByLibrary.simpleMessage("Promo Point"),
@@ -239,6 +263,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "receipt": MessageLookupByLibrary.simpleMessage("Receipt"),
         "recentActivities":
             MessageLookupByLibrary.simpleMessage("Recent Activities"),
+        "recommedStation":
+            MessageLookupByLibrary.simpleMessage("Recommended Eco Station"),
         "reportProblem": MessageLookupByLibrary.simpleMessage("Report Problem"),
         "reportSend": MessageLookupByLibrary.simpleMessage("Report Send"),
         "resolve": MessageLookupByLibrary.simpleMessage("Resolve"),
@@ -246,6 +272,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "revenue": MessageLookupByLibrary.simpleMessage("Revenue"),
         "revenueStatistics":
             MessageLookupByLibrary.simpleMessage("Revenue Statistics"),
+        "role": MessageLookupByLibrary.simpleMessage("Role"),
+        "running": MessageLookupByLibrary.simpleMessage("Running"),
         "scanToRide": MessageLookupByLibrary.simpleMessage("Scan to Ride"),
         "score": MessageLookupByLibrary.simpleMessage(
             "Minimum score is 5000, please recharge"),
@@ -262,7 +290,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "station": MessageLookupByLibrary.simpleMessage("Eco Station"),
         "stationNearMe": MessageLookupByLibrary.simpleMessage("Station near"),
-        "stationNumber": m3,
+        "stationNumber": m5,
         "stopRentError": MessageLookupByLibrary.simpleMessage(
             "Return vehicle with problem, please try again"),
         "storageAccessDenied": MessageLookupByLibrary.simpleMessage(
@@ -307,6 +335,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Transfer Successfully"),
         "typeDocument":
             MessageLookupByLibrary.simpleMessage("Type User\'s Document"),
+        "unAuthencated": MessageLookupByLibrary.simpleMessage("UnAuthencated"),
         "unableToAccessCamera":
             MessageLookupByLibrary.simpleMessage("Unable to access camera!"),
         "unableToAccessStorage":
@@ -314,6 +343,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "unauthenticated":
             MessageLookupByLibrary.simpleMessage("Unauthenticated User"),
         "unlock": MessageLookupByLibrary.simpleMessage("Can\'t unlock"),
+        "update": MessageLookupByLibrary.simpleMessage("Update"),
         "uploadAnother": MessageLookupByLibrary.simpleMessage("Upload Another"),
         "uploadError":
             MessageLookupByLibrary.simpleMessage("Error, please try again!"),
@@ -326,6 +356,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "verifiAcc":
             MessageLookupByLibrary.simpleMessage("Account Verification"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("VietNamese"),
+        "view": MessageLookupByLibrary.simpleMessage("View"),
+        "viewMap": MessageLookupByLibrary.simpleMessage("View Map"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome!"),
         "welcomeEcovelo":
             MessageLookupByLibrary.simpleMessage("Welcome to EcoVelo!"),
