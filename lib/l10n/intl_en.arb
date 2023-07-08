@@ -220,6 +220,14 @@
     "viewMap": "View Map",
     "update": "Update",
     "ecoStation": "Eco Station {key}",
-    "noSupportBank": "The application does not support this bank yet."
+    "noSupportBank": "The application does not support this bank yet.",
+    "role": "Role",
+    "authencation": "Authencation",
+    "view": "View",
+    "numRent": "Num Rent",
+    "address": "Address",
+    "authenError": "Sorry, Process failed, try again!",
+    "frontSide": "Font Side",
+    "backSide": "Back Side"
 
 }

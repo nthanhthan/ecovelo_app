@@ -1,5 +1,6 @@
 import 'package:ecoveloapp/app/core.dart';
 import 'package:flutter/material.dart';
+
 enum ProcessingType {
   threeBounce,
   circleIndicator,
@@ -112,7 +113,7 @@ class ProcessingDialog {
                           progressValue: progress,
                           gradientColor: LinearGradient(
                             colors: [
-                              AppColors.main,
+                              AppColors.main.shade200,
                               AppColors.main.shade400,
                             ],
                           ),

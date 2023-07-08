@@ -2,7 +2,7 @@ import 'package:ecoveloapp/app/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class ChangeRoleView extends GetView<EcoUserController> {
+class ChangeRoleView extends GetView<EcoUserDetailController> {
   const ChangeRoleView({Key? key}) : super(key: key);
 
   @override

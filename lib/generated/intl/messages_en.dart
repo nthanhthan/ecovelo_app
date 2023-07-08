@@ -39,15 +39,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "accountMustVeifi": MessageLookupByLibrary.simpleMessage(
             "Sorry, Your account haven\'t been verified"),
         "addMoney": MessageLookupByLibrary.simpleMessage("Add money"),
+        "address": MessageLookupByLibrary.simpleMessage("Address"),
         "amount": MessageLookupByLibrary.simpleMessage("Amount"),
         "amountused": MessageLookupByLibrary.simpleMessage("Amounted used"),
         "analysisStation":
             MessageLookupByLibrary.simpleMessage("Station Analysis"),
         "appName": MessageLookupByLibrary.simpleMessage("ECOVELO"),
+        "authenError": MessageLookupByLibrary.simpleMessage(
+            "Sorry, Process failed, try again!"),
         "authenUser": MessageLookupByLibrary.simpleMessage("User Authencation"),
+        "authencation": MessageLookupByLibrary.simpleMessage("Authencation"),
         "authenticated":
             MessageLookupByLibrary.simpleMessage("Authenticated User"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "backSide": MessageLookupByLibrary.simpleMessage("Back Side"),
         "backView": MessageLookupByLibrary.simpleMessage("Back view"),
         "bicycleRented": MessageLookupByLibrary.simpleMessage(
             "Vehicle is in use, please change to another vehicle"),
@@ -129,6 +134,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "free": MessageLookupByLibrary.simpleMessage("Free"),
+        "frontSide": MessageLookupByLibrary.simpleMessage("Font Side"),
         "frontView": MessageLookupByLibrary.simpleMessage("Font view"),
         "getMoreTime": MessageLookupByLibrary.simpleMessage("Get  more time"),
         "goBackHome": MessageLookupByLibrary.simpleMessage("Go back to home"),
@@ -207,6 +213,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notifi": MessageLookupByLibrary.simpleMessage("Notification"),
         "numDistances": m4,
         "numFall": MessageLookupByLibrary.simpleMessage("Num Fall"),
+        "numRent": MessageLookupByLibrary.simpleMessage("Num Rent"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "onBoarding1Title":
             MessageLookupByLibrary.simpleMessage("Locate Stations Nearby"),
@@ -261,6 +268,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "revenue": MessageLookupByLibrary.simpleMessage("Revenue"),
         "revenueStatistics":
             MessageLookupByLibrary.simpleMessage("Revenue Statistics"),
+        "role": MessageLookupByLibrary.simpleMessage("Role"),
         "scanToRide": MessageLookupByLibrary.simpleMessage("Scan to Ride"),
         "score": MessageLookupByLibrary.simpleMessage(
             "Minimum score is 5000, please recharge"),
@@ -342,6 +350,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "verifiAcc":
             MessageLookupByLibrary.simpleMessage("Account Verification"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("VietNamese"),
+        "view": MessageLookupByLibrary.simpleMessage("View"),
         "viewMap": MessageLookupByLibrary.simpleMessage("View Map"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome!"),
         "welcomeEcovelo":
