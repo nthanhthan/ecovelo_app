@@ -4,12 +4,19 @@ import 'package:ecoveloapp/app/core.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class NewStationService extends BaseApiClient {
-  Future<BaseResp<dynamic>> getNewStation() async {
-    return request<dynamic>(
+  Future<BaseResp<List<CoordinateStationModel>>> getNewStation() async {
+    return request<List<CoordinateStationModel>>(
       Method.get,
-      "http://192.168.1.6:8000/cluster-centers",
+      AppApi.getRecommendStation,
       onDeserialize: (dynamic jsonValue) {
-        return jsonValue;
+        if (jsonValue is List) {
+          return jsonValue
+              .map((e) =>
+                  CoordinateStationModel.fromJson(e as Map<String, dynamic>))
+              .toList();
+        } else {
+          return null;
+        }
       },
     );
   }
@@ -29,6 +36,16 @@ class NewStationService extends BaseApiClient {
       Method.get,
       AppApi.getRecogetNearBy(
           center.latitude, center.longitude, radius, category, apiKey),
+      onDeserialize: (dynamic jsonValue) {
+        return jsonValue;
+      },
+    );
+  }
+
+  Future<BaseResp<dynamic>> getCountRent() async {
+    return request<dynamic>(
+      Method.get,
+      AppApi.getCountRent,
       onDeserialize: (dynamic jsonValue) {
         return jsonValue;
       },

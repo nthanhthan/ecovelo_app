@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "accUser": MessageLookupByLibrary.simpleMessage("Eco User"),
         "accountMustVeifi": MessageLookupByLibrary.simpleMessage(
             "Sorry, Your account haven\'t been verified"),
+        "active": MessageLookupByLibrary.simpleMessage("Active"),
         "addMoney": MessageLookupByLibrary.simpleMessage("Add money"),
         "address": MessageLookupByLibrary.simpleMessage("Address"),
         "amount": MessageLookupByLibrary.simpleMessage("Amount"),
@@ -48,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "authenError": MessageLookupByLibrary.simpleMessage(
             "Sorry, Process failed, try again!"),
         "authenUser": MessageLookupByLibrary.simpleMessage("User Authencation"),
+        "authencated": MessageLookupByLibrary.simpleMessage("Authencated"),
         "authencation": MessageLookupByLibrary.simpleMessage("Authencation"),
         "authenticated":
             MessageLookupByLibrary.simpleMessage("Authenticated User"),
@@ -134,6 +136,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "free": MessageLookupByLibrary.simpleMessage("Free"),
+        "freeBike": MessageLookupByLibrary.simpleMessage("Free"),
         "frontSide": MessageLookupByLibrary.simpleMessage("Font Side"),
         "frontView": MessageLookupByLibrary.simpleMessage("Font view"),
         "getMoreTime": MessageLookupByLibrary.simpleMessage("Get  more time"),
@@ -246,6 +249,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "proccessingVerify": MessageLookupByLibrary.simpleMessage(
             "Authentication is in progress"),
         "proceed": MessageLookupByLibrary.simpleMessage("Proceed to start!"),
+        "processAuthen": MessageLookupByLibrary.simpleMessage("Processing"),
         "processing": MessageLookupByLibrary.simpleMessage("Processing..."),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "promoWallet": MessageLookupByLibrary.simpleMessage("Promo Point"),
@@ -269,6 +273,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "revenueStatistics":
             MessageLookupByLibrary.simpleMessage("Revenue Statistics"),
         "role": MessageLookupByLibrary.simpleMessage("Role"),
+        "running": MessageLookupByLibrary.simpleMessage("Running"),
         "scanToRide": MessageLookupByLibrary.simpleMessage("Scan to Ride"),
         "score": MessageLookupByLibrary.simpleMessage(
             "Minimum score is 5000, please recharge"),
@@ -330,6 +335,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Transfer Successfully"),
         "typeDocument":
             MessageLookupByLibrary.simpleMessage("Type User\'s Document"),
+        "unAuthencated": MessageLookupByLibrary.simpleMessage("UnAuthencated"),
         "unableToAccessCamera":
             MessageLookupByLibrary.simpleMessage("Unable to access camera!"),
         "unableToAccessStorage":

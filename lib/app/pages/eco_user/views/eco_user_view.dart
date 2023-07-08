@@ -160,32 +160,27 @@ class EcoUserView extends GetView<EcoUserController> {
           customPadding: const EdgeInsets.fromLTRB(12, 15, 5, 15),
           outlineColor: AppColors.white,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Center(
-                  child: Text(
-                    text,
-                    style: AppTextStyles.tiny().copyWith(
-                      color: AppColors.grey.shade100,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+            Center(
+              child: Text(
+                text,
+                style: AppTextStyles.tiny().copyWith(
+                  color: AppColors.grey.shade100,
+                  fontWeight: FontWeight.w600,
                 ),
-                Text(
-                  number.toString(),
-                  style: AppTextStyles.body1().copyWith(
-                    color: AppColors.grey.shade100,
-                  ),
-                ),
-                const SizedBox(width: 4),
-              ],
-            )
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            Text(
+              number.toString(),
+              style: AppTextStyles.body1().copyWith(
+                color: AppColors.grey.shade100,
+              ),
+            ),
+            const SizedBox(width: 4),
           ],
         ),
       ),

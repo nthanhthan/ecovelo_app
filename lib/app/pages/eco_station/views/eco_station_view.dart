@@ -106,13 +106,26 @@ class EcoStationView extends GetView<EcoStationController> {
             children: [
               _searchBicycle(context),
               const SizedBox(height: 20),
-              _bicycleItem(context, false),
-              _bicycleItem(context, true),
-              _bicycleItem(context, true),
-              _bicycleItem(context, false),
-              _bicycleItem(context, true),
-              _bicycleItem(context, true),
-              _bicycleItem(context, true),
+              _bicycleItem(context, false, "ECOVELO-01", "Station-01"),
+              _bicycleItem(context, true, "ECOVELO-02", "Station-03"),
+              _bicycleItem(context, true, "ECOVELO-03", "Station-05"),
+              _bicycleItem(context, false, "ECOVELO-04", "Station-01"),
+              _bicycleItem(context, true, "ECOVELO-05", "Station-02"),
+              _bicycleItem(context, true, "ECOVELO-06", "Station-03"),
+              _bicycleItem(context, true, "ECOVELO-07", "Station-06"),
+              _bicycleItem(context, false, "ECOVELO-08", "Station-01"),
+              _bicycleItem(context, true, "ECOVELO-09", "Station-02"),
+              _bicycleItem(context, true, "ECOVELO-10", "Station-05"),
+              _bicycleItem(context, false, "ECOVELO-11", "Station-04"),
+              _bicycleItem(context, true, "ECOVELO-12", "Station-02"),
+              _bicycleItem(context, true, "ECOVELO-13", "Station-05"),
+              _bicycleItem(context, true, "ECOVELO-14", "Station-06"),
+              _bicycleItem(context, false, "ECOVELO-15", "Station-03"),
+              _bicycleItem(context, true, "ECOVELO-16", "Station-04"),
+              _bicycleItem(context, true, "ECOVELO-17", "Station-05"),
+              _bicycleItem(context, false, "ECOVELO-18", "Station-01"),
+              _bicycleItem(context, true, "ECOVELO-19", "Station-02"),
+              _bicycleItem(context, true, "ECOVELO-20", "Station-03"),
             ],
           ),
         ),
@@ -139,7 +152,8 @@ class EcoStationView extends GetView<EcoStationController> {
     );
   }
 
-  Widget _bicycleItem(BuildContext context, bool isUsing) {
+  Widget _bicycleItem(
+      BuildContext context, bool isUsing, String name, String station) {
     return Container(
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.symmetric(vertical: 10),
@@ -162,7 +176,7 @@ class EcoStationView extends GetView<EcoStationController> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "ECOVELO-01",
+                      name,
                       style: AppTextStyles.body1().copyWith(
                         color: AppColors.main,
                         fontWeight: FontWeight.w800,
@@ -185,7 +199,7 @@ class EcoStationView extends GetView<EcoStationController> {
                               ),
                               child: Center(
                                 child: Text(
-                                  "Station-01",
+                                  station,
                                   style: AppTextStyles.body2()
                                       .copyWith(color: AppColors.grey),
                                 ),
@@ -207,7 +221,7 @@ class EcoStationView extends GetView<EcoStationController> {
                               ),
                               child: Center(
                                 child: Text(
-                                  "Active",
+                                  S.of(context).active,
                                   style: AppTextStyles.body2()
                                       .copyWith(color: AppColors.grey),
                                 ),
@@ -228,7 +242,7 @@ class EcoStationView extends GetView<EcoStationController> {
                     height: 50,
                   ),
                   Text(
-                    isUsing ? "Running" : "Free",
+                    isUsing ? S.of(context).running : S.of(context).freeBike,
                     style: AppTextStyles.body2().copyWith(
                         color: isUsing ? AppColors.warning : AppColors.success),
                   ),
@@ -306,13 +320,13 @@ class EcoStationView extends GetView<EcoStationController> {
             ],
           ),
           _stationBicleWidget(context),
-          _bicycleWidget(context),
-          _bicycleWidget(context),
-          _bicycleWidget(context),
-          _bicycleWidget(context),
-          _bicycleWidget(context),
-          _bicycleWidget(context),
-          _bicycleWidget(context),
+          _bicycleWidget(context, "ECOVELO-01"),
+          _bicycleWidget(context, "ECOVELO-07"),
+          _bicycleWidget(context, "ECOVELO-12"),
+          _bicycleWidget(context, "ECOVELO-15"),
+          _bicycleWidget(context, "ECOVELO-17"),
+          _bicycleWidget(context, "ECOVELO-18"),
+          _bicycleWidget(context, "ECOVELO-21"),
         ],
       ),
     );
@@ -379,7 +393,7 @@ class EcoStationView extends GetView<EcoStationController> {
     );
   }
 
-  Widget _bicycleWidget(BuildContext context) {
+  Widget _bicycleWidget(BuildContext context, String nameBicycle) {
     return Container(
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.symmetric(vertical: 10),
@@ -395,7 +409,7 @@ class EcoStationView extends GetView<EcoStationController> {
             height: 50,
           ),
           Text(
-            "ECOVELO-01",
+            nameBicycle,
             style: AppTextStyles.body1().copyWith(
               color: AppColors.main,
               fontWeight: FontWeight.w800,

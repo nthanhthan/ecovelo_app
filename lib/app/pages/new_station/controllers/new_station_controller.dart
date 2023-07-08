@@ -13,12 +13,7 @@ class NewStationController extends GetxController {
       _newListStation.value = value;
   // ignore: invalid_use_of_protected_member
   List<NewStationModel> get newListStation => _newListStation.value;
-  List<LatLng> newStation = const [
-    LatLng(16.0607486, 108.24185681),
-    LatLng(16.06374389, 108.21738959),
-    LatLng(16.06873164, 108.22288313),
-    LatLng(16.0757949, 108.2175882),
-  ];
+  List<CoordinateStationModel> newStation = [];
   final RxBool _isLoading = false.obs;
   set isLoading(bool value) => _isLoading.value = value;
   bool get isLoading => _isLoading.value;
@@ -35,7 +30,7 @@ class NewStationController extends GetxController {
   String get lastUpdateAI => _lastUpdateAI.value;
   set lastUpdateAI(String value) => _lastUpdateAI.value = value;
 
-  final RxInt _newJourney = 20.obs;
+  final RxInt _newJourney = 0.obs;
   int get newJourney => _newJourney.value;
   set newJourney(int value) => _newJourney.value = value;
 
@@ -43,15 +38,31 @@ class NewStationController extends GetxController {
   Future<void> onInit() async {
     lastUpdateAI = Prefs.getString(AppKeys.lastUpdateAI);
     _newStationService = Get.find<NewStationService>();
-    _newStationService.getNewStation();
+    getCountRent();
     super.onInit();
   }
 
   @override
   onReady() {
-    addNewStation().then((value) {
-      isLoading = true;
+    getListRecommendStation().then((value) {
+      addNewStation().then((value) {
+        isLoading = true;
+      });
     });
+  }
+
+  Future<void> getListRecommendStation() async {
+    final result = await _newStationService.getNewStation();
+    if (result.isSuccess() && result.data != null) {
+      newStation = result.data as List<CoordinateStationModel>;
+    }
+  }
+
+  Future<void> getCountRent() async {
+    final result = await _newStationService.getCountRent();
+    if (result.isSuccess() && result.response?.data != null) {
+      newJourney = result.response!.data as int;
+    }
   }
 
   Future<void> addNewStation() async {
@@ -67,8 +78,8 @@ class NewStationController extends GetxController {
             stationModel: StationModel(
               address: address,
               isNewStation: true,
-              lat: station.latitude,
-              lng: station.longitude,
+              lat: station.lat,
+              lng: station.lng,
             ),
           ),
         );
@@ -97,10 +108,11 @@ class NewStationController extends GetxController {
     return listStation;
   }
 
-  Future<String> getAddressFromCoordinatesStation(LatLng station) async {
+  Future<String> getAddressFromCoordinatesStation(
+      CoordinateStationModel station) async {
     List<Placemark> placemarks = await placemarkFromCoordinates(
-      station.latitude,
-      station.longitude,
+      station.lat!,
+      station.lng!,
     );
     Placemark placemark = placemarks.first;
 

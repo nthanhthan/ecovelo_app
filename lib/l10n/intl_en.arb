@@ -228,6 +228,11 @@
     "address": "Address",
     "authenError": "Sorry, Process failed, try again!",
     "frontSide": "Font Side",
-    "backSide": "Back Side"
-
+    "backSide": "Back Side",
+    "authencated": "Authencated",
+    "unAuthencated": "UnAuthencated",
+    "processAuthen": "Processing",
+    "running": "Running",
+    "active": "Active",
+    "freeBike": "Free"
 }

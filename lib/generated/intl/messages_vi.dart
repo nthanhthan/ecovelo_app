@@ -20,7 +20,14 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'vi';
 
+  static String m0(bicycleID) =>
+      "Bạn có chắc muốn tắt xe ${bicycleID} này không";
+
+  static String m1(key) => "Trạm Eco ${key}";
+
   static String m2(name) => "Chào ${name},";
+
+  static String m3(numJourney) => "Hành trình mới: ${numJourney}";
 
   static String m4(nums) => "${nums}+";
 
@@ -29,12 +36,28 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about": MessageLookupByLibrary.simpleMessage("Thông tin"),
+        "accUser": MessageLookupByLibrary.simpleMessage("Người dùng Eco"),
         "accountMustVeifi": MessageLookupByLibrary.simpleMessage(
             "Xin lỗi, tài khoản của bạn chưa được xác minh"),
+        "active": MessageLookupByLibrary.simpleMessage("Kích hoạt"),
         "addMoney": MessageLookupByLibrary.simpleMessage("Nạp điểm"),
+        "address": MessageLookupByLibrary.simpleMessage("Địa chỉ"),
         "amount": MessageLookupByLibrary.simpleMessage("Số tiền"),
+        "amountused":
+            MessageLookupByLibrary.simpleMessage("Số tiền đã sử dụng"),
+        "analysisStation":
+            MessageLookupByLibrary.simpleMessage("Phân tích trạm"),
         "appName": MessageLookupByLibrary.simpleMessage("ECOVELO"),
+        "authenError": MessageLookupByLibrary.simpleMessage(
+            "Xin lỗi, quá trình thực hiện thất bại, vui lòng thử lại!"),
+        "authenUser":
+            MessageLookupByLibrary.simpleMessage("Xác thực người dùng"),
+        "authencated": MessageLookupByLibrary.simpleMessage("Đã xác thực"),
+        "authencation": MessageLookupByLibrary.simpleMessage("Xác thực"),
+        "authenticated":
+            MessageLookupByLibrary.simpleMessage("Người dùng đã xác thực"),
         "back": MessageLookupByLibrary.simpleMessage("Quay lại"),
+        "backSide": MessageLookupByLibrary.simpleMessage("Mặt sau"),
         "backView": MessageLookupByLibrary.simpleMessage("Mặt sau"),
         "bicycleRented": MessageLookupByLibrary.simpleMessage(
             "Xe đang sử dụng, xin đổi xe khác"),
@@ -46,6 +69,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("Huỷ"),
         "carbon": MessageLookupByLibrary.simpleMessage("Carbon giảm"),
         "changePass": MessageLookupByLibrary.simpleMessage("Thay đổi mật khẩu"),
+        "changeProblem": MessageLookupByLibrary.simpleMessage("Thay đổi"),
+        "changeRole": MessageLookupByLibrary.simpleMessage("Thay đổi vai trò"),
         "chooseFromFileDirectory":
             MessageLookupByLibrary.simpleMessage("Chọn tệp từ Thư mục"),
         "chooseFromGallery":
@@ -58,6 +83,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "completeTrip":
             MessageLookupByLibrary.simpleMessage("Chuyến đi đã kết thúc!"),
         "confirm": MessageLookupByLibrary.simpleMessage("Xác nhận"),
+        "confirmActiveBicycle": m0,
         "confirmLogout": MessageLookupByLibrary.simpleMessage("Đồng ý"),
         "continueBtn": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
         "correct": MessageLookupByLibrary.simpleMessage("Mật khẩu khớp"),
@@ -76,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "discoutText": MessageLookupByLibrary.simpleMessage("Giảm giá"),
         "distances": MessageLookupByLibrary.simpleMessage("Khoảng cách "),
         "done": MessageLookupByLibrary.simpleMessage("Xong"),
+        "ecoStation": m1,
         "ecoVoucher": MessageLookupByLibrary.simpleMessage("Khuyến mãi Eco"),
         "ecoitem": MessageLookupByLibrary.simpleMessage("EcoVelo"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -107,10 +134,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "findCode": MessageLookupByLibrary.simpleMessage("Tìm và nhập mã xe"),
         "finishRide":
             MessageLookupByLibrary.simpleMessage("Kết thúc chuyến đi"),
+        "fixProblem": MessageLookupByLibrary.simpleMessage("Sửa sự cố"),
         "flatTire": MessageLookupByLibrary.simpleMessage("Lốp xe bị mềm/ lủng"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
         "free": MessageLookupByLibrary.simpleMessage("Miễn phí"),
+        "freeBike": MessageLookupByLibrary.simpleMessage("Sẵn sàng"),
+        "frontSide": MessageLookupByLibrary.simpleMessage("Mặt trước"),
         "frontView": MessageLookupByLibrary.simpleMessage("Mặt trước"),
         "getMoreTime": MessageLookupByLibrary.simpleMessage("Get  more time"),
         "goBackHome": MessageLookupByLibrary.simpleMessage("Trở về trang chủ"),
@@ -142,6 +172,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "lableSearch":
             MessageLookupByLibrary.simpleMessage("Tìm kiếm trạm xe EcoVelo"),
         "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
+        "lastUpdate":
+            MessageLookupByLibrary.simpleMessage("Cập nhật lần cuối:"),
         "license": MessageLookupByLibrary.simpleMessage("Giấy phép lái xe"),
         "lockBroken": MessageLookupByLibrary.simpleMessage("Khoá bị hư"),
         "lockFirst":
@@ -158,6 +190,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "myWallet": MessageLookupByLibrary.simpleMessage("Ví của tôi"),
         "name": MessageLookupByLibrary.simpleMessage("Tên"),
         "needHelp": MessageLookupByLibrary.simpleMessage(" Cần sự giúp đỡ ?"),
+        "negativeAmount": MessageLookupByLibrary.simpleMessage("Số tiền âm"),
+        "newJourney": m3,
+        "newStation":
+            MessageLookupByLibrary.simpleMessage("Phân tích trạm Eco mới"),
+        "newUser": MessageLookupByLibrary.simpleMessage("Người dùng mới"),
         "next": MessageLookupByLibrary.simpleMessage("Tiếp"),
         "niceDay": MessageLookupByLibrary.simpleMessage("Một ngày tốt lành!"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
@@ -170,6 +207,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mật khẩu không khớp"),
         "noResultFound": MessageLookupByLibrary.simpleMessage(
             "Không có kết quả nào được tìm thấy"),
+        "noSupportBank": MessageLookupByLibrary.simpleMessage(
+            "Ứng dụng chưa hỗ trợ ngân hàng này."),
         "notBuyMorePoint":
             MessageLookupByLibrary.simpleMessage("Không thể nạp thêm điểm"),
         "notFinishRide": MessageLookupByLibrary.simpleMessage(
@@ -178,6 +217,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Mô tả phải ngắn hơn hoặc bằng 255 ký tự"),
         "notifi": MessageLookupByLibrary.simpleMessage("Thông báo"),
         "numDistances": m4,
+        "numFall": MessageLookupByLibrary.simpleMessage("Số lần ngã"),
+        "numRent": MessageLookupByLibrary.simpleMessage("Số lượt thuê"),
         "ok": MessageLookupByLibrary.simpleMessage("Đồng ý"),
         "onBoarding1Title": MessageLookupByLibrary.simpleMessage(
             "Xác định vị trí các trạm lân cận"),
@@ -198,12 +239,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "passWordAgain":
             MessageLookupByLibrary.simpleMessage("Nhập lại mật khẩu"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
+        "pending": MessageLookupByLibrary.simpleMessage("Đang chờ xử lý"),
+        "pendingProcessing":
+            MessageLookupByLibrary.simpleMessage("Đang chờ xử lý"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
         "pickeFileUsing":
             MessageLookupByLibrary.simpleMessage("Chọn tệp bằng cách sử dụng?"),
+        "problem": MessageLookupByLibrary.simpleMessage("Vấn đề"),
+        "problemDetail":
+            MessageLookupByLibrary.simpleMessage("Chi tiết vấn đề"),
         "proccessingVerify":
             MessageLookupByLibrary.simpleMessage("Đang xử lí xác thực"),
         "proceed": MessageLookupByLibrary.simpleMessage("Kéo sang để bắt đầu!"),
+        "processAuthen": MessageLookupByLibrary.simpleMessage("Đang xử lí"),
         "processing": MessageLookupByLibrary.simpleMessage("Đang xử lí..."),
         "profile": MessageLookupByLibrary.simpleMessage("Thông tin cá nhân"),
         "promoWallet": MessageLookupByLibrary.simpleMessage("Điểm thưởng"),
@@ -217,11 +265,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "receipt": MessageLookupByLibrary.simpleMessage("Biên lai"),
         "recentActivities":
             MessageLookupByLibrary.simpleMessage("Hoạt động gần đây"),
+        "recommedStation":
+            MessageLookupByLibrary.simpleMessage("Trạm Eco được đề xuất"),
         "reportProblem": MessageLookupByLibrary.simpleMessage("Báo cáo sự cố"),
         "reportSend": MessageLookupByLibrary.simpleMessage("Đã gửi báo cáo"),
+        "resolve": MessageLookupByLibrary.simpleMessage("Giải quyết"),
+        "resolvedProblem":
+            MessageLookupByLibrary.simpleMessage("Đã giải quyết"),
+        "revenue": MessageLookupByLibrary.simpleMessage("Doanh thu"),
+        "revenueStatistics":
+            MessageLookupByLibrary.simpleMessage("Thống kê doanh thu"),
+        "role": MessageLookupByLibrary.simpleMessage("Vai trò"),
+        "running": MessageLookupByLibrary.simpleMessage("Đang chạy"),
         "scanToRide": MessageLookupByLibrary.simpleMessage("Quét mã để đạp xe"),
         "score": MessageLookupByLibrary.simpleMessage(
             "Điểm tối thiểu là 5000, vui lòng nạp tiền"),
+        "searchBicycle":
+            MessageLookupByLibrary.simpleMessage("Tìm kiếm xe Eco"),
         "selectProblem":
             MessageLookupByLibrary.simpleMessage("Lựa chọn vấn đề"),
         "selectSource": MessageLookupByLibrary.simpleMessage("Chọn nguồn"),
@@ -234,6 +294,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "signupsucess": MessageLookupByLibrary.simpleMessage(
             "Đăng ký thành công, đăng nhập để tiếp tục."),
         "skip": MessageLookupByLibrary.simpleMessage("Bỏ qua"),
+        "station": MessageLookupByLibrary.simpleMessage("Trạm Eco"),
         "stationNearMe":
             MessageLookupByLibrary.simpleMessage("Trạm xe gần tôi"),
         "stationNumber": m5,
@@ -269,25 +330,39 @@ class MessageLookup extends MessageLookupByLibrary {
         "total": MessageLookupByLibrary.simpleMessage("Tổng"),
         "totalDistances":
             MessageLookupByLibrary.simpleMessage("Tổng khoảng cách"),
+        "totalProblem": MessageLookupByLibrary.simpleMessage("Tổng số vấn đề"),
+        "totalRent": MessageLookupByLibrary.simpleMessage("Tổng số lượt thuê"),
+        "totalRevenue": MessageLookupByLibrary.simpleMessage("Tổng doanh thu"),
         "totalTime": MessageLookupByLibrary.simpleMessage("Tổng thời gian"),
+        "totalUser": MessageLookupByLibrary.simpleMessage("Tổng số người dùng"),
         "transferError":
             MessageLookupByLibrary.simpleMessage("Lỗi! Vui lòng thử lại"),
         "transferOk":
             MessageLookupByLibrary.simpleMessage("Giao dịch thành công"),
+        "typeDocument": MessageLookupByLibrary.simpleMessage(
+            "Loại tài liệu của người dùng"),
+        "unAuthencated": MessageLookupByLibrary.simpleMessage("Chưa xác thực"),
         "unableToAccessCamera":
             MessageLookupByLibrary.simpleMessage("Không thể truy cập máy ảnh!"),
         "unableToAccessStorage":
             MessageLookupByLibrary.simpleMessage("Không thể truy cập bộ nhớ!"),
+        "unauthenticated":
+            MessageLookupByLibrary.simpleMessage("Người dùng chưa xác thực"),
         "unlock": MessageLookupByLibrary.simpleMessage("Không thể khoá xe"),
+        "update": MessageLookupByLibrary.simpleMessage("Cập nhật"),
         "uploadAnother": MessageLookupByLibrary.simpleMessage("Tải lên khác"),
         "uploadError":
             MessageLookupByLibrary.simpleMessage("Lỗi, Vui lòng thử lại!"),
         "uploadFile": MessageLookupByLibrary.simpleMessage("Tải tệp lên"),
         "uploadImage": MessageLookupByLibrary.simpleMessage("Tải hình ảnh lên"),
+        "userDetail":
+            MessageLookupByLibrary.simpleMessage("Chi tiết người dùng"),
         "validatePhone": MessageLookupByLibrary.simpleMessage(
             "Vui lòng nhập số điện thoại di động hợp lệ"),
         "verifiAcc": MessageLookupByLibrary.simpleMessage("Xác minh tài khoản"),
         "vietnamese": MessageLookupByLibrary.simpleMessage("Tiếng Việt"),
+        "view": MessageLookupByLibrary.simpleMessage("Xem"),
+        "viewMap": MessageLookupByLibrary.simpleMessage("Xem bản đồ"),
         "welcome": MessageLookupByLibrary.simpleMessage("Chào đón!"),
         "welcomeEcovelo":
             MessageLookupByLibrary.simpleMessage("Chừng mừng đến với EcoVelo!"),
