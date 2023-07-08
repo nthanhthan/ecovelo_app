@@ -15,7 +15,7 @@ class FeedBackView extends GetView<FeedbackController> {
     if (result) {
       Get.offAllNamed(Routes.home);
     } else {
-      SnackBars.error(message: S.of(Get.context!).errorFeedback);
+      SnackBars.error(message: S.of(Get.context!).errorFeedback).show();
     }
   }
 

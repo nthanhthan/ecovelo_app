@@ -2269,6 +2269,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Role`
+  String get role {
+    return Intl.message(
+      'Role',
+      name: 'role',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Authencation`
+  String get authencation {
+    return Intl.message(
+      'Authencation',
+      name: 'authencation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View`
+  String get view {
+    return Intl.message(
+      'View',
+      name: 'view',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Num Rent`
+  String get numRent {
+    return Intl.message(
+      'Num Rent',
+      name: 'numRent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message(
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sorry, Process failed, try again!`
+  String get authenError {
+    return Intl.message(
+      'Sorry, Process failed, try again!',
+      name: 'authenError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Font Side`
+  String get frontSide {
+    return Intl.message(
+      'Font Side',
+      name: 'frontSide',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back Side`
+  String get backSide {
+    return Intl.message(
+      'Back Side',
+      name: 'backSide',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

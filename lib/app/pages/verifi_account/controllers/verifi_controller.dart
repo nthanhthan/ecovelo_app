@@ -113,7 +113,7 @@ class VerifiAccountController extends GetxController {
       if (res.isSuccess() && res.data != null && res.data == true) {
         Prefs.saveBool(AppKeys.isverify, true);
         processingDialog.hide();
-        Get.offNamed(Routes.home);
+        Get.offAllNamed(Routes.home);
       } else {
         processingDialog.hide();
         SnackBars.error(message: S.of(Get.context!).uploadError).show();

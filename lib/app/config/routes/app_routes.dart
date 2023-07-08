@@ -31,4 +31,5 @@ abstract class Routes {
   static const revenueView = '/revenue_view';
   static const newStation = '/new_station_view';
   static const mapStation = '/map_station';
+
 }

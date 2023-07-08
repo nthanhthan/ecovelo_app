@@ -139,7 +139,7 @@ class _BarChartState extends State<_BarChart> {
           x: 2,
           barRods: [
             BarChartRodData(
-              toY: 1,
+              toY: 0,
               gradient: _barsGradient,
             )
           ],
@@ -149,7 +149,7 @@ class _BarChartState extends State<_BarChart> {
           x: 3,
           barRods: [
             BarChartRodData(
-              toY: 2,
+              toY: 0,
               gradient: _barsGradient,
             )
           ],
@@ -159,7 +159,7 @@ class _BarChartState extends State<_BarChart> {
           x: 4,
           barRods: [
             BarChartRodData(
-              toY: 5,
+              toY: 0,
               gradient: _barsGradient,
             )
           ],
@@ -169,7 +169,7 @@ class _BarChartState extends State<_BarChart> {
           x: 5,
           barRods: [
             BarChartRodData(
-              toY: 7,
+              toY: 2,
               gradient: _barsGradient,
             )
           ],
@@ -179,7 +179,7 @@ class _BarChartState extends State<_BarChart> {
           x: 6,
           barRods: [
             BarChartRodData(
-              toY: 15,
+              toY: 1,
               gradient: _barsGradient,
             )
           ],
@@ -189,7 +189,7 @@ class _BarChartState extends State<_BarChart> {
           x: 7,
           barRods: [
             BarChartRodData(
-              toY: 8,
+              toY: 2,
               gradient: _barsGradient,
             )
           ],

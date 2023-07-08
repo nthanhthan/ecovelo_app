@@ -2,12 +2,22 @@ import 'package:ecoveloapp/app/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class AuthencationView extends GetView<EcoUserController> {
+class AuthencationView extends GetView<EcoUserDetailController> {
   const AuthencationView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return _buildBody(context);
+  }
+
+  void _confirmAuthencation() {
+    controller.confirmAuthencation().then((value) {
+      if (value) {
+        Get.back(result: controller.getEcoUserModel?.userModel?.userId);
+      } else {
+        SnackBars.error(message: S.of(Get.context!).authenError).show();
+      }
+    });
   }
 
   Widget _buildBody(BuildContext context) {
@@ -31,7 +41,12 @@ class AuthencationView extends GetView<EcoUserController> {
             ),
           ),
         ),
-        bottomNavigationBar: _btnBottom(context),
+        bottomNavigationBar: controller.getEcoUserModel
+                    ?.getTypeAuthencation()
+                    .compareTo(TypeAuthencation.authencated) ==
+                0
+            ? null
+            : _btnBottom(context),
         body: Padding(
           padding: const EdgeInsets.all(20.0),
           child: SingleChildScrollView(
@@ -65,14 +80,14 @@ class AuthencationView extends GetView<EcoUserController> {
                 const SizedBox(height: 20),
                 _cardItem(
                   context,
-                  "https://firebasestorage.googleapis.com/v0/b/ecovelo-b640d.appspot.com/o/profile%2F1%2Ffront?alt=media&token=521dd114-0fb5-49b5-850d-ccb92bff7c8d",
-                  "Font Side",
+                  controller.getEcoUserModel?.frontSide ?? "",
+                  S.of(context).frontSide,
                 ),
                 const SizedBox(height: 20),
                 _cardItem(
                   context,
-                  "https://firebasestorage.googleapis.com/v0/b/ecovelo-b640d.appspot.com/o/profile%2F1%2Fback?alt=media&token=8e64b461-5db1-4d51-9774-fb74dd642731",
-                  "Back Side",
+                  controller.getEcoUserModel?.backSide ?? "",
+                  S.of(context).backSide,
                 ),
               ],
             ),
@@ -129,14 +144,16 @@ class AuthencationView extends GetView<EcoUserController> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 0, 20, 30),
       child: ElevatedButton(
-        onPressed: null,
+        onPressed: () {
+          _confirmAuthencation();
+        },
         style: FilledBtnStyle.enable(
             isFullWidth: true,
             borderRadius: 20,
             customPadding: const EdgeInsets.symmetric(vertical: 15),
             sizeType: SizeButtonType.custom),
         child: Text(
-          "Authencated",
+          S.of(context).confirm,
           style: AppTextStyles.subHeading1().copyWith(
             color: AppColors.white,
             fontWeight: FontWeight.w600,

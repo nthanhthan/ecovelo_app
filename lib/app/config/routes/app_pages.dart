@@ -129,6 +129,7 @@ class AppPages {
       transition: Transition.rightToLeft,
     ),
     GetPage<dynamic>(
+      binding:EcoUseDetailBinding(),
       name: Routes.ecoUserDetail,
       page: () => const EcoUserDetail(),
       transition: Transition.rightToLeft,
