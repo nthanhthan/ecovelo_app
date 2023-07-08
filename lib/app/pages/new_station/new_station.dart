@@ -6,4 +6,5 @@ export 'views/map_view_station.dart';
 export 'models/service_station.dart';
 export 'models/service_item.dart';
 export 'models/new_station_model.dart';
+export 'models/coordinates_station_model.dart';
 export 'services/new_station_service.dart';

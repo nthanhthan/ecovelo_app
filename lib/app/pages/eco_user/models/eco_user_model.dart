@@ -32,7 +32,7 @@ class EcoUserModel {
 }
 
 abstract class TypeAuthencation {
-  static String authencated = "Authencated";
-  static String unAuthencated = "UnAuthencated";
-  static String processing = "Processing";
+  static String authencated = S.of(Get.context!).authencated;
+  static String unAuthencated = S.of(Get.context!).unAuthencated;
+  static String processing = S.of(Get.context!).processAuthen;
 }

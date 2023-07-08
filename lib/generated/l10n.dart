@@ -2349,6 +2349,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Authencated`
+  String get authencated {
+    return Intl.message(
+      'Authencated',
+      name: 'authencated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `UnAuthencated`
+  String get unAuthencated {
+    return Intl.message(
+      'UnAuthencated',
+      name: 'unAuthencated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Processing`
+  String get processAuthen {
+    return Intl.message(
+      'Processing',
+      name: 'processAuthen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Running`
+  String get running {
+    return Intl.message(
+      'Running',
+      name: 'running',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Active`
+  String get active {
+    return Intl.message(
+      'Active',
+      name: 'active',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Free`
+  String get freeBike {
+    return Intl.message(
+      'Free',
+      name: 'freeBike',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
