@@ -1,9 +1,14 @@
 
 ECOVELO Project
 A ECOVELO project created in flutter, supports both iOS and Android.
+
 Design: https://www.figma.com/file/Z3ehKAErU313zoBOFdnXzH/EcoVelo-Design-File?node-id=83-28387&t=FydEDsxCIKUp2ELd-0
 
 Report: https://docs.google.com/document/d/1ZOvQ5IgQJfkBK17q4fJUCTFL2TMqwUnIkqrTNE8xDwA/edit?usp=sharing
+
+Slide: https://drive.google.com/drive/home
+
+BE : https://github.com/nthanhthan/ECOVELO_BE
 
 Getting Started
 Setup Enviroment:
