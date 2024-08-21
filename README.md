@@ -6,7 +6,7 @@ Design: https://www.figma.com/file/Z3ehKAErU313zoBOFdnXzH/EcoVelo-Design-File?no
 
 Report: https://docs.google.com/document/d/1ZOvQ5IgQJfkBK17q4fJUCTFL2TMqwUnIkqrTNE8xDwA/edit?usp=sharing
 
-Slide: https://drive.google.com/drive/home
+Slide: https://drive.google.com/file/d/1mGQtciGM9-w8Q9rILrc4XC6YLW8LDI6g/view?usp=sharing
 
 BE : https://github.com/nthanhthan/ECOVELO_BE
 
